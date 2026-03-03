@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proposta – Gestão de Instagram GAIA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#f2ede8;color:#2c2c2c;min-height:100vh;}
+
+  :root{
+    --verde:#4a7c59;
+    --verde-light:#6a9e7a;
+    --verde-pale:#e8f0eb;
+    --terra:#b07d52;
+    --cream:#faf7f3;
+    --dark:#2b3a2e;
+    --mid:#5a6b5d;
+    --border:#dde8df;
+  }
+
+  .page{max-width:840px;margin:0 auto;background:#fff;box-shadow:0 6px 50px rgba(0,0,0,.10);}
+
+  /* ── HEADER ── */
+  .header{background:linear-gradient(140deg,var(--dark) 0%,var(--verde) 65%,var(--verde-light) 100%);padding:48px 52px 40px;position:relative;overflow:hidden;}
+  .header::before{content:'';position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);}
+  .header::after{content:'';position:absolute;right:80px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04);}
+  .header-tag{font-size:10.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px;}
+  .header h1{font-family:'Playfair Display',serif;font-size:30px;color:#fff;line-height:1.25;margin-bottom:6px;}
+  .header-sub{font-size:13.5px;color:rgba(255,255,255,.78);font-weight:300;font-style:italic;}
+  .header-meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:5px 14px;font-size:11.5px;color:#fff;font-weight:500;}
+  .badge-terra{background:rgba(176,125,82,.35);border-color:rgba(176,125,82,.5);}
+
+  /* ── APRESENTAÇÃO ── */
+  .intro{padding:30px 52px 24px;border-bottom:1px solid var(--border);background:var(--cream);}
+  .intro p{font-size:13.5px;line-height:1.8;color:#555;}
+  .intro strong{color:var(--verde);}
+
+  /* ── SECTION ── */
+  .section{padding:30px 52px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--verde);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .section-title .icon{width:30px;height:30px;background:linear-gradient(135deg,var(--verde),var(--verde-light));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+  /* ── PERSONAS ── */
+  .personas-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .persona{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:18px 20px;position:relative;}
+  .persona-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:6px;}
+  .persona h3{font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:8px;}
+  .persona ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+  .persona ul li{font-size:12px;color:#666;line-height:1.5;display:flex;gap:6px;}
+  .persona ul li::before{content:'·';color:var(--verde-light);font-weight:700;flex-shrink:0;}
+  .persona.destaque{border-color:var(--verde-light);background:linear-gradient(135deg,var(--verde-pale),#fff);}
+
+  /* ── VÍDEO BANNER ── */
+  .video-banner{background:linear-gradient(135deg,var(--dark),var(--verde));border-radius:16px;padding:24px 28px;margin:0 52px 6px;color:#fff;display:flex;gap:20px;align-items:center;}
+  .video-banner .vb-icon{font-size:38px;flex-shrink:0;}
+  .video-banner h3{font-size:15px;font-weight:600;margin-bottom:5px;}
+  .video-banner p{font-size:12.5px;opacity:.88;line-height:1.65;}
+  .video-banner .vbadge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:3px 12px;font-size:11px;font-weight:600;margin-top:8px;}
+
+  /* ── ENTREGAS GRID ── */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+  .card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--verde-light);margin-bottom:6px;}
+  .card h3{font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:6px;}
+  .card p{font-size:12.5px;color:#666;line-height:1.6;}
+  .card.hl{background:linear-gradient(135deg,var(--verde-pale),#fff);border-color:var(--verde-light);}
+
+  /* ── COMO TRABALHAMOS ── */
+  .method-list{display:flex;flex-direction:column;gap:11px;}
+  .method-item{display:flex;gap:14px;align-items:flex-start;}
+  .method-num{width:27px;height:27px;background:var(--verde);border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .method-item p{font-size:13px;color:#555;line-height:1.65;}
+  .method-item strong{color:var(--dark);}
+
+  /* ── MÉTRICAS ── */
+  .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .result-card{text-align:center;padding:16px 12px;background:var(--cream);border-radius:12px;border:1px solid var(--border);}
+  .result-num{font-family:'Playfair Display',serif;font-size:26px;color:var(--verde);font-weight:700;}
+  .result-label{font-size:11px;color:#888;margin-top:4px;line-height:1.4;}
+
+  /* ── INVESTIMENTO ── */
+  .invest-box{background:linear-gradient(135deg,var(--dark),var(--verde));border-radius:20px;padding:34px 38px;margin:0 52px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;}
+  .invest-left h3{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;opacity:.7;margin-bottom:8px;}
+  .invest-price{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;}
+  .invest-price span{font-size:18px;opacity:.8;font-weight:400;}
+  .invest-desc{font-size:12px;opacity:.65;margin-top:4px;}
+  .invest-right{display:flex;flex-direction:column;gap:8px;}
+  .invest-item{display:flex;align-items:center;gap:9px;font-size:12.5px;}
+  .invest-item::before{content:'✓';width:20px;height:20px;background:rgba(255,255,255,.18);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+
+  /* ── CTA ── */
+  .cta{padding:28px 52px;text-align:center;border-top:1px solid var(--border);background:var(--cream);}
+  .cta p{font-size:13px;color:#777;margin-bottom:16px;}
+  .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--verde),var(--verde-light));color:#fff;text-decoration:none;padding:13px 38px;border-radius:30px;font-size:14px;font-weight:600;letter-spacing:.4px;}
+  .cta-note{font-size:11px;color:#bbb;margin-top:12px;}
+
+  /* ── FOOTER ── */
+  .footer{background:var(--dark);padding:16px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .footer p{font-size:11px;color:rgba(255,255,255,.45);}
+  .footer strong{color:rgba(255,255,255,.7);}
+
+  @media(max-width:600px){
+    .header,.intro,.section{padding-left:24px;padding-right:24px;}
+    .personas-grid,.grid,.results-grid{grid-template-columns:1fr;}
+    .invest-box,.video-banner{margin-left:24px;margin-right:24px;flex-direction:column;}
+    .invest-price{font-size:34px;}
+    .footer{padding:16px 24px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">Proposta Comercial · 2025</div>
+    <h1>Gestão Estratégica<br>de Instagram</h1>
+    <div class="header-sub">Conteúdo científico feito humanizado</div>
+    <div class="header-meta">
+      <div class="badge">🌿 GAIA Medicina Integrada</div>
+      <div class="badge">📍 Tatuapé · Grande São Paulo</div>
+      <div class="badge badge-terra">Ginecologia · Obstetrícia · Pediatria · Mastologia</div>
+    </div>
+  </div>
+
+  <!-- APRESENTAÇÃO -->
+  <div class="intro">
+    <p>
+      Sou <strong>Mauricio Barros</strong>, da <strong>Substrato Digital</strong>, e esta proposta foi construída especificamente para a GAIA. Meu trabalho é transformar o conhecimento científico das médicas da clínica em conteúdo acessível, humano e estratégico — para que o Instagram da GAIA seja, de fato, uma extensão do cuidado que vocês já oferecem no consultório.
+    </p>
+  </div>
+
+  <!-- PERSONAS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">👩</span>Personas: Com Quem Vamos Conversar</div>
+    <p style="font-size:13px;color:#777;margin-bottom:16px;line-height:1.6;">Mulheres da Grande São Paulo, com rotina ativa, atentas à alimentação e à saúde. Cada conteúdo será criado pensando nos medos, desejos e momentos de vida reais de quem a GAIA atende.</p>
+    <div class="personas-grid">
+
+      <div class="persona destaque">
+        <div class="persona-tag">Persona 01 · Ginecologia</div>
+        <h3>🌸 A Primeira Consulta — Mãe & Filha</h3>
+        <ul>
+          <li>Menina entre 12–16 anos sendo levada pela mãe</li>
+          <li>Cheias de dúvidas, medo do desconhecido e vergonha</li>
+          <li>Mãe insegura sobre como abordar o tema</li>
+          <li>Praticam esportes escolares; alimentação variada</li>
+          <li>Buscam informação no Instagram antes de qualquer conversa</li>
+        </ul>
+      </div>
+
+      <div class="persona">
+        <div class="persona-tag">Persona 02 · Ginecologia</div>
+        <h3>🍂 Menopausa — A Mulher em Transformação</h3>
+        <ul>
+          <li>45–58 anos, Grande SP, rotina profissional intensa</li>
+          <li>Pratica caminhada, pilates ou yoga regularmente</li>
+          <li>Preocupada com sono, humor, peso e libido</li>
+          <li>Busca clareza e respeito — não quer ser minimizada</li>
+          <li>Compartilha conteúdo com amigas na mesma fase</li>
+        </ul>
+      </div>
+
+      <div class="persona destaque">
+        <div class="persona-tag">Persona 03 · Obstetrícia</div>
+        <h3>🤰 Primeira Gravidez — Mãe de Primeira Viagem</h3>
+        <ul>
+          <li>25–35 anos, ativa, saudável, ansiosa</li>
+          <li>Pratica musculação ou natação; cuida da alimentação</li>
+          <li>Consome muito conteúdo sobre gestação no Instagram</li>
+          <li>Medo do desconhecido, excesso de informação online</li>
+          <li>Quer orientação de quem transmita confiança e acolhimento</li>
+        </ul>
+      </div>
+
+      <div class="persona">
+        <div class="persona-tag">Persona 04 · Mastologia</div>
+        <h3>🎗️ Prevenção — Histórico Familiar de Câncer</h3>
+        <ul>
+          <li>30–50 anos, Grande SP, histórico familiar de câncer de mama</li>
+          <li>Estilo de vida saudável como forma de controle e cuidado</li>
+          <li>Altamente engajada com conteúdo preventivo e científico</li>
+          <li>Salva e compartilha posts informativos com familiares</li>
+          <li>Busca especialista de confiança para acompanhamento contínuo</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VÍDEO DESTAQUE -->
+  <div class="video-banner">
+    <div class="vb-icon">🎬</div>
+    <div>
+      <h3>Edição & Acompanhamento de Reels · Toda Semana</h3>
+      <p>
+        Edito e entrego <strong>até 2 vídeos por semana</strong> com legenda otimizada — cortes, legendas animadas, trilha e chamada para ação incluídas.
+        Cada Reel segue roteiro de alta conversão: <em>problema real → explicação simples → quando procurar a médica</em>.
+        Priorizamos vídeos reais das doutoras: rosto humano gera mais confiança e autoridade do que qualquer arte gráfica.
+      </p>
+      <span class="vbadge">📌 8 Reels editados por mês com legenda — acompanhamento semanal</span>
+    </div>
+  </div>
+
+  <!-- ENTREGAS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📦</span>O Que Entrego Todo Mês</div>
+    <div class="grid">
+      <div class="card hl">
+        <div class="card-label">Conteúdo</div>
+        <h3>📊 Até 5 Carrosséis por Mês</h3>
+        <p>Conteúdo científico traduzido em linguagem acessível, sem "medicinês" — para orientar, acolher e educar as pacientes da GAIA.</p>
+      </div>
+      <div class="card hl">
+        <div class="card-label">Capas & Hashtags</div>
+        <h3>🖼️ Capas Atrativas + # Estratégicas</h3>
+        <p>Cada post tem capa pensada para parar o scroll, com visual alinhado à identidade da GAIA e hashtags selecionadas para ampliar o alcance orgânico.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Pesquisa</div>
+        <h3>🔍 Pautas das Dúvidas Reais do Consultório</h3>
+        <p>As pautas saem das perguntas ouvidas semanalmente pelas médicas — garantindo relevância imediata para quem já é paciente e para quem ainda vai agendar.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Gestão & Análise</div>
+        <h3>📅 Planejamento + Relatório Mensal</h3>
+        <p>Conexão segura à conta, calendário editorial antecipado, uso de IA para organizar a jornada de conteúdo e relatório focado em sinais reais de interesse.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMO TRABALHO -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-title"><span class="icon">🧭</span>Como Trabalho</div>
+    <div class="method-list">
+      <div class="method-item">
+        <div class="method-num">1</div>
+        <p><strong>Frequência estratégica:</strong> impactar a mesma seguidora de 3 a 4x por semana pode aumentar a lembrança e a intenção de agendamento em até 95%. Consistência gera memória de marca — e memória de marca gera consultas.</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">2</div>
+        <p><strong>Comunicação por persona:</strong> cada peça é criada pensando em uma das quatro personas da GAIA. Falar direto com quem você quer atender é muito mais poderoso do que falar para todo mundo ao mesmo tempo.</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">3</div>
+        <p><strong>Capas que param o scroll + hashtags certas:</strong> trabalho as capas para gerar clique e as hashtags para colocar a GAIA na frente de mulheres que já estão buscando por ginecologista, obstetra ou pediatra no Tatuapé e região.</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">4</div>
+        <p><strong>IA como acelerador, não substituto:</strong> uso ferramentas de inteligência artificial para organizar o calendário, gerar ideias a partir das queixas reais das pacientes e agilizar a entrega — sem abrir mão da personalização e do cuidado com cada conteúdo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÉTRICAS -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-title"><span class="icon">🎯</span>Métricas que Realmente Importam</div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">+95%</div>
+        <div class="result-label">Aumento na lembrança de marca com frequência estratégica</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">8x</div>
+        <div class="result-label">Reels editados por mês com legenda e CTA</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">4 ✦</div>
+        <div class="result-label">Personas mapeadas para comunicação segmentada</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#aaa;margin-top:12px;text-align:center;">Acompanho salvamentos, compartilhamentos, retenção e conversão em consultas — não apenas likes.</p>
+  </div>
+
+  <!-- INVESTIMENTO -->
+  <div class="invest-box">
+    <div class="invest-left">
+      <h3>Investimento Mensal</h3>
+      <div class="invest-price"><span>R$</span> 1.400</div>
+      <div class="invest-desc">Contrato mensal · Sem taxa de setup</div>
+    </div>
+    <div class="invest-right">
+      <div class="invest-item">Até 5 carrosséis por mês</div>
+      <div class="invest-item">8 Reels editados com legenda (2/semana)</div>
+      <div class="invest-item">Capas atrativas + hashtags estratégicas</div>
+      <div class="invest-item">Planejamento e programação mensal</div>
+      <div class="invest-item">Pesquisa de pautas + dúvidas do consultório</div>
+      <div class="invest-item">Relatório mensal de resultados reais</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p>Vamos juntos transformar o Instagram da GAIA em um canal real de conexão e captação de pacientes?</p>
+    <a class="cta-btn" href="https://api.whatsapp.com/send?phone=5511913244227">💬 Vamos Conversar</a>
+    <div class="cta-note">Proposta válida por 15 dias · Início em até 5 dias úteis após aprovação</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Mauricio Barros</strong> · Substrato Digital</p>
+    <p>Proposta exclusiva para GAIA Medicina Integrada · 2025</p>
+  </div>
+
+</div>
+</body>
+</html>
