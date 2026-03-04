@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleprompter GAIA: Roteiros de 3 Minutos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            /* Slate 50 */
+            color: #1e293b;
+        }
+
+        .script-text {
+            font-family: 'Roboto', serif;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #334155;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .timeline-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .gradient-heading {
+            background: linear-gradient(to right, #0d9488, #f43f5e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .time-block {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1.5rem;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .time-block::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            border: 4px solid white;
+        }
+
+        .time-block.teal::before {
+            background-color: #0d9488;
+        }
+
+        .time-block.rose::before {
+            background-color: #f43f5e;
+        }
+
+        .time-block.orange::before {
+            background-color: #f97316;
+        }
+
+        .time-block:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Top Navigation -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">&#x1F4F9;</span>
+                    <span class="font-bold text-xl tracking-wider">GAIA TELEPROMPTER</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto text-center">
+            <div
+                class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-bold mb-6 flex items-center gap-2 mx-auto w-max">
+                <span class="text-lg">&#x1F3AC;</span> Skill Ativada: Diretor e Roteirista (Reels 3 Minutos)
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 tracking-tight">Roteiros <span
+                    class="gradient-heading">Cinematográficos</span> Médicos</h1>
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                Scripts oficiais prontos para leitura ou tópicos. Criados com base no cruzamento das discussões da
+                reunião clínica da GAIA com as mais recentes diretrizes internacionais (EUA e Europa).
+            </p>
+            <div class="flex justify-center flex-wrap gap-4 text-sm font-semibold">
+                <span
+                    class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">&#x1F3AF;
+                    Tom: Médica Amiga / Acolhedora</span>
+                <span
+                    class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">&#x23F1;&#xFE0F;
+                    Duração: 3 Minutos</span>
+                <span
+                    class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">&#x1F4DA;
+                    Fonte: ACOG, FDA, AAP, ESPGHAN</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- ============================================== -->
+        <!-- GINECOLOGIA E OBSTETRÍCIA -->
+        <!-- ============================================== -->
+        <div>
+            <div class="mb-12 flex items-center gap-4 border-b-2 border-teal-200 pb-4">
+                <span class="text-5xl">&#x1F4BC;</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-teal-800">Ginecologia Científica</h2>
+                    <p class="text-slate-500 font-medium mt-1">Persona: A Mulher Corporativa</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+                <!-- PAUTA 01: ENDOMETRIOSE -->
+                <article class="glass-card">
+                    <div class="bg-teal-50 border-b border-teal-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Ginecologista</span>
+                            <a href="https://www.acog.org/" target="_blank"
+                                class="text-teal-700 hover:text-teal-900 text-sm font-semibold flex items-center gap-1 bg-teal-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: ACOG/ESHRE Guidelines</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">Endometriose: A revolução do Ultrassom</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Relaxada, segurando um
+                            modelo pélvico ou iPad. Sorriso acolhedor inicial.</p>
+                    </div>
+                    <div class="p-8">
+                        <!-- Timeline Block 1 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Oi meninas! A sua cólica te derruba no meio do expediente e te
+                                disseram que pra descobrir se é Endometriose, você precisa passar por uma cirurgia?
+                                Calma, isso ficou no passado e eu vou te explicar o porquê."</p>
+                        </div>
+                        <!-- Timeline Block 2 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"Toda semana eu recebo aqui no consultório mulheres exaustas, tomando
+                                anti-inflamatórios como se fossem água, com medo do diagnóstico. Elas sofrem não só com
+                                a dor, mas com a ideia de uma cirurgia exploratória demorada."</p>
+                        </div>
+                        <!-- Timeline Block 3 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"Mas a medicina avançou muito. Segundo as maiores sociedades de
+                                ginecologia do mundo, como a europeia e a americana, o padrão ouro inicial hoje não é o
+                                bisturi, é o Ultrassom Transvaginal com Preparo Intestinal. Sim, um ultrassom. A gente
+                                prepara o seu intestino um dia antes para 'limpar a visão' do aparelho, e com olhos
+                                muito bem treinados, conseguimos mapear praticamente todos os focos profundos da doença.
+                                Nós conseguimos ver se há lesões na bexiga, no intestino e nos ovários, tudo de forma
+                                não-invasiva."</p>
+                        </div>
+                        <!-- Timeline Block 4 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"Então o passo a passo é esse: se você tem dor que piora durante a
+                                menstruação, dor na relação ou dificuldade para engravidar, não espere anos. Peça
+                                expressamente ao seu médico o Ultrassom com Preparo Intestinal ou a Ressonância
+                                Magnética. Com esse mapa na mão, a gente planeja o tratamento, que muitas vezes começa
+                                apenas com medicação."</p>
+                        </div>
+                        <!-- Timeline Block 5 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"Lembre-se: sentir dor incapacitante não é normal. O diagnóstico
+                                precoce é a chave para devolver a sua qualidade de vida e a sua fertilidade. Você não
+                                está sozinha nessa."</p>
+                        </div>
+                        <!-- Timeline Block 6 -->
+                        <div class="time-block teal">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Se esse vídeo te ajudou a entender melhor o processo, encaminha para
+                                aquela amiga que vive reclamando de cólica. Clica no link da nossa bio e vem conversar
+                                com a equipe da GAIA. Um abraço e até mais!"</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PAUTA 02: Papanicolau vs DNA-HPV -->
+                <article class="glass-card">
+                    <div class="bg-indigo-50 border-b border-indigo-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Ginecologista</span>
+                            <a href="https://www.gov.br/saude" target="_blank"
+                                class="text-indigo-700 hover:text-indigo-900 text-sm font-semibold flex items-center gap-1 bg-indigo-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: Diretriz Ministério da Saúde (BR)</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">A polêmica do Papanicolau vs DNA-HPV (matando a
+                            fake news)</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Mais firme, desmistificando
+                            o assunto como quem conta um "segredo" bem guardado do laboratório.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Você abriu seu WhatsApp e viu que 'o exame de Papanicolau foi
+                                substituído e acabou para sempre'? Respirou aliviada por não ter que fazer mais o
+                                preventivo? Pois pode ir tirando o cavalinho da chuva! Não acredite nessa fake news!"
+                            </p>
+                        </div>
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"O que mais aconteceu aqui essa semana foi paciente mandando mensagem
+                                desmarcando o preventivo porque 'viu na internet que não precisava mais'. Meninas, muito
+                                cuidado com como a informação chega em vocês, o exame ginecológico é o seu maior escudo
+                                contra o câncer."</p>
+                        </div>
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"Vamos esclarecer: a nossa medicina não matou o Papanicolau, ela o
+                                deixou mais inteligente. O Ministério da Saúde passou a incluir o Teste de DNA-HPV como
+                                passo primário. Nós já usávamos isso na rede privada há muito tempo! A novidade é que,
+                                agora, o protocolo nacional agrega esse exame genético. Ao invés de olhar a célula logo
+                                de cara e buscar algo machucado — que seria o limite do Papanicolau — o DNA-HPV pega a
+                                presença do vírus oncogênico *antes* dele machucar o seu colo do útero."</p>
+                        </div>
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"A coleta contia a mesma, feita por nós aqui no consultório. O que
+                                muda é a logística interna. O DNA é o primeiro passo de triagem. Se o seu teste de DNA
+                                der negativo para os vírus de alto risco, excelente: nós podemos espaçar o seu próximo
+                                Papanicolau para daqui a 3 a 5 anos com total segurança. Se der positivo, aí sim usamos
+                                o preventivo tradicional na mesma amostra para saber se o vírus já causou alguma
+                                alteração na célula."</p>
+                        </div>
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"Então, a vida real é que o preventivo ficou mais confortável e
+                                seguro para você, sem excessos de exames desnecessários e focando no que realmente salva
+                                vidas a longo prazo."</p>
+                        </div>
+                        <div class="time-block indigo">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Lute contra a desinformação. Encaminhe esse vídeo para o grupo da
+                                família e avise as mulheres que você ama que a revisão anual continua de pé! Um abraço e
+                                nos vemos na consulta."</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PAUTA 03: MOUNJARO E ACO -->
+                <article class="glass-card">
+                    <div class="bg-rose-50 border-b border-rose-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Ginecologista</span>
+                            <a href="https://www.fda.gov/" target="_blank"
+                                class="text-rose-700 hover:text-rose-900 text-sm font-semibold flex items-center gap-1 bg-rose-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: FDA / EMA Warning</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">Mounjaro e Pílula: O risco de gravidez no "Projeto
+                            Verão"</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Alerta amigável, como uma
+                            conselheira querendo evitar um susto para a paciente.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Você começou a usar aquela 'caneta mágica' famosa para
+                                emagrecimento, como o Mounjaro, mas continua tomando a sua pílula anticoncepcional
+                                normal? Cuidado, o seu risco de gravidez não planejada acabou de dar um salto gigante!"
+                            </p>
+                        </div>
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"A cada dia que passa no consultório, mais e mais pacientes chegam
+                                fazendo o uso focado no emagrecimento. Acontece que a empolgação com a perda de peso tem
+                                feito muita gente esquecer de avisar a ginecologista sobre essas novas medicações. E
+                                minha amiga... elas interagem."</p>
+                        </div>
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"Vou te explicar a ciência de forma fácil. A grande mágica de
+                                remédios como a Tirzepatida é que eles atrasam muito o seu 'esvaziamento gástrico'. Ou
+                                seja, a comida e os comprimidos ficam parados no seu estômago por muito mais tempo. Essa
+                                alteração na digestão quebra totalmente a forma como o seu intestino absorve a pílula
+                                anticoncepcional (farmacocinética). Já existem alertas de órgãos como o FDA mostrando
+                                uma redução de até 20% na dose de hormônio da pílula que de fato entra no seu sangue
+                                quando você usa essas medicações orais juntas com a caneta."</p>
+                        </div>
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"O que o seu médico precisa ter te falado: Regra 1: comece a usar
+                                preservativo, a famosa camisinha, por pelo menos 4 semanas após a primeira dose ou após
+                                cada aumento de dose da caneta. Regra 2: Repense a rota do hormônio ginecológico.
+                                Métodos como DIUs e implantes subcutâneos são as melhores escolhas porque vão direto
+                                para o sangue e pro útero, não dependendo do seu estômago."</p>
+                        </div>
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"Isso não significa que você precise parar o seu tratamento. O
+                                emagrecimento orientado é saúde. Nós só precisamos ajustar a segurança anticoncepcional
+                                para que você cumpra o seu projeto verão sem 'surpresas' maternas antecipadas."</p>
+                        </div>
+                        <div class="time-block rose">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Se você tem uma amiga que está usando as canetas pra perder peso,
+                                manda esse Reels pra ela AGORA. Marque uma avaliação aqui na GAIA e vamos cuidar da sua
+                                proteção juntas!"</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PEDIATRIA E DESENVOLVIMENTO -->
+        <!-- ============================================== -->
+        <div class="pt-10">
+            <div class="mb-12 flex items-center gap-4 border-b-2 border-orange-200 pb-4">
+                <span class="text-5xl">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-orange-800">Pediatria Baseada em Evidências</h2>
+                    <p class="text-slate-500 font-medium mt-1">Persona: Mães e Pais - Acolhimento</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- PAUTA 04: BRONQUIOLITE VSR -->
+                <article class="glass-card">
+                    <div class="bg-orange-50 border-b border-orange-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Pediatra</span>
+                            <a href="https://publications.aap.org/" target="_blank"
+                                class="text-orange-700 hover:text-orange-900 text-sm font-semibold flex items-center gap-1 bg-orange-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: AAP Guideline (VSR)</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">Fim do Verão, Início da Bronquiolite: Quando agir?
+                        </h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Segurando um narizinho de
+                            brinquedo ou seringa de lavagem, tom empático acalmando as mães.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"O tempo virou, começou a chover e seu bebezinho de meses começou a
+                                tossir sem parar, respirar rápido e o desespero de mãe bateu? Mãezinha e paizinho, parem
+                                um minuto. Esse é o momento mais propício para o temido Vírus Sincicial Respiratório
+                                chegar."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"Sempre que viramos de estação, os prontos-socorros lotam com bebês
+                                irritados. 100% dos pais chegam querendo xaropes mágicos e antibióticos para algo que
+                                acham que é uma simples 'gripe forte', que na verdade, nas crianças menores de 2 anos,
+                                pode evoluir para a Bronquiolite."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"E sabe o que as mais recentes diretrizes da Associação Americana de
+                                Pediatria dizem? Que a gente faz muito menos do que vocês acham. Na Bronquiolite os
+                                brônquios miúdos do bebê incham com o catarro. Usar remédios como Salbutamol, bombinha
+                                ou corticoide de cara na grande maioria das vezes NÃO ajuda, porque a inflamação ali é
+                                viral pura. O que muda de fato é limpar levemente as vias aéreas usando a lavagem nasal
+                                bem delicada, sem excesso brutal de pressão, e não deixar, jamais, esse bebê desidratar.
+                                Isso sim salva o bebezinho."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"Sinais de alerta para levar ao PS: se você tentar abaixar a roupinha
+                                e ver a costelinha marcando ou a barriga afundando toda vez que a criança inspira, ou se
+                                o bebezinho afundar a asa do nariz. Se estiver mamando normal e só tossindo e no seu
+                                colo... a clínica resolve. Agende com a gente. E ah: para os recém nascidos as vacinas
+                                para as gestantes e anticorpos já estão aí pra quebrar essa corrente."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"Eu sei como é assustador ver a barriguinha batendo mais rápida, mas
+                                entender a doença te dá controle da situação. Calma, muita lavagem e oferta de peito."
+                            </p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Compartilhe esse conteúdo! Marque uma mãe de primeira viagem aqui e
+                                salva pra usar de guia na primeira febre da estação."</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PAUTA 05: APLV -->
+                <article class="glass-card">
+                    <div class="bg-orange-50 border-b border-orange-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Pediatra</span>
+                            <a href="https://espghan.info/" target="_blank"
+                                class="text-orange-700 hover:text-orange-900 text-sm font-semibold flex items-center gap-1 bg-orange-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: ESPGHAN Guidelines (APLV)</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">Isso é Cólica Normal ou Alergia à Proteína do
+                            Leite (APLV)?</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Sentada, tom muito calmo
+                            que passe acolhimento para a mãe esgotada.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Seu bebezinho chora desesperadamente horas após mamar, e todo mundo
+                                na família palpiteiro diz pra você já cortar o leite do seu cardápio que a culpa é sua.
+                                Para. Para e vem ouvir."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"Nós recebemos mães deprimidas, vivendo a dieta do frango com batata
+                                porque morrem de medo de comer qualquer coisa que passe 'alergia' pro leite materno e
+                                quebre o intestino do bebê. Essa condenação baseada numa confusão entre cólica real e
+                                APLV não é justa com vocês."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"Gente, a diretriz da ESPGHAN europeia é claríssima. A grande maioria
+                                dos bebês que choram tem apenas imaturidade intestinal que passa até o quarto mês. O
+                                bebê que tem alergia à proteína do leite de vaca costuma dar outros sinais graves: a
+                                pele empolada, fezes ralas intensas, assaduras tenebrosas que sangram e sangue vivo
+                                frequente no cocô. Se for APLV diagnosticada por um pediatra sério, e você quer manter o
+                                leite materno? Excelente. A mãe retira os laticínios da dieta e é orientada a repor o
+                                cálcio para não se desnutrir."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"Dica fundamental: Se o bebezinho toma fórmula e existe suspeita de
+                                APLV, não se troca pra leite 'da fazenda', ovelha ou soja nas primeiras linhas de
+                                tratamento. O correto é usar uma fórmula infantil extensamente hidrolisada na qual a
+                                proteína do leite vem 'quebradinha', para o corpo do bebê não gritar de inflamação. Mas
+                                por favor, quem indica isso é o pediatra em conjunto com um bom histórico de exclusão
+                                alimentar temporária de 2 a 4 semanas para ver a resposta e retorno de sintomas com a
+                                reintrodução dessa exclusão."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"O consolo é: quase 90% das crianças curam sozinhas a APLV perto dos
+                                3 anos de idade. Tem luz no túnel. Você não vai precisar viver essa dieta restrita pra
+                                sempre, a ciência garante que passa."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Confie num acompanhamento especializado, marque uma consulta na
+                                GAIA. Sabe aquela mãe passando sufoco no puerpério? Mande esse vídeo pra ela respirar.
+                                Tamo juntas!"</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PAUTA 06: PUBERDADE PRECOCE -->
+                <article class="glass-card">
+                    <div class="bg-orange-50 border-b border-orange-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span
+                                class="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A
+                                Pediatra</span>
+                            <a href="https://www.aap.org/" target="_blank"
+                                class="text-orange-700 hover:text-orange-900 text-sm font-semibold flex items-center gap-1 bg-orange-200 px-3 py-1 rounded-full">&#x1F517;
+                                Fonte: AAP / Endocrine Society</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">O susto da Puberdade Precoce (Antes dos 8 anos)
+                        </h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Sentada, olhando nos olhos,
+                            validando que o choro da mãe aos ver os primeiros sinais é normal.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Sua filha acabou de fazer 7 anos e você notou que ela está começando
+                                a criar um 'brotinho' mamário? Ou aquele cheirinho forte debaixo do braço apareceu cedo
+                                demais? O desespero bate, não é?"</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de
+                                Consultório</span>
+                            <p class="script-text">"Na última semana atendi três mães chorando compulsivamente porque a
+                                infância das filhas 'tinha acabado' muito mais cedo do que elas previam. Elas achavam
+                                que a qualquer momento as meninas iriam menstruar e parar de crescer de vez."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-teal-100 text-teal-800 mb-2">45s - 1m45s • Desenvolvimento
+                                Técnico</span>
+                            <p class="script-text">"Mas olhem o que a Academia Americana de Pediatria e a Sociedade de
+                                Endocrinologia afirmam: nós podemos e devemos investigar. A verdadeira Puberdade Precoce
+                                Central acontece quando os botões mamários na menina (ou o crescimento testicular no
+                                menino) surgem antes dos 8 e 9 anos. Isso acontece porque o eixo hormonal do cérebro
+                                'acorda' cedo demais, liberando gonadotrofinas. E isso acelera os ossos – o que
+                                compromete a estatura final do adulto – e gera uma maturação psicológica que a criança
+                                não está pronta para lidar."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas
+                                Práticas</span>
+                            <p class="script-text">"O plano de ação começa no raio-x da mãozinha (a idade óssea) e
+                                exames de sangue hormonais. Se o diagnóstico for confirmado, não entrem em pânico. Nós
+                                temos o tratamento padrão-ouro: o bloqueio hormonal com análogos de GnRH. É uma
+                                medicação injetável, super segura, que literalmente pausa esse despertar. Nós congelamos
+                                o relógio hormonal para a criança crescer em altura o máximo que puder e só menstruar na
+                                hora certa, perto dos 11 ou 12 anos."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s •
+                                Tranquilização</span>
+                            <p class="script-text">"Eu entendo a angústia de ver sua bebê crescendo rápido, mas a
+                                pediatria consegue dominar a velocidade desse crescimento. O tempo de brincar e ser
+                                criança dela está protegido."</p>
+                        </div>
+                        <div class="time-block orange">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Observe sua criança durante o banho ou a troca de roupa e não falte
+                                nas revisões anuais de puericultura. O controle está na prevenção. Conta com a gente!"
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-slate-400 py-10 mt-20 text-center border-t-8 border-teal-600">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center gap-4">
+            <div class="text-3xl">&#x1F3AC;</div>
+            <p>&copy; 2026 GAIA TELEPROMPTER. Gerado e Estruturado pela Inteligência Avançada (Versão Reels 3 Minutos)
+                com Skill Gringa.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
