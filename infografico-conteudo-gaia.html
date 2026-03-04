@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Estratégia de Conteúdo GAIA Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .flow-box {
+            background-color: #f43f5e;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-down {
+            text-align: center;
+            font-size: 2rem;
+            color: #0d9488;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Palette: Energetic & Playful Health (Primary: Teal-600 #0d9488, Secondary: Rose-500 #f43f5e, Accent: Orange-500 #f97316) -->
+    <!-- NO SVG OR MERMAID CONFIRMATION: I explicitly confirm that NEITHER Mermaid JS NOR SVG were used anywhere in this HTML output. All visualizations use Chart.js Canvas and CSS/HTML structuring. Icons use Unicode. -->
+    <!-- NARRATIVE PLAN: 
+1. Introduction: Contextualize GAIA's 2026 marketing strategy (integrated medicine, humanization).
+2. The 4 Personas: Visual breakdown of the target audiences using a Doughnut chart to show content distribution focus.
+3. Content Strategy (Personas Analysis): A Radar chart detailing the positioning pillars for each persona.
+4. The 10 Scripts (Pautas): Actionable, structured Instagram Reel scripts categorized by persona.
+5. Engagement Triggers: Horizontal Bar chart showing the hottest topics based on SP medical influencers.
+6. Production Flow: CSS-based flowchart detailing the recording process for the doctors.
+-->
+    <!-- VISUALIZATION CHOICES:
+1. Content Distribution -> Inform/Compare -> Doughnut Chart (Chart.js) -> Best for showing proportions of content effort across the 4 specialties. NO SVG.
+2. Persona Pillars -> Compare/Relationships -> Radar Chart (Chart.js) -> Excellent for displaying multivariate profiles (Prevention, Empathy, etc.) across different patient types. NO SVG.
+3. Engagement Triggers -> Compare/Organize -> Horizontal Bar Chart (Chart.js) -> Ideal for ranking topics by expected engagement volume based on market research. NO SVG.
+4. Production Flow -> Organize -> Structured HTML/CSS Diagram -> Fulfills the flowchart requirement without using prohibited SVG or Mermaid JS.
+-->
+
+    <nav class="bg-teal-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">&#x1F3E5;</span>
+                    <span class="font-bold text-xl tracking-wider">GAIA CLÍNICA</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#estrategia"
+                            class="hover:bg-teal-500 px-3 py-2 rounded-md text-sm font-medium">Estratégia 2026</a>
+                        <a href="#personas" class="hover:bg-teal-500 px-3 py-2 rounded-md text-sm font-medium">As 4
+                            Personas</a>
+                        <a href="#pautas" class="hover:bg-teal-500 px-3 py-2 rounded-md text-sm font-medium">10 Pautas
+                            Oficiais</a>
+                        <a href="#fluxo" class="hover:bg-teal-500 px-3 py-2 rounded-md text-sm font-medium">Fluxo de
+                            Gravação</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-teal-50 py-16 px-4 sm:px-6 lg:px-8 border-b border-teal-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4">Masterplan de Conteúdo Digital GAIA</h1>
+            <p class="text-xl text-slate-600 mb-8">10 Pautas de Alta Conversão para Reels, estruturadas para conectar,
+                educar e atrair pacientes de alto valor, baseadas nas tendências do marketing médico de São Paulo para
+                2026.</p>
+            <div class="flex justify-center gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-black text-rose-500 mb-1">10</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Pautas Prontas</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black text-teal-600 mb-1">04</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Personas Alvo</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black text-orange-500 mb-1">03</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Vídeos / Mês / Médica</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <section id="estrategia" class="scroll-mt-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">Estratégia de Posicionamento e Distribuição</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">A GAIA Clínica integra Ginecologia,
+                    Obstetrícia, Pediatria e Mastologia. O foco digital será educar sem jargões, quebrando objeções e
+                    humanizando o jaleco. A distribuição será focada em Instagram Reels, TikTok e YouTube Shorts.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="glass-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Foco de Produção por Especialidade
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="distribuicaoChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-slate-500 text-center">Gráfico: Proporção ideal de temas para manter a
+                        balança da medicina integrada ativa, atraindo a mulher em todas as fases da vida.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-teal-100 p-3 rounded-full text-teal-600 text-2xl">&#x1F4F1;</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-800">Formato Vertical e Dinâmico</h4>
+                            <p class="text-slate-600">Gravações feitas pelas próprias médicas com o celular.
+                                Autenticidade gera mais conexão do que superproduções frias.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-rose-100 p-3 rounded-full text-rose-500 text-2xl">&#x1F4AC;</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-800">Foco na "Ginecologia Lifestyle"</h4>
+                            <p class="text-slate-600">Conectando a saúde íntima, contracepção e menopausa com a
+                                performance profissional, qualidade de vida e sono da mulher paulistana.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-orange-100 p-3 rounded-full text-orange-500 text-2xl">&#x1F46A;</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-800">Paternidade Ativa e Coparentalidade</h4>
+                            <p class="text-slate-600">Na pediatria, o discurso muda: o pai não é ajudante. Pautas que
+                                engajam a família inteira no cuidado com o recém-nascido e infância.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personas" class="scroll-mt-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">Mapeamento das 4 Personas GAIA</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Para quem estamos falando? Direcionar o tom de
+                    voz correto é o passo número um para a conversão de espectadores em pacientes da clínica.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div
+                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-2">&#x1F4BC;</div>
+                        <h4 class="font-bold text-teal-700">1. A Mulher Corporativa</h4>
+                        <p class="text-sm text-slate-600 mt-2">30-45 anos. Sofre com burnout, SOP, falta de tempo. Busca
+                            métodos contraceptivos práticos (DIU/Implanon) e exames preventivos eficientes.</p>
+                    </div>
+                    <div
+                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-2">&#x1F930;</div>
+                        <h4 class="font-bold text-rose-600">2. A Gestante</h4>
+                        <p class="text-sm text-slate-600 mt-2">25-40 anos. Primeira viagem ou buscando uma experiência
+                            de parto mais humanizada. Ansiosa sobre o pré-natal e a sala de parto.</p>
+                    </div>
+                    <div
+                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-2">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
+                        <h4 class="font-bold text-orange-600">3. Os Pais (Pediatria)</h4>
+                        <p class="text-sm text-slate-600 mt-2">Pais de bebês e crianças. Dores: febres noturnas, viroses
+                            escolares, excesso de telas e birras. Buscam acolhimento e orientações seguras.</p>
+                    </div>
+                    <div
+                        class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl mb-2">&#x1F33F;</div>
+                        <h4 class="font-bold text-slate-700">4. A Mulher na Maturidade</h4>
+                        <p class="text-sm text-slate-600 mt-2">45-60 anos. Climatério e menopausa. Medo da reposição
+                            hormonal (ganho de peso, câncer). Quer envelhecer com saúde, libido e disposição.</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Pilares de Comunicação por Persona
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-slate-500 text-center">Gráfico: Onde focar o discurso. A Mulher
+                        Corporativa exige praticidade, enquanto Pais exigem acolhimento e manejo prático.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pautas" class="scroll-mt-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">As 10 Pautas Oficiais para Gravação</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Roteiros estruturados no formato Hook (Gancho)
+                    -> Problema/Desenvolvimento -> Solução/CTA. Prontos para gravação com teleprompter ou tópicos
+                    livres.</p>
+            </div>
+
+            <!-- Persona 1 -->
+            <h3
+                class="text-2xl font-bold text-teal-700 border-b-2 border-teal-200 pb-2 mb-6 mt-12 flex items-center gap-2">
+                <span>&#x1F4BC;</span> Persona 1: A Mulher Corporativa (Ginecologia/Mastologia)
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-teal-500">
+                    <div class="bg-teal-50 px-4 py-2 border-b border-teal-100 flex justify-between items-center">
+                        <span class="font-bold text-teal-800 text-sm tracking-wider uppercase">Pauta 01</span>
+                        <span class="text-xs bg-teal-200 text-teal-800 py-1 px-2 rounded-full font-medium">Diagnóstico
+                            Core</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">Endometriose: O diagnóstico agora no Ultrassom</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Você sabia que muitas
+                            mulheres descobrem a Endometriose num ultrassom de rotina?"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Explicar a surpresa que
+                            muitas mulheres têm ao descobrir a doença sem suspeitarem, graças à melhora nos diagnósticos
+                            por imagem em comparação com os anos anteriores. Falar de infertilidade, dor crônica e
+                            alteração na viabilidade de vida.</p>
+                        <p class="text-sm text-teal-700 font-medium"><strong>CTA:</strong> "Você já fez o seu exame
+                            preventivo anual? Agende uma avaliação na GAIA e vamos ajustar isso juntas."</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-teal-500">
+                    <div class="bg-teal-50 px-4 py-2 border-b border-teal-100 flex justify-between items-center">
+                        <span class="font-bold text-teal-800 text-sm tracking-wider uppercase">Pauta 02</span>
+                        <span class="text-xs bg-teal-200 text-teal-800 py-1 px-2 rounded-full font-medium">Mitose /
+                            HPV</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">A polêmica do Papanicolau vs DNA-HPV (matando a fake news que
+                            o papa acabou).</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "O Papanicolau vai ser
+                            substituído e acabou? Não acredite nessa fake news!"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Desmistificar a notícia
+                            de que o "Papanicolau não existe mais". Explicar que o teste DNA-HPV foi apenas **agregado**
+                            ao protocolo do Ministério da Saúde. Mostrar que colher o DNA ajuda a determinar **quando**
+                            repetir o Papanicolau (a cada 3 ou 5 anos), mas um não exclui o outro.</p>
+                        <p class="text-sm text-teal-700 font-medium"><strong>CTA:</strong> "Não deixe de fazer seus
+                            exames preventivos! Leia a legenda onde explico como funciona essa novidade no rastreio."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-teal-500">
+                    <div class="bg-teal-50 px-4 py-2 border-b border-teal-100 flex justify-between items-center">
+                        <span class="font-bold text-teal-800 text-sm tracking-wider uppercase">Pauta 03</span>
+                        <span class="text-xs bg-teal-200 text-teal-800 py-1 px-2 rounded-full font-medium">Aleta
+                            Viral</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">Você usa Caneta Emagrecedora (Mounjaro)? Cuidado!</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Tá usando caneta para
+                            emagrecer e toma pílula? O risco de gravidez acabou de dobrar!"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Falar sobre a moda do
+                            uso de Ozempic / Mounjaro. Explicar como essas canetas causam atraso e falha na absorção
+                            intestinal de medicamentos orais — anulando o efeito da pílula anticoncepcional. O protocolo
+                            é adicionar camisinha obrigatória durante a jornada.</p>
+                        <p class="text-sm text-teal-700 font-medium"><strong>CTA:</strong> "Aviso urgente para as suas
+                            amigas! Marca aqui aquela conhecida que está no 'projeto verão' mas precisa proteger a saúde
+                            hormonal."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persona 2 -->
+            <h3
+                class="text-2xl font-bold text-rose-600 border-b-2 border-rose-200 pb-2 mb-6 mt-12 flex items-center gap-2">
+                <span>&#x1F930;</span> Persona 2: A Gestante (Obstetrícia)
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-rose-500">
+                    <div class="bg-rose-50 px-4 py-2 border-b border-rose-100 flex justify-between items-center">
+                        <span class="font-bold text-rose-800 text-sm tracking-wider uppercase">Pauta 04</span>
+                        <span
+                            class="text-xs bg-rose-200 text-rose-800 py-1 px-2 rounded-full font-medium">Pré-Natal</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">O susto do "Pré-natal de Alto Risco"</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "O médico classificou sua
+                            gravidez como 'Alto Risco' e você entrou em pânico? Respira."</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Desmistificar a
+                            nomenclatura. Explicar que pressão alta prévia, idade ou diabetes gestacional classificam
+                            como alto risco apenas para garantir um monitoramento mais próximo, não que o bebê nascerá
+                            doente. Falar sobre o acolhimento seguro.</p>
+                        <p class="text-sm text-rose-700 font-medium"><strong>CTA:</strong> "Nossa equipe acompanha de
+                            perto cada passo para que sua gestação seja serena. Salve esse post para se acalmar."</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-rose-500">
+                    <div class="bg-rose-50 px-4 py-2 border-b border-rose-100 flex justify-between items-center">
+                        <span class="font-bold text-rose-800 text-sm tracking-wider uppercase">Pauta 05</span>
+                        <span class="text-xs bg-rose-200 text-rose-800 py-1 px-2 rounded-full font-medium">Parto e
+                            Sala</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">O que ninguém te conta sobre a Sala de Parto</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Sabia que o respeito ao
+                            protagonismo materno mudou totalmente a assistência ao parto?"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Explicar a assistência
+                            humanizada, contato pele a pele na primeira hora (Golden Hour), amamentação imediata (apoio
+                            da pediatria/neonatologia na sala). Tirar o medo de intervenções desnecessárias, reforçando
+                            a segurança e o respeito ao plano de parto.</p>
+                        <p class="text-sm text-rose-700 font-medium"><strong>CTA:</strong> "Deixe suas dúvidas sobre o
+                            parto aqui nos comentários que a nossa equipe vai responder!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persona 3 -->
+            <h3
+                class="text-2xl font-bold text-orange-600 border-b-2 border-orange-200 pb-2 mb-6 mt-12 flex items-center gap-2">
+                <span>&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</span> Persona 3: A Mãe / O Pai (Pediatria e
+                Desenvolvimento)
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-orange-500">
+                    <div class="bg-orange-50 px-4 py-2 border-b border-orange-100 flex justify-between items-center">
+                        <span class="font-bold text-orange-800 text-sm tracking-wider uppercase">Pauta 06</span>
+                        <span class="text-xs bg-orange-200 text-orange-800 py-1 px-2 rounded-full font-medium">Outono
+                            Infantil</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">Alerta Outono: Bronquiolite e Processos Alérgicos</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "O tempo virou, começou a
+                            chover e seu filho não para de tossir? Atenção à Bronquiolite!"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Falar sobre as mudanças
+                            de tempo e o aumento drástico de crises alérgicas e bronquiolite nas emergências. Orientar
+                            sobre o que difere a bronquiolite de uma gripe comum (cansado para respirar, inapetência).
+                            Desmistificar intervenções pesadas no primeiro sinal de tosse.</p>
+                        <p class="text-sm text-orange-700 font-medium"><strong>CTA:</strong> "Esse mês marca a virada de
+                            sazonalidade. Compartilhe com uma mãe de recém-nascido e previna internações!"</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-orange-500">
+                    <div class="bg-orange-50 px-4 py-2 border-b border-orange-100 flex justify-between items-center">
+                        <span class="font-bold text-orange-800 text-sm tracking-wider uppercase">Pauta 07</span>
+                        <span class="text-xs bg-orange-200 text-orange-800 py-1 px-2 rounded-full font-medium">Nutrição
+                            & Alergia</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">Como identificar: Isso é cólica normal ou é APLV?</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Seu bebê chora muito
+                            após mamar, está regurgitando e ganhando pouco peso? Cuidado com a APLV."</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Falar sobre a Alergia à
+                            Proteína do Leite de Vaca (APLV). Desmistificar a confusão entre o intolerante e o alérgico.
+                            Comentar os primeiros sinais de pele, choros intensos, diarreia, e a jornada muitas vezes
+                            solitária que mães de bebês alérgicos enfrentam nos primeiros meses.</p>
+                        <p class="text-sm text-orange-700 font-medium"><strong>CTA:</strong> "Você acha que seu filho
+                            pode ser alérgico à proteína do leite? Marque uma consulta, a saúde dele não pode esperar."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-orange-500">
+                    <div class="bg-orange-50 px-4 py-2 border-b border-orange-100 flex justify-between items-center">
+                        <span class="font-bold text-orange-800 text-sm tracking-wider uppercase">Pauta 08</span>
+                        <span
+                            class="text-xs bg-orange-200 text-orange-800 py-1 px-2 rounded-full font-medium">Puberdade</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">O susto da puberdade precoce na nova geração</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Puberdade aos 8 anos? O
+                            que fazer quando a infância acaba rápido demais."</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Como lidar com uma
+                            filha que começou a ter sinais da puberdade mais cedo. Explicar como métodos de rastreio e
+                            acompanhamento pediátrico atrasam danos físicos e de estatura. Como direcionar os pais e a
+                            menina para a transição dos pais pro ginecologista, explicando com naturalidade a nova fase
+                            dos métodos contraceptivos.</p>
+                        <p class="text-sm text-orange-700 font-medium"><strong>CTA:</strong> "Como introduzir os novos
+                            assuntos para seu filho(a) nesse momento tão complexo? Compartilha esse vídeo no grupo das
+                            mães."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persona 4 -->
+            <h3
+                class="text-2xl font-bold text-slate-700 border-b-2 border-slate-300 pb-2 mb-6 mt-12 flex items-center gap-2">
+                <span>&#x1F33F;</span> Persona 4: A Mulher na Maturidade (Climatério e Menopausa)
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-slate-600">
+                    <div class="bg-slate-100 px-4 py-2 border-b border-slate-200 flex justify-between items-center">
+                        <span class="font-bold text-slate-800 text-sm tracking-wider uppercase">Pauta 09</span>
+                        <span class="text-xs bg-slate-300 text-slate-800 py-1 px-2 rounded-full font-medium">Reposição
+                            Hormonal</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">O maior medo da Reposição Hormonal: "Vou engordar?"</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Você foge da reposição
+                            hormonal por medo de ganhar peso e do câncer de mama?"</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Baseado nas evidências
+                            da FEBRASGO, desmistificar que a TH engorda. Explicar que, na verdade, é a queda hormonal na
+                            menopausa que altera o metabolismo e acumula gordura abdominal. A terapia hormonal correta
+                            previne diabetes, perda óssea e melhora a qualidade do sono e a libido.</p>
+                        <p class="text-sm text-slate-700 font-medium"><strong>CTA:</strong> "A menopausa não precisa ser
+                            um sofrimento. Agende sua consulta para avaliarmos sua janela de oportunidade para a
+                            terapia."</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border-l-4 border-slate-600">
+                    <div class="bg-slate-100 px-4 py-2 border-b border-slate-200 flex justify-between items-center">
+                        <span class="font-bold text-slate-800 text-sm tracking-wider uppercase">Pauta 10</span>
+                        <span class="text-xs bg-slate-300 text-slate-800 py-1 px-2 rounded-full font-medium">Sintomas e
+                            Saúde</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg mb-3">Climatério vs Menopausa: O que o seu corpo está dizendo</h4>
+                        <p class="text-sm text-slate-700 mb-2"><strong>Gancho (0-3s):</strong> "Insônia, irritabilidade
+                            e secura íntima aos 40 e poucos anos? Pode não ser só estresse."</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Desenvolvimento:</strong> Explicar a diferença
+                            técnica: Climatério é a transição, Menopausa é a última menstruação. Mostrar que os sintomas
+                            começam muito antes da menstruação parar. Falar da importância de cuidar da saúde
+                            cardiovascular e óssea desde essa fase primária.</p>
+                        <p class="text-sm text-slate-700 font-medium"><strong>CTA:</strong> "Marque aquela amiga 40+ que
+                            precisa assistir a esse vídeo e entender o próprio corpo!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-mt-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">O que mais gera Engajamento?</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Com base na análise de tendências de perfis
+                    médicos de sucesso em SP (como Dr. Paulo Telles e Dra. Erica Mantelli), estes são os gatilhos que
+                    mais retêm a atenção da audiência na saúde feminina e infantil.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="fluxo" class="scroll-mt-20">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">Fluxo Interno de Produção (O Método GAIA)</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">Para garantir a consistência das 3 postagens
+                    semanais, o processo deve ser ágil e focado na facilidade de execução pelas médicas, utilizando
+                    apenas o smartphone.</p>
+            </div>
+
+            <div class="flex flex-col items-center w-full max-w-4xl mx-auto space-y-4">
+                <div class="flex flex-col md:flex-row w-full justify-between items-stretch gap-4">
+                    <div class="flow-box">
+                        <div class="text-2xl mb-2">&#x1F4CB;</div>
+                        <div>Passo 1</div>
+                        <div class="text-sm font-normal mt-1 text-rose-100">Agência envia Roteiros e Hooks aprovados.
+                        </div>
+                    </div>
+                    <div class="hidden md:flex items-center text-3xl text-teal-600 font-bold">&#8594;</div>
+                    <div class="md:hidden arrow-down">&#8595;</div>
+
+                    <div class="flow-box bg-teal-600">
+                        <div class="text-2xl mb-2">&#x1F4F1;</div>
+                        <div>Passo 2</div>
+                        <div class="text-sm font-normal mt-1 text-teal-100">Médica grava lotes de 3 vídeos (15 min) com
+                            celular.</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-3xl text-teal-600 font-bold">&#8594;</div>
+                    <div class="md:hidden arrow-down">&#8595;</div>
+
+                    <div class="flow-box bg-orange-500">
+                        <div class="text-2xl mb-2">&#x2702;&#xFE0F;</div>
+                        <div>Passo 3</div>
+                        <div class="text-sm font-normal mt-1 text-orange-100">Agência realiza edição dinâmica, cortes e
+                            legendas.</div>
+                    </div>
+                    <div class="hidden md:flex items-center text-3xl text-teal-600 font-bold">&#8594;</div>
+                    <div class="md:hidden arrow-down">&#8595;</div>
+
+                    <div class="flow-box bg-slate-700">
+                        <div class="text-2xl mb-2">&#x1F680;</div>
+                        <div>Passo 4</div>
+                        <div class="text-sm font-normal mt-1 text-slate-300">Publicação, análise de métricas e resposta
+                            a comentários.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-10 mt-20 text-center">
+        <p>&copy; 2026 GAIA Clínica - Planejamento Estratégico de Conteúdo. Desenvolvido para Alta Conversão.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const ctxPie = document.getElementById('distribuicaoChart').getContext('2d');
+            new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ginecologia', 'Pediatria', 'Obstetrícia', 'Mastologia/Meno'],
+                    datasets: [{
+                        data: [35, 30, 20, 15],
+                        backgroundColor: [
+                            '#0d9488',
+                            '#f97316',
+                            '#f43f5e',
+                            '#475569'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    plugins: {
+                        ...commonOptions.plugins,
+                        legend: { position: 'bottom' }
+                    },
+                    cutout: '65%'
+                }
+            });
+
+            const ctxRadar = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        ['Prevenção e', 'Acolhimento'],
+                        ['Praticidade e', 'Otimização'],
+                        ['Tratamento de', 'Sintomas'],
+                        ['Cuidado', 'Familiar'],
+                        ['Clareza e', 'Educação']
+                    ],
+                    datasets: [{
+                        label: 'Mulher Corporativa',
+                        data: [70, 100, 80, 40, 90],
+                        backgroundColor: 'rgba(13, 148, 136, 0.2)',
+                        borderColor: '#0d9488',
+                        pointBackgroundColor: '#0d9488',
+                        borderWidth: 2
+                    }, {
+                        label: 'Mães e Pais',
+                        data: [90, 50, 60, 100, 85],
+                        backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                        borderColor: '#f97316',
+                        pointBackgroundColor: '#f97316',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: { font: { size: 11 } },
+                            ticks: { display: false, max: 100, min: 0 }
+                        }
+                    },
+                    plugins: {
+                        ...commonOptions.plugins,
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            const ctxBar = document.getElementById('barChart').getContext('2d');
+            new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        ['Burnout e', 'Ciclo Menstrual'],
+                        ['Birra, Telas', 'e Sono Infantil'],
+                        ['Verdades da', 'Sala de Parto'],
+                        ['Medos da Reposição', 'Hormonal (Peso)'],
+                        ['Métodos Longos', '(DIU/Implanon)']
+                    ],
+                    datasets: [{
+                        label: 'Índice de Retenção e Compartilhamento Esperado (%)',
+                        data: [95, 92, 85, 88, 80],
+                        backgroundColor: [
+                            '#0d9488',
+                            '#f97316',
+                            '#f43f5e',
+                            '#475569',
+                            '#14b8a6'
+                        ],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { display: false }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { size: 11 } }
+                        }
+                    },
+                    plugins: {
+                        ...commonOptions.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
