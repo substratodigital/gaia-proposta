@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview de Carrosséis - Gaia Medicina Integrada</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-texto-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--cor-texto-destaque);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .tema-block {
+            background-color: var(--cor-branco);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(133, 59, 80, 0.08);
+        }
+
+        .tema-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0e6e8;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+
+        .gancho {
+            font-weight: 600;
+            color: var(--cor-texto-destaque);
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        /* Swiper Styles */
+        .swiper {
+            width: 100%;
+            max-width: 400px;
+            /* Simula tamanho de feed mobile */
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(133, 59, 80, 0.25);
+            background-color: var(--cor-texto-destaque);
+        }
+
+        .swiper-slide {
+            background-color: var(--cor-texto-destaque);
+            color: var(--cor-branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            /* Formato retrato do Instagram */
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .slide-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.6;
+            margin-bottom: 25px;
+            position: absolute;
+            top: 30px;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .slide-body {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--cor-branco) !important;
+            transform: scale(0.6);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--cor-branco) !important;
+            opacity: 0.4;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+
+        /* Legenda Styles */
+        .legenda-container {
+            background-color: #fcf9f9;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-top: 30px;
+        }
+
+        .legenda-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cor-texto-destaque);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legenda-content {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .legenda-content p {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .legenda-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legenda-tags {
+            font-size: 14px;
+            color: var(--cor-texto-destaque);
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .tema-block {
+                padding: 20px;
+            }
+
+            .swiper-slide {
+                padding: 30px 20px;
+            }
+
+            .slide-title {
+                font-size: 20px;
+            }
+
+            .slide-body {
+                font-size: 15px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Preview de Carrosséis</h1>
+        <p>Abaixo estão os 6 roteiros criados com base nas evidências clínicas, estruturados no formato de visualização
+            para o Instagram. Deslize para o lado nos cards vermelhos para ler cada slide.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- TEMA 1 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 1: Diagnóstico de Endometriose via Ultrassom</h2>
+                <div class="gancho">"A dor extrema não é a única forma de descobrir a endometriose. Você conhecia esse
+                    exame?"</div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">A dor extrema não é a única forma de descobrir a endometriose.</div>
+                        <div class="slide-body">Você sabia que ter cólicas que te paralisam não deve ser o foco
+                            exclusivo para buscar ajuda e iniciar uma investigação de qualidade?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Investigação cuidadosa faz toda a diferença</div>
+                        <div class="slide-body">Muitas mulheres sofrem por anos sem resposta, achando que cirurgia é a
+                            única forma de saber a gravidade da doença. Isso mudou!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">O poder do Ultrassom Transvaginal</div>
+                        <div class="slide-body">Uma ultrassonografia transvaginal, com o preparo intestinal bem feito,
+                            virou a principal ferramenta para mapear a endometriose profunda.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">O padrão-ouro não invasivo</div>
+                        <div class="slide-body">Esse exame capta tudo o que precisamos saber sem cortes! Enxergamos os
+                            focos de endometriose com precisão e clareza.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Planejamento terapêutico seguro</div>
+                        <div class="slide-body">Com um diagnóstico exato em mãos, organizamos o seu tratamento de forma
+                            personalizada antes de sequer cogitarmos uma laparoscopia.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Cuidado integral com a sua dor</div>
+                        <div class="slide-body">Seu momento único merece dedicação. Se há dor ou incômodo, o atendimento
+                            humanizado pode desvendar o que está acontecendo!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Pronta para cuidar de você com calma?</div>
+                        <div class="slide-body">Salve este post para lembrar depois e agende a sua consulta de avaliação
+                            no link!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>A dor extrema da cólica não é o único jeito de descobrir a endometriose! Se você, ou alguma
+                        mulher que você ama, tem sofrido com dores ou suspeitas silenciosas, precisamos de um bate-papo
+                        sincero.</p>
+                    <p>Muitas pacientes chegam até nós muito apreensivas porque imaginam que o diagnóstico preciso exige
+                        metodologias cansativas ou procedimentos cirúrgicos precoces. A maravilhosa notícia no cenário
+                        científico hoje é que o ultrassom transvaginal, com preparo intestinal guiado, tem sido
+                        considerado a ferramenta "padrão-ouro" para localizar os terríveis focos de endometriose
+                        profunda!</p>
+                    <p>Sabe o que isso significa? Uma investigação não-invasiva incrivelmente precisa. Com esse
+                        diagnóstico, o nosso cuidado especializado garante o planejamento terapêutico ideal, decidindo a
+                        melhor abordagem junto de você, antes mesmo de cogitarmos a via cirúrgica (laparoscopia). É
+                        muito cuidado integral pelo seu bem estar!</p>
+                    <p>Este conteúdo é informativo e não substitui uma consulta médica.</p>
+                    <p>Quer entender melhor as opções de exames disponíveis pra você? Vamos conversar. Clique no link da
+                        bio e agende uma consulta. Estamos aqui por você.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #endometriose #saudeintegrativa
+                    #medicinahumanizada #cuidadointegral #ultrassomtransvaginal #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 2 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 2: A polêmica do Papanicolau vs DNA-HPV</h2>
+                <div class="gancho">"Ouviu falar que o Papanicolau vai acabar? Calma, a gente te explica a verdade!"
+                </div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Ouviu falar que o Papanicolau vai acabar?</div>
+                        <div class="slide-body">Surgiu muita "fake news" e confusão na internet sobre os exames
+                            preventivos do colo do útero. Será que é o fim dele?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Apenas uma super evolução na triagem!</div>
+                        <div class="slide-body">O teste de DNA-HPV agora é aliado ao protocolo do Ministério da Saúde.
+                            Mas nada disso cancela o velho conhecido Papanicolau.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Como funciona o DNA-HPV?</div>
+                        <div class="slide-body">É um teste incrível que encontra o vírus do HPV antes mesmo que ele
+                            possa causar qualquer pequena alteração nas células do colo do útero.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Se o teste der negativo...</div>
+                        <div class="slide-body">Notícia maravilhosa! Isso mostra que a chance de desenvolver algo ruim é
+                            baixa. Então, o seu Papanicolau pode ser espaçado para a cada 3 a 5 anos de segurança.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">E se o teste trouxer um positivo?</div>
+                        <div class="slide-body">Se o DNA testar positivo, o Papanicolau continua no jogo! Ele nos ajuda
+                            a investigar imediatamente qualquer inflamação para tratarmos antes que seja problema.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Tecnologia e Atendimento Humanizado</div>
+                        <div class="slide-body">Ter novas formas de investigação rastreia com carinho a sua rotina! A
+                            conexão empática em traduzir cada resultado é nossa prioridade.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Rotina ginecológica em dia?</div>
+                        <div class="slide-body">Já cuidou de você neste ciclo? Compartilhe com uma amiga para quebrar o
+                            falso mito e agende a sua consulta!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Ouviu um boato nas redes de que o seu Papanicolau iria acabar? Calma lá, vamos desfazer essa
+                        polêmica para que você entenda como tudo funciona a favor da sua saúde!</p>
+                    <p>Circulou muito recentemente que, com as atualizações do SUS e da OMS, teríamos o "fim" do
+                        Papanicolau e a entrada exclusiva do Teste de DNA-HPV. Mas não é bem assim! O rastreamento de
+                        HPV com a nova tecnologia é fascinante e age como primeira linha de *triagem*, detectando o
+                        vírus antes de lesões críticas se formarem.</p>
+                    <p>Se o teste for negativo, é ótimo: podemos comemorar e permitir que seus preventivos (o próprio
+                        Papanicolau) sejam feitos em um intervalo super seguro de 3 a 5 anos! Se o DNA der positivo, aí
+                        sim o Papanicolau de rotina tem papel vital de observação detalhada. As tecnologias se abraçam e
+                        somam forças para proteger a sua saúde cervical através do nosso cuidado preventivo.</p>
+                    <p>Este conteúdo é informativo e não substitui uma consulta médica.</p>
+                    <p>Alguma dúvida sobre o seu rastreamento ginecológico? Quer colocar seus exames em ordem num
+                        ambiente de absoluto acolhimento? Link na nossa bio para sua consulta.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #prevencao #saudemulher #hpv #medicinahumanizada
+                    #cuidadoespecializado #papanicolau #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 3 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 3: Tirzepatida (Mounjaro) anula a Pílula?</h2>
+                <div class="gancho">"Projeto verão com canetas de emagrecimento? Cuidado: elas podem alterar sua
+                    pílula!"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Projeto saúde ou emagrecimento em andamento?</div>
+                        <div class="slide-body">O que muitos profissionais esquecem de te contar é que medicações do
+                            tipo "canetinhas" afetam seu anticoncepcional!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Entendendo o esvaziamento gástrico</div>
+                        <div class="slide-body">Remédios como Tirzepatida e análogos GLP-1 (injetáveis) atrasam muito a
+                            digestão do estômago — é isso que te deixa empantanada e sem fome!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Impacto direto na sua pílula</div>
+                        <div class="slide-body">Por causa desse atraso estomacal, a absorção pelo intestino da pílula
+                            anticoncepcional (via oral) cai dramaticamente.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">O risco de uma surpresa</div>
+                        <div class="slide-body">Se os níveis dos hormônios oscilarem, há risco genuíno da sua pílula
+                            falhar, gerando uma gravidez totalmente não planejada.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Muito alerta na adaptação!</div>
+                        <div class="slide-body">Os momentos críticos para ocorrerem falhas no anticoncepcional são
+                            sempre nos inícios de tratamento ou a cada vez que seu médico aumentar a dose.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Como organizamos sua proteção juntas?</div>
+                        <div class="slide-body">O nosso cuidado integral adapta a sua proteção. É hora de usar método de
+                            barreira (camisinha) ou migrarmos para opções como Implanon ou DIU!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Não deixe o anticoncepcional no escuro!</div>
+                        <div class="slide-body">Encaminhe para aquela amiga que começou essa jornada, salve as dicas e
+                            agende um retorno conosco.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Projeto perda de peso e controle metabólico em andamento? Se você utiliza canetas de
+                        emagrecimento (agonistas GLP-1 ou Tirzepatida), um alerta extremamente importante: sua pílula
+                        anticoncepcional pode não estar fazendo efeito corretamente.</p>
+                    <p>O segredo dessas medicações incríveis é o retardo do esvaziamento gástrico (você se sente cheia
+                        por mais tempo!). Porém, isso faz com que qualquer comprimidinho que você engula tenha um atraso
+                        enorme para chegar ao intestino. O resultado prático? Sua pílula sofre redução violenta da
+                        absorção.</p>
+                    <p>Especialmente nas semanas de início dessas terapias, ou sempre que há aumento da dosagem pelo
+                        endócrino, o risco de engravidar no meio de um planejamento é altíssimo! Mas calma. Nosso
+                        cuidado integral pode organizar as coisas pra você com métodos não-orais que ignoram o trato
+                        digestivo — como a inserção do DIU ou Implanon.</p>
+                    <p>Este conteúdo tem finalidade informativa e jamais substitui a consulta médica.</p>
+                    <p>Você tem dúvidas se sua rotina metabólica e o ginecologista estão falando a mesma língua? Clique
+                        no link da bio e deixe a gente organizar esse momento pra você.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #planejamentofamiliar #emagrecimentosaudavel
+                    #saudeintegrativa #diuhormonal #implanon #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 4 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 4: Sazonalidade do VSR (Bronquiolite)</h2>
+                <div class="gancho">"Nessa época, toda gripe do bebê assusta? Entenda quando o socorro é vital."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Gripe comum ou Bronquiolite?</div>
+                        <div class="slide-body">No fim do verão e outono, qualquer espirro do pequeno causa pânico.
+                            Quando a ida ao pronto-socorro se faz de fato necessária?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Conheça o tal do "VSR"</div>
+                        <div class="slide-body">O Vírus Sincicial Respiratório atinge quase 100% das nossas crianças até
+                            atingirem uns 2 aninhos e é o grande vilão das bronquiolites!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Quando NÃO entrar em pânico</div>
+                        <div class="slide-body">Narizinho escorrendo ou apenas aquela febrícula inicial merecem
+                            acompanhamento e paciência, muitas vezes de casa. O pediatra de confiança guia.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Os Sinais de Alerta Reais!</div>
+                        <div class="slide-body">É muito choro misturado a fadiga para respirar! Se notar as costelas
+                            afundando profundo ao respirar e a criança sem força pra mamar: atenção máxima.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Prevenção hoje é real</div>
+                        <div class="slide-body">A ciência caminhou! Nós já temos vacinas protetoras na gestação
+                            (Abrysvo) e aplicação de anticorpos perfiláticos (Palivizumabe) pra recém-nascidos.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Menos pânico, mais orientação médica</div>
+                        <div class="slide-body">O pediatra é seu porto seguro nessa fase! Idas desnecessárias à urgência
+                            podem expor o bebê a mais vírus.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Vamos revisar o calendário de vacinas?</div>
+                        <div class="slide-body">Compartilhe este guia no seu grupo de mães e clique no nosso link para
+                            agendarmos sua próxima rotina pediátrica.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Nessa época de virada de estação, só de ouvir um espirrinho do bebê a respiração da mamãe já
+                        acelera! E se a coriza for Bronquiolite? Entender de perto o VSR sem pânico generalizado faz
+                        muita diferença.</p>
+                    <p>Se você perceber que as costelinhas da criança estão afundando ao inspirar e há fadiga imensa
+                        para mamar, ali você nos avisa e precisa de pronto-pronto atendimento! Se está com coriza
+                        levezinha e febrícula, não o exponha indo lotar alas de emergências: fale com seu pediatra.</p>
+                    <p>A maravilhosa novidade é o nosso cuidado especializado e preventivo: a ciência hoje permite
+                        proteção já via vacinas administradas pela mãe durante a gestação ou a proteção através de
+                        anticorpos para prematuros. A informação traduzida com amor é o seu principal calmante e amparo.
+                    </p>
+                    <p>Lembrete: Este conteúdo é meramente educativo e não dispensa em nada o olhar minucioso
+                        pediátrico.</p>
+                    <p>Quer conversar com uma equipe com tempo clínico pra escutar seu bebê de verdade? Link na bio!</p>
+                </div>
+                <div class="legenda-tags">#pediatria #maternidadereal #primeirainfancia #saudedobebe #bronquiolite
+                    #saudeintegrativa #cuidadopediatrico #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 5 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 5: Cólica Infantil vs APLV Real</h2>
+                <div class="gancho">"Meu bebê não para de chorar. Será culpa do que eu comi ou da tal APLV?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Culpar o seu alimento do almoço tem limite...</div>
+                        <div class="slide-body">Pânico entre o 1º e 3º mês: um turbilhão de choro noturno. Será que toda
+                            exaustão tem alergia ao leite por trás?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">A famosa CÓLICA do bebê madurando...</div>
+                        <div class="slide-body">Nós sabemos o quão exaustivo é. Mas essas dores do bebê são imaturidades
+                            digestivas completamente naturais. Quase todo bebê tem.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Mas e a "Alergia à Proteína do Leite"? (APLV)</div>
+                        <div class="slide-body">A APLV é uma resposta extrema e imune. Não é apenas choro constante ou a
+                            barriguinha distendida – e tampouco uma simples "intolerância".</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">O diagnóstico autêntico revela...</div>
+                        <div class="slide-body">A inflamação séria causa sintomas difíceis como pintas avermelhadas que
+                            minam água, evacuações muito alteradas ou com sangue.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Não tire o alimento sem critério</div>
+                        <div class="slide-body">Muitas mulheres caem no ciclo de superexclusão alimentar baseadas só no
+                            choro, comprometendo seus blocos nutricionais por medo e pânico.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Você não precisa passar isso sozinha</div>
+                        <div class="slide-body">O acolhimento no pós-parto precisa envolver entender junto em time — seu
+                            ginecologista e pediatra! Iremos validar sua angústia.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Vamos avaliar isso pessoalmente e juntas?</div>
+                        <div class="slide-body">Não restrinja sua vida antes de uma boa anamnese. Salve esse carrossel
+                            para mostrar a outras mamães e agende sua acolhida.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Ver o bebê chorar em crises de retorcimento destrói o coração de qualquer mãe e nos empurra a
+                        questionar o nosso corpo: "Será que eu comi algo que causou uma super APLV no meu leite?" Vem
+                        desmistificar um pouquinho desse sofrimento!</p>
+                    <p>Quando os sintomas são, genuinamente, a terrível alergia (APLV), as diretrizes mostram que o
+                        choro vem acoplado a alergias de pele que vertem líquido inflamatório e um quadro intestinal
+                        seríssimo com muco ou sangue. Sem saber disso, muitas mamães fazem "restrições de pânico".
+                        Cortam absurdamente sua alimentação pós-parto, abrindo portas para riscos perigosos ou um
+                        desmame muito precoce e dolorido!</p>
+                    <p>Você se sente acolhida com esses temas em meio à puerpério? Tenha o seu porto seguro conosco!</p>
+                    <p>Vale reforçar que toda orientação necessita de consulta médica pessoal. Não autodiagnostique seu
+                        bebê.</p>
+                    <p>Seu coração anda aflito sobre as mamadas ou digestão? Mande uma DM, ou acesse o link na bio!</p>
+                </div>
+                <div class="legenda-tags">#pediatria #maternidadereal #amamentacao #medicinahumanizada #aplv
+                    #colicadobebe #puerperio #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 6 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 6: Puberdade Precoce Periférica e Central</h2>
+                <div class="gancho">"Desenvolvimento se acelerando antes dos 8 aninhos: Qual é a hora de agir?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Crescimento infantil assustadoramente rápido?</div>
+                        <div class="slide-body">Percebeu sinais de transição no corpinho em meninas com 7 ou meninos com
+                            apenas 8 aninhos? Não ignore achando que "é do tempo agora..."</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Puberdade Precoce não é lenda.</div>
+                        <div class="slide-body">Botão mamário nas meninas bem antes dos 8 anos ou desenvolvimento
+                            testicular rápido em meninos antes dos 9, assinalam uma Aceleração!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Por que a pressa não faz bem?</div>
+                        <div class="slide-body">O Eixo hormonal destravando muito rápido faz com que o futuro
+                            crescimento ósseo congele (estirão muito antes da hora).</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Mais do que apenas físico...</div>
+                        <div class="slide-body">O cérebro emocional fica esgotado aguentando um choque de hormônios.
+                            Lidar com essa transição pede ajuda e muito colo materno!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Paranoia NÃO. Atendimento especializado SIM.</div>
+                        <div class="slide-body">Há exames ultra eficientes e tratamentos imediatos que bloqueiam
+                            transitoriamente isso! Tudo fica congelado de volta no seu tempo certo.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Nós integramos todos os momentos</div>
+                        <div class="slide-body">Esse é o momento para sair apenas da pediatria básica e envolver
+                            ginecologia e endocrinologia na equipe educacional.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Que tal agendar o acompanhamento infantil?</div>
+                        <div class="slide-body">Salve para lembrar dos sinais! O melhor momento de proteger o futuro
+                            biológico de quem a gente ama é a observação do agora.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Desenvolvimento se acelerando antes dos 8 ou 9 aninhos — É puberdade precoce? Hoje a gente vai
+                        conversar com bastante honestidade (e colo) familiar de como atuar de frente a esse medo para
+                        preservar o futuro da criança!</p>
+                    <p>O ponto em foco técnico não é sobre parar de brincar, é a saúde química agredindo o corpinho. Um
+                        aparecimento de botão mamário antes dos 8 anos afeta o futuro. A ciência aponta que, ao
+                        destravar de repente os hormônios pela base central, toda maturação óssea gasta num tiro só,
+                        fazendo as crianças pararem de crescer na altura muito bruscamente. Para não falar do choque
+                        emocional!</p>
+                    <p>Essas investigações determinam qual tratamento é acionado e podem paralisar as ordens químicas,
+                        colocando "tudo no neutro e de volta no seu tempo". Para nós, é a passagem do bastão perfeito
+                        entre a equipe pediátrica, endócrinas e do papo com a ginecologia!</p>
+                    <p>Mensagem Institucional: Este conteúdo é meramente educativo e as avaliações clínicas
+                        presencialmente são inegociáveis.</p>
+                    <p>Quer uma equipe humanizada avaliando o amadurecimento das crianças pra garantir segurança? Acesse
+                        nosso perfil e venha agendar os retornos anuais!</p>
+                </div>
+                <div class="legenda-tags">#pediatria #maternidadereal #adolescencia #puberdadeprecoce #saudeintegrativa
+                    #desenvolvimentoinfantil #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach(function (element) {
+                new Swiper(element, {
+                    effect: 'slider',
+                    grabCursor: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
