@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview de Carrosséis - Março Gaia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-texto-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--cor-texto-destaque);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .tema-block {
+            background-color: var(--cor-branco);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(133, 59, 80, 0.08);
+        }
+
+        .tema-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0e6e8;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+
+        .gancho {
+            font-weight: 600;
+            color: var(--cor-texto-destaque);
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .swiper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(133, 59, 80, 0.25);
+            background-color: var(--cor-texto-destaque);
+        }
+
+        .swiper-slide {
+            background-color: var(--cor-texto-destaque);
+            color: var(--cor-branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .slide-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.6;
+            margin-bottom: 25px;
+            position: absolute;
+            top: 30px;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .slide-body {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--cor-branco) !important;
+            transform: scale(0.6);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--cor-branco) !important;
+            opacity: 0.4;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+
+        .legenda-container {
+            background-color: #fcf9f9;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-top: 30px;
+        }
+
+        .legenda-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cor-texto-destaque);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legenda-content {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .legenda-content p {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .legenda-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legenda-tags {
+            font-size: 14px;
+            color: var(--cor-texto-destaque);
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .tema-block {
+                padding: 20px;
+            }
+
+            .swiper-slide {
+                padding: 30px 20px;
+            }
+
+            .slide-title {
+                font-size: 20px;
+            }
+
+            .slide-body {
+                font-size: 15px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Preview de Carrosséis - Março Gaia</h1>
+        <p>Abaixo estão os 12 roteiros criados com base nas evidências clínicas de março, estruturados no formato de visualização para o Instagram. Deslize para o lado nos cards vermelhos para ler cada slide.</p>
+    </header>
+
+    <div class="container" id="carrossel-container">
+
+        <!-- TEMA 1.1 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 1.1: Conscientização - Dia Nacional de Luta contra a Endometriose</h2>
+                <div class="gancho">"Cólica que incapacita não é normal: 5 sinais silenciosos da Endometriose."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Cólica que incapacita não é normal.</div>
+                        <div class="slide-body">Você já ouviu que "sentir dor na menstruação é do ser mulher"? É hora de dar um basta nessa ideia!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Chega de normalizar a dor</div>
+                        <div class="slide-body">A endometriose afeta milhões de mulheres, mas ainda levam anos para receber um diagnóstico, porque suas queixas são minimizadas.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Sinal 1: Dor incapacitante</div>
+                        <div class="slide-body">Cólicas que não passam com remédios simples e que te impedem de ir trabalhar ou estudar. Isso não é "frescura".</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Sinal 2 e 3: Dor nas relações e no banheiro</div>
+                        <div class="slide-body">Desconforto profundo durante a relação sexual e dor ao urinar ou evacuar, especialmente no período menstrual.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Sinal 4 e 5: Fadiga e Inchaço</div>
+                        <div class="slide-body">Um cansaço extremo que não passa mesmo dormindo, acompanhado de uma barriga inchada (famosa 'endo belly').</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Nós acreditamos no que você sente.</div>
+                        <div class="slide-body">Se você se identificou, não sofra em silêncio. Um diagnóstico preciso com a equipe certa é o caminho para retomar sua qualidade de vida.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Vamos investigar juntas?</div>
+                        <div class="slide-body">Salve esse post e envie para aquela amiga que precisa ler isso. Agende sua consulta no link da bio!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Cólica que incapacita não é normal. E ouvir que "é assim mesmo" — ou que "quando tiver filho vai melhorar" — só prolonga um sofrimento que tem solução.</p>
+                    <p>A endometriose afeta cerca de 10% das mulheres em idade reprodutiva, mas ainda leva, em média, de 7 a 10 anos para ser diagnosticada. Isso acontece porque muitas queixas são minimizadas ao longo do caminho. Dores intensas na relação sexual, desconforto ao usar o banheiro durante a menstruação e um cansaço que parece não ter explicação são sinais reais que merecem atenção e cuidado especializado.</p>
+                    <p>Você não precisa conviver com essa dor. Se algo aqui fez sentido para você, vale conversar com uma ginecologista de confiança para investigar com calma.</p>
+                    <p>Este conteúdo é informativo e não substitui a consulta médica.</p>
+                    <p>Se essas queixas fazem parte da sua rotina, que tal dar um primeiro passo? Agende sua consulta pelo link da bio — estamos aqui para te ouvir.</p>
+                </div>
+                <div class="legenda-tags">#saúdedamulher #ginecologia #endometriose #saudeintegrativa #medicinahumanizada #cuidadointegral #ginecologiaSP #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- TEMA 1.2 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 1.2: Técnico/Didático - Endometriose</h2>
+                <div class="gancho">"Por que a Endometriose pode demorar 7 anos para ser descoberta?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Por que demora 7 anos para ser descoberta?</div>
+                        <div class="slide-body">Você sabia que a endometriose pode levar quase uma década entre a primeira cólica e o diagnóstico final? </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">"Fiz ultrassom e deu tudo normal"</div>
+                        <div class="slide-body">A principal causa de confusão! O ultrassom transvaginal comum, de rotina, quase nunca consegue enxergar a endometriose profunda.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Onde as lesões se escondem?</div>
+                        <div class="slide-body">O tecido endometrial infligido pela doença não fica só no ovário. Ele pode estar atrás do útero, nos ligamentos e perto do intestino!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Exame com preparo intestinal: A virada de chave</div>
+                        <div class="slide-body">A ultrassonografia especializada (com preparo intestinal guiado) e a Ressonância Magnética são os exames corretos!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Adeus ao "abrir para ver"</div>
+                        <div class="slide-body">Anos atrás, muitas mulheres passavam por cirurgia apenas para fechar o diagnóstico. Hoje, a tecnologia e o nosso cuidado evitam isso!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Um diagnóstico muda a sua história</div>
+                        <div class="slide-body">Saber exatamente onde estão as lesões nos permite desenhar o tratamento ideal, seja clínico ou cirúrgico, sempre pensando na sua saúde.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Seu diagnóstico travou?</div>
+                        <div class="slide-body">Salve este post, conheça nossa estrutura especializada e agende sua consulta no link da bio!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Por que a endometriose ainda leva tantos anos para ser descoberta? Uma das razões mais comuns é um exame que parece não encontrar nada — mesmo quando a dor é muito real.</p>
+                    <p>O ultrassom transvaginal de rotina raramente consegue visualizar as lesões profundas da endometriose. Não é falha sua, nem da médica que te atendeu: é uma limitação do exame quando ele não é solicitado com o protocolo específico para essa condição.</p>
+                    <p>A Ultrassonografia com preparo intestinal e a Ressonância Magnética com protocolo direcionado são os exames indicados para um diagnóstico preciso — e a boa notícia é que eles são não invasivos. Isso significa que, na maioria dos casos, conseguimos mapear a doença com segurança antes de qualquer procedimento cirúrgico.</p>
+                    <p>Este conteúdo tem finalidade educativa e não substitui a avaliação médica presencial.</p>
+                    <p>Se você tem dores recorrentes e ainda não teve respostas claras, podemos investigar juntas. Agende sua consulta pelo link da bio.</p>
+                </div>
+                <div class="legenda-tags">#saúdedamulher #ginecologia #endometriose #ultrassomcomprepato #saudeintegrativa #medicinahumanizada #gaiaclinica #tatuapé</div>
+            </div>
+        </div>
+
+        <!-- TEMA 2.1 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 2.1: Março Lilás - HPV e Relacionamento</h2>
+                <div class="gancho">"Diagnosticada com HPV em um relacionamento longo: de onde veio?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">O HPV chegou num relacionamento de anos?</div>
+                        <div class="slide-body">É muito comum que após um Papanicolau ou teste de DNA-HPV surgir a grande dúvida: "Eu não fico com mais ninguém, como me contaminei agora?"</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Acalme o coração e afaste a culpa!</div>
+                        <div class="slide-body">O HPV é um vírus extremamente silencioso. Positivar agora NÃO significa infidelidade conjugal ou uma contaminação recente.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">O efeito "latência" do HPV</div>
+                        <div class="slide-body">O vírus pode ficar "dormindo" no seu corpo por anos, ou muitas décadas, sem causar inflamações. A ciência confirma e acolhe!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Por que ele acordou?</div>
+                        <div class="slide-body">Uma simples queda na imunidade, muito estresse, gravidez ou outras alterações sistêmicas podem fazer o vírus dar "oi" nos seus exames.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">80% das mulheres ativas terão contato</div>
+                        <div class="slide-body">E a imensa maioria vai clarear o vírus naturalmente. Termos um exame preventivo positivo significa que a sua saúde será cuidada no momento perfeito.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Conexão empática sem julgamento</div>
+                        <div class="slide-body">Vergonha e falta de informação estragam mais a sua imunidade do que o próprio HPV. Conte com seu médico para orientar também seu parceiro!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Sua prevenção está no radar?</div>
+                        <div class="slide-body">Envie esse carrossel para informar uma amiga. Rotinas em dia no link da bio!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Receber um diagnóstico de HPV num relacionamento estável pode trazer dúvidas difíceis — e é muito comum que o primeiro pensamento seja: "De onde veio isso?"</p>
+                    <p>O HPV tem o que chamamos de período de latência: o vírus pode ficar inativo no organismo por anos, sem causar qualquer alteração nos exames. Uma queda de imunidade, um período de muito estresse ou outras mudanças no corpo podem fazer com que ele apareça agora, mesmo tendo sido adquirido há muito tempo. Isso não indica infidelidade recente.</p>
+                    <p>Mais de 80% das pessoas sexualmente ativas terão contato com algum subtipo do HPV ao longo da vida. A maioria elimina o vírus naturalmente. O mais importante é manter o rastreamento em dia para identificar e acompanhar qualquer alteração precocemente.</p>
+                    <p>Este conteúdo é informativo e não substitui a consulta ginecológica.</p>
+                    <p>Se você tem dúvidas sobre o diagnóstico e como conversar sobre isso com seu parceiro, podemos ajudar. Agende sua consulta pelo link da bio.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #hpv #marçolilas #saudeintegrativa #medicinahumanizada #papanicolau #gaiaclinica</div>
+            </div>
+        </div>
+        <!-- TEMA 2.2 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 2.2: Atualidade/Ciência - Papanicolau x DNA do HPV</h2>
+                <div class="gancho">"Papanicolau x Teste de DNA do HPV: O que muda no seu rastreio?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Papanicolau x Teste de DNA do HPV</div>
+                        <div class="slide-body">Você já ouviu falar na nova diretriz do Ministério da Saúde alertando sobre a substituição do rastreio preventivo?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Chegou a nova era de testes preventivos!</div>
+                        <div class="slide-body">O rastreamento via coleta do Teste Molecular de DNA-HPV apresenta uma eficácia revolucionária: de 90 a 95% contra os 60% do antigo exame triador.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">"Mas eu joguei os velhos exames fora?"</div>
+                        <div class="slide-body">De forma alguma. Mas hoje nós procuramos antecipar qualquer evento perigoso — e o DNA-HPV percebe o vírus muito antes da lesão se instaurar no colo.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Se o DNA-HPV testar negativo</div>
+                        <div class="slide-body">Essa é uma dupla ótima notícia. Além da paz de espírito, isso permite que as coletas invasivas da triagem sejam feitas a cada 5 longos anos de intervalo.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">"Deu positivo, meu Deus, socorro"</div>
+                        <div class="slide-body">É nessa hora que entra o bom e velho Papanicolau na Gaia Medicina Integrada: usamos ele para triar como "exame de reflexo", buscando ativamente lesões!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Atualizados mas mantendo o olhar humano</div>
+                        <div class="slide-body">A tecnologia é avançada, mas a orientação e carinho com o resultado nas suas mãos serão como os da vida toda. Sua médica amiga cuida das diretrizes por você!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Quando fez os últimos exames?</div>
+                        <div class="slide-body">Envie o post para a companheira lembrar da preventiva e clique no link da nossa página de marcações.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Nos últimos anos, o rastreamento do câncer de colo do útero passou por uma atualização importante. Que tal entender o que mudou — e o que isso significa para você?</p>
+                    <p>O Teste de DNA-HPV identifica a presença do vírus nas células do colo do útero com uma precisão de até 95%, antes mesmo que qualquer alteração celular apareça. Quando o resultado é negativo, a orientação é que o próximo exame pode ser feito em até 5 anos — um intervalo mais seguro e confortável. Quando positivo, o Papanicolau entra como exame complementar para investigar com mais detalhes.</p>
+                    <p>Os dois exames se complementam. O que mudou é a ordem de prioridade — e isso nos permite agir mais cedo, com mais precisão e menos ansiedade entre as consultas.</p>
+                    <p>Este conteúdo é informativo e não substitui a avaliação ginecológica.</p>
+                    <p>Quer entender qual é o rastreamento mais indicado para você, considerando sua idade e histórico? Podemos conversar. Acesse o link da bio para agendar.</p>
+                </div>
+                <div class="legenda-tags">#saúdedamulher #ginecologia #prevencao #saudeintegrativa #papanicolau #dnahpv #marçolilas #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- TEMA 2.3 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 2.3: Março Lilás - Acolhimento sobre Papanicolau Alterado</h2>
+                <div class="gancho">"Deu alteração no Papanicolau. É câncer? O que fazer agora?"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Deu alteração no Papanicolau. E agora?</div>
+                        <div class="slide-body">Receber um resultado com termos desconhecidos como ASCUS, NIC I ou NIC II pode assustar muito. Mas antes de entrar em pânico, respira — a gente vai explicar.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">A boa notícia que parece ruim</div>
+                        <div class="slide-body">Uma alteração no Papanicolau, na maioria das vezes, significa que o exame detectou uma mudança precoce nas células — exatamente para o que ele foi criado. Não é sinônimo de câncer.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">O que significam esses termos?</div>
+                        <div class="slide-body">NIC I, NIC II e NIC III são graus de lesão pré-cancerosa no colo do útero. Quanto mais cedo identificadas, mais simples e eficaz é o acompanhamento ou tratamento.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">A maioria se resolve</div>
+                        <div class="slide-body">Lesões de baixo grau, como o NIC I, frequentemente regridem sozinhas. Seu ginecologista vai orientar o melhor caminho: observação, retorno mais próximo ou procedimento.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Quando é necessário tratar?</div>
+                        <div class="slide-body">Lesões de grau mais avançado (NIC II e III) costumam ser tratadas de forma simples, em consultório, com procedimentos rápidos e bem tolerados.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">O papel do rastreamento é exatamente esse</div>
+                        <div class="slide-body">Encontrar alterações precocemente é a maior conquista do exame preventivo. Significa que você está cuidando da sua saúde no momento certo — antes que algo mais sério se desenvolva.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Você não precisa interpretar isso sozinha.</div>
+                        <div class="slide-body">Traga o seu resultado para uma consulta. Vamos ler juntas, com calma, e definir o melhor caminho para você. Link da bio para agendar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+             <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Receber um resultado de Papanicolau com alguma alteração pode gerar muita ansiedade — especialmente quando os termos no laudo parecem intimidadores. Se isso aconteceu com você, queremos te dizer: calma. Alteração no Papanicolau não é sinônimo de câncer.</p>
+                    <p>O exame preventivo existe justamente para identificar mudanças precoces nas células antes que evoluam para algo sério. Termos como NIC I, NIC II e NIC III representam diferentes graus de lesão pré-cancerosa — e muitas dessas lesões são tratadas de forma simples, ou até regridem espontaneamente com acompanhamento médico.</p>
+                    <p>O mais importante agora é não interpretar o resultado sozinha. Traga o laudo para uma consulta, e vamos entender juntas o que ele significa para o seu caso específico.</p>
+                    <p>Este conteúdo é informativo e não substitui a avaliação médica presencial.</p>
+                    <p>Sua prevenção está em dia? Agende sua consulta ginecológica pelo link da bio.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #marçolilas #hpv #medicinahumanizada #cuidadointegral #ginecologiaSP #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 3.1 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 3.1: Março Amarelo - Endometriose e Maternidade</h2>
+                <div class="gancho">"Tenho Endometriose. Isso é uma sentença de infertilidade?"</div>
+            </div>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Endometriose significa que não vou poder engravidar?</div>
+                        <div class="slide-body">Essa é uma das perguntas mais frequentes — e mais angustiantes — que ouvimos no consultório. Vamos conversar sobre isso com honestidade.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Dificuldade não é impossibilidade</div>
+                        <div class="slide-body">Ter endometriose pode tornar o processo de engravidar mais desafiador em alguns casos. Mas isso não significa que a maternidade está fora do seu alcance.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">O que a ciência diz</div>
+                        <div class="slide-body">Cerca de 50% das mulheres com endometriose engravidam de forma espontânea. Para as demais, existem caminhos como o tratamento clínico, a cirurgia e a reprodução assistida.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Preservação da fertilidade</div>
+                        <div class="slide-body">Para quem ainda não planeja engravidar agora, o congelamento de óvulos pode ser uma forma de proteger a fertilidade enquanto o tratamento avança.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Cada caso é único</div>
+                        <div class="slide-body">O impacto da endometriose na fertilidade depende de muitos fatores: localização das lesões, grau da doença, idade e histórico de saúde. Por isso, a avaliação individualizada é fundamental.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">O diagnóstico precoce faz diferença</div>
+                        <div class="slide-body">Quanto antes a endometriose é tratada, menores são os impactos sobre a fertilidade. Cuidar da sua saúde hoje é cuidar do seu projeto de maternidade.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Vamos construir esse caminho juntas?</div>
+                        <div class="slide-body">Salve esse post, compartilhe com quem precisa e agende uma conversa com nossa equipe pelo link da bio.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>"Tenho endometriose — isso significa que não vou conseguir engravidar?" Essa é uma das perguntas que mais chegam até nós, e ela merece uma resposta honesta, sem alarmismo e sem promessas.</p>
+                    <p>A endometriose pode, em alguns casos, dificultar a concepção natural. Mas dificuldade não é impossibilidade. Aproximadamente metade das mulheres com endometriose engravida espontaneamente. Para as demais, existem opções como o tratamento clínico e cirúrgico para melhorar as condições do organismo, o congelamento de óvulos como estratégia de preservação da fertilidade e, quando necessário, as técnicas de reprodução assistida.</p>
+                    <p>O mais importante é ter informação de qualidade e acompanhamento especializado. Cada situação é única, e o plano de cuidado precisa ser pensado especificamente para você.</p>
+                    <p>Este conteúdo é informativo e não substitui a consulta médica especializada.</p>
+                    <p>Se você tem endometriose e pensa na maternidade, que tal conversar com nossa equipe? Estamos aqui para ajudar você a entender suas opções. Agende no link da bio.</p>
+                </div>
+                <div class="legenda-tags">#saudefeminina #ginecologia #endometriose #reproduçãohumana #saudeintegrativa #cuidadoespecializado #maternidade #gaiamedicinaintegrada</div>
+            </div>
+        </div>
+
+        <!-- TEMA 4.1 -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <h2>Tema 4.1: Março Lilás/Dia Mundial do Câncer de Colo do Útero - Dose Única HPV</h2>
+                <div class="gancho">"Mudança no SUS em 2024: Por que a vacina do HPV agora é Dose Única?"</div>
+            </div>
+            
+             <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Em 2024, o Ministério da Saúde atualizou o esquema vacinal contra o HPV no SUS: as crianças e adolescentes de 9 a 14 anos passaram a receber apenas uma dose. E essa mudança tem uma base científica sólida por trás.</p>
+                    <p>Estudos conduzidos com o acompanhamento da OMS mostraram que uma única dose da vacina, aplicada nessa faixa etária, gera uma resposta imunológica equivalente à de duas doses — com proteção duradoura e consistente. A mudança não reduz a eficácia: amplia o alcance da vacinação e facilita que mais crianças sejam protegidas.</p>
+                    <p>Um ponto importante para desmistificar: a vacina protege contra um vírus de transmissão sexual — mas vacinar não significa antecipar ou incentivar a vida sexual. Vacinar é prevenir. E prevenir o HPV é prevenir o principal fator de risco para o câncer de colo do útero.</p>
+                    <p>Este conteúdo é informativo e não substitui a orientação do pediatra ou ginecologista.</p>
+                    <p>Tem dúvidas sobre a vacina do HPV para o seu filho ou para você mesma? Fale com nossa equipe. O link para agendamento está na bio.</p>
+                </div>
+                <div class="legenda-tags">#pediatria #maternidadereal #vacinahpv #marçolilas #prevenção #saudeintegrativa #cuidadopediatrico #gaiaclinica</div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach(function (element) {
+                new Swiper(element, {
+                    effect: 'slider',
+                    grabCursor: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            });
+        });
+    </script>
+</body>
+</html>

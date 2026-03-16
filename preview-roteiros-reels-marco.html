@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleprompter GAIA: Roteiros Reels (Especial Março)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .script-text {
+            font-family: 'Roboto', serif;
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #334155;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .timeline-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .gradient-heading {
+            background: linear-gradient(to right, #B12A38, #853B50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .time-block {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1.5rem;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .time-block::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            border: 4px solid white;
+        }
+
+        .time-block.red::before {
+            background-color: #B12A38;
+        }
+
+        .time-block:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        /* Cores Gaia adaptadas pro Tailwind */
+        .bg-gaia-red { background-color: #B12A38; }
+        .text-gaia-red { color: #B12A38; }
+        .border-gaia-red { border-color: #B12A38; }
+        .bg-gaia-wine { background-color: #853B50; }
+        .text-gaia-wine { color: #853B50; }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Top Navigation -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🎥</span>
+                    <span class="font-bold text-xl tracking-wider">GAIA TELEPROMPTER</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block bg-red-100 text-gaia-red px-4 py-2 rounded-full text-sm font-bold mb-6 flex items-center gap-2 mx-auto w-max">
+                <span class="text-lg">🎬</span> Skill Ativada: Diretor e Roteirista (Reels Longos)
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 tracking-tight">Roteiros <span class="gradient-heading">Cinematográficos</span> Médicos</h1>
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                Scripts oficiais prontos para leitura ou teleprompter. Baseados nos briefings integrados da FEBRASGO (Adenomiose, Endometriose e SOP).
+            </p>
+            <div class="flex justify-center flex-wrap gap-4 text-sm font-semibold">
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">🎯 Tom: Médica Amiga / Acolhedora</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">⏱️ Duração: Até 3 Minutos</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200 shadow-sm">📚 Fonte: FEBRASGO 2024/2025</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- ============================================== -->
+        <!-- GINECOLOGIA INTEGRATIVA -->
+        <!-- ============================================== -->
+        <div>
+            <div class="mb-12 flex items-center gap-4 border-b-2 border-red-200 pb-4">
+                <span class="text-5xl">🩺</span>
+                <div>
+                    <h2 class="text-3xl font-bold text-gaia-wine">Ginecologia Científica</h2>
+                    <p class="text-slate-500 font-medium mt-1">Persona: A Mulher no Foco da Saúde Preventiva</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-10">
+
+                <!-- ROTEIRO 01: ADENOMIOSE X ENDOMETRIOSE -->
+                <article class="glass-card">
+                    <div class="bg-red-50 border-b border-red-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-gaia-red text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A Ginecologista</span>
+                            <a href="#" class="text-gaia-wine hover:text-red-900 text-sm font-semibold flex items-center gap-1 bg-red-200 px-3 py-1 rounded-full">🔗 Fonte: FEBRASGO / SBE</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">Adenomiose vs Endometriose: Fim da Confusão</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Relaxada, contato visual acolhedor e seguro, talvez segurando sutilmente um modelo de útero para exemplificar.</p>
+                    </div>
+                    <div class="p-8">
+                        <!-- Timeline Block 1 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Oi, meninas. Já te disseram que você tem endometriose, em seguida disseram que era adenomiose, e agora você nem sabe mais qual é qual? Calma, eu vou te explicar a diferença de uma vez por todas."</p>
+                        </div>
+                        <!-- Timeline Block 2 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de Consultório</span>
+                            <p class="script-text">"Na última semana, atendi três pacientes assustadíssimas aqui na Gaia, com o exame na mão. Elas sentem aquelas cólicas que derrubam, sangram intensamente e acham que vão precisar retirar o útero só porque ouviram os dois diagnósticos juntos. É muita confusão para uma cabeça só..."</p>
+                        </div>
+                        <!-- Timeline Block 3 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-red-100 text-gaia-red mb-2">45s - 1m45s • Desenvolvimento Técnico</span>
+                            <p class="script-text">"Vamos traduzir o que as diretrizes médicas dizem de um jeito fácil. Imagina que a parte de dentro do seu útero (o endométrio) resolveu 'viajar'. Na Endometriose, esse tecido viaja para <strong>FORA</strong> do útero: ele vai parar nos ovários, no intestino, na bexiga. Agora, na Adenomiose, é diferente: esse mesmo tecido invade a parede muscular do <strong>PRÓPRIO</strong> útero. Ele cresce para dentro do músculo, deixando o útero inchado, 'globoso' e muito dolorido."</p>
+                        </div>
+                        <!-- Timeline Block 4 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas Práticas</span>
+                            <p class="script-text">"E será que dá pra ter as duas coisas ao mesmo tempo? Sim, é super comum! Por isso o diagnóstico certeiro faz toda a diferença. O ultrassom transvaginal comum com preparo intestinal feito por um bom especialista já consegue ver os sinais da adenomiose. E para tratar? Nós temos excelentes opções conservadoras, como o DIU hormonal e medicações que bloqueiam esse sangramento e devolvem a sua qualidade de vida, muitas vezes sem a necessidade de cirurgia imediata."</p>
+                        </div>
+                        <!-- Timeline Block 5 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s • Tranquilização</span>
+                            <p class="script-text">"Então não precisa entrar em pânico. Ter os dois diagnósticos não é uma sentença, e o seu útero não precisa ser retirado logo de cara, principalmente se você ainda tem o sonho de engravidar no futuro."</p>
+                        </div>
+                        <!-- Timeline Block 6 -->
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Encaminha esse vídeo para aquela sua amiga que vive reclamando de dor pélvica e cólica forte. Agende sua consulta no link da nossa bio, vamos investigar isso juntas. Um beijo!"</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ROTEIRO 02: SOP -->
+                <article class="glass-card mt-10">
+                    <div class="bg-red-50 border-b border-red-100 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-gaia-red text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">A Ginecologista</span>
+                            <a href="#" class="text-gaia-wine hover:text-red-900 text-sm font-semibold flex items-center gap-1 bg-red-200 px-3 py-1 rounded-full">🔗 Fonte: FEBRASGO 2025</a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">SOP: A Síndrome Silenciosa de 1 a cada 10 mulheres</h3>
+                        <p class="text-slate-500 mt-2 text-sm font-medium">Postura sugerida: Entusiástica mas compreensiva, demonstrando clareza ao explicar a parte metabólica.</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-rose-100 text-rose-700 mb-2">0 - 15s • Gancho</span>
+                            <p class="script-text">"Seu ciclo menstrual é uma completa bagunça, a acne insiste em não ir embora e você anda preocupada porque não consegue engravidar? Vem cá, precisamos falar abertamente sobre a SOP."</p>
+                        </div>
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-slate-100 text-slate-700 mb-2">15s - 45s • Caso de Consultório</span>
+                            <p class="script-text">"É incrivelmente comum a paciente chegar aqui na minha frente muito frustrada. Ela relata que desde a adolescência o ciclo foi desregulado, mas o antigo médico apenas receitou uma pílula e mandou esquecer o assunto. Só que quando ela decide engravidar, ou simplesmente pausa a pílula, os ovários mostram que a desordem continua lá."</p>
+                        </div>
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-red-100 text-gaia-red mb-2">45s - 1m45s • Desenvolvimento Técnico</span>
+                            <p class="script-text">"A SOP, que é a Síndrome dos Ovários Policísticos, afeta cerca de 10% a 15% das mulheres. O que acontece na prática? O seu ovário acaba produzindo hormônios masculinos, os androgênios, em excesso. Esse pequeno detalhe 'trava' a sua ovulação. E se você não ovula, o ciclo desregula e a gestação não vem. E tem mais: a SOP não mora só no ovário. Ela tem uma conexão fortíssima com o seu metabolismo e a resistência à insulina. E antes que me perguntem, 'Doutora, eu posso ter SOP e Endometriose juntas?' A resposta é: Pode, sim! São doenças totalmente diferentes, mas podem existir ao mesmo tempo no seu corpo exigindo cuidado em dobro."</p>
+                        </div>
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-amber-100 text-amber-800 mb-2">1m45s - 2m30s • Dicas Práticas</span>
+                            <p class="script-text">"O tratamento padrão-ouro que nós aplicamos na ginecologia integrativa vai muito além da pílula. A primeira e mais poderosa linha de ataque é o seu estilo de vida! Uma dieta com perfil anti-inflamatório, dominar essa resistência à insulina e manter a musculação em dia fazem milagres. 'Ah, mas eu quero engravidar agora!' Perfeito: nós utilizamos medicações super modernas e eficazes, como o letrozol, para voltar a ligar o seu motor ovulatório e criar o cenário perfeito para o seu bebê."</p>
+                        </div>
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-blue-100 text-blue-800 mb-2">2m30s - 2m45s • Tranquilização</span>
+                            <p class="script-text">"Quero que fique claro: descobrir que tem SOP não significa que você nunca será mãe, nem que viverá inchada pelo resto da vida. É apenas o seu corpo emitindo um sinal de que o caminho metabólico precisa de ajuste e carinho."</p>
+                        </div>
+                        <div class="time-block red">
+                            <span class="timeline-badge bg-green-100 text-green-800 mb-2">2m45s - 3m00s • CTA</span>
+                            <p class="script-text">"Lembrou de alguma amiga que vive brigando com o ciclo atrasado? Salva esse vídeo, manda pra ela. O controle da sua saúde íntima e hormonal começa com a informação certa. Marca sua consulta no link da bio, te espero!"</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-slate-400 py-10 mt-20 text-center border-t-8 border-gaia-red">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center gap-4">
+            <div class="text-3xl">🎬</div>
+            <p>&copy; 2026 GAIA TELEPROMPTER. Gerado e Estruturado pela Inteligência Avançada utilizando a skill de Roteiros (Reels Longos).</p>
+        </div>
+    </footer>
+
+</body>
+</html>
