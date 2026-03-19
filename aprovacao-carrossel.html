@@ -313,14 +313,12 @@
 <body>
 
     <!-- TELA DE LOGIN -->
-    <div id="auth-screen" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--cor-fundo);">
-        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
-            <h2 style="color: var(--cor-texto-destaque); margin-top: 0;">Acesso Restrito - Gaia</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Faça login com sua conta do Google para aprovar os carrosséis.</p>
+            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Digite seu e-mail para receber um link direto de acesso (sem senha).</p>
             
-            <button type="button" onclick="fazerLoginGoogle()" style="width: 100%; background: #ffffff; color: #444; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: 0.3s;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" style="width: 18px; height: 18px;">
-                Entrar com o Google
+            <input type="email" id="auth-email" placeholder="E-mail (ex: dra@gmail.com)" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--cor-borda); border-radius: 8px; box-sizing: border-box; font-family: inherit;">
+            
+            <button type="button" onclick="fazerLoginMagicLink()" style="width: 100%; background: var(--cor-primaria); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; transition: 0.3s;">
+                Receber Link Mágico 🪄
             </button>
             <p id="auth-msg" style="color: var(--cor-reprovado); font-size: 13px; margin-top: 15px; display: none;"></p>
         </div>
@@ -416,23 +414,32 @@
             }
         }
 
-        // Função de Login Google (OAuth)
-        async function fazerLoginGoogle() {
+        // Função de Login Magic Link (Sem Senha)
+        async function fazerLoginMagicLink() {
+            const email = document.getElementById('auth-email').value;
             const msgBox = document.getElementById('auth-msg');
+            
+            if(!email || !email.includes('@')) {
+                mostrarMsg('Por favor, insira um e-mail válido.', true);
+                return;
+            }
+
             msgBox.style.display = 'block';
             msgBox.style.color = '#666';
-            msgBox.innerText = 'Redirecionando para o Google...';
+            msgBox.innerText = 'Enviando link mágico...';
 
-            const { data, error } = await supaClient.auth.signInWithOAuth({
-                provider: 'google',
+            const { data, error } = await supaClient.auth.signInWithOtp({
+                email: email,
                 options: {
-                    // Após logar no Google, ele devolve para a página atual
-                    redirectTo: window.location.origin + window.location.pathname
+                    // Após clicar no e-mail, redireciona o usuário para a mesma página atual
+                    emailRedirectTo: window.location.origin + window.location.pathname
                 }
             });
 
             if (error) {
-                mostrarMsg('Erro ao abrir o Google: ' + error.message, true);
+                mostrarMsg('Erro: ' + error.message, true);
+            } else {
+                mostrarMsg('Enviado! Verifique a caixa de entrada do seu e-mail.', false);
             }
         }
 
