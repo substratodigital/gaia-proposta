@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovação de Carrossel - Gaia</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-texto-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+            --cor-aprovado: #2E7D32;
+            --cor-reprovado: #C62828;
+            --cor-alteracao: #E65100;
+            --cor-borda: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--cor-texto-destaque);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card-box {
+            background-color: var(--cor-branco);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(133, 59, 80, 0.06);
+            overflow: hidden;
+            border: 1px solid #f0e6e8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            background-color: #fcf9f9;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0e6e8;
+            font-weight: 600;
+            color: var(--cor-texto-destaque);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upload-area {
+            border: 2px dashed #dcaeb8;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            border-color: var(--cor-primaria);
+            background-color: #fdfafb;
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .hidden-input {
+            display: none;
+        }
+
+        .preview-area {
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .preview-area img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-height: 350px;
+            object-fit: contain;
+            background-color: #eee;
+        }
+
+        .btn-trocar {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: var(--cor-texto-destaque);
+        }
+
+        .status-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .status-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            border-radius: 6px;
+            border: 1px solid var(--cor-borda);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #555;
+            background: #f9f9f9;
+            user-select: none;
+        }
+
+        .status-btn input {
+            display: none;
+        }
+
+        /* Active states */
+        .status-btn.aprovado.active {
+            background-color: #E8F5E9;
+            border-color: var(--cor-aprovado);
+            color: var(--cor-aprovado);
+        }
+
+        .status-btn.reprovado.active {
+            background-color: #FFEBEE;
+            border-color: var(--cor-reprovado);
+            color: var(--cor-reprovado);
+        }
+
+        .status-btn.alteracao.active {
+            background-color: #FFF3E0;
+            border-color: var(--cor-alteracao);
+            color: var(--cor-alteracao);
+        }
+
+        .feedback-area {
+            margin-top: 10px;
+        }
+
+        .feedback-area textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dcaeb8;
+            border-radius: 6px;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            resize: vertical;
+            min-height: 80px;
+            outline: none;
+        }
+
+        .feedback-area textarea:focus {
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 2px rgba(177, 42, 56, 0.1);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Legenda global */
+        .legenda-block {
+            background-color: var(--cor-branco);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(133, 59, 80, 0.06);
+            border-left: 4px solid var(--cor-texto-destaque);
+        }
+
+        .legenda-block h2 {
+            margin-top: 0;
+            color: var(--cor-texto-destaque);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .legenda-textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: inherit;
+            font-size: 15px;
+            min-height: 150px;
+            resize: vertical;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .legenda-status {
+            display: flex;
+            gap: 15px;
+            max-width: 400px;
+        }
+
+        .btn-salvar {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 12px rgba(177, 42, 56, 0.3);
+        }
+
+        .btn-salvar:hover {
+            background-color: #853B50;
+        }
+
+        .admin-controls {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 6px;
+            width: 300px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Painel de Aprovação de Carrossel</h1>
+        <p>Carregue as imagens de cada slide e defina o status (Aprovado, Reprovado ou Alteração). Sem histórico: cada análise é individual.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="admin-controls">
+            <div class="input-group">
+                <label for="titulo-carrossel">Título / Tema do Carrossel</label>
+                <input type="text" id="titulo-carrossel" placeholder="Ex: Mitos sobre Endometriose">
+            </div>
+            <div>
+                <span style="font-size: 13px; color: #666;">Status: <strong style="color:var(--cor-alteracao)">Aba de Revisão</strong></span>
+            </div>
+        </div>
+
+        <form id="form-aprovacao">
+            <div class="grid-cards" id="cards-container">
+                <!-- Cards renderizados via JS -->
+            </div>
+
+            <div class="legenda-block">
+                <h2>Legenda da Postagem (Copy)</h2>
+                <textarea class="legenda-textarea" id="legenda-texto" placeholder="Cole aqui a legenda completa da postagem..."></textarea>
+                
+                <div class="status-group legenda-status">
+                    <label class="status-btn aprovado" id="lbl-legenda-aprovado">
+                        <input type="radio" name="status-legenda" value="Aprovado" onchange="selecionarStatus(this, 'legenda')"> Aprovado
+                    </label>
+                    <label class="status-btn reprovado" id="lbl-legenda-reprovado">
+                        <input type="radio" name="status-legenda" value="Reprovado" onchange="selecionarStatus(this, 'legenda')"> Reprovado
+                    </label>
+                    <label class="status-btn alteracao" id="lbl-legenda-alteracao">
+                        <input type="radio" name="status-legenda" value="Alteração" onchange="selecionarStatus(this, 'legenda')"> Alteração
+                    </label>
+                </div>
+                
+                <div class="feedback-area hidden" id="feedback-area-legenda">
+                    <textarea id="feedback-legenda" placeholder="O que precisa ser alterado na legenda?"></textarea>
+                </div>
+            </div>
+
+            <button type="button" class="btn-salvar" onclick="salvarRevisao()">Finalizar Revisão e Salvar</button>
+        </form>
+    </div>
+
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ==========================================
+        // CONFIGURAÇÃO SUPABASE
+        // ==========================================
+        const SUPABASE_URL = 'https://ycgsabgkmrddcecphkfz.supabase.co';
+        // ATENÇÃO: Cole sua chave pública (anon key) do Supabase aqui abaixo:
+        const SUPABASE_ANON_KEY = 'SUA_CHAVE_PUBLICA_ANON_AQUI'; 
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // ==========================================
+
+        // Inicializar os 10 cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('cards-container');
+            
+            for (let i = 1; i <= 10; i++) {
+                const cardHTML = `
+                    <div class="card-box" id="card-${i}">
+                        <div class="card-header">
+                            <span>Slide ${i}</span>
+                        </div>
+                        <div class="card-content">
+                            <!-- Area de upload -->
+                            <div class="upload-area" id="upload-area-${i}" onclick="document.getElementById('file-${i}').click()">
+                                <span class="upload-icon">📷</span>
+                                <span>Carregar Imagem ${i}</span>
+                                <input type="file" id="file-${i}" accept="image/*" class="hidden-input" onchange="handleImage(this, ${i})">
+                            </div>
+                            
+                            <!-- Area de preview -->
+                            <div class="preview-area hidden" id="preview-area-${i}">
+                                <img id="img-${i}" src="" alt="Slide ${i}">
+                                <button type="button" class="btn-trocar" onclick="document.getElementById('file-${i}').click()">Trocar</button>
+                            </div>
+                            
+                            <!-- Botoes de status -->
+                            <div class="status-group">
+                                <label class="status-btn aprovado" id="lbl-${i}-aprovado">
+                                    <input type="radio" name="status-${i}" value="Aprovado" onchange="selecionarStatus(this, ${i})"> Aprovado
+                                </label>
+                                <label class="status-btn reprovado" id="lbl-${i}-reprovado">
+                                    <input type="radio" name="status-${i}" value="Reprovado" onchange="selecionarStatus(this, ${i})"> Reprovado
+                                </label>
+                                <label class="status-btn alteracao" id="lbl-${i}-alteracao">
+                                    <input type="radio" name="status-${i}" value="Alteração" onchange="selecionarStatus(this, ${i})"> Alteração
+                                </label>
+                            </div>
+                            
+                            <!-- Feedback para alteracao -->
+                            <div class="feedback-area hidden" id="feedback-area-${i}">
+                                <textarea id="feedback-text-${i}" placeholder="O que precisa ser alterado neste slide?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            }
+        });
+
+        // Lidar com o carregamento da imagem e gerar preview visual
+        function handleImage(input, index) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    document.getElementById(`img-${index}`).src = e.target.result;
+                    document.getElementById(`upload-area-${index}`).classList.add('hidden');
+                    document.getElementById(`preview-area-${index}`).classList.remove('hidden');
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Lidar com a selecao de botoes de status (estilizacao)
+        function selecionarStatus(radio, index) {
+            // Remover classe active de todos os labels deste grupo
+            const labels = document.querySelectorAll(`input[name="status-${index}"]`);
+            labels.forEach(input => {
+                input.parentElement.classList.remove('active');
+            });
+            
+            // Adicionar active ao selecionado
+            radio.parentElement.classList.add('active');
+            
+            // Mostrar ou esconder textarea de feedback
+            const feedbackArea = document.getElementById(`feedback-area-${index}`);
+            if (radio.value === 'Alteração') {
+                feedbackArea.classList.remove('hidden');
+                if(index !== 'legenda') {
+                    document.getElementById(`feedback-text-${index}`).focus();
+                } else {
+                    document.getElementById('feedback-legenda').focus();
+                }
+            } else {
+                feedbackArea.classList.add('hidden');
+            }
+        }
+
+        // Função Assíncrona Integrada ao Supabase para Salvar e Fazer Upload 
+        async function salvarRevisao() {
+            const titulo = document.getElementById('titulo-carrossel').value;
+            if(!titulo) {
+                alert("Por favor, preencha o título do carrossel.");
+                document.getElementById('titulo-carrossel').focus();
+                return;
+            }
+
+            const btnSalvar = document.querySelector('.btn-salvar');
+            btnSalvar.innerText = "Salvando e enviando arquivos... (Aguarde)";
+            btnSalvar.disabled = true;
+
+            try {
+                // Monta o objeto da legenda (cópia global)
+                const dadosLegenda = {
+                    texto: document.getElementById('legenda-texto').value,
+                    status: document.querySelector('input[name="status-legenda"]:checked')?.value || 'Não avaliado',
+                    feedback: document.getElementById('feedback-legenda').value
+                };
+
+                const arraySlides = [];
+                // Criação de uma pasta única baseada no timestamp
+                const nomePasta = `carrossel_${Date.now()}`;
+
+                // Loop para os 10 possíveis slides do carrossel
+                for (let i = 1; i <= 10; i++) {
+                    const fileInput = document.getElementById(`file-${i}`);
+                    const statusSelecionado = document.querySelector(`input[name="status-${i}"]:checked`);
+                    
+                    // Verificamos se há dados ou imagem inserida no card
+                    if (fileInput.files.length > 0 || statusSelecionado) {
+                        let imagemUrl = null;
+
+                        // Se o usuário anexou arquivo, fazemos o upload no Storage do Supabase!
+                        if (fileInput.files.length > 0) {
+                            const file = fileInput.files[0];
+                            const filePath = `${nomePasta}/slide_${i}_${file.name}`;
+                            
+                            // *** ATENÇÃO: você precisará ter criado um Storage Bucket chamado "imagens_carrossel" no Supabase e deixá-lo público ***
+                            const { data: uploadData, error: uploadError } = await supabase.storage
+                                .from('imagens_carrossel')
+                                .upload(filePath, file);
+
+                            if (uploadError) {
+                                console.error(`Erro upload do slide ${i}:`, uploadError);
+                                throw new Error(`Falha ao subir a imagem do slide ${i}. Verifique se você criou o Bucket 'imagens_carrossel' no Supabase.`);
+                            }
+
+                            // Depois do upload, pegamos a URL pública da imagem
+                            const publicData = supabase.storage.from('imagens_carrossel').getPublicUrl(filePath);
+                            imagemUrl = publicData.data.publicUrl;
+                        }
+
+                        // Joga os dados do card na lista
+                        arraySlides.push({
+                            numero: i,
+                            imagem_url: imagemUrl,
+                            status: statusSelecionado ? statusSelecionado.value : 'Pendente',
+                            feedback: document.getElementById(`feedback-text-${i}`).value
+                        });
+                    }
+                }
+
+                // Inserir os dados na tabela do banco no Supabase
+                // *** ATENÇÃO: você precisará ter criado a tabela "revisoes_carrossel" no Supabase ***
+                const { data: dbData, error: dbError } = await supabase
+                    .from('revisoes_carrossel')
+                    .insert([
+                        { 
+                            titulo: titulo, 
+                            legenda_texto: dadosLegenda.texto,
+                            legenda_status: dadosLegenda.status,
+                            legenda_feedback: dadosLegenda.feedback,
+                            slides: arraySlides // O supabase salva array automaticamente num campo JSONB 
+                        }
+                    ]);
+
+                if (dbError) throw dbError;
+
+                alert("Sucesso! A revisão foi salva no seu Supabase!");
+                
+                // Limpa o formulário recarregando a página
+                window.location.reload();
+
+            } catch (err) {
+                console.error("Erro Geral:", err);
+                alert("Ocorreu um erro: " + err.message);
+            } finally {
+                // Restaura o botão
+                btnSalvar.innerText = "Finalizar Revisão e Salvar";
+                btnSalvar.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
