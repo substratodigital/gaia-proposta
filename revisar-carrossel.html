@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovação de Carrossel - Gaia (Médica)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-texto-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+            --cor-aprovado: #2E7D32;
+            --cor-reprovado: #C62828;
+            --cor-alteracao: #E65100;
+            --cor-borda: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card-box {
+            background-color: var(--cor-branco);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(133, 59, 80, 0.06);
+            overflow: hidden;
+            border: 1px solid #f0e6e8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            background-color: #fcf9f9;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0e6e8;
+            font-weight: 600;
+            color: var(--cor-texto-destaque);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-area {
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .preview-area img {
+            max-width: 100%;
+            border-radius: 8px;
+            max-height: 350px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .status-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .status-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            border-radius: 6px;
+            border: 1px solid var(--cor-borda);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #555;
+            background: #f9f9f9;
+        }
+
+        .status-btn input {
+            display: none;
+        }
+
+        .status-btn.aprovado.active { background-color: #E8F5E9; border-color: var(--cor-aprovado); color: var(--cor-aprovado); }
+        .status-btn.reprovado.active { background-color: #FFEBEE; border-color: var(--cor-reprovado); color: var(--cor-reprovado); }
+        .status-btn.alteracao.active { background-color: #FFF3E0; border-color: var(--cor-alteracao); color: var(--cor-alteracao); }
+
+        .feedback-area textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dcaeb8;
+            border-radius: 6px;
+            padding: 10px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .hidden { display: none !important; }
+
+        .legenda-block {
+            background-color: var(--cor-branco);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(133, 59, 80, 0.06);
+            border-left: 4px solid var(--cor-texto-destaque);
+        }
+
+        .btn-salvar {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="auth-screen" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--cor-fundo);">
+        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
+            <h2 style="color: var(--cor-texto-destaque); margin-top: 0;">Área Médica - Gaia</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Digite seu e-mail para validar sua identidade e aprovar o carrossel.</p>
+            <input type="email" id="auth-email" placeholder="E-mail" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--cor-borda); border-radius: 8px;">
+            <button onclick="fazerLoginMagicLink()" style="width: 100%; background: var(--cor-primaria); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Acessar Painel 🪄</button>
+            <p id="auth-msg" style="color: var(--cor-texto-destaque); margin-top: 15px; display: none;"></p>
+        </div>
+    </div>
+
+    <!-- TELA DO APLICATIVO -->
+    <div id="app-screen" class="hidden">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto;">
+                <div style="text-align: left;">
+                    <h1 style="margin: 0; color: var(--cor-texto-destaque); font-size: 28px;">Aprovar Carrossel (Médica)</h1>
+                    <p style="margin: 5px 0 0 0; color: #666;">Avalie as imagens e a legenda para postagem.</p>
+                </div>
+                <!-- ID escondido e usuario logado -->
+                <span id="identidade-medica" style="color: #666; font-size: 13px;">...</span>
+            </div>
+        </header>
+
+        <div class="container" id="container-carregamento" style="text-align: center; padding: 50px;">
+            <h2>Procurando carrossel...</h2>
+        </div>
+
+        <div class="container hidden" id="container-revisao">
+            <div style="margin-bottom: 30px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <h3 id="display-titulo" style="margin: 0; color: var(--cor-texto-destaque);">Título Carrossel</h3>
+            </div>
+
+            <form id="form-aprovacao">
+                <div class="grid-cards" id="cards-container">
+                    <!-- Cards inseridos via JS (apenas foto renderizada e botoes) -->
+                </div>
+
+                <div class="legenda-block">
+                    <h2>Legenda da Postagem (Copy Original)</h2>
+                    <div id="display-legenda" style="background:#f9f9f9; padding:15px; border-radius:8px; margin-bottom: 20px; white-space: pre-wrap; font-size: 14px; border: 1px solid #eee;"></div>
+                    
+                    <h3>Seu Feedback sobre a Legenda</h3>
+                    <div class="status-group" style="max-width: 400px; margin-bottom: 10px;">
+                        <label class="status-btn aprovado" id="lbl-legenda-aprovado">
+                            <input type="radio" name="status-legenda" value="Aprovado" onchange="selecionarStatus(this, 'legenda')"> Aprovado
+                        </label>
+                        <label class="status-btn reprovado" id="lbl-legenda-reprovado">
+                            <input type="radio" name="status-legenda" value="Reprovado" onchange="selecionarStatus(this, 'legenda')"> Reprovado
+                        </label>
+                        <label class="status-btn alteracao" id="lbl-legenda-alteracao">
+                            <input type="radio" name="status-legenda" value="Alteração" onchange="selecionarStatus(this, 'legenda')"> Alteração
+                        </label>
+                    </div>
+                    
+                    <div class="feedback-area hidden" id="feedback-area-legenda">
+                        <textarea id="feedback-legenda" placeholder="O que deseja mudar na copy?"></textarea>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-salvar" onclick="enviarRevisao()">Carimbar minha Avaliação</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://ycgsabgkmrddcecphkfz.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_zGPoOEf6RFaxiuTlXxgxow_gw4rmp9A'; 
+        const supaClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let usuarioAtual = null;
+        let pIdVotacao = new URLSearchParams(window.location.search).get('id');
+        let arraySlidesReal = [];
+
+        async function checkSession() {
+            const { data } = await supaClient.auth.getSession();
+            if (data.session) {
+                usuarioAtual = data.session.user;
+                document.getElementById('identidade-medica').innerText = "Logada como: " + usuarioAtual.email;
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('app-screen').classList.remove('hidden');
+                carregarProtocolo();
+            } else {
+                document.getElementById('auth-screen').style.display = 'flex';
+                document.getElementById('app-screen').classList.add('hidden');
+            }
+        }
+
+        async function fazerLoginMagicLink() {
+            let email = document.getElementById('auth-email').value;
+            let msgBox = document.getElementById('auth-msg');
+            if(!email) return;
+            msgBox.style.display = 'block'; msgBox.innerText = 'Pedindo autorização ao Supabase...';
+            const { error } = await supaClient.auth.signInWithOtp({ email: email, options: { emailRedirectTo: window.location.href }});
+            if(error) msgBox.innerText = 'Erro: ' + error.message; 
+            else msgBox.innerText = 'Enviado! Olhe seu E-mail pelo celular ou PC e clique no botão.';
+        }
+
+        function selecionarStatus(radio, index) {
+            const labels = document.querySelectorAll(`input[name="status-${index}"]`);
+            labels.forEach(input => input.parentElement.classList.remove('active'));
+            radio.parentElement.classList.add('active');
+            
+            const fbArea = document.getElementById(`feedback-area-${index}`);
+            if (radio.value === 'Alteração') {
+                fbArea.classList.remove('hidden');
+            } else {
+                fbArea.classList.add('hidden');
+            }
+        }
+
+        // Médica: Carrega os dados do carrossel do Supabase com base na URL
+        async function carregarProtocolo() {
+            if(!pIdVotacao) {
+                document.getElementById('container-carregamento').innerHTML = "<h2>Erro: Nenhum ID de carrossel foi encontrado na URL.</h2><p>Peça ao Designer o link correto com o código final.</p>";
+                return;
+            }
+
+            try {
+                const { data, error } = await supaClient.from('revisoes_carrossel').select('*').eq('id', pIdVotacao).single();
+                if (error) throw error;
+                
+                document.getElementById('container-carregamento').classList.add('hidden');
+                document.getElementById('container-revisao').classList.remove('hidden');
+
+                document.getElementById('display-titulo').innerText = "Tema: " + data.titulo;
+                document.getElementById('display-legenda').innerText = data.legenda_texto;
+
+                arraySlidesReal = data.slides || [];
+                const container = document.getElementById('cards-container');
+
+                arraySlidesReal.forEach((slide) => {
+                    container.insertAdjacentHTML('beforeend', `
+                        <div class="card-box" id="card-${slide.numero}">
+                            <div class="card-header"><span>Slide ${slide.numero}</span></div>
+                            <div class="card-content">
+                                <div class="preview-area">
+                                    <img src="${slide.imagem_url}" alt="Imagem do Slide ${slide.numero}">
+                                </div>
+                                <div class="status-group">
+                                    <label class="status-btn aprovado">
+                                        <input type="radio" name="status-${slide.numero}" value="Aprovado" onchange="selecionarStatus(this, ${slide.numero})"> Aprovado
+                                    </label>
+                                    <label class="status-btn reprovado">
+                                        <input type="radio" name="status-${slide.numero}" value="Reprovado" onchange="selecionarStatus(this, ${slide.numero})"> Reprovado
+                                    </label>
+                                    <label class="status-btn alteracao">
+                                        <input type="radio" name="status-${slide.numero}" value="Alteração" onchange="selecionarStatus(this, ${slide.numero})"> Alteração
+                                    </label>
+                                </div>
+                                <div class="feedback-area hidden" id="feedback-area-${slide.numero}">
+                                    <textarea id="feedback-text-${slide.numero}" placeholder="Feedback médico: o que há de errado no visual ou no texto deste card?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                });
+            } catch(e) {
+                document.getElementById('container-carregamento').innerHTML = "<h2>Erro ao carregar dados.</h2><p>Se as Políticas RLS não foram criadas para SELECT, o Supabase impedirá a leitura.</p>";
+            }
+        }
+
+        // Médica: Faz UPDATE no banco de dados para salvar as respostas
+        async function enviarRevisao() {
+            const btn = document.querySelector('.btn-salvar');
+            btn.innerText = 'Salvando avaliação...'; btn.disabled = true;
+
+            try {
+                const novaLegendaStatus = document.querySelector('input[name="status-legenda"]:checked')?.value || 'Pendente';
+                const novaLegendaFeedback = document.getElementById('feedback-legenda').value;
+
+                arraySlidesReal.forEach(slide => {
+                    const statusSelecionado = document.querySelector(`input[name="status-${slide.numero}"]:checked`);
+                    if(statusSelecionado) {
+                        slide.status = statusSelecionado.value;
+                    }
+                    slide.feedback = document.getElementById(`feedback-text-${slide.numero}`).value || '';
+                });
+
+                const { error: dbError } = await supaClient
+                    .from('revisoes_carrossel')
+                    .update({ 
+                        legenda_status: novaLegendaStatus,
+                        legenda_feedback: novaLegendaFeedback,
+                        slides: arraySlidesReal,
+                        status_geral: 'Avaliado pela Medica',
+                        revisor_email: usuarioAtual.email
+                    })
+                    .eq('id', pIdVotacao);
+
+                if (dbError) throw dbError;
+
+                alert("Sua avaliação foi registrada com sucesso! O Designer será notificado.");
+                window.location.reload();
+
+            } catch(err) {
+                alert("Erro ao salvar: " + err.message + " (Certifique-se de que a política UPDATE do RLS foi criada no Supabase)");
+                btn.innerText = 'Tentar Novamente';
+                btn.disabled = false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkSession);
+    </script>
+</body>
+</html>
