@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview de Carrosséis - Abril Gaia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-texto-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--cor-texto-destaque);
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            color: #666;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .tema-block {
+            background-color: var(--cor-branco);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(133, 59, 80, 0.08);
+        }
+
+        .tema-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0e6e8;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+
+        .gancho {
+            font-weight: 600;
+            color: var(--cor-texto-destaque);
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .swiper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(133, 59, 80, 0.25);
+            background-color: var(--cor-texto-destaque);
+        }
+
+        .swiper-slide {
+            background-color: var(--cor-texto-destaque);
+            color: var(--cor-branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.6;
+            margin-bottom: 25px;
+            position: absolute;
+            top: 30px;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .slide-body {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--cor-branco) !important;
+            transform: scale(0.6);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--cor-branco) !important;
+            opacity: 0.4;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+
+        .legenda-container {
+            background-color: #fcf9f9;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-top: 30px;
+        }
+
+        .legenda-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cor-texto-destaque);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legenda-content {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .legenda-content p {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .legenda-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legenda-tags {
+            font-size: 14px;
+            color: var(--cor-texto-destaque);
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .tema-block {
+                padding: 20px;
+            }
+
+            .swiper-slide {
+                padding: 30px 20px;
+            }
+
+            .slide-title {
+                font-size: 20px;
+            }
+
+            .slide-body {
+                font-size: 15px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Preview de Carrosséis - Abril Gaia</h1>
+        <p>Abaixo estão os 6 roteiros criados para o mês de Abril, com base nas evidências clínicas e tendências de social listening, estruturados para o Instagram da Gaia Medicina Integrada.</p>
+    </header>
+
+    <div class="container" id="carrossel-container">
+
+        <!-- TEMA 1: AUTISMO -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#e0f2fe; color:#0369a1; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">🧩 2 de Abril • Dia Mundial do Autismo</div>
+                <h2>Atraso na fala é o único sinal de autismo?</h2>
+                <div class="gancho">"Seu bebê não responde ao nome ou evita contato visual? Vamos conversar sobre o autismo."</div>
+            </div>
+
+            <div class="swiper mySwiper" style="background-color: #0369a1;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-color: #0369a1;">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Seu bebê parece "no mundo dele"?</div>
+                        <div class="slide-body">Muitas famílias percebem sinais sutis, mas ouvem que "cada criança tem seu tempo". Mas a ciência diz algo diferente.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Quando o tempo não é a resposta</div>
+                        <div class="slide-body">No autismo, quanto mais cedo identificamos, melhor é o suporte para o desenvolvimento cerebral. O segredo está na observação.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">3 Sinais Precoces</div>
+                        <div class="slide-body">1. Falta de contato visual sustentado.<br>2. Não apontar para objetos de interesse aos 12-14 meses.<br>3. Não responder quando chamado pelo nome.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">A triagem M-CHAT</div>
+                        <div class="slide-body">Entre 16 e 30 meses, usamos uma escala simples chamada M-CHAT. Ela ajuda o pediatra a entender se há risco e agir rápido.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Diagnóstico não é rótulo</div>
+                        <div class="slide-body">É apenas o passaporte para o cuidado certo. Intervenção precoce muda o futuro da criança e traz calma para a família.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Você conhece o seu filho.</div>
+                        <div class="slide-body">Se o seu "feeling" de mãe ou pai diz que algo está diferente, confie nele. Nós estamos aqui para investigar com carinho.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #0c4a6e;">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Vamos conversar?</div>
+                        <div class="slide-body">Salve este post para consultar depois ou compartilhe com uma família. Agende sua consulta no link da bio.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>O atraso na fala costuma ser o sinal que mais chama a atenção das famílias, mas no Transtorno do Espectro Autista (TEA), ele raramente é o primeiro sinal.</p>
+                    <p>Muitas vezes, a criança "fala" através do olhar, do gesto de apontar e da resposta ao ser chamada. Quando esses marcos demoram a aparecer, o "esperar para ver" pode atrasar um suporte precioso. De acordo com a SBP, a plasticidade cerebral nos primeiros anos é a nossa maior aliada.</p>
+                    <p>Sinais como evitar o contato visual, não compartilhar o interesse em um brinquedo ou parecer não ouvir quando chamada são alertas importantes. O diagnóstico precoce não serve para rotular, mas para abrir portas para intervenções que farão toda a diferença na autonomia e qualidade de vida da criança.</p>
+                    <p>Se você tem dúvidas sobre o desenvolvimento do seu pequeno, confie no seu instinto e procure orientação especializada.</p>
+                    <p>Este conteúdo é informativo e não substitui a consulta médica.</p>
+                    <p>Que tal marcar aquela mãe ou pai que precisa saber desses sinais? Estamos à disposição para cuidar da sua família.</p>
+                </div>
+                <div class="legenda-tags">#autismo #pediatria #desenvolvimentoinfantil #conscientizaçãoautismo #saudeintegrativa #medicinahumanizada #gaiaclinica #tatuapé</div>
+            </div>
+        </div>
+
+        <!-- TEMA 2: SAÚDE INTEGRATIVA -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#dcfce7; color:#15803d; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">🌿 7 de Abril • Dia Mundial da Saúde</div>
+                <h2>Saúde não é apenas ausência de doença</h2>
+                <div class="gancho">"Saúde de verdade vai muito além de exames de sangue perfeitos."</div>
+            </div>
+
+            <div class="swiper mySwiper" style="background-color: #15803d;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Você é um todo, não apenas sintomas.</div>
+                        <div class="slide-body">Às vezes os exames estão "normais", mas você se sente exausta, sem ânimo ou impaciente. Já sentiu isso?</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">O olhar da Saúde Integrativa</div>
+                        <div class="slide-body">Não olhamos só para a doença, mas para a PESSOA. Sua rotina, suas emoções e seu estilo de vida contam a história da sua saúde.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Conexão Mente e Corpo</div>
+                        <div class="slide-body">O estresse não fica só na cabeça; ele inflama o corpo, altera o ciclo menstrual e afeta a imunidade. Cuide do que você sente.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Os 4 Pilares da Gaia</div>
+                        <div class="slide-body">1. Sono reparador<br>2. Nutrição consciente<br>3. Movimento com prazer<br>4. Manejo do estresse</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Prevenção é Estilo de Vida</div>
+                        <div class="slide-body">Pequenas escolhas diárias são a melhor medicina. Beber água, pausar para respirar e escolher alimentos reais.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Você merece equilíbrio.</div>
+                        <div class="slide-body">Saúde é ter energia para o que importa. É viver com leveza e presença. Vamos buscar esse caminho juntas?</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #166534;">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Como você se cuida hoje?</div>
+                        <div class="slide-body">Comenta aqui um hábito que você quer começar neste mês. Agende sua avaliação integral no link da bio.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>O que significa estar saudável para você? Ter exames de sangue dentro da referência ou acordar com disposição e clareza mental?</p>
+                    <p>Na Gaia Medicina Integrada, acreditamos que saúde é a harmonia entre o que acontece no seu corpo e como você processa o mundo. O estilo de vida é o nosso principal remédio: a forma como você dorme, se alimenta e lida com o estresse molda sua biologia de forma profunda.</p>
+                    <p>Saúde integrativa é sobre conexão empática e cuidado especializado que não separa a mente do corpo. É entender que aquele cansaço persistente ou a alteração hormonal podem ser sinais de que o estilo de vida precisa de um ajuste carinhoso.</p>
+                    <p>Nesse Dia Mundial da Saúde, o convite é para uma pausa. Como você tem cuidado de você por inteiro?</p>
+                    <p>Este conteúdo é informativo e educativo.</p>
+                    <p>Quer começar sua jornada de saúde integral? Acesse o link da bio e vamos conversar.</p>
+                </div>
+                <div class="legenda-tags">#saudeintegrativa #diamundialdasaude #estilodevida #cuidadointegral #medicinahumanizada #saudedamulher #bemestar #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- TEMA 3: DIA DO OBSTETRA -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#fee2e2; color:#b91c1c; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">🤰 12 de Abril • Dia do Obstetra</div>
+                <h2>Muito mais que "fazer exames"</h2>
+                <div class="gancho">"O Obstetra é o guardião de um momento único: o nascimento de uma nova mulher."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">O que faz um pré-natal ser inesquecível?</div>
+                        <div class="slide-body">Não é apenas o roteiro de ultrassons. É sentir que em cada consulta existe um porto seguro para suas dúvidas e medos.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Humanização do Cuidado</div>
+                        <div class="slide-body">Obstetrícia humanizada é ouvir com empatia, respeitar o protagonismo da mulher e basear cada decisão na melhor ciência.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">O Guardião da Jornada</div>
+                        <div class="slide-body">O obstetra está lá no primeiro positivo, nas noites sem dormir e no momento sublime do encontro. É uma parceria de vida.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Ciência e Acolhimento</div>
+                        <div class="slide-body">Traduzir o jargão médico em tranquilidade. Garantir que mãe e bebê sigam o caminho mais seguro e saudável.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">O Olhar para Além do Parto</div>
+                        <div class="slide-body">Cuidar da saúde mental materna, da amamentação e do puerpério. O cuidado não acaba quando o bebê nasce.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color: #B12A38;">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Nossa homenagem.</div>
+                        <div class="slide-body">A todos os obstetras que dedicam a vida a acolher novos começos com dedicação e amor. Feliz Dia do Obstetra!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Marque quem cuidou de você!</div>
+                        <div class="slide-body">Envie este post para seu obstetra ou conte aqui como foi sua jornada. Agende seu pré-natal no link da bio.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Ser obstetra é presenciar o milagre da vida todos os dias — mas, mais do que isso, é ser o suporte emocional e técnico de uma mulher que está se transformando.</p>
+                    <p>Na Gaia, acreditamos que o pré-natal é um tempo sagrado de preparação. O papel do obstetra vai muito além de prescrever vitaminas; ele é o parceiro que garante um atendimento humanizado, que tira as dúvidas na madrugada e que respeita o plano de parto de cada mãe.</p>
+                    <p>Hoje celebramos esses profissionais que, com conexão empática e rigor científico, guiam famílias em um dos momentos mais importantes de suas histórias. Parabéns a todos os colegas pelo Dia do Obstetra!</p>
+                    <p>Este conteúdo é informativo e de homenagem.</p>
+                    <p>Quem foi o obstetra que cuidou de você com tanto carinho? Marque ele(a) aqui nos comentários! ❤️</p>
+                </div>
+                <div class="legenda-tags">#diadoobstetra #obstetriciahumanizada #prenatal #partohumanizado #saudedamulher #maternidade #gaiaclinica #tatuape</div>
+            </div>
+        </div>
+
+        <!-- TEMA 4: SEMANA DA IMUNIZAÇÃO -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#fef9c3; color:#a16207; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">💉 24 a 30 de Abril • Semana da Imunização</div>
+                <h2>O escudo invisível da sua família</h2>
+                <div class="gancho">"Vacina na gestação e no bebê: o escudo de proteção para quem você mais ama."</div>
+            </div>
+
+            <div class="swiper mySwiper" style="background-color: #a16207;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Você sabia que a vacina começa na barriga?</div>
+                        <div class="slide-body">Vacinar a gestante é o jeito mais eficaz de passar anticorpos para o bebê antes mesmo dele nascer.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">As Três Essenciais na Gravidez</div>
+                        <div class="slide-body">1. Gripe (Influenza)<br>2. Hepatite B<br>3. dTpa (Tétano, Difteria e Coqueluche)</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Protegendo o recém-nascido</div>
+                        <div class="slide-body">O bebê só toma algumas vacinas após meses. Até lá, a imunidade que a mãe passa pela placenta é o que o mantém seguro.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">O Calendário Pediátrico</div>
+                        <div class="slide-body">Seguir o cronograma da SBP garante proteção contra Meningite, Pneumonia e Paralisia Infantil. Não pule etapas!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Reações são normais?</div>
+                        <div class="slide-body">Febre baixa ou dor no local são sinais de que o corpo está aprendendo a se defender. O benefício é infinitamente maior.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Vacinar é um ato de amor coletivo.</div>
+                        <div class="slide-body">Você protege seu filho e todas as crianças ao redor. A ciência de braços abertos para o futuro.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Caminho da vacina em dia?</div>
+                        <div class="slide-body">Salve este post para conferir a caderneta em casa. Tire suas dúvidas com nossa pediatria no link da bio!</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>A vacina é a primeira prova de amor que damos aos nossos filhos. Mas você sabia que essa proteção começa antes mesmo do parto?</p>
+                    <p>Ao vacinar a gestante com a dTpa (que protege contra a coqueluche), por exemplo, a mãe transfere anticorpos diretamente para o bebê. Isso cria um escudo vital para os primeiros meses de vida, quando o sistema imunológico dele ainda é muito frágil. De acordo com a SBP e a FEBRASGO, este é um dos cuidados preventivos mais importantes do pré-natal.</p>
+                    <p>Na infância, manter o calendário rigorosamente em dia é a garantia de que doenças graves permaneçam longe. Segurança, ciência e um olhar acolhedor: é assim que cuidamos da imunização na Gaia.</p>
+                    <p>Este conteúdo é pedagógico e informativo.</p>
+                    <p>Sua caderneta de vacinação — ou a do seu pequeno — está atualizada? Salve este post para não esquecer de conferir e tire suas dúvidas conosco!</p>
+                </div>
+                <div class="legenda-tags">#vacinacao #semanadaimunização #saudepediátrica #prenatal #vacinanagestação #prevencao #cuidadofamiliar #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- TEMA 5: HIPERTENSÃO NA GESTAÇÃO -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#ffedd5; color:#ea580c; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">⚠️ 26 de Abril • Prev. Hipertensão Arterial</div>
+                <h2>Sinais de Alerta: Pressão Alta na Gravidez</h2>
+                <div class="gancho">"Pressão alta na gravidez: 3 sinais silenciosos que podem esconder a pré-eclâmpsia."</div>
+            </div>
+
+            <div class="swiper mySwiper" style="background-color: #ea580c;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">Nem todo inchaço é "coisa da gravidez"</div>
+                        <div class="slide-body">Muitas gestantes ignoram sinais vitais achando que é apenas desconforto do terceiro trimestre. Vamos aprender a diferenciar?</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">O que é a Pré-eclâmpsia?</div>
+                        <div class="slide-body">É o aumento da pressão arterial após a 20ª semana, acompanhado ou não de perda de proteína na urina. Exige cuidado médico imediato.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">Sinal 1: Dor de Cabeça</div>
+                        <div class="slide-body">Uma dor persistente, que não passa com o descanso ou remédios comuns. Atenção redobrada se for na nuca.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Sinal 2: Alterações Visuais</div>
+                        <div class="slide-body">Enxergar "pontinhos brilhantes", luzes ou ter a visão embaçada de repente? Isso é um sinal de alerta clássico.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">Sinal 3: Dor no Estômago</div>
+                        <div class="slide-body">Uma dor intensa na parte superior do abdômen (boca do estômago). Não ignore esse desconforto persistente!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Prevenção e Medida</div>
+                        <div class="slide-body">O controle no consultório e o uso de aspirina/cálcio (sob indicação) salvam vidas. Meça sua pressão conforme orientado!</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Sua segurança em primeiro lugar.</div>
+                        <div class="slide-body">Compartilhe com uma amiga gestante. Se sentir algum desses sinais, procure sua obstetra imediatamente! Link da bio para agendar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>A pré-eclâmpsia é uma das condições mais importantes para rastreamos durante o pré-natal. O grande desafio é que ela pode ser silenciosa em seus estágios iniciais, por isso o monitoramento constante da pressão arterial é tão vital.</p>
+                    <p>Sinais como dores de cabeça intensas que não cedem, visão com flashes de luz e dores na parte superior do abdômen são formas do seu corpo dizer: "precisamos de ajuda". O inchaço repentino nas mãos e no rosto também merece uma avaliação rápida.</p>
+                    <p>A boa notícia? Com um pré-natal atento e dedicação ao momento único da gestação, conseguimos prevenir complicações graves. O uso de suplementação adequada e o controle rigoroso garantem a segurança sua e do seu bebê.</p>
+                    <p>Este conteúdo é informativo e não substitui o atendimento de emergência ou consulta médica.</p>
+                    <p>Já mediu sua pressão hoje? Salve este post e compartilhe com aquela amiga que está vivendo a gestação! 🤰❤️</p>
+                </div>
+                <div class="legenda-tags">#hipertensao #preeclampsia #gestacaosegura #obstetricia #prenatal #saudedamulher #cuidadogestacional #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- TEMA 6: DIA NACIONAL DA MULHER -->
+        <div class="tema-block">
+            <div class="tema-header">
+                <div style="background:#fdf2f8; color:#be185d; font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:10px;">🌸 30 de Abril • Dia Nacional da Mulher</div>
+                <h2>Você em todas as suas fases</h2>
+                <div class="gancho">"Ser mulher é um ciclo: você está acompanhando todas as suas fases?"</div>
+            </div>
+
+            <div class="swiper mySwiper" style="background-color: #be185d;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 1</div>
+                        <div class="slide-title">O autocuidado não tem idade.</div>
+                        <div class="slide-body">Da adolescência à maturidade plena, seu corpo passa por transformações que merecem ser vividas com consciência e suporte.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 2</div>
+                        <div class="slide-title">Check-up não é só exame</div>
+                        <div class="slide-body">É o momento de conversar sobre sua libido, sua energia, seu sono e como você se sente na própria pele.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 3</div>
+                        <div class="slide-title">A Prevenção Salva</div>
+                        <div class="slide-body">Papanicolau, Mamografia e exames hormonais. Coletas simples que garantem que você esteja sempre à frente de qualquer problema.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 4</div>
+                        <div class="slide-title">Saúde Menstrual e SOP</div>
+                        <div class="slide-body">Dores intensas ou ciclos caóticos não devem ser ignorados. Existe tratamento para você viver sem desconforto constante.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 5</div>
+                        <div class="slide-title">A Nova Maturidade</div>
+                        <div class="slide-body">Menopausa e climatério não são o fim, mas uma transição. Com suporte hormonal e estilo de vida, você continua sendo protagonista.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 6</div>
+                        <div class="slide-title">Ame sua história.</div>
+                        <div class="slide-body">Cuidar de si é um ato de liberdade. No Dia Nacional da Mulher, escolha se colocar em primeiro lugar.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-tag">Slide 7</div>
+                        <div class="slide-title">Seu check-up está em dia?</div>
+                        <div class="slide-body">Agende sua consulta anual e vamos cuidar do seu ciclo juntas. Link na bio! Marque uma mulher inspiradora.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">Texto da Legenda (Copy)</div>
+                <div class="legenda-content">
+                    <p>Ser mulher é viver em constante transformação. Do desabrochar da menarca à sabedoria da menopausa, cada fase traz desafios e belebzas únicas — e sua saúde precisa acompanhar esse ritmo.</p>
+                    <p>Neste Dia Nacional da Mulher, queremos te lembrar que o autocuidado especializado e preventivo é a base para uma vida plena. Não espere sentir dor para procurar sua ginecologista. Use o check-up anual para tirar dúvidas sobre seu ciclo, sua sexualidade e seu bem-estar emocional. Prevenir o Câncer de Colo do Útero e de Mama é um compromisso que renovamos juntas.</p>
+                    <p>Na Gaia, nosso olhar é integral: acolhemos a mulher que você foi, a que você é hoje e a que deseja se tornar. Conexão empática e ciência para todas as estações da sua vida.</p>
+                    <p>Este conteúdo é informativo e educativo.</p>
+                    <p>Quando foi sua última consulta de rotina? Aproveite este dia para priorizar sua saúde — agende seu horário pelo link da bio! 🌸✨</p>
+                </div>
+                <div class="legenda-tags">#dianacionaldamulher #saudedamulher #ginecologia #prevencao #autocuidado #menopausa #saudeintegrativa #medicinahumanizada #gaiaclinica</div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach(function (element) {
+                new Swiper(element, {
+                    effect: 'slider',
+                    grabCursor: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
