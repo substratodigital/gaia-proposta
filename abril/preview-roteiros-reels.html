@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleprompter GAIA: Roteiros Pediatria (Abril)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .script-text {
+            font-family: 'Roboto', serif;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #1e293b;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #853B50;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .timeline-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .gradient-heading {
+            background: linear-gradient(to right, #B12A38, #853B50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .time-block {
+            border-left: 3px dashed #cbd5e1;
+            padding-left: 2rem;
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .time-block::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #853B50;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #853B50;
+        }
+
+        .time-block:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        .bg-gaia-red { background-color: #B12A38; }
+        .text-gaia-red { color: #B12A38; }
+        .bg-gaia-wine { background-color: #853B50; }
+        .text-gaia-wine { color: #853B50; }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Top Navigation -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🎥</span>
+                    <span class="font-bold text-xl tracking-wider uppercase">Teleprompter Abril</span>
+                </div>
+                <div class="text-xs font-medium text-slate-400">
+                    Dra. Katia • Pediatria
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block bg-red-50 text-gaia-red px-4 py-2 rounded-full text-sm font-bold mb-6 flex items-center gap-2 mx-auto w-max">
+                <span class="text-lg">🎬</span> Skill Ativada: Diretor e Roteirista (Reels Longos)
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 tracking-tight">Roteiros <span class="gradient-heading">Pediatria</span> Especial Abril</h1>
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                Scripts oficiais para teleprompter. Foco em Autismo e Imunização, utilizando as melhores práticas da SBP e SBIm.
+            </p>
+            <div class="flex justify-center flex-wrap gap-4 text-sm font-semibold">
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200">🎯 Tom: Médica Amiga</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200">⏱️ Duração: ~3 Minutos</span>
+                <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg border border-slate-200">📚 Fontes: SBP / SBIm 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+
+        <!-- ============================================== -->
+        <!-- ROTEIRO 01: AUTISMO - COMO SUSPEITAR -->
+        <!-- ============================================== -->
+        <article class="glass-card">
+            <div class="bg-slate-50 border-b border-slate-200 p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex gap-2 items-center">
+                        <span class="bg-gaia-wine text-white text-xs font-bold px-3 py-1 rounded uppercase">Roteiro 01</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Neuropediatria</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-3">Como suspeitar e os primeiros sinais de Autismo</h2>
+                <p class="text-slate-500 font-medium">Abordagem: Validar o instinto dos pais e orientar sinais silenciosos.</p>
+            </div>
+
+            <div class="p-8 lg:p-12 space-y-8">
+                <!-- Hook -->
+                <div class="time-block">
+                    <span class="timeline-badge bg-rose-100 text-rose-700 mb-3">0 – 15s • Gancho</span>
+                    <div class="script-text">
+                        "Muitas famílias chegam aqui no consultório com aquela pulga atrás da orelha: 'Doutora, meu filho é muito quietinho' ou 'Ele parece não ouvir quando eu chamo'. E a resposta que mais ouvem por aí é: 'Calma, cada criança tem seu tempo'. Mas hoje eu quero te dizer que, embora cada criança seja única, o tempo é o nosso maior aliado na neuropediatria."
+                    </div>
+                </div>
+
+                <!-- Context -->
+                <div class="time-block">
+                    <span class="timeline-badge bg-slate-100 text-slate-700 mb-3">15s – 45s • Normalização</span>
+                    <div class="script-text">
+                        "O autismo não é um diagnóstico que a gente faz com um exame de sangue ou uma ressonância. Ele é clínico. É observação. E começa muito antes da criança falar a primeira palavra. O que a gente busca, na verdade, é a comunicação não-verbal. Sabe aquele sorriso que você dá e espera um de volta? Ou quando você aponta um avião no céu e espera que ele olhe para onde você apontou? Isso se chama atenção compartilhada."
+                    </div>
+                </div>
+
+                <!-- Technical -->
+                <div class="time-block">
+                    <span class="timeline-badge bg-gaia-wine text-white mb-3">45s – 1m45s • Sinais e Ciência</span>
+                    <div class="script-text">
+                        "Se o seu bebê, por volta dos 12 aos 18 meses, não mantém contato visual, não atende pelo nome ou parece preferir brincar sozinho sempre da mesma forma, o sinal de alerta precisa acender. A Sociedade Brasileira de Pediatria recomenda o rastreio universal entre os 18 e 24 meses com a escala M-CHAT. É um questionário simples que aplicamos na consulta de rotina. E por que a pressa? Porque o cérebro do bebê tem uma plasticidade incrível. Quanto antes a gente identifica e começa a estimular, mais conexões novas a gente cria."
+                    </div>
+                </div>
+
+                <!-- Action -->
+                <div class="time-block">
+                    <span class="timeline-badge bg-amber-100 text-amber-800 mb-3">1m45s – 2m30s • Ação e Genética</span>
+                    <div class="script-text">
+                        "O autismo tem uma base genética forte, então se já existem casos na família, nosso olhar é ainda mais cuidadoso. Se você sente que algo está diferente, não espere 'ficar mais velho' para investigar. O seu instinto materno é sagrado e a ciência está aqui para dar o suporte que o seu filho precisa para brilhar no tempo dele."
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="time-block">
+                    <span class="timeline-badge bg-green-100 text-green-800 mb-3">2m30s – 3m00s • Despedida</span>
+                    <div class="script-text font-bold italic">
+                        "Salva esse vídeo para consultar os sinais sempre que precisar. E se você conhece uma mãe que está com essa dúvida no coração, compartilha com ela. Informação precoce muda destinos. Um abraço!"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-8 border-t border-gray-200">
+                <div class="flex items-center gap-2 mb-4"><span class="text-xl">📝</span><h4 class="text-lg font-bold text-gray-700">Copy da Legenda</h4></div>
+                <div class="bg-white border border-gray-300 rounded-lg p-5 text-gray-600 text-sm whitespace-pre-wrap leading-relaxed">Aquele "feeling" de mãe que diz que algo está diferente... você já sentiu? ❤️
+
+Muitas vezes, na correria do dia a dia ou comparando com outras crianças, surgem dúvidas sobre o desenvolvimento dos nossos pequenos. "Será que ele já devia estar falando?", "Por que ele não me olha quando chamo?".
+
+A ciência nos mostra que o diagnóstico precoce do Transtorno do Espectro Autista (TEA) é a chave para o melhor desenvolvimento futuro. Quanto antes identificarmos os sinais e iniciarmos as intervenções, mais aproveitamos a incrível plasticidade cerebral da infância. 🧠✨
+
+⚠️ Lembre-se: Este conteúdo é informativo e não substitui uma consulta médica. Cada criança é única!
+
+#pediatria #autismoinfantil #desenvolvimentoinfantil #saudeinfantil #sbp #maedeautista</div>
+            </div>
+        </article>
+
+        <!-- ============================================== -->
+        <!-- ROTEIRO 02: AUTISMO - E AGORA? -->
+        <!-- ============================================== -->
+        <article class="glass-card">
+            <div class="bg-slate-50 border-b border-slate-200 p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex gap-2 items-center">
+                        <span class="bg-gaia-wine text-white text-xs font-bold px-3 py-1 rounded uppercase">Roteiro 02</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Pós-Diagnóstico</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-3">Recebi o diagnóstico de TEA. E agora?</h2>
+                <p class="text-slate-500 font-medium">Abordagem: Acolhimento profundo e plano terapêutico multidisciplinar.</p>
+            </div>
+
+            <div class="p-8 lg:p-12 space-y-8">
+                <div class="time-block">
+                    <span class="timeline-badge bg-rose-100 text-rose-700 mb-3">0 – 20s • Gancho</span>
+                    <div class="script-text">
+                        "O laudo saiu. O diagnóstico de Transtorno do Espectro Autista está na mesa e eu sei... parece que o chão sumiu um pouquinho. É um turbilhão de emoções, e a primeira coisa que eu quero te dizer é: acolha o seu processo. É normal sentir medo. Mas entenda que esse papel não muda quem o seu filho é. Ele continua sendo aquela criança maravilhosa."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-slate-100 text-slate-700 mb-3">20s – 50s • Acolhimento</span>
+                    <div class="script-text">
+                        "Agora você tem o mapa para entender como o mundo funciona para ele. Muitas mães sentem um certo luto pelo 'filho idealizado', e isso é humano. Mas o laudo não é um limite, é o ponto de partida para a evolução. É onde a gente para de tentar 'consertar' e começa de verdade a 'apoiar'."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-gaia-wine text-white mb-3">50s – 1m50s • O Time de Suporte</span>
+                    <div class="script-text">
+                        "O tratamento do autismo hoje é o que chamamos de multidisciplinar. É uma orquestra onde cada profissional toca um instrumento diferente. Temos a Fonoaudiologia cuidando da linguagem, a Terapia Ocupacional ajudando na integração sensorial e a Psicologia — muitas vezes com foco em análise do comportamento — trabalhando as habilidades sociais. Não existe um remédio para o autismo, o 'remédio' é o estímulo certo, na hora certa."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-amber-100 text-amber-800 mb-3">1m50s – 2m40s • Treinamento de Pais</span>
+                    <div class="script-text">
+                        "E aqui vai um ponto fundamental: o treino dos pais. Você não precisa ser terapeuta, mas entender como se comunicar melhor com seu filho nas atividades do dia a dia, como no banho ou no brincar, é o que realmente acelera o progresso. A jornada é longa, mas a ciência evoluiu muito e hoje sabemos que, com o suporte adequado, essas crianças conquistam níveis incríveis de autonomia."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-green-100 text-green-800 mb-3">2m40s – 3m00s • Conclusão</span>
+                    <div class="script-text font-bold italic">
+                        "Você não está sozinha nessa jornada. Celebre cada vitória: um olhar novo ou uma palavra nova é uma conquista épica. Mande sua dúvida aqui embaixo ou compartilhe com outra 'família azul'. Conhecimento e acolhimento são os nossos melhores caminhos."
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-8 border-t border-gray-200">
+                <div class="flex items-center gap-2 mb-4"><span class="text-xl">📝</span><h4 class="text-lg font-bold text-gray-700">Copy da Legenda</h4></div>
+                <div class="bg-white border border-gray-300 rounded-lg p-5 text-gray-600 text-sm whitespace-pre-wrap leading-relaxed">Meu filho é autista. E agora? ✨
+
+O diagnóstico pode trazer medo e incerteza, mas ele também traz clareza. Agora você tem o mapa para oferecer ao seu filho o suporte que ele precisa para florescer.
+
+O caminho envolve uma equipe multidisciplinar e, principalmente, o acolhimento da família. Lembre-se: o diagnóstico não muda quem seu filho é, ele apenas abre as portas para as intervenções corretas.
+
+Respire fundo, informe-se e conte com suporte especializado. Você não está sozinha nessa jornada azul. 💙
+
+#autismo #tea #diagnosticoautismo #maedeautista #multiprofissional #pediatra #acolhimento</div>
+            </div>
+        </article>
+
+        <!-- ============================================== -->
+        <!-- ROTEIRO 03: IMUNIZAÇÃO / GRIPE -->
+        <!-- ============================================== -->
+        <article class="glass-card">
+            <div class="bg-slate-50 border-b border-slate-200 p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex gap-2 items-center">
+                        <span class="bg-gaia-wine text-white text-xs font-bold px-3 py-1 rounded uppercase">Roteiro 03</span>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Imunização</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-3">Vacinas: O exército de proteção do seu filho</h2>
+                <p class="text-slate-500 font-medium">Abordagem: Foco na vacina anual da gripe e doenças evitáveis pela SBIm.</p>
+            </div>
+
+            <div class="p-8 lg:p-12 space-y-8">
+                <div class="time-block">
+                    <span class="timeline-badge bg-rose-100 text-rose-700 mb-3">0 – 15s • Gancho</span>
+                    <div class="script-text">
+                        "Abril chegou, o tempo começa a esfriar e a pergunta campeã no consultório é: 'Doutora, meu filho tomou a vacina da gripe ano passado, precisa mesmo tomar de novo?'. E a resposta curta e direta é: Sim. Com certeza absoluta. E eu vou te explicar por que a ciência da Sociedade Brasileira de Imunizações bate tanto nessa tecla todos os anos."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-slate-100 text-slate-700 mb-3">15s – 45s • Por que anual?</span>
+                    <div class="script-text">
+                        "O vírus da gripe não é estático. Ele é inteligente e muda de 'roupa' o tempo todo. A vacina que seu filho tomou há 12 meses foi feita para os vírus do passado. A vacina de 2026 foi atualizada com as cepas que estão à espreita agora. Vacinar todo ano é como dar um upgrade no sistema de segurança do corpo do seu filho para ele estar pronto para os novos invasores."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-gaia-wine text-white mb-3">45s – 1m45s • Outras Doenças</span>
+                    <div class="script-text">
+                        "Mas não pare na gripe. Aproveite esse momento para checar a caderneta inteira. Estamos vendo o ressurgimento de doenças que a gente achava que estavam no passado, como o Sarampo. E temos a Poliomielite, que agora tem esquema vacinal exclusivamente injetável — a VIP — para garantir mais segurança. Vacina não é só 'tomar picadinha', é criar um escudo invisível que protege não só o seu filho, mas as crianças em volta dele também."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-amber-100 text-amber-800 mb-3">1m45s – 2m30s • Mitos de Reação</span>
+                    <div class="script-text">
+                        "Uma dica prática: se o seu pequeno está com uma coriza leve ou um resfriado sem febre, ele pode e deve ser vacinado. Não adie a proteção. E lembre-se: reações como febre baixa ou dor no braço são sinais de que o sistema imunológico está respondendo. É o treinamento do exército funcionando para que, quando a doença real chegar, ele saiba exatamente como agir."
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <span class="timeline-badge bg-green-100 text-green-800 mb-3">2m30s – 3m00s • Chamada Final</span>
+                    <div class="script-text font-bold italic">
+                        "Manter a vacinação em dia é o maior ato de amor preventivo que você pode fazer. Consulte o calendário oficial da SBIm e vamos garantir um inverno tranquilo para os nossos pequenos. Compartilhe esse lembrete com as mães da escola!"
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-8 border-t border-gray-200">
+                <div class="flex items-center gap-2 mb-4"><span class="text-xl">📝</span><h4 class="text-lg font-bold text-gray-700">Copy da Legenda</h4></div>
+                <div class="bg-white border border-gray-300 rounded-lg p-5 text-gray-600 text-sm whitespace-pre-wrap leading-relaxed">Vacinas em dia: Cuidado que protege! 💉🛡️
+
+Com a chegada de abril e as mudanças de temperatura, a vacina da gripe (Influenza) volta a ser prioridade. Mas você sabe por que precisamos da dose anual?
+
+Os vírus mudam e se adaptam. A vacina anual garante que o sistema imunológico do seu filho esteja atualizado contra as cepas mais recentes. Além da gripe, é fundamental conferir se vacinas contra Sarampo, Pólio e Meningites estão em dia.
+
+Vacinar é um ato de amor coletivo. Confira a caderneta e proteja quem você ama!
+
+#vacinacao #imunizacao #pediatria #saudeinfantil #sbim #vacinaéamor #prevenção #gripeinfluenza</div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="bg-gray-900 text-slate-400 py-10 mt-20 text-center border-t-8 border-gaia-wine">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center gap-4">
+            <div class="text-3xl">🎬</div>
+            <p>&copy; 2026 GAIA TELEPROMPTER. Estruturado pela Inteligência Avançada utilizando a skill de Roteiros (Reels Longos).</p>
+        </div>
+    </footer>
+
+</body>
+</html>
