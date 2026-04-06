@@ -1,555 +1,655 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teleprompter GAIA: Roteiros Obstetrícia (Abril)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .script-text { font-family: 'Roboto', serif; font-size: 1.4rem; line-height: 1.8; color: #1e293b; background: #fff; padding: 2rem; border-radius: 0.75rem; border-left: 6px solid #853B50; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .glass-card { background: #ffffff; border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; overflow: hidden; margin-bottom: 4rem; }
-        .timeline-badge { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.05em; padding: 0.4rem 1rem; border-radius: 9999px; display: inline-flex; align-items: center; background-color: #853B50; color: white; margin-bottom: 1rem; }
-        .gradient-heading { background: linear-gradient(to right, #B12A38, #853B50); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-        .time-block { border-left: 3px dashed #e2e8f0; padding-left: 2.5rem; position: relative; padding-bottom: 4rem; }
-        .time-block::before { content: ''; position: absolute; left: -11px; top: 8px; width: 20px; height: 20px; border-radius: 50%; background-color: #853B50; border: 4px solid white; box-shadow: 0 0 0 2px #853B50; }
-        .time-block:last-child { border-left-color: transparent; padding-bottom: 0; }
-        .tag { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 9999px; background: #f1f5f9; color: #64748b; }
-        .action-note { color: #B12A38; font-weight: 700; font-style: italic; background: #fff1f2; padding: 0.2rem 0.5rem; border-radius: 4px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teleprompter GAIA — Roteiros Obstetrícia Abril 2026</title>
+<meta name="description" content="13 roteiros completos de Obstetrícia para a equipe médica Gaia Medicina Integrada — Abril 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--wine:#853B50;--wine-deep:#6B2D3E;--red:#B12A38;--cream:#FDF8F4;--sage:#E8F0E8;--gold:#C9A84C;--dark:#1a1a2e;--gray:#64748b;--light:#f8fafc}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:#1e293b;-webkit-font-smoothing:antialiased}
+.nav{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:900px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand span:first-child{font-size:2rem}
+.nav-title{font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:.15em}
+.nav-sub{font-size:.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.2em}
+.nav-meta{font-size:.75rem;color:#94a3b8;display:none}
+@media(min-width:640px){.nav-meta{display:block}}
+main{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}
+.hero{text-align:center;padding:4rem 0 3rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;color:var(--dark);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--red),var(--wine));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+.hero .rule{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.5rem 1.25rem;border-radius:99px;background:#fff1f2;color:var(--red);font-weight:600;font-size:.85rem}
+.card{background:#fff;border-radius:1.25rem;box-shadow:0 8px 30px rgba(0,0,0,.06);border:1px solid #e8e0db;margin-bottom:3.5rem;overflow:hidden}
+.card-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid #f0ebe7;display:flex;gap:1.25rem;align-items:flex-start;flex-wrap:wrap}
+.card-num{width:3.5rem;height:3.5rem;border-radius:1rem;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 12px rgba(133,59,80,.3)}
+.card-info h2{font-size:1.6rem;font-weight:700;color:var(--dark);line-height:1.3}
+.card-tags{display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap}
+.tag{font-size:.7rem;font-weight:600;padding:.3rem .7rem;border-radius:99px;background:#f1f5f9;color:var(--gray)}
+.tag.dur{background:var(--sage);color:#2d5a2d}
+.card-body{padding:2rem}
+.tl{position:relative;padding-left:2.5rem}
+.tl::before{content:'';position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--wine),#e8e0db)}
+.block{position:relative;padding-bottom:2.5rem}
+.block:last-child{padding-bottom:0}
+.block::before{content:'';position:absolute;left:-2.5rem;top:10px;width:18px;height:18px;border-radius:50%;background:var(--wine);border:4px solid #fff;box-shadow:0 0 0 2px var(--wine);z-index:1}
+.block:last-child .tl::before{display:none}
+.block-time{display:inline-flex;align-items:center;padding:.3rem .85rem;border-radius:99px;background:var(--wine);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem}
+.block-label{display:inline-block;margin-left:.5rem;padding:.2rem .6rem;border-radius:4px;background:#fff1f2;color:var(--red);font-size:.7rem;font-weight:700}
+.script{font-family:'Lora',serif;font-size:1.3rem;line-height:1.9;color:#2c2c2c;background:var(--cream);padding:1.5rem 1.75rem;border-radius:.75rem;border-left:5px solid var(--wine)}
+.script strong{color:var(--wine-deep)}
+.ref{margin-top:1.5rem;padding:1rem 1.5rem;background:#f8f6f3;border-radius:.75rem;border:1px solid #e8e0db}
+.ref-title{font-size:.75rem;font-weight:700;color:var(--wine);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.ref a{font-size:.8rem;color:var(--gray);text-decoration:none;display:block;margin-bottom:.25rem;word-break:break-all}
+.ref a:hover{color:var(--wine);text-decoration:underline}
+.copy-section{margin-top:1.5rem;padding:1.25rem 1.5rem;background:#fafaf8;border-radius:.75rem;border:1px dashed #d4cfc8}
+.copy-section h4{font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.copy-section p{font-size:.95rem;line-height:1.7;color:#555}
+.copy-section .hashtags{font-size:.8rem;color:var(--wine);margin-top:.5rem;font-weight:500}
+footer{background:var(--dark);color:#94a3b8;text-align:center;padding:3rem 1rem;font-size:.85rem}
+footer p+p{margin-top:.25rem}
+</style>
 </head>
-<body class="antialiased">
-    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-3xl">🌿</span>
-                <div>
-                    <span class="block font-bold text-xl tracking-wider uppercase leading-none">Teleprompter Abril</span>
-                    <span class="text-[10px] text-slate-400 uppercase tracking-widest">Gaia Medicina Integrada</span>
-                </div>
-            </div>
-            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-                <span>13 Roteiros</span>
-                <span class="h-4 w-px bg-slate-700"></span>
-                <span>Obstetrícia</span>
-            </div>
-        </div>
-    </nav>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-brand"><span>🌿</span><div><div class="nav-title">Teleprompter Abril</div><div class="nav-sub">Gaia Medicina Integrada</div></div></div><div class="nav-meta">13 Roteiros · Obstetrícia · Abril 2026</div></div></nav>
 
-    <main class="max-w-4xl mx-auto px-4 py-16">
-        <header class="text-center mb-20">
-            <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">
-                Scripts <span class="gradient-heading">Abril</span>
-            </h1>
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                Foco total na câmera. Tom <span class="text-[#853B50] font-semibold">Médica Amiga</span>: acolhedor, seguro e didático.
-            </p>
-        </header>
+<main>
+<div class="hero">
+<h1>Roteiros de <em>Obstetrícia</em></h1>
+<p>Scripts completos para teleprompter. Tom <strong>Médica Amiga</strong>: acolhedor, seguro, didático. Foco total na câmera.</p>
+<div class="rule">❌ Expressão proibida: "parto humanizado"</div>
+</div>
 
-        <!-- REEL 01 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex items-start justify-between flex-wrap gap-4">
-                    <div class="flex gap-5">
-                        <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">01</span>
-                        <div>
-                            <h2 class="text-3xl font-bold text-gray-900">O Teste Deu Positivo! E Agora?</h2>
-                            <div class="flex gap-2 mt-3">
-                                <span class="tag">⏱️ 1min 30s</span>
-                                <span class="tag">✨ Acolhedor / Leve</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        <span class="action-note">[Gancho]</span><br/>
-                        "Oi meninas! O teste deu positivo... e agora? Antes de sair correndo para o ultrassom, eu preciso te contar os três primeiros passos que toda gestante precisa saber."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">15 – 40s</span>
-                    <div class="script-text">
-                        <span class="action-note">[Caso de consultório]</span><br/>
-                        "Todo dia no consultório eu vejo gestantes que chegam com o ultrassom feito na 5ª semana... e o laudo diz: 'embrião não visualizado'. Aí vem o desespero. Gente — isso é completamente normal! Antes de 6 semanas, o ultrassom quase sempre não mostra ainda o embrião, porque ele é minúsculo demais."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">40s – 1m20s</span>
-                    <div class="script-text">
-                        <span class="action-note">[Desenvolvimento técnico]</span><br/>
-                        "Então, quais são os três primeiros passos? <strong>Passo 1:</strong> Comece o metilfolato AGORA — essa é a forma ativa do ácido fólico que protege a formação da espinha do seu bebê. <strong>Passo 2:</strong> Liste todos os medicamentos que você toma — analgésicos, ansiolíticos, vitaminas — e traga para a consulta. Nada de parar ou tomar por conta. <strong>Passo 3:</strong> Agende sua primeira consulta de pré-natal. O ultrassom ideal é entre 7 e 9 semanas, quando já batemos o coraçãozinho com segurança."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m20s – End</span>
-                    <div class="script-text">
-                        <span class="action-note">[CTA]</span><br/>
-                        "Cuida de você — esse começo é a base de tudo. Salva esse vídeo e manda para aquela amiga que está esperando o resultado do teste. Um abraço!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 01 -->
+<article class="card" id="reel-01">
+<div class="card-head">
+<div class="card-num">01</div>
+<div class="card-info">
+<h2>O Teste Deu Positivo! E Agora?</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min</span><span class="tag">Semana 4–6</span><span class="tag">✨ Acolhimento + Orientação</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Oi meninas! O teste deu positivo… e agora? Antes de sair correndo para o ultrassom, eu preciso te contar os três primeiros passos que toda gestante precisa saber. Porque esse começo tem uma ordem — e seguir ela direitinho vai fazer toda a diferença na sua gestação."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Caso de consultório</span>
+<div class="script">"Todo dia aqui no consultório eu vejo gestantes que chegam com o ultrassom feito na 5ª semana… e o laudo diz: 'embrião não visualizado'. Aí vem o desespero. Gente — isso é completamente normal! Antes de 6 semanas, o ultrassom quase sempre não mostra ainda o embrião, porque ele mede menos de 2 milímetros. É tiiiiny. E aí a gente fica ansiosa à toa quando poderia estar tranquila cuidando do que realmente importa nesse comecinho."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Então vamos lá — quais são os três primeiros passos?<br><br><strong>Passo 1:</strong> Comece o metilfolato agora. Essa é a forma ativa do ácido fólico — e ela protege a formação do tubo neural do seu bebê, que é de onde vai surgir o cérebro e a medula espinhal. A FEBRASGO recomenda pelo menos 400 microgramas por dia, desde antes de engravidar e ao longo de todo o primeiro trimestre. Se você não estava tomando ainda, começa hoje.<br><br><strong>Passo 2:</strong> Faz uma lista de todos os medicamentos que você toma — analgésicos, ansiolíticos, vitaminas, suplementos, chás. Tudo. E traz para a sua primeira consulta. Nada de parar por conta e nada de tomar sem orientação. Muitos medicamentos precisam ser reavaliados na gravidez.<br><br><strong>Passo 3:</strong> Agende sua primeira consulta de pré-natal. E o ultrassom? O ideal é entre 7 e 9 semanas. É quando a gente consegue ver o saquinho gestacional bem formadinho, confirmar que tá dentro do útero — porque precisamos descartar a gravidez ectópica — e ouvir aquele coraçãozinho batendo pela primeira vez. Bip, bip, bip."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m00s</span><span class="block-label">Tranquilização + CTA</span>
+<div class="script">"Respira fundo. Esse começo é a base de tudo. E se alguém te disser pra correr e fazer ultrassom com 4 semanas, manda esse vídeo pra ela. Salva, compartilha com aquela amiga que está esperando o resultado do teste. Um abraço da Gaia!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.febrasgo.org.br/pt/noticias/item/1370-suplementacao-de-acido-folico-na-gestacao" target="_blank">FEBRASGO — Suplementação de ácido fólico/metilfolato na gestação (Femina, 2025)</a>
+<a href="https://www.msdmanuals.com/pt/profissional/ginecologia-e-obstetr%C3%ADcia/anomalias-da-gesta%C3%A7%C3%A3o/gesta%C3%A7%C3%A3o-ect%C3%B3pica" target="_blank">MSD Manuals — Gestação ectópica: detecção precoce</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O teste deu positivo… e agora? 🌿 Antes de correr para o ultrassom, faz esses 3 passos com a gente. O início do pré-natal tem uma sequência certa — e ela começa muito antes do primeiro exame. Quando o ultrassom é feito antes de 6 semanas, muitas vezes o embrião ainda não aparece. Não é sinal de problema! É só o momento certo de saber esperar. 🤍 Salva esse vídeo e manda para uma amigona que está nessa fase!</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Obstetrícia #Gestação #PreNatal #TesteDeuPositivo #MetilFolato #PrimeiroTrimestre #MédicaAmiga #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 02 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">02</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Os Primeiros Sinais: É Normal?</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min</span>
-                            <span class="tag">✨ Empatia / Alívio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "Cansaço no limite, enjoo que não conhece horário e choro de repente, sem motivo... Oi meninas, se você está se reconhecendo aqui, você está grávida e está completamente normal."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">15 – 50s</span>
-                    <div class="script-text">
-                        "Aqui no consultório, uma das perguntas mais comuns do primeiro trimestre é: 'Dra., estou enjoada o dia todo. Será que tem algo errado?' Não tem nada errado — muito pelo contrário. Esse enjoo intenso muitas vezes é um sinal de que a gestação está evoluindo bem."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m40s</span>
-                    <div class="script-text">
-                        "Deixa eu explicar o que é responsável por isso tudo. Nos primeiros meses, seus níveis de <strong>HCG</strong> — o hormônio da gravidez — sobem de forma exponencial. Esse hormônio é quem sustenta a gestação, mas também estimula o centro do vômito no cérebro e retarda o esvaziamento do estômago. A progesterona relaxa os músculos do sistema digestivo — por isso a digestão fica mais lenta e o enjôo piora. E o cansaço extremo? É porque o seu corpo está construindo uma nova vida, do zero, 24 horas por dia."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m40s – End</span>
-                    <div class="script-text">
-                        "O que ajuda: coma em pequenas quantidades e com mais frequência, tente gengibre em forma de chazinho ou biscoitinho pela manhã, com orientação médica. Hidratação fracionada ao longo do dia. E se o vômito for muito intenso, vem aqui — pode ser Hiperêmese Gravídica. Conta pra mim: qual foi o sintoma mais inesperado?"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 02 -->
+<article class="card" id="reel-02">
+<div class="card-head">
+<div class="card-num">02</div>
+<div class="card-info">
+<h2>Os Primeiros Sinais: É Normal Sentir Isso?</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 30s</span><span class="tag">Semana 6–10</span><span class="tag">✨ Empatia + Alívio</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Cansaço no limite, enjoo que não conhece horário e choro de repente, sem motivo nenhum… Oi meninas, se você está se reconhecendo aqui, relaxa: você está grávida e está completamente normal."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Caso de consultório</span>
+<div class="script">"Aqui no consultório, uma das perguntas mais comuns do primeiro trimestre é: 'Dra., estou enjoada o dia todo. Será que tem algo errado?' Não tem nada errado — muito pelo contrário. Esse enjoo intenso muitas vezes é um sinal de que a gestação está evoluindo bem. É contraditório, né? Mas é a pura verdade. O mesmo hormônio que sustenta a vida do seu bebê é o responsável por esse mal-estar."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Deixa eu explicar. Nos primeiros meses, seus níveis de <strong>HCG</strong> — o hormônio da gravidez — sobem de forma exponencial. O pico acontece entre a 8ª e a 10ª semana. Esse hormônio é quem sustenta a gestação… mas ele também estimula o centro do vômito no seu cérebro e retarda o esvaziamento do estômago.<br><br>A <strong>progesterona</strong> relaxa os músculos do sistema digestivo — por isso a digestão fica mais lenta, você sente estufamento, e o enjoo piora.<br><br>E o cansaço extremo? É porque o seu corpo está literalmente construindo uma nova vida do zero, 24 horas por dia. Coração, cérebro, medula, placenta — tudo sendo formado enquanto você tenta sobreviver ao dia. A boa notícia? A maioria das gestantes melhora significativamente a partir da 13ª, 14ª semana."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m15s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"O que ajuda: <strong>coma em pequenas quantidades</strong> e com mais frequência — não fique de estômago vazio, isso piora muito. Tente <strong>gengibre</strong> em forma de chazinho ou biscoitinho pela manhã, com orientação médica. <strong>Hidratação fracionada</strong> — vários goles ao longo do dia, não copos grandes de uma vez. E se o vômito for muito intenso, com perda de peso e sem conseguir manter líquido, vem pra cá — pode ser Hiperêmese Gravídica, e precisa de tratamento."</div>
+</div>
+<div class="block">
+<span class="block-time">2m15s – 2m30s</span><span class="block-label">CTA</span>
+<div class="script">"Conta pra mim: qual foi o sintoma mais inesperado que você sentiu no primeiro trimestre? Me responde aqui nos comentários — eu leio todos! Um abraço."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.msdmanuals.com/pt/casa/problemas-de-sa%C3%BAde-feminina/sintomas-durante-a-gravidez/n%C3%A1useas-e-v%C3%B4mitos-no-in%C3%ADcio-da-gravidez" target="_blank">MSD Manuals — Náuseas e vômitos no início da gravidez (HCG / Progesterona)</a>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO — Orientações sobre hiperêmese gravídica</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Cansaço, enjoo sem hora certa e choro repentino… 🤍 Tudo isso tem um nome: primeiro trimestre. A culpa é do HCG — o hormônio que sobe exponencialmente nos primeiros meses e que, ao mesmo tempo que sustenta a gestação, estimula o centro do vômito e deixa a digestão mais lenta. A boa notícia: a maioria melhora a partir da 13ª–14ª semana. 🌿 Salva e compartilha com outra mamãe sobrevivendo ao 1º trimestre!</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PrimeiroTrimestre #Enjoo #Gestação #Obstetra #MédicaAmiga #PreNatal #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 03 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">03</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">A Emoção do Primeiro Ultrassom</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 1min 45s</span>
-                            <span class="tag">✨ Emoção / Segurança</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "Aquele momento que a gente aponta o ultrassom e ouve... bip, bip, bip... O coração da mãe para e recomeça diferente. Mas enquanto você limpa a lágrima, o que a gente está avaliando aqui?"
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">15 – 45s</span>
-                    <div class="script-text">
-                        "O primeiro ultrassom obstétrico geralmente é feito entre a 7ª e a 9ª semana. E ele é muito mais do que um momento emocionante — é uma consulta médica completa."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">45s – 1m30s</span>
-                    <div class="script-text">
-                        "O que a gente avalia aqui: Primeiro — a gestação está dentro do útero? Segundo — quantos bebês? E se dividem a mesma placenta. Terceiro — a idade gestacional. Uma datação correta no primeiro ultrassom é fundamental para todas as decisões. Quarto — o batimento cardíaco fetal. Aquele bip que move o seu mundo."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m30s – End</span>
-                    <div class="script-text">
-                        "Esse exame precisa ser feito com uma equipe que tem experiência e tecnologia de ultrassom de alta qualidade. Aqui na Gaia, cuidamos desse momento com o carinho e a precisão que ele merece. Nos chama!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 03 -->
+<article class="card" id="reel-03">
+<div class="card-head">
+<div class="card-num">03</div>
+<div class="card-info">
+<h2>O Primeiro Olhar: A Emoção do Ultrassom</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min</span><span class="tag">Semana 7–9</span><span class="tag">✨ Emoção + Conexão</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Aquele momento que a gente aponta o ultrassom e ouve… bip, bip, bip… O coração da mãe para e recomeça diferente. Mas enquanto você limpa a lágrima, o que a gente está avaliando aqui?"</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"O primeiro ultrassom obstétrico é feito entre a 7ª e a 9ª semana. E ele é muito mais do que um momento emocionante — é uma consulta médica completa. E cada detalhe que aparece naquela tela pequenina faz uma diferença enorme no acompanhamento de toda a sua gestação."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"O que a gente avalia nesse momento: <strong>Primeiro</strong> — a gestação está dentro do útero? É agora que descartamos a gravidez ectópica — que é quando o embrião se implanta fora do útero, geralmente na tuba uterina. Isso acontece em cerca de 2% das gestações e precisa de intervenção urgente.<br><br><strong>Segundo</strong> — quantos bebês? E se forem dois, a pergunta mais importante: eles dividem a mesma placenta? Essa informação só pode ser determinada com segurança agora, no primeiro trimestre.<br><br><strong>Terceiro</strong> — a idade gestacional. Uma datação correta no primeiro ultrassom é fundamental para todas as decisões que virão depois — quando pedir cada exame, quando considerar prematuridade, quando planejar o nascimento.<br><br><strong>Quarto</strong> — o batimento cardíaco fetal. Aquele bip que move o mundo da mãe. E que pra nós, médicas, é a confirmação de que a vida está ali, pulsando."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m00s</span><span class="block-label">CTA</span>
+<div class="script">"Por isso, esse exame precisa ser feito com uma equipe experiente e tecnologia de alta qualidade. Aqui na Gaia, cuidamos desse momento com o carinho e a precisão que ele merece. Nos chama!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.msdmanuals.com/pt/profissional/ginecologia-e-obstetr%C3%ADcia/anomalias-da-gesta%C3%A7%C3%A3o/gesta%C3%A7%C3%A3o-ect%C3%B3pica" target="_blank">MSD Manuals — Gestação ectópica (~2% das gestações)</a>
+<a href="https://www.isuog.org" target="_blank">ISUOG — Diretrizes para ultrassom obstétrico de 1º trimestre</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Aquele bip, bip, bip que muda tudo… 🤍 O primeiro ultrassom não é só um momento emocionante — é uma consulta médica completa. É quando confirmamos que a gestação está no lugar certo, quantos bebês existem, datamos com precisão e ouvimos o coração pela primeira vez. 🔬 Se você está nessa fase, cuida desse momento com quem tem experiência. 🌿</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PrimeiroUltrassom #Gestação #Obstetra #PrimeiroTrimestre #MédicaAmiga #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 04 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">04</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Nutrição que Protege</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min 30s</span>
-                            <span class="tag">✨ Empoderamento / Ciência</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "O que você está comendo hoje está, literalmente, programando o metabolismo do seu filho para os próximos 30 anos. Isso não é exagero — é ciência."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">15 – 50s</span>
-                    <div class="script-text">
-                        "Isso se chama epigenética nutricional — a ideia de que os genes do bebê podem ser ativados ou silenciados a partir do que a mãe come. E os primeiros três meses são o período mais sensível de todos."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m50s</span>
-                    <div class="script-text">
-                        "Os nutrientes que não podem faltar: <strong>Metilfolato</strong>, para o tubo neural. <strong>DHA</strong> (ômega-3), para o cérebro. <strong>Ferro</strong>, essencial a partir de agora. <strong>Iodo</strong>, para a tireoide fetal e cognição."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m50s – End</span>
-                    <div class="script-text">
-                        "Dica: ácido fólico sintético e metilfolato não são a mesma coisa. Algumas mulheres não convertem o sintético bem. Por isso, indicamos o metilfolato direto. Converse com sua obstetra e salva esse vídeo!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 04 -->
+<article class="card" id="reel-04">
+<div class="card-head">
+<div class="card-num">04</div>
+<div class="card-info">
+<h2>Nutrição que Protege Desde o Começo</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~3 min</span><span class="tag">Semana 8–12</span><span class="tag">✨ Empoderamento + Ciência</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"O que você está comendo hoje está, literalmente, programando o metabolismo do seu filho para os próximos 30 anos. Isso não é exagero — é ciência. E se chama epigenética nutricional."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"A epigenética mostra que os genes do bebê podem ser ativados ou silenciados a partir do que a mãe come durante a gestação. É como se a alimentação mandasse instruções para o corpo do bebê sobre como ele vai funcionar no futuro. E os primeiros três meses são o período mais sensível e decisivo de todos."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Quais são os nutrientes que não podem faltar?<br><br><strong>Metilfolato</strong> — a forma ativa do ácido fólico. A FEBRASGO recomenda desde antes de engravidar: 400 microgramas por dia. Protege a formação do tubo neural — que é a origem do cérebro e da medula espinhal do seu bebê.<br><br><strong>DHA</strong> — um tipo de ômega-3. O cérebro do bebê é formado, em grande parte, de DHA. É essencial para o desenvolvimento cortical e cognitivo.<br><br><strong>Ferro</strong> — a partir do segundo trimestre, a demanda dispara. Anemia materna está diretamente associada a baixo peso ao nascer e complicações no parto.<br><br><strong>Iodo</strong> — pouco falado, mas absolutamente crucial. É essencial para o desenvolvimento da tireoide fetal e do sistema nervoso. A baixa ingesta de iodo é uma das causas mais comuns de déficit cognitivo evitável no mundo."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Uma informação que você precisa saber: ácido fólico sintético e metilfolato <strong>não são a mesma coisa</strong>. Algumas mulheres têm uma variação genética — a mutação MTHFR — que dificulta a conversão do ácido fólico sintético na forma ativa que o corpo realmente precisa. Por isso, muitos protocolos modernos já indicam diretamente o metilfolato. Converse com sua obstetra sobre qual é o melhor pra você. Não é uma questão de modinha — é personalização baseada em genética."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 3m00s</span><span class="block-label">Tranquilização + CTA</span>
+<div class="script">"Não se culpe se você não sabia disso antes. A informação chegou agora — e agora você pode agir. Cada escolha que você faz a partir de hoje é uma escolha de amor pelo futuro do seu filho. Salva esse vídeo — cada nutriente que você aprendeu pode fazer uma diferença real. Um abraço!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.febrasgo.org.br/pt/noticias/item/1370-suplementacao-de-acido-folico-na-gestacao" target="_blank">FEBRASGO (Femina, 2025) — Metilfolato 400 µg/dia e suplementação pré-natal</a>
+<a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed — DHA e desenvolvimento cortical fetal</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A nutrição na gestação não é sobre "comer por dois". É sobre comer de forma estratégica, para dois. 🌿 Metilfolato, DHA, ferro e iodo — cada um tem papel específico na formação do cérebro, coração e metabolismo do bebê. E a ciência mostra: o que a mãe come nos primeiros 3 meses pode influenciar a saúde do filho por décadas. Isso é epigenética nutricional. 💙</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #NutriçãoNaGravidez #MetilFolato #Epigenética #Gestação #MédicaAmiga #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 05 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">05</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">NIPT: O DNA no seu Sangue</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min</span>
-                            <span class="tag">✨ Tecnologia / Confiança</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "A partir da 10ª semana de gestação, fragmentos do DNA do seu bebê já estão circulando no seu sangue. E a ciência consegue ler esse código sem colocar uma agulha perto do bebê."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">45s – 1m40s</span>
-                    <div class="script-text">
-                        "O NIPT analisa os fragmentos de DNA fetal no seu sangue. Conseguimos rastrear com alta precisão Síndrome de Down, Edwards e Patau. A sensibilidade para Down é superior a 99%."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m40s – End</span>
-                    <div class="script-text">
-                        "Lembrando: é rastreamento, não diagnóstico. Mas traz uma tranquilidade enorme. Pode ser feito a partir de 10 semanas para todas as gestantes. Quer saber mais? Nos chama no direct!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 05 -->
+<article class="card" id="reel-05">
+<div class="card-head">
+<div class="card-num">05</div>
+<div class="card-info">
+<h2>NIPT: O DNA do Seu Bebê no Seu Sangue</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 30s</span><span class="tag">Semana 9–12</span><span class="tag">✨ Tecnologia + Confiança</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"A partir da 10ª semana de gestação, fragmentos do DNA do seu bebê já estão circulando no seu sangue. E a ciência consegue ler esse código sem colocar uma agulha sequer perto do bebê."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"Isso se chama NIPT — teste pré-natal não invasivo. Toda semana eu recebo a pergunta aqui no consultório: 'Dra., preciso fazer esse exame? Ele é confiável?' E a resposta é sim: é extremamente confiável para o que ele se propõe a fazer. E vou te explicar exatamente o que ele faz."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"O NIPT analisa os fragmentos de DNA fetal que circulam no seu sangue — chamados de cffDNA. Com esse material, conseguimos rastrear com alta precisão as principais alterações cromossômicas:<br><br>A <strong>Síndrome de Down</strong> (Trissomia do 21), a <strong>Síndrome de Edwards</strong> (Trissomia do 18) e a <strong>Síndrome de Patau</strong> (Trissomia do 13).<br><br>A sensibilidade para Síndrome de Down é superior a <strong>99%</strong>. Mas um ponto crucial: o NIPT é um exame de <strong>rastreamento</strong>, não de diagnóstico. Resultado positivo não confirma — indica quem precisa de investigação mais aprofundada, como a amniocentese. E resultado negativo traz uma camada enorme de tranquilidade."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m15s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Ele pode ser feito a partir da 10ª semana, é um simples exame de sangue materno — uma coleta de sangue do seu braço, como qualquer outro exame de sangue. E ele é recomendado para todas as gestantes — não apenas para maiores de 35 anos como muita gente ainda pensa."</div>
+</div>
+<div class="block">
+<span class="block-time">2m15s – 2m30s</span><span class="block-label">CTA</span>
+<div class="script">"A tranquilidade que a informação traz não tem preço. Quer saber mais sobre o NIPT na Gaia? Nos chama no direct ou agende sua consulta. Um abraço!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.gov.br/ans/pt-br" target="_blank">ANS/Coasaude — NIPT: sensibilidade >99% para Trissomia 21</a>
+<a href="https://www.fetalmedicine.org" target="_blank">FMF (Fetal Medicine Foundation) — Cell-free DNA screening guidelines</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A partir da 10ª semana, fragmentos do DNA do seu bebê já estão no seu sangue. 🧬 O NIPT rastreia com mais de 99% de sensibilidade a Síndrome de Down e outras alterações cromossômicas. Sem agulha perto do bebê. Só um exame de sangue materno. É rastreamento — não diagnóstico — mas traz enorme tranquilidade. 🤍</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #NIPT #TestePréNatal #Gestação #SíndromeDeDown #DNA #Obstetra #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 06 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">06</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Morfológico de 1T: Além da Nuca</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min 15s</span>
-                            <span class="tag">✨ Autoridade / Precisão</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "A paciente me perguntou: 'Dra., esse exame é só pra medir a nuca, né?' Tive que explicar que o morfológico do primeiro trimestre é o primeiro grande check-up do seu bebê."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m50s</span>
-                    <div class="script-text">
-                        "Avaliamos a Translucência Nucal, mas também: Osso Nasal, Ducto Venoso e Regurgitação Tricúspide. Quando unimos isso aos dados maternos, detectamos mais de 90% dos casos de Síndrome de Down."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m50s – End</span>
-                    <div class="script-text">
-                        "Janela ideal: 11 a 14 semanas. Não perca esse momento. Seu bebê merece precisão e cuidado. Agende na Gaia. Um abraço!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 06 -->
+<article class="card" id="reel-06">
+<div class="card-head">
+<div class="card-num">06</div>
+<div class="card-info">
+<h2>Morfológico de 1º Trimestre: Além da Nuca</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 45s</span><span class="tag">Semana 11–14</span><span class="tag">✨ Autoridade + Admiração</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"A minha paciente chegou com o pedido do morfológico de primeiro trimestre na mão e me disse: 'Dra., esse exame é só pra medir a nuca do bebê, né?' Eu tive que parar tudo para explicar o que a gente realmente faz aqui."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"O morfológico do primeiro trimestre é feito entre a 11ª e a 14ª semana. E ele é o primeiro grande check-up do seu bebê. Avaliamos uma série de marcadores que, juntos, formam um dos rastreamentos mais poderosos da medicina fetal moderna. E a nuca? É só um pedacinho da história."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Avaliamos: a <strong>Translucência Nucal</strong> — sim, a nuca. Mas ela sozinha diz muito pouco. É em conjunto com:<br><br>O <strong>Osso Nasal</strong> — cuja ausência pode ser um marcador de alterações cromossômicas.<br><br>O <strong>Ducto Venoso</strong> — que avalia o coração do bebê e como o sangue está circulando.<br><br>E a <strong>Regurgitação Tricúspide</strong> — que também avalia o funcionamento cardíaco fetal.<br><br>Quando unimos todos esses marcadores de ultrassom com os dados maternos e os exames bioquímicos de sangue, chegamos a uma estimativa de risco individualizada e precisa para cada gestação. Esse modelo combinado detecta <strong>mais de 90% dos casos de Síndrome de Down</strong>, com apenas 5% de falso-positivo."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Por isso, esse exame precisa ser realizado em equipamento de alta resolução, por profissional habilitado e credenciado, e dentro da janela correta de semanas — entre 11 e 14 semanas. Fora dessa janela, o bebê muda de proporção e a gente perde essa oportunidade única de rastreamento. É literalmente uma janela que abre e fecha. Não adie."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 2m45s</span><span class="block-label">CTA</span>
+<div class="script">"Seu primeiro grande check-up merece precisão e cuidado. Agende o morfológico do 1º trimestre na Gaia. Um abraço!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.fetalmedicine.org" target="_blank">FMF (Fetal Medicine Foundation) — Rastreamento combinado do 1º trimestre: >90% detecção, 5% falso-positivo</a>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO — Protocolos de avaliação morfológica de 1T</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O morfológico do 1º trimestre não é só sobre a nuca do bebê. É o primeiro grande check-up da gestação. 🔬 De 11 a 14 semanas, avaliamos 4 marcadores: translucência nucal, osso nasal, ducto venoso e regurgitação tricúspide. Juntos, detectam mais de 90% dos casos de Síndrome de Down. Com tecnologia de alta resolução e profissional especializado. ✨ Está na janela certa? Agende na Gaia. 📅</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #MorfológicoPrimeiroTrimestre #UltrassomObstétrico #MedicinaFetal #Obstetra #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 07 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">07</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Prevemos a Pré-eclâmpsia</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min 30s</span>
-                            <span class="tag">✨ Prevenção / Segurança</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "Na Gaia, a gente não espera a pressão subir para agir. A gente prevê o risco de pré-eclâmpsia ainda no terceiro mês da gestação. E isso muda tudo."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m50s</span>
-                    <div class="script-text">
-                        "Usamos Doppler das artérias uterinas, dosagem de PIGF no sangue e pressão arterial média. Para gestantes de alto risco, o uso de AAS de baixa dose antes da 16ª semana reduz o risco em até 62%."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m50s – End</span>
-                    <div class="script-text">
-                        "Mães de primeira viagem, histórico familiar ou gestação gemelar têm maior atenção. A tecnologia que te protege precisa chegar na hora certa. Nos chama."
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 07 -->
+<article class="card" id="reel-07">
+<div class="card-head">
+<div class="card-num">07</div>
+<div class="card-info">
+<h2>Biomarcadores: Prevemos a Pré-eclâmpsia</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~3 min</span><span class="tag">Semana 11–14</span><span class="tag">✨ Prevenção + Segurança</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Na Gaia, a gente não espera a pressão subir para agir. A gente prevê o risco de pré-eclâmpsia ainda no terceiro mês da gestação. E isso muda absolutamente tudo."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"A pré-eclâmpsia é uma das complicações mais sérias da gestação — envolve pressão alta, comprometimento de órgãos maternos e pode colocar em risco a vida da mãe e do bebê. E sabe o que é mais frustrante? Ela costuma aparecer de surpresa, lá pelo 7º ou 8º mês, quando já ficou difícil de reverter. Por isso, a FEBRASGO recomenda o rastreamento de todas as gestantes já no primeiro trimestre."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Como a gente faz esse rastreamento? Com uma combinação poderosa:<br><br>O <strong>Doppler das artérias uterinas</strong> — que avalia se a placenta está sendo bem irrigada.<br><br>A dosagem do <strong>PIGF</strong> no sangue materno — uma proteína produzida pela placenta saudável.<br><br>A <strong>pressão arterial média</strong>.<br><br>E as <strong>características clínicas</strong> da gestante — histórico de pré-eclâmpsia anterior, primeira gestação, obesidade, trombofilia, lúpus.<br><br>Com esse conjunto de informações, calculamos um risco individualizado. E para gestantes de alto risco, a ciência comprova: o uso de <strong>AAS de baixa dose</strong>, iniciado antes da 16ª semana, reduz em até <strong>62%</strong> o risco de pré-eclâmpsia precoce."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Quem tem maior risco? Mães de primeira viagem, mulheres com histórico familiar de pressão alta na gestação, com doenças autoimunes, com gestação múltipla ou que já tiveram pré-eclâmpsia antes. Se você se encaixa em algum desses perfis, conversa com sua obstetra sobre esse rastreamento no 1º trimestre. A prevenção começa cedo."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 3m00s</span><span class="block-label">Tranquilização + CTA</span>
+<div class="script">"A tecnologia que existe para te proteger precisa chegar até você no momento certo. E o momento certo é agora, no primeiro trimestre. Aqui na Gaia, a gente cuida disso. Nos chama."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.febrasgo.org.br/pt/noticias/item/1494-rastreamento-e-prevencao-de-pre-eclampsia" target="_blank">FEBRASGO (FPS-N1, 2023) — Rastreamento e prevenção de pré-eclâmpsia</a>
+<a href="https://www.fetalmedicine.org" target="_blank">FMF — AAS antes de 16 semanas: redução de 62% do risco de PE precoce</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A pré-eclâmpsia não precisa chegar de surpresa. 🩺 Já no 1º trimestre, rastreamos quem tem maior risco com: Doppler das artérias uterinas + dosagem do PIGF + pressão arterial média + perfil clínico materno. Para as gestantes de alto risco, AAS de baixa dose iniciado antes das 16 semanas reduz em até 62% o risco de pré-eclâmpsia grave. A FEBRASGO recomenda esse rastreamento para todas. ✅</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PréEclâmpsia #Gestação #MedicinaPreventiva #Obstetra #PIGF #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 08 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">08</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Cervicometria: 5 Minutos Vitais</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min</span>
-                            <span class="tag">✨ Alerta Positivo</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "Tem um exame de 5 minutos, feito entre a 20ª e a 24ª semana, que pode evitar um nascimento prematuro extremo. Muitas gestantes nunca ouviram falar na cervicometria."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">45s – 1m35s</span>
-                    <div class="script-text">
-                        "Um colo com menos de 25mm é um alerta silencioso. A progesterona vaginal reduz o risco de prematuridade em até 45%. Mas tudo depende de detectar antes de qualquer sintoma."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m35s – End</span>
-                    <div class="script-text">
-                        "Sempre solicite no morfológico de 2º trimestre. Prevenção é o melhor cuidado. Já realizou a sua? Me conta aqui nos comentários!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 08 -->
+<article class="card" id="reel-08">
+<div class="card-head">
+<div class="card-num">08</div>
+<div class="card-info">
+<h2>Cervicometria: 5 Minutos que Salvam</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 30s</span><span class="tag">Semana 20–24</span><span class="tag">✨ Alerta Positivo</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Tem um exame de 5 minutos, feito entre a 20ª e a 24ª semana de gestação, que pode evitar um nascimento prematuro extremo. E muitas gestantes nunca ouviram falar nele. Ele se chama cervicometria."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"Esse exame mede o comprimento do colo do útero por via transvaginal. E aqui tem um detalhe que poucas pessoas sabem: o colo do útero pode estar curto — já se encurtando, já se preparando para abrir — sem que a gestante sinta absolutamente nada. Zero sintoma. É completamente silencioso. Você não sente dor, não sente cólica, não sente nada. E é exatamente por isso que ele é perigoso quando não rastreado."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Um colo com menos de <strong>25 milímetros</strong> entre a 20ª e a 24ª semana é um preditor importante de parto prematuro. A boa notícia é que, quando identificamos isso cedo, temos tratamentos eficazes:<br><br>A <strong>progesterona micronizada vaginal</strong> — amplamente validada pela ciência — reduz o risco de prematuridade em gestantes com colo curto em até <strong>45%</strong>. É um tratamento simples, acessível e que muda prognósticos.<br><br>Em casos específicos, podemos usar o <strong>pessário cervical</strong> — um dispositivo que apoia o colo — ou a <strong>cerclagem</strong>, que é uma sutura no colo em situações mais críticas.<br><br>Mas tudo — absolutamente tudo — depende de detectar antes que qualquer sintoma apareça."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m15s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"A cervicometria geralmente é solicitada junto ao morfológico do segundo trimestre, entre 20 e 24 semanas. Se você tem histórico de parto prematuro anterior, cirurgia no colo uterino, ou conização prévia, fale com sua obstetra sobre solicitar esse exame com atenção redobrada. Peça. Insista. 5 minutos podem mudar tudo."</div>
+</div>
+<div class="block">
+<span class="block-time">2m15s – 2m30s</span><span class="block-label">CTA</span>
+<div class="script">"Prevenção é o melhor cuidado que existe. Já realizou sua cervicometria? Me conta aqui nos comentários — eu quero saber!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.fleury.com.br/medico/artigos-cientificos/cervicometria-e-predicao-de-prematuridade" target="_blank">Fleury (2024) — Cervicometria e predição de prematuridade</a>
+<a href="https://www.cochranelibrary.com" target="_blank">Cochrane — Progesterona micronizada: redução de até 45% do risco prematuro</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Um exame de 5 minutos que pode evitar prematuridade. 🕐 A cervicometria transvaginal mede o colo do útero — e colo curto (abaixo de 25mm) é um preditor silencioso. Zero sintomas. Quando identificamos cedo, agimos: progesterona vaginal reduz em até 45% o risco. Faça entre 20ª e 24ª semana. 📅</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Cervicometria #Prematuridade #Gestação #Progesterona #Obstetra #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 09 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">09</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Morfológico 2T: Órgão por Órgão</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min 15s</span>
-                            <span class="tag">✨ Vínculo / Tranquilidade</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "É nesse ultrassom que o bebê nos mostra o coração, o cérebro, os rins, o rosto... É o nosso check-up de anatomia fetal mais completo, entre 20 e 24 semanas."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m50s</span>
-                    <div class="script-text">
-                        "Avaliamos o sistema nervoso, as 4 câmaras do coração, rins, face e o Doppler placentário (oxigênio e nutrientes). É um exame longo, de 30 a 45 minutos. Não tenha pressa."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">2m08s – End</span>
-                    <div class="script-text">
-                        "A segurança de saber que está tudo bem, órgão por órgão. Agende na Gaia."
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 09 -->
+<article class="card" id="reel-09">
+<div class="card-head">
+<div class="card-num">09</div>
+<div class="card-info">
+<h2>Morfológico 2T: Órgão por Órgão</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 45s</span><span class="tag">Semana 20–24</span><span class="tag">✨ Admiração + Vínculo</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"É nesse ultrassom que o bebê nos mostra o coração, o cérebro, os rins, o rosto… É quando a gente vê tudo. E quando a gente precisa ver tudo com muita calma e muita atenção."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"O morfológico do segundo trimestre é realizado entre a 20ª e a 24ª semana de gestação. Nessa fase, o bebê já tem todos os órgãos formados e está grande o suficiente para ser avaliado em detalhe. É o nosso check-up mais completo de anatomia fetal."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"O que a gente avalia?<br><br>O <strong>sistema nervoso central</strong>: cerebelo, ventrículos cerebrais, coluna vertebral.<br>O <strong>coração</strong>: as quatro câmaras, as grandes artérias — pulmonar e aorta — o septo ventricular.<br>O <strong>sistema digestivo</strong>: estômago, intestino, cordão umbilical, parede abdominal.<br>Os <strong>rins</strong> e a produção de urina fetal — indicador de função renal.<br>A <strong>face</strong>: palato, nariz, lábio — para descartar fissuras.<br>Os <strong>membros</strong>: fêmur, úmero, pés.<br>A <strong>placenta e o líquido amniótico</strong>.<br><br>E o <strong>Doppler placentário</strong> — que avalia se a placenta está entregando oxigênio e nutrientes de forma adequada. Cada sistema, cada órgão, cada detalhe."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Estudos da ISUOG mostram que o morfológico realizado por profissional habilitado e com equipamento de alta resolução detecta até <strong>90% das malformações estruturais maiores</strong> nessa janela. É um exame longo — costuma durar de 30 a 45 minutos. Não tenha pressa nesse momento. A qualidade da avaliação depende disso. Se o bebê estiver em posição difícil, pode ser necessário caminhar um pouco e voltar. Está tudo bem."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 2m45s</span><span class="block-label">CTA</span>
+<div class="script">"A segurança de saber que está tudo bem, órgão por órgão. Agende na Gaia."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.isuog.org" target="_blank">ISUOG — Guidelines para morfológico de 2º trimestre: 85–90% detecção de malformações maiores</a>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO — Protocolo de avaliação anatômica fetal</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O morfológico de 2º trimestre é o check-up mais completo de anatomia fetal. 🔬 De 20 a 24 semanas: sistema nervoso, coração, rins, face, membros, placenta. O Doppler confirma se o bebê recebe oxigênio e nutrientes adequadamente. 🤍 Com profissional habilitado, a detecção de malformações maiores chega a 90%. Agende na Gaia. 📅</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Morfológico2Trimestre #UltrassomObstétrico #MedicinaFetal #Obstetra #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 10 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">10</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Pré-Natal Integrativo Gaia</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min</span>
-                            <span class="tag">✨ Diferencial / Cuidado</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "O pré-natal na Gaia não cuida só da barriga crescendo. A gente cuida da mulher que está dentro dessa barriga. Um olhar de 360 graus."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m40s</span>
-                    <div class="script-text">
-                        "Olhamos para a microbiota intestinal, manejo do estresse e cortisol, atividade física e qualidade do sono. Tudo isso influencia diretamente a saúde do bebê. Ciência integrativa levada a sério."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m52s – End</span>
-                    <div class="script-text">
-                        "Quer um pré-natal que cuida de você por inteiro? Estamos aqui. Fala com a gente."
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 10 -->
+<article class="card" id="reel-10">
+<div class="card-head">
+<div class="card-num">10</div>
+<div class="card-info">
+<h2>Pré-Natal Integrativo: Você por Inteiro</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 30s</span><span class="tag">Qualquer trimestre</span><span class="tag">✨ Diferencial Gaia</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"O pré-natal na Gaia não cuida só da barriga crescendo. A gente cuida da mulher que está dentro dessa barriga. Porque gestação não é só útero — é corpo, mente, intestino, sono, vida."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"O pré-natal convencional garante o básico fundamental: consultas, exames e ultrassons. E eles são insubstituíveis. Mas o pré-natal integrativo da Gaia vai além. Porque a gestante não é só uma barriga crescendo — ela é uma mulher com histórico, com emoções, com intestino, com sono, com estresse, com uma vida inteira acontecendo enquanto ela gera outra vida."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Os pilares que a gente adiciona ao cuidado:<br><br><strong>Saúde intestinal</strong> — a microbiota da mãe durante a gestação influencia diretamente o sistema imunológico do bebê. O que vive no intestino da mãe é, em parte, o que o bebê vai herdar.<br><br><strong>Manejo do cortisol e do estresse</strong> — altos níveis de cortisol crônico durante a gestação aumentam o risco de crescimento intrauterino restrito e podem impactar o neurodesenvolvimento.<br><br><strong>Atividade física adaptada</strong> — comprovada para reduzir o risco de hipertensão gestacional e diabetes gestacional.<br><br><strong>Biomarcadores inflamatórios</strong> — avaliar a inflamação crônica de base da gestante que pode interferir no crescimento fetal.<br><br><strong>Sono</strong> — distúrbios de sono no terceiro trimestre estão associados a maior risco de complicações no trabalho de parto."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m15s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Isso não é luxo — é prevenção. A FEBRASGO já orienta que o papel do obstetra vai muito além dos exames, incluindo orientação de estilo de vida integral durante a gestação. Na Gaia, levamos isso a sério. Cada pilar tem impacto direto e mensurável na saúde do bebê."</div>
+</div>
+<div class="block">
+<span class="block-time">2m15s – 2m30s</span><span class="block-label">CTA</span>
+<div class="script">"Quer um pré-natal que cuida de você por inteiro? A Gaia está aqui. Fala com a gente."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO (Femina, 2025) — Papel do obstetra na orientação de estilo de vida</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Na Gaia, o pré-natal cuida da mulher que está dentro da barriga. 🌿 Além dos exames essenciais, olhamos para: microbiota, manejo do estresse, atividade física, biomarcadores inflamatórios e qualidade do sono. Cada pilar impacta diretamente a saúde do bebê. Isso não é modinha — é ciência. 💙</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PreNatalIntegrativo #MedicinaIntegrativa #Gestação #CuidadoIntegral #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 11 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">11</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Corpo de Segunda Viagem</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 1min 45s</span>
-                            <span class="tag">✨ Identificação / Leve</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "8 semanas e a barriga já apareceu como se estivesse de 5 meses? Isso não é só impressão. O corpo tem memória e o útero é campeão nisso."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">40s – 1m20s</span>
-                    <div class="script-text">
-                        "O útero fica mais complacente e a parede abdominal oferece menos resistência. Além disso, cada gestação deixa marcas neurológicas únicas. Peça ajuda sem culpa, o cansaço é real!"
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m37s – End</span>
-                    <div class="script-text">
-                        "Mãe de segunda viagem, sentiu essa diferença? Me conta nos comentários — quero saber e te acolher!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 11 -->
+<article class="card" id="reel-11">
+<div class="card-head">
+<div class="card-num">11</div>
+<div class="card-info">
+<h2>Mamães de Segunda Viagem: O Corpo Lembra</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 15s</span><span class="tag">2ª Gestação</span><span class="tag">✨ Identificação + Leveza</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Segunda gravidez: 8 semanas de gestação e a barriga já apareceu como se estivesse de 5 meses? Isso não é só impressão sua. Tem uma explicação médica fascinante para isso."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"Todo dia no consultório as mães de segunda viagem chegam surpresas. 'Dra., dessa vez é muuuito diferente!' E é mesmo. O corpo tem memória — e o útero, então, é campeão nisso. E não é só no tamanho da barriga — é na forma como você sente, como você cansa, como você se emociona."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"O que acontece: o <strong>útero que já viveu uma gestação</strong> tem uma musculatura mais complacente — ele 'lembra' do tamanho que atingiu antes e se expande com mais facilidade e mais rapidez.<br><br>A <strong>parede abdominal</strong> — especialmente o músculo reto abdominal — perde tensão após o primeiro parto, especialmente se houve diástase abdominal. Com menos resistência, a barriga aparece muito mais cedo. E a diferença visual é gritante.<br><br>Além disso, estudos recentes mostram que cada gestação deixa <strong>marcas neurológicas únicas</strong> no cérebro materno — redes ligadas à atenção, à empatia e ao cuidado são reestruturadas de forma diferente a cada maternidade. Seu cérebro de mãe-de-segunda-viagem é literalmente diferente do de primeira viagem."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m00s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"E o cansaço costuma ser maior dessa vez — porque agora você tem um filho pequeno para cuidar enquanto cresce outro ser humano dentro de você. Isso é real, é válido e é muito pesado. Pedir ajuda não é fraqueza — é necessidade. Priorize o descanso sem culpa."</div>
+</div>
+<div class="block">
+<span class="block-time">2m00s – 2m15s</span><span class="block-label">CTA</span>
+<div class="script">"Mãe de segunda viagem, você sentiu essa diferença? Me conta nos comentários — quero saber e quero te acolher!"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://g1.globo.com/saude/noticia/2024/gravidez-causa-mudancas-no-cerebro.ghtml" target="_blank">G1/Globo (2026) — Cada gestação promove remodelações cerebrais únicas</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Mãe de segunda viagem: é normal sentir que tudo é diferente. Porque é. 😅 O útero tem memória muscular, a parede abdominal tem menos resistência e a barriga aparece antes. Estudos mostram que cada gestação realiza remodelações cerebrais únicas. E o cansaço? É real. Pede ajuda sem culpa. 🤍</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #SegundaGravidez #SegundaViagem #Gestação #Obstetra #MédicaAmiga #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 12 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">12</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">Gêmeos: Alerta Placenta</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 2min 15s</span>
-                            <span class="tag">✨ Vigilância / Rigor</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "Grávida de gêmeos? A pergunta mais importante não é o sexo. É: eles dividem a mesma placenta?"
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m45s</span>
-                    <div class="script-text">
-                        "Gestações monocoriônicas podem ter a Síndrome de Transfusão Feto-Fetal (STFF). Precisamos de ultrassom a cada 2 semanas para intervir a tempo se houver desequilíbrio de sangue."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">2m05s – End</span>
-                    <div class="script-text">
-                        "A corionicidade só é vista com segurança no 1º trimestre. Sua jornada merece vigilância especial. A Gaia está aqui."
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 12 -->
+<article class="card" id="reel-12">
+<div class="card-head">
+<div class="card-num">12</div>
+<div class="card-info">
+<h2>Gêmeos: A Pergunta da Placenta</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 45s</span><span class="tag">Diagnóstico precoce</span><span class="tag">✨ Alerta + Rigor</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"Grávida de gêmeos? A primeira e mais importante pergunta que a gente faz não é 'qual o sexo?'. É: eles dividem a mesma placenta?"</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"Gestação gemelar pode ser <strong>dicoriônica</strong> — cada bebê com sua própria placenta, mínima interferência entre eles — ou <strong>monocoriônica</strong> — os dois bebês dividindo uma única placenta. E essa diferença é enorme clinicamente. A gestação monocoriônica precisa de um nível de vigilância completamente diferente."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Por quê? Porque dentro de uma placenta compartilhada, podem existir <strong>anastomoses vasculares</strong> — conexões entre os vasos sanguíneos dos dois bebês — que criam um desequilíbrio de fluxo. Um bebê torna-se o doador e o outro o receptor, causando a <strong>Síndrome de Transfusão Feto-Fetal</strong> — a STFF. Um recebe sangue demais, o outro de menos. Os dois ficam em risco.<br><br>Esse diagnóstico precisa ser feito rapidamente para intervenção a tempo. Por isso, gestações monocoriônicas precisam de <strong>ultrassons a cada 2 semanas</strong> a partir de 16 semanas, acompanhadas por obstetra com experiência em medicina fetal."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"E a corionicidade — se os gêmeos dividem ou não a placenta — só pode ser determinada com segurança no <strong>primeiro trimestre</strong>. Após 14 semanas, fica muito mais difícil de identificar. Por isso, se você descobriu que está grávida de gêmeos, procure um obstetra especializado ainda no 1º trimestre. Essa janela é insubstituível."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 2m45s</span><span class="block-label">CTA</span>
+<div class="script">"Sua gestação gemelar merece acompanhamento especializado desde o início. A Gaia está aqui com você. Nos chama."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://rmmg.org/artigo/detalhes/gestacao-gemelar-monocorionica-2024" target="_blank">RMMG (2024) — Gestação gemelar monocoriônica: morbimortalidade perinatal</a>
+<a href="https://www.fetalmedicine.org" target="_blank">FMF — Corionicidade e Síndrome de Transfusão Feto-Fetal</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Grávida de gêmeos? A primeira pergunta não é o sexo — é a placenta. 👶👶 Gêmeos monocoriônicos têm risco muito maior de STFF. Gestação monocoriônica = ultrassom a cada 2 semanas + acompanhamento especializado. A corionicidade só é vista com segurança no 1º trimestre. 💙</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #GêmeosMC #GestaçãoGemelar #SíndromeTransfusãoFetoFetal #MedicinaFetal #MédicaAmiga</p>
+</div>
+</div>
+</article>
 
-        <!-- REEL 13 -->
-        <section class="glass-card">
-            <div class="bg-slate-50/80 px-8 py-8 border-b border-slate-100">
-                <div class="flex gap-5">
-                    <span class="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#853B50] text-white font-black text-2xl shadow-lg">13</span>
-                    <div>
-                        <h2 class="text-3xl font-bold text-gray-900">A Reta Final: Você está pronta</h2>
-                        <div class="flex gap-2 mt-3">
-                            <span class="tag">⏱️ 3min</span>
-                            <span class="tag">✨ Empoderamento / Final</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 sm:p-12">
-                <div class="time-block">
-                    <span class="timeline-badge">0 – 15s</span>
-                    <div class="script-text">
-                        "A reta final chegou. O coração acelera, a mala está pronta... mas deixa eu te contar o que você realmente precisa saber agora para ter tranquilidade."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">50s – 1m45s</span>
-                    <div class="script-text">
-                        "Sinais reais: Contrações regulares (5/5/5), bolsa que rompeu ou tampão mucoso. Braxton-Hicks não é trabalho de parto — elas cedem com repouso. Aprenda a ouvir seu corpo."
-                    </div>
-                </div>
-                <div class="time-block">
-                    <span class="timeline-badge">1m45s – End</span>
-                    <div class="script-text">
-                        "Seu plano de nascimento é legítimo: converse abertamente. Você está mais preparada do que imagina. Estamos com você até o grande dia. Um abraço da equipe Gaia!"
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- REEL 13 -->
+<article class="card" id="reel-13">
+<div class="card-head">
+<div class="card-num">13</div>
+<div class="card-info">
+<h2>A Reta Final: Você Está Pronta</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~3 min</span><span class="tag">Semana 36–40</span><span class="tag">✨ Empoderamento + Encerramento</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"A reta final chegou. O coração acelera, a mala está quase pronta, e as dúvidas não param. Deixa eu te contar o que você realmente precisa saber agora."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"Toda semana, no pronto-socorro obstétrico, entram gestantes achando que estão em trabalho de parto. Mas quando avaliamos, o colo ainda está fechado. Isso acontece porque os sinais reais de trabalho de parto ainda são pouco ensinados — e toda a ansiedade da espera faz a gente interpretar qualquer cólica como 'chegou a hora'. Cerca de 40% das internações obstétricas de urgência são de gestantes que ainda não estão em trabalho de parto ativo."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico: Sinais reais</span>
+<div class="script">"Vamos de sinais reais?<br><br><strong>Contrações em padrão:</strong> Precisam ser regulares — a cada 5 minutos, durando pelo menos 1 minuto, e mantendo essa frequência por mais de 1 hora. Ficam mais fortes, mais longas e mais frequentes.<br><br><strong>Tampão mucoso:</strong> Secreção gelatinosa, às vezes com sangue. Indica que o colo está amadurecendo. Mas pode sair dias antes do trabalho de parto. Por si só, não é sinal de 'vai agora'.<br><br><strong>Amniorrexe:</strong> A 'bolsa que rompeu'. Pode ser um jorro ou vazamento contínuo de líquido claro. Rompeu a bolsa? Vai para a maternidade.<br><br><strong>Braxton-Hicks NÃO é trabalho de parto.</strong> Elas são irregulares, não aumentam de intensidade e costumam ceder com repouso ou mudança de posição."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m30s</span><span class="block-label">Plano de nascimento</span>
+<div class="script">"Sobre o plano de nascimento: é muito válido conversar com sua obstetra sobre suas preferências — quem quer que esteja presente, posições de conforto durante o trabalho de parto, se quer ver o bebê primeiro antes de qualquer intervenção. Essas conversas são legítimas e devem ser respeitadas.<br><br>Mas o plano de nascimento não substitui a avaliação médica no momento do parto. Às vezes o melhor plano é o que consegue se adaptar ao que o bebê e o seu corpo precisam naquele momento. Flexibilidade não é fraqueza — é inteligência."</div>
+</div>
+<div class="block">
+<span class="block-time">2m30s – 2m45s</span><span class="block-label">Tranquilização</span>
+<div class="script">"E uma coisa importante: você chegou até aqui. Meses de consultas, exames, noites mal dormidas, enjoo, susto, alegria, amor. Você está mais preparada do que imagina. E nós estamos com você."</div>
+</div>
+<div class="block">
+<span class="block-time">2m45s – 3m00s</span><span class="block-label">CTA</span>
+<div class="script">"Estamos com você até o grande dia — e muito além dele. Um abraço imenso de toda a equipe da Gaia. 🌿🤍"</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.gov.br/saude/pt-br" target="_blank">Ministério da Saúde (2024) — ~40% das internações obstétricas de urgência sem TP ativo</a>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO — Diretrizes sobre trabalho de parto e plano de nascimento</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A reta final chegou. E você está mais pronta do que imagina. 🤍 Confere: contrações regulares (5 em 5 minutos, 1min de duração, ficando mais fortes)? Ou Braxton-Hicks? Bolsa rompeu? Vai direto. 🚨 Sobre o plano de nascimento: converse abertamente. Suas preferências importam — e o plano mais poderoso se adapta ao momento. Estamos com você até o grande dia. 🌿 Um abraço da equipe Gaia!</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #RetaFinal #TrabalhoDeParto #Gestação #Obstetra #MédicaAmiga #SaúdaDaMulher</p>
+</div>
+</div>
+</article>
 
-    </main>
+</main>
 
-    <footer class="bg-gray-900 text-slate-500 py-12 text-center text-sm border-t border-gray-800">
-        <p class="mb-2">🌿 Gaia Medicina Integrada — Hub de Conteúdo Abril/2026</p>
-        <p>Desenvolvido para Teleprompter Médico</p>
-    </footer>
+<footer>
+<p>🌿 Gaia Medicina Integrada — Hub de Conteúdo Abril/2026</p>
+<p>Roteiros baseados em: FEBRASGO · ISUOG · FMF · Ministério da Saúde BR · ANS</p>
+<p style="margin-top:.5rem;font-size:.75rem">Desenvolvido para Teleprompter Médico</p>
+</footer>
 </body>
 </html>
