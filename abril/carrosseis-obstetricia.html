@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrosséis de Obstetrícia — Abril 2026 | Gaia Medicina Integrada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 40px 20px 32px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 48px;
+            border-bottom: 3px solid #f0e6e8;
+        }
+
+        header .badge {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: var(--cor-primaria);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 99px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            color: var(--cor-destaque);
+            margin: 0 0 10px 0;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: #777;
+            margin: 0 auto;
+            max-width: 620px;
+            font-size: 15px;
+        }
+
+        .nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding: 0 20px;
+            margin-bottom: 48px;
+        }
+
+        .nav-pills a {
+            display: inline-block;
+            background-color: var(--cor-branco);
+            border: 1.5px solid #eacfd3;
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 99px;
+            transition: all 0.2s;
+        }
+
+        .nav-pills a:hover {
+            background-color: var(--cor-destaque);
+            color: white;
+            border-color: var(--cor-destaque);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .tema-block {
+            background-color: var(--cor-branco);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 6px 28px rgba(133, 59, 80, 0.09);
+            scroll-margin-top: 20px;
+        }
+
+        .tema-header {
+            margin-bottom: 32px;
+            border-bottom: 2px solid #f5ebed;
+            padding-bottom: 22px;
+            text-align: center;
+        }
+
+        .tema-header .num-badge {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 99px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 22px;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        .tema-header .gancho {
+            font-weight: 600;
+            color: var(--cor-destaque);
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        /* Swiper */
+        .swiper {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto 32px;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(133, 59, 80, 0.22);
+        }
+
+        .swiper-slide {
+            background-color: var(--cor-destaque);
+            color: var(--cor-branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            padding: 44px 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-num {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            white-space: nowrap;
+        }
+
+        .slide-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .slide-title {
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .slide-body {
+            font-size: 14px;
+            opacity: 0.88;
+            line-height: 1.6;
+        }
+
+        .slide-cta {
+            background-color: var(--cor-primaria);
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .slide-highlight {
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--cor-branco) !important;
+            transform: scale(0.6);
+            opacity: 0.45;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover { opacity: 1; }
+
+        .swiper-pagination-bullet { background: var(--cor-branco) !important; opacity: 0.38; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
+        /* Legenda */
+        .legenda-container {
+            background-color: #fdf8f8;
+            border-left: 4px solid var(--cor-primaria);
+            border-radius: 4px 14px 14px 4px;
+            padding: 26px 28px;
+            margin-top: 28px;
+        }
+
+        .legenda-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .legenda-content {
+            font-size: 14px;
+            color: #444;
+            white-space: pre-wrap;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .legenda-tags {
+            font-size: 13px;
+            color: var(--cor-destaque);
+            font-weight: 600;
+            opacity: 0.75;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #aaa;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .tema-block { padding: 22px 18px; }
+            .slide-title { font-size: 18px; }
+            .slide-body { font-size: 13px; }
+            header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="badge">🤰 Obstetrícia · Abril 2026</div>
+        <h1>Carrosséis de Obstetrícia</h1>
+        <p>7 carrosséis prontos para revisão — baseados nos roteiros de Reels. Tom de voz: "Médica Amiga". CTAs 100% impessoais.</p>
+    </header>
+
+    <div class="nav-pills">
+        <a href="#c1">C1 · Teste Positivo</a>
+        <a href="#c2">C2 · Primeiros Sinais</a>
+        <a href="#c5">C5 · NIPT</a>
+        <a href="#c6">C6 · Morfológico 1T</a>
+        <a href="#c7">C7 · Pré-eclâmpsia</a>
+        <a href="#c8">C8 · Cervicometria</a>
+        <a href="#c13">C13 · Reta Final</a>
+    </div>
+
+    <div class="container">
+
+        <!-- ========= CARROSSEL 1 ========= -->
+        <div class="tema-block" id="c1">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 1 · Baseado no Reel 1</div>
+                <h2>O Teste Deu Positivo! E Agora?</h2>
+                <div class="gancho">"3 passos que toda gestante precisa dar antes do primeiro ultrassom"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🌿</div>
+                        <div class="slide-title">O teste deu positivo... e agora?</div>
+                        <div class="slide-body">3 passos essenciais antes do primeiro ultrassom</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O Problema da Pressa</div>
+                        <div class="slide-title">"O ultrassom não mostrou nada." 😰</div>
+                        <div class="slide-body">Antes de 6 semanas, o embrião tem apenas 2mm — e ainda não aparece no exame. Isso é completamente normal. Não é sinal de problema!</div>
+                        <div class="slide-highlight">⏱️ Momento ideal: 7 a 9 semanas</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · Passo 1</div>
+                        <div class="slide-title">✅ Passo 1<br>Comece o metilfolato agora</div>
+                        <div class="slide-body">A forma ativa do ácido fólico protege a formação da espinha dorsal do bebê — o tubo neural.<br><br>FEBRASGO recomenda desde antes de engravidar.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Passo 2</div>
+                        <div class="slide-title">✅ Passo 2<br>Liste todos os medicamentos</div>
+                        <div class="slide-body">Analgésicos, vitaminas, ansiolíticos... Nada de parar ou continuar por conta própria.<br><br>Leve a lista completa para a primeira consulta.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Passo 3</div>
+                        <div class="slide-title">✅ Passo 3<br>Agende sua primeira consulta</div>
+                        <div class="slide-body">O ultrassom ideal é entre 7 e 9 semanas — quando já é possível ouvir o coraçãozinho com segurança.</div>
+                        <div class="slide-highlight">📅 7 a 9 semanas = momento ideal</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">O começo é a base de tudo 🌱</div>
+                        <div class="slide-body">Esses três primeiros passos parecem simples, mas fazem uma diferença enorme na evolução da gestação.<br><br>Cuida de você — essa nova vida começa com o seu cuidado.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">💾 Salva esse post!</div>
+                        <div class="slide-body">Compartilhe com aquela amiga que está esperando o resultado do teste.<br><br>Essa informação pode fazer toda a diferença no começo da gestação dela. 🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">O teste deu positivo... e agora? 🌿
+
+Antes de correr para o ultrassom, importante saber: antes de 6 semanas, o embrião ainda é tão pequeno que não aparece no exame. Isso não é sinal de problema. É só o momento certo de esperar. 🤍
+
+Os 3 primeiros passos:
+✅ Começar o metilfolato (forma ativa do ácido fólico)
+✅ Listar todos os medicamentos para a consulta
+✅ Agendar o pré-natal — o ultrassom ideal é entre 7 e 9 semanas
+
+Cada passo tem um porquê. E conhecer esses porquês faz toda a diferença.
+
+📌 Salva esse post para acessar sempre que precisar e manda para uma amigona que está nessa fase!
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #prénatal #gravidez #obstetricia #primeiroTrimestre #metilfolato #testepositivo #médicaamiga #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 2 ========= -->
+        <div class="tema-block" id="c2">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 2 · Baseado no Reel 2</div>
+                <h2>Primeiros Sinais: É Normal Sentir Isso?</h2>
+                <div class="gancho">"Cansaço, enjoo e choro do nada? Isso tem explicação."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🤍</div>
+                        <div class="slide-title">Cansaço, enjoo e choro do nada?<br>Isso tem explicação.</div>
+                        <div class="slide-body">Entenda o que acontece no seu corpo no 1º trimestre</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · Validação</div>
+                        <div class="slide-title">"Será que tem algo errado?" 😰</div>
+                        <div class="slide-body">O enjoo intenso do 1º trimestre é um dos maiores medos das gestantes — quando na verdade costuma ser um sinal de que a gestação está evoluindo bem.<br><br>Você não está exagerando. 🤍</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · Você Sabia?</div>
+                        <div class="slide-title">O culpado tem nome: HCG 🧬</div>
+                        <div class="slide-body">O hormônio da gravidez sobe de forma exponencial até a 10ª semana. Ele sustenta a gestação, mas também estimula o centro do vômito.</div>
+                        <div class="slide-highlight">Pico entre 8ª–10ª semana = pico do enjoo ✓</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Dicas Práticas</div>
+                        <div class="slide-title">🍵 O que realmente ajuda</div>
+                        <div class="slide-body">• Coma em pequenas quantidades e com frequência<br>• Gengibre pela manhã (com orientação médica)<br>• Hidratação fracionada — vários goles ao longo do dia<br><br>Estômago vazio = piora o enjoo</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Alerta</div>
+                        <div class="slide-title">🚨 Quando procurar ajuda</div>
+                        <div class="slide-body">Vômito muito intenso + perda de peso + sem conseguir manter líquido pode ser Hiperêmese Gravídica.<br><br>É tratável — mas precisa de avaliação médica. Não espere muito.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">Seu corpo está construindo uma nova vida, 24h por dia. 🌱</div>
+                        <div class="slide-body">O cansaço extremo faz sentido. O enjoo faz sentido. Acolha esse processo — ele é temporário, mas o amor que está sendo construído é para sempre.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Qual foi o sintoma mais inesperado? 💬</div>
+                        <div class="slide-body">Me conta aqui nos comentários!<br><br>Salva e manda para outra mamãe sobrevivendo ao 1º trimestre. 🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Cansaço no limite, enjoo que não conhece horário e choro repentino... 🤍
+
+Tudo isso tem um nome: primeiro trimestre.
+
+O HCG — hormônio da gravidez — sobe de forma exponencial até a 10ª semana. Ele é quem sustenta a gestação, mas também estimula o centro do vômito e deixa a digestão mais lenta.
+
+A boa notícia: a maioria das gestantes melhora a partir da 13ª–14ª semana 🌿
+
+O que ajuda enquanto isso:
+🍵 Gengibre com orientação médica
+💧 Hidratação fracionada
+🥨 Comer em pequenas quantidades e com frequência
+
+Se o vômito for intenso com perda de peso, procure seu obstetra — pode ser Hiperêmese Gravídica, que tem tratamento.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Salva e manda para outra mamãe que está nessa fase! Me conta: qual foi o sintoma mais inesperado?</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #primeiroTrimestre #enjoodagravidez #hcg #médicaamiga #sintomasdegravidez #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 5 ========= -->
+        <div class="tema-block" id="c5">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 5 · Baseado no Reel 5</div>
+                <h2>NIPT: O DNA do Bebê Já Está no Seu Sangue</h2>
+                <div class="gancho">"Sem agulha perto do bebê. Só um exame de sangue materno."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🧬</div>
+                        <div class="slide-title">O DNA do seu bebê já está no seu sangue.</div>
+                        <div class="slide-body">Entenda o que é o NIPT e para quem ele é indicado</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O que é?</div>
+                        <div class="slide-title">NIPT: o teste sem agulha perto do bebê 🤍</div>
+                        <div class="slide-body">A partir da 10ª semana, fragmentos do DNA fetal circulam no sangue da mãe. O NIPT analisa esse material para rastrear alterações cromossômicas.<br><br>Só um simples exame de sangue materno.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · O que detecta</div>
+                        <div class="slide-title">O que o NIPT rastreia? 🔬</div>
+                        <div class="slide-body">✅ Síndrome de Down (Trissomia 21)<br>✅ Síndrome de Edwards (Trissomia 18)<br>✅ Síndrome de Patau (Trissomia 13)</div>
+                        <div class="slide-highlight">Sensibilidade &gt;99% para Síndrome de Down</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Importante</div>
+                        <div class="slide-title">NIPT ≠ diagnóstico definitivo ⚠️</div>
+                        <div class="slide-body">É um exame de <strong>rastreamento</strong>.<br><br>Resultado positivo → indica investigação adicional.<br>Resultado negativo → traz enorme tranquilidade 🌿</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Para quem?</div>
+                        <div class="slide-title">❌ Mito: "só para maiores de 35"</div>
+                        <div class="slide-body">O NIPT pode ser discutido com qualquer gestante que deseja mais informações sobre a saúde cromossômica do bebê.<br><br>Converse com sua obstetra sobre a indicação para o seu caso.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">A informação traz tranquilidade. 🤍</div>
+                        <div class="slide-body">Saber mais sobre a saúde do seu bebê com segurança e sem riscos ao procedimento pode transformar a experiência da gestação.<br><br>Conhecimento não gera medo — gera preparo e paz.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Tem dúvidas sobre o NIPT? 💬</div>
+                        <div class="slide-body">Converse com sua obstetra sobre a indicação para o seu caso.<br><br>💾 Salva esse post e manda para outra gestante que quer entender mais! 🌿</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">A partir da 10ª semana de gestação, fragmentos do DNA do seu bebê já circulam no seu sangue. 🧬
+
+O NIPT — Teste Pré-Natal Não Invasivo — analisa esse material para rastrear alterações cromossômicas como a Síndrome de Down, com sensibilidade superior a 99%.
+
+Sem agulha perto do bebê. Sem risco de procedimento. Só um simples exame de sangue materno.
+
+Importante: o NIPT é um exame de rastreamento — não de diagnóstico definitivo. Resultado positivo indica investigação adicional. Resultado negativo traz uma enorme tranquilidade para a gestação. 🤍
+
+E não — ele não é só para gestantes acima de 35 anos. Converse com sua obstetra sobre a indicação para o seu caso.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+💾 Salva esse post e compartilha com outra gestante que quer entender mais sobre esse exame!</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #NIPT #testeprenatal #síndromededown #cromossomos #médicaamiga #prénatal #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 6 ========= -->
+        <div class="tema-block" id="c6">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 6 · Baseado no Reel 6</div>
+                <h2>Morfológico de 1º Trimestre: Muito Além da Nuca</h2>
+                <div class="gancho">"Conheça os 4 marcadores desse rastreamento de alto poder"</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🔬</div>
+                        <div class="slide-title">O morfológico de 1T não é só sobre a nuca.</div>
+                        <div class="slide-body">Conheça os 4 marcadores desse rastreamento de alto poder</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O que é?</div>
+                        <div class="slide-title">O primeiro grande check-up do bebê 👶</div>
+                        <div class="slide-body">Feito entre 11 e 14 semanas, é uma avaliação combinada — ultrassom + sangue materno — que estima o risco individualizado de alterações cromossômicas.</div>
+                        <div class="slide-highlight">📅 Janela: 11 a 14 semanas — não perca!</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · Marcador 1</div>
+                        <div class="slide-title">1️⃣ Translucência Nucal (TN)</div>
+                        <div class="slide-body">A espessura do líquido na parte de trás do pescoço do bebê. Um valor aumentado pode indicar maior risco de alterações cromossômicas ou cardíacas.<br><br>Mas avaliada <em>em conjunto</em> com os outros marcadores.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Marcador 2</div>
+                        <div class="slide-title">2️⃣ Osso Nasal (ON)</div>
+                        <div class="slide-body">A ausência ou o desenvolvimento reduzido do osso nasal pode ser marcador de Síndrome de Down e outras alterações cromossômicas.<br><br>Avaliado no mesmo exame, no mesmo momento.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Marcadores 3 e 4</div>
+                        <div class="slide-title">3️⃣ Ducto Venoso + 4️⃣ Reg. Tricúspide</div>
+                        <div class="slide-body">Ducto Venoso: avalia a circulação e a função cardíaca.<br>Regurgitação Tricúspide: também avalia o coração fetal.<br><br>Juntos, completam a avaliação cardíaca precoce. 🫀</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Poder do Conjunto</div>
+                        <div class="slide-title">4 marcadores + sangue materno = 90% de precisão 🎯</div>
+                        <div class="slide-body">O rastreamento combinado detecta mais de 90% dos casos de Síndrome de Down, com apenas 5% de falso-positivo.<br><br>Fora da janela de 11–14 semanas, essa oportunidade se perde. 📅</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Está na janela certa? 📅</div>
+                        <div class="slide-body">Realize o morfológico do 1T com profissional especializado e equipamento de alta resolução.<br><br>💾 Salva e compartilha com gestantes que ainda não sabem disso! 🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">O morfológico do 1º trimestre não é só para medir a nuca do bebê. 🔬
+
+Feito entre 11 e 14 semanas, ele avalia 4 marcadores fundamentais:
+1️⃣ Translucência Nucal — espessura da nuca
+2️⃣ Osso Nasal — marcador para alterações cromossômicas
+3️⃣ Ducto Venoso — avalia a circulação fetal
+4️⃣ Regurgitação Tricúspide — avalia o coração do bebê
+
+Quando esse conjunto se une com o sangue materno, chegamos a um rastreamento que detecta mais de 90% dos casos de Síndrome de Down — com apenas 5% de falso-positivo.
+
+Este exame precisa ser feito na janela certa. Fora de 11 a 14 semanas, essa oportunidade única se perde.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+💾 Salva esse post e compartilha com gestantes que precisam conhecer esse exame! 🤍</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #morfológico #ultrassom #primeiroTrimestre #síndromededown #medicinaFetal #médicaamiga #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 7 — Pré-eclâmpsia ========= -->
+        <div class="tema-block" id="c7">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 7 · Baseado no Reel 7</div>
+                <h2>Pré-eclâmpsia: Quem Tem Risco e o Que Fazer</h2>
+                <div class="gancho">"A pré-eclâmpsia pode ser prevista no 3º mês da gestação."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🩺</div>
+                        <div class="slide-title">A pré-eclâmpsia pode ser prevista no 3º mês da gestação.</div>
+                        <div class="slide-body">Entenda quem tem maior risco e como a medicina preventiva atua antes que o problema apareça</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O que é?</div>
+                        <div class="slide-title">O que é a pré-eclâmpsia? 🩺</div>
+                        <div class="slide-body">Pressão alta + comprometimento de órgãos maternos. Costuma aparecer a partir do 7º mês — quando reverter já é mais difícil.<br><br>Por isso, o rastreamento preventivo no 1T mudou tudo.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · Quem tem risco?</div>
+                        <div class="slide-title">Quem tem maior risco? ⚠️</div>
+                        <div class="slide-body">• Mães de primeira viagem (primíparas)<br>• Histórico familiar de hipertensão gestacional<br>• Doenças autoimunes (lúpus, antifosfolípide)<br>• Gestação de gêmeos<br>• Pré-eclâmpsia em gestação anterior</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Como rastreamos?</div>
+                        <div class="slide-title">Como rastreamos no 1T? 🔬</div>
+                        <div class="slide-body">✅ Doppler das artérias uterinas<br>✅ PIGF — proteína da placenta saudável<br>✅ Pressão arterial média<br>✅ Perfil clínico materno</div>
+                        <div class="slide-highlight">FEBRASGO recomenda para TODAS as gestantes ✅</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · A intervenção</div>
+                        <div class="slide-title">AAS de baixa dose: até -62% de risco 💊</div>
+                        <div class="slide-body">Para gestantes de alto risco, o AAS iniciado <strong>antes das 16 semanas</strong> reduz em até 62% o risco de pré-eclâmpsia grave.<br><br>Esse é o poder do diagnóstico precoce.</div>
+                        <div class="slide-highlight">⏱️ Antes das 16 semanas — a janela de oportunidade</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">Prevenção é o maior cuidado. 🌿</div>
+                        <div class="slide-body">A pré-eclâmpsia não precisa ser uma surpresa no 7º mês. Com o rastreamento certo desde o começo, é possível agir antes — e fazer uma diferença real.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Converse com sua obstetra 💬</div>
+                        <div class="slide-body">Se você tem algum dos fatores de risco, pergunte sobre o rastreamento de pré-eclâmpsia no 1T.<br><br>💾 Salva — essa informação pode proteger você ou alguém que você ama. 🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">A pré-eclâmpsia não precisa aparecer de surpresa. 🩺
+
+Já no 1º trimestre, conseguimos rastrear quem tem maior risco com: Doppler das artérias uterinas + dosagem do PIGF + pressão arterial média + perfil clínico.
+
+Para gestantes de alto risco, o AAS de baixa dose — iniciado antes das 16 semanas — reduz em até 62% o risco de pré-eclâmpsia grave.
+
+Quem merece atenção especial:
+⚠️ Primíparas | Histórico familiar | Doenças autoimunes | Gêmeos | PE anterior
+
+A FEBRASGO recomenda esse rastreamento para todas as gestantes. ✅
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Se você tem fatores de risco, converse com sua obstetra sobre o rastreamento precoce. Salva esse post! 🌿</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #préEclâmpsia #medicinaPreventiva #rastreamento #PIGF #médicaamiga #prénatal #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 8 — Cervicometria ========= -->
+        <div class="tema-block" id="c8">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 8 · Baseado no Reel 8</div>
+                <h2>Cervicometria: O Exame Silencioso</h2>
+                <div class="gancho">"5 minutos que podem evitar um nascimento prematuro."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🕐</div>
+                        <div class="slide-title">5 minutos que podem evitar um nascimento prematuro.</div>
+                        <div class="slide-body">Você conhece a cervicometria?</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O que é?</div>
+                        <div class="slide-title">O exame que ninguém fala, mas deveria. 🔬</div>
+                        <div class="slide-body">A cervicometria transvaginal mede o comprimento do colo do útero. O colo pode se encurtar silenciosamente — sem que você sinta <em>absolutamente nada</em>.<br><br>Zero sintoma. Completamente invisível sem o exame.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · O que indica?</div>
+                        <div class="slide-title">Colo &lt; 25mm = Atenção necessária ⚠️</div>
+                        <div class="slide-body">Colo com menos de 25mm entre a 20ª e a 24ª semana é um preditor importante de parto prematuro.<br><br>Comparação: 25mm é menos que o comprimento de uma goma de lápis.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Tratamento</div>
+                        <div class="slide-title">Quando identificamos cedo, agimos ✅</div>
+                        <div class="slide-body">✅ Progesterona micronizada vaginal — até -45% de risco (Cochrane)<br>✅ Pessário cervical — dispositivo de apoio ao colo<br>✅ Cerclagem — sutura do colo em casos críticos</div>
+                        <div class="slide-highlight">Detecção precoce = mais opções de tratamento</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Atenção especial para...</div>
+                        <div class="slide-title">Quem deve pedir com mais atenção? ⚠️</div>
+                        <div class="slide-body">• Histórico de parto prematuro anterior<br>• Cirurgia prévia no colo (conização)<br>• Gestação múltipla (gêmeos)<br><br>Converse com sua obstetra. 🌿</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">Prevenção silenciosa existe. 🌱</div>
+                        <div class="slide-body">Um exame de 5 minutos pode identificar um risco que você nunca perceberia por conta própria — e isso faz toda a diferença para o bebê chegar no tempo certo.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Já realizou sua cervicometria? 💬</div>
+                        <div class="slide-body">Me conta aqui nos comentários!<br><br>💾 Salva e manda para gestantes entre 18 e 24 semanas que ainda não conhecem esse exame. 🌿🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Um exame de 5 minutos que pode evitar um nascimento prematuro. 🕐
+
+A cervicometria transvaginal mede o comprimento do colo do útero. E o detalhe que poucas pessoas sabem: o colo pode estar encurtando sem que você sinta absolutamente nada. Zero sintoma.
+
+Colo abaixo de 25mm entre 20 e 24 semanas é um preditor de risco de prematuridade. E quando identificamos cedo, agimos:
+
+✅ Progesterona micronizada vaginal — evidência Cochrane mostra até 45% de redução no risco
+✅ Pessário cervical quando indicado
+✅ Cerclagem em casos específicos
+
+Faça entre a 20ª e a 24ª semana — de preferência junto ao morfológico de 2º trimestre.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+💾 Salva esse post e manda para gestantes entre 18 e 24 semanas! 🌿</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #cervicometria #prematuridade #coloUterino #progesterona #médicaamiga #prénatal #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 13 — Reta Final ========= -->
+        <div class="tema-block" id="c13">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 13 · Baseado no Reel 13</div>
+                <h2>Sinais Reais × Falsos Alarmes no Trabalho de Parto</h2>
+                <div class="gancho">"A reta final chegou. Saiba reconhecer os sinais certos."</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1 · Gancho</div>
+                        <div class="slide-icon">🤍</div>
+                        <div class="slide-title">A reta final chegou.<br>Saiba reconhecer os sinais certos.</div>
+                        <div class="slide-body">Sinais reais de trabalho de parto × o que é falso alarme</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2 · O Problema</div>
+                        <div class="slide-title">40% das internações de urgência não estão em trabalho de parto ativo 📊</div>
+                        <div class="slide-body">Isso acontece porque os sinais reais ainda são pouco ensinados — e a ansiedade da reta final faz interpretar qualquer cólica como "chegou a hora".</div>
+                        <div class="slide-highlight">Ministério da Saúde, 2024</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3 · Sinal Real 1</div>
+                        <div class="slide-title">✅ Contrações reais: regra 5‑1‑1</div>
+                        <div class="slide-body">A cada <strong>5 minutos</strong> | com pelo menos <strong>1 minuto</strong> de duração | por mais de <strong>1 hora</strong><br><br>E ficam mais FORTES, mais LONGAS e mais FREQUENTES com o tempo.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4 · Sinais 2 e 3</div>
+                        <div class="slide-title">✅ Tampão mucoso + 🚨 Bolsa rompeu</div>
+                        <div class="slide-body"><strong>Tampão mucoso:</strong> secreção gelatinosa — indica colo maduro, mas pode acontecer dias antes. Sozinho, observe as contrações.<br><br><strong>Bolsa rompeu:</strong> vai para a maternidade sem demora. 🚨</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5 · Falso Alarme</div>
+                        <div class="slide-title">❌ Braxton-Hicks NÃO é trabalho de parto</div>
+                        <div class="slide-body">Contrações irregulares, que não aumentam de intensidade e cedem com repouso ou mudança de posição.<br><br>Regra simples: se melhorou quando você se deitou — aguarde.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6 · Reflexão</div>
+                        <div class="slide-title">Você chegou até aqui. 🌿</div>
+                        <div class="slide-body">Meses de consultas, exames, noites mal dormidas, enjoo, susto, amor.<br><br>Você está mais preparada do que imagina. Conhecer os sinais certos é o último passo dessa preparação incrível.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#B12A38;">
+                        <div class="slide-num">Slide 7 · CTA</div>
+                        <div class="slide-title">Compartilha com a mamãe da reta final 💬</div>
+                        <div class="slide-body">💾 Salva para ter essa informação sempre que precisar.<br><br>Manda para gestantes entre 36 e 40 semanas! 🤍</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">A reta final chegou. E você está mais pronta do que imagina. 🤍
+
+Mas você sabe reconhecer os sinais reais de trabalho de parto? Cerca de 40% das gestantes que chegam às maternidades de urgência ainda não estão em trabalho de parto ativo (Ministério da Saúde, 2024).
+
+Os sinais reais são:
+✅ Contrações regulares — 5 em 5 minutos, 1 minuto de duração, por mais de 1 hora — ficando mais fortes e frequentes
+✅ Tampão mucoso — pode acontecer dias antes. Sozinho, observe as contrações
+🚨 Bolsa rompeu — vai para a maternidade sem esperar
+
+O que NÃO é trabalho de parto:
+❌ Braxton-Hicks — contrações irregulares que melhoram com repouso
+
+Sobre o plano de nascimento: converse abertamente com sua obstetra. Suas preferências importam — e o melhor plano é o que consegue se adaptar ao momento.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+💾 Salva esse post e manda para gestantes na reta final! 🌿</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #trabalhoDeParto #retaFinal #sinaisDeParto #braxtonHicks #médicaamiga #partoRespeitoso #gaiaclinica</div>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+
+    <footer>
+        Gaia Medicina Integrada · Obstetrícia · Abril 2026 — Skills: <em>guardiao_tom_de_voz</em> + <em>criador_carrossel_instagram</em>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach(function (el) {
+                new Swiper(el, {
+                    grabCursor: true,
+                    pagination: {
+                        el: el.querySelector('.swiper-pagination'),
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: el.querySelector('.swiper-button-next'),
+                        prevEl: el.querySelector('.swiper-button-prev')
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
