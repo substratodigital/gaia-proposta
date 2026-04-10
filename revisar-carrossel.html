@@ -162,19 +162,9 @@
 
 <body>
 
-    <!-- TELA DE LOGIN -->
-    <div id="auth-screen" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--cor-fundo);">
-        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
-            <h2 style="color: var(--cor-texto-destaque); margin-top: 0;">Área Médica - Gaia</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Digite seu e-mail para validar sua identidade e aprovar o carrossel.</p>
-            <input type="email" id="auth-email" placeholder="E-mail" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--cor-borda); border-radius: 8px;">
-            <button onclick="fazerLoginMagicLink()" style="width: 100%; background: var(--cor-primaria); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Acessar Painel 🪄</button>
-            <p id="auth-msg" style="color: var(--cor-texto-destaque); margin-top: 15px; display: none;"></p>
-        </div>
-    </div>
 
     <!-- TELA DO APLICATIVO -->
-    <div id="app-screen" class="hidden">
+    <div id="app-screen">
         <header>
             <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto;">
                 <div style="text-align: left;">
@@ -234,33 +224,9 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_zGPoOEf6RFaxiuTlXxgxow_gw4rmp9A'; 
         const supaClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        let usuarioAtual = null;
+        let usuarioAtual = { email: "medica@gaia.com" }; // Mock
         let pIdVotacao = new URLSearchParams(window.location.search).get('id');
         let arraySlidesReal = [];
-
-        async function checkSession() {
-            const { data } = await supaClient.auth.getSession();
-            if (data.session) {
-                usuarioAtual = data.session.user;
-                document.getElementById('identidade-medica').innerText = "Logada como: " + usuarioAtual.email;
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('app-screen').classList.remove('hidden');
-                carregarProtocolo();
-            } else {
-                document.getElementById('auth-screen').style.display = 'flex';
-                document.getElementById('app-screen').classList.add('hidden');
-            }
-        }
-
-        async function fazerLoginMagicLink() {
-            let email = document.getElementById('auth-email').value;
-            let msgBox = document.getElementById('auth-msg');
-            if(!email) return;
-            msgBox.style.display = 'block'; msgBox.innerText = 'Pedindo autorização ao Supabase...';
-            const { error } = await supaClient.auth.signInWithOtp({ email: email, options: { emailRedirectTo: window.location.href }});
-            if(error) msgBox.innerText = 'Erro: ' + error.message; 
-            else msgBox.innerText = 'Enviado! Olhe seu E-mail pelo celular ou PC e clique no botão.';
-        }
 
         function selecionarStatus(radio, index) {
             const labels = document.querySelectorAll(`input[name="status-${index}"]`);
@@ -366,7 +332,7 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', checkSession);
+        document.addEventListener('DOMContentLoaded', carregarProtocolo);
     </script>
 </body>
 </html>

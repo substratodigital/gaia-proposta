@@ -167,26 +167,16 @@
 
 <body>
 
-    <!-- TELA DE LOGIN -->
-    <div id="auth-screen" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--cor-fundo);">
-        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
-            <h2 style="color: var(--cor-texto-destaque); margin-top: 0;">Acesso Restrito - Designer Gaia</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Faça login com e-mail para subir os carrosséis.</p>
-            <input type="email" id="auth-email" placeholder="Seu E-mail" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--cor-borda); border-radius: 8px;">
-            <button onclick="fazerLoginMagicLink()" style="width: 100%; background: var(--cor-primaria); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Receber Link Mágico 🪄</button>
-            <p id="auth-msg" style="color: var(--cor-texto-destaque); margin-top: 15px; display: none;"></p>
-        </div>
-    </div>
 
     <!-- TELA DO APLICATIVO -->
-    <div id="app-screen" class="hidden">
+    <div id="app-screen">
         <header>
             <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto;">
                 <div style="text-align: left;">
                     <h1 style="margin: 0; color: var(--cor-texto-destaque); font-size: 28px;">Criar Carrossel para Aprovação (Designer)</h1>
                     <p style="margin: 5px 0 0 0; color: #666;">Faça upload das imagens completas e da legenda.</p>
                 </div>
-                <button onclick="fazerLogout()" style="background: transparent; border: 1px solid #ccc; padding: 6px 12px; border-radius: 6px; cursor: pointer;">Sair</button>
+                <!-- Botão de Sair removido -->
             </div>
         </header>
 
@@ -226,37 +216,9 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_zGPoOEf6RFaxiuTlXxgxow_gw4rmp9A'; 
         const supaClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        let usuarioAtual = null;
-
-        async function checkSession() {
-            const { data } = await supaClient.auth.getSession();
-            if (data.session) {
-                usuarioAtual = data.session.user;
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('app-screen').classList.remove('hidden');
-            } else {
-                document.getElementById('auth-screen').style.display = 'flex';
-                document.getElementById('app-screen').classList.add('hidden');
-            }
-        }
-
-        async function fazerLoginMagicLink() {
-            const email = document.getElementById('auth-email').value;
-            const msgBox = document.getElementById('auth-msg');
-            if (!email) return;
-            msgBox.style.display = 'block';
-            msgBox.innerText = 'Enviando link...';
-            const { error } = await supaClient.auth.signInWithOtp({ email: email, options: { emailRedirectTo: window.location.origin + window.location.pathname } });
-            if (error) { msgBox.innerText = 'Erro: ' + error.message; } else { msgBox.innerText = 'Verifique seu e-mail!'; }
-        }
-
-        async function fazerLogout() {
-            await supaClient.auth.signOut();
-            window.location.reload();
-        }
+        let usuarioAtual = { email: "visitante@gaia.com" }; // Mock para o upload não quebrar se depender disso
 
         document.addEventListener('DOMContentLoaded', () => {
-            checkSession();
             const container = document.getElementById('cards-container');
             for (let i = 1; i <= 10; i++) {
                 container.insertAdjacentHTML('beforeend', `

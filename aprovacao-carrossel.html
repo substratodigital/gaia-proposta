@@ -312,30 +312,15 @@
 
 <body>
 
-    <!-- TELA DE LOGIN -->
-    <div id="auth-screen" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--cor-fundo);">
-        <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
-            <h2 style="color: var(--cor-texto-destaque); margin-top: 0;">Acesso Restrito - Gaia</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Digite seu e-mail para receber um link direto de acesso (sem senha).</p>
-            
-            <input type="email" id="auth-email" placeholder="E-mail (ex: dra@gmail.com)" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--cor-borda); border-radius: 8px; box-sizing: border-box; font-family: inherit;">
-            
-            <button type="button" onclick="fazerLoginMagicLink()" style="width: 100%; background: var(--cor-primaria); color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; transition: 0.3s;">
-                Receber Link Mágico 🪄
-            </button>
-            <p id="auth-msg" style="color: var(--cor-reprovado); font-size: 13px; margin-top: 15px; display: none;"></p>
-        </div>
-    </div>
-
-    <!-- TELA DO APLICATIVO (Inicia oculta) -->
-    <div id="app-screen" class="hidden">
+    <!-- TELA DO APLICATIVO -->
+    <div id="app-screen">
         <header>
             <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto;">
                 <div style="text-align: left;">
                     <h1 style="margin: 0; color: var(--cor-texto-destaque); font-size: 28px;">Painel de Aprovação</h1>
                     <p style="margin: 5px 0 0 0; color: #666;">Defina o status de cada análise individual.</p>
                 </div>
-                <button type="button" onclick="fazerLogout()" style="background: transparent; border: 1px solid #ccc; padding: 6px 12px; border-radius: 6px; cursor: pointer; color: #666; font-weight: 600;">Sair da conta</button>
+                <!-- Botão de Sair removido -->
             </div>
         </header>
 
@@ -399,70 +384,8 @@
         const supaClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         // ==========================================
 
-        // Variável para guardar quem está logado (opcional)
-        let usuarioAtual = null;
-
-        // Verificar se já existe uma sessão ativa ao carregar a página
-        async function checkSession() {
-            const { data } = await supaClient.auth.getSession();
-            if (data.session) {
-                // Usuário está logado!
-                usuarioAtual = data.session.user;
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('app-screen').classList.remove('hidden');
-            } else {
-                // Usuário não está logado
-                document.getElementById('auth-screen').style.display = 'flex';
-                document.getElementById('app-screen').classList.add('hidden');
-            }
-        }
-
-        // Função de Login Magic Link (Sem Senha)
-        async function fazerLoginMagicLink() {
-            const email = document.getElementById('auth-email').value;
-            const msgBox = document.getElementById('auth-msg');
-            
-            if(!email || !email.includes('@')) {
-                mostrarMsg('Por favor, insira um e-mail válido.', true);
-                return;
-            }
-
-            msgBox.style.display = 'block';
-            msgBox.style.color = '#666';
-            msgBox.innerText = 'Enviando link mágico...';
-
-            const { data, error } = await supaClient.auth.signInWithOtp({
-                email: email,
-                options: {
-                    // Após clicar no e-mail, redireciona o usuário para a mesma página atual
-                    emailRedirectTo: window.location.origin + window.location.pathname
-                }
-            });
-
-            if (error) {
-                mostrarMsg('Erro: ' + error.message, true);
-            } else {
-                mostrarMsg('Enviado! Verifique a caixa de entrada do seu e-mail.', false);
-            }
-        }
-
-        // Função de Logout
-        async function fazerLogout() {
-            await supaClient.auth.signOut();
-            window.location.reload();
-        }
-
-        function mostrarMsg(texto, isErro) {
-            const box = document.getElementById('auth-msg');
-            box.style.display = 'block';
-            box.innerText = texto;
-            box.style.color = isErro ? 'var(--cor-reprovado)' : 'var(--cor-aprovado)';
-        }
-
         // Inicializar os 10 cards e layout
         document.addEventListener('DOMContentLoaded', () => {
-            // Checar login primeiro
-            checkSession();
             
             const container = document.getElementById('cards-container');
 
