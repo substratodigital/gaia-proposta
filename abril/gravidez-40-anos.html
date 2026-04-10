@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teleprompter GAIA — Especial Gravidez 40 Anos</title>
+<meta name="description" content="Roteiros Especiais para Gravidez 40+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--wine:#853B50;--wine-deep:#6B2D3E;--red:#B12A38;--cream:#FDF8F4;--sage:#E8F0E8;--gold:#C9A84C;--dark:#1a1a2e;--gray:#64748b;--light:#f8fafc}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:#1e293b;-webkit-font-smoothing:antialiased}
+.nav{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:900px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand span:first-child{font-size:2rem}
+.nav-title{font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:.15em}
+.nav-sub{font-size:.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.2em}
+.nav-meta{font-size:.75rem;color:#94a3b8;display:none}
+@media(min-width:640px){.nav-meta{display:block}}
+main{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}
+.hero{text-align:center;padding:4rem 0 3rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;color:var(--dark);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--red),var(--wine));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+.hero .rule{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.5rem 1.25rem;border-radius:99px;background:#fff1f2;color:var(--red);font-weight:600;font-size:.85rem}
+.card{background:#fff;border-radius:1.25rem;box-shadow:0 8px 30px rgba(0,0,0,.06);border:1px solid #e8e0db;margin-bottom:3.5rem;overflow:hidden}
+.card-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid #f0ebe7;display:flex;gap:1.25rem;align-items:flex-start;flex-wrap:wrap}
+.card-num{width:3.5rem;height:3.5rem;border-radius:1rem;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 12px rgba(133,59,80,.3)}
+.card-info h2{font-size:1.6rem;font-weight:700;color:var(--dark);line-height:1.3}
+.card-tags{display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap}
+.tag{font-size:.7rem;font-weight:600;padding:.3rem .7rem;border-radius:99px;background:#f1f5f9;color:var(--gray)}
+.tag.dur{background:var(--sage);color:#2d5a2d}
+.card-body{padding:2rem}
+.tl{position:relative;padding-left:2.5rem}
+.tl::before{content:'';position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--wine),#e8e0db)}
+.block{position:relative;padding-bottom:2.5rem}
+.block:last-child{padding-bottom:0}
+.block::before{content:'';position:absolute;left:-2.5rem;top:10px;width:18px;height:18px;border-radius:50%;background:var(--wine);border:4px solid #fff;box-shadow:0 0 0 2px var(--wine);z-index:1}
+.block:last-child .tl::before{display:none}
+.block-time{display:inline-flex;align-items:center;padding:.3rem .85rem;border-radius:99px;background:var(--wine);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem}
+.block-label{display:inline-block;margin-left:.5rem;padding:.2rem .6rem;border-radius:4px;background:#fff1f2;color:var(--red);font-size:.7rem;font-weight:700}
+.script{font-family:'Lora',serif;font-size:1.3rem;line-height:1.9;color:#2c2c2c;background:var(--cream);padding:1.5rem 1.75rem;border-radius:.75rem;border-left:5px solid var(--wine)}
+.script strong{color:var(--wine-deep)}
+.ref{margin-top:1.5rem;padding:1rem 1.5rem;background:#f8f6f3;border-radius:.75rem;border:1px solid #e8e0db}
+.ref-title{font-size:.75rem;font-weight:700;color:var(--wine);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.ref a{font-size:.8rem;color:var(--gray);text-decoration:none;display:block;margin-bottom:.25rem;word-break:break-all}
+.ref a:hover{color:var(--wine);text-decoration:underline}
+.copy-section{margin-top:1.5rem;padding:1.25rem 1.5rem;background:#fafaf8;border-radius:.75rem;border:1px dashed #d4cfc8}
+.copy-section h4{font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.copy-section p{font-size:.95rem;line-height:1.7;color:#555}
+.copy-section .hashtags{font-size:.8rem;color:var(--wine);margin-top:.5rem;font-weight:500}
+footer{background:var(--dark);color:#94a3b8;text-align:center;padding:3rem 1rem;font-size:.85rem}
+footer p+p{margin-top:.25rem}
+
+/* MOBILE OPTIMIZATION */
+@media(max-width:768px){
+    main{padding:1rem .5rem 2rem}
+    .hero{padding:2rem 0}
+    .card-head{padding:1.25rem}
+    .card-body{padding:1rem .75rem}
+    .tl{padding-left:1.2rem}
+    .block::before{left:-1.2rem;width:14px;height:14px;border-width:3px}
+    .block-time{padding:.25rem .6rem;font-size:.7rem}
+    .script{padding:1rem;font-size:1.15rem;line-height:1.7}
+    .ref, .copy-section{padding:1rem}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-brand"><span>🌿</span><div><div class="nav-title">Teleprompter GAIA</div><div class="nav-sub">Gaia Medicina Integrada</div></div></div><div class="nav-meta">Especial Gravidez 40 Anos</div></div></nav>
+
+<main>
+<div class="hero">
+<h1>Roteiros Especiais: <em>Gravidez aos 40 Anos</em></h1>
+<p>Scripts completos para teleprompter. Tom <strong>Médica Amiga</strong>: acolhedor, seguro, didático. Foco total na paciente e na ciência.</p>
+<div class="rule">❌ Expressões proibidas: "parto humanizado", "pré-natal integrativo", "medicina integrativa"</div>
+</div>
+
+<!-- REEL 01: O RÓTULO DO ALTO RISCO -->
+<article class="card" id="reel-01">
+<div class="card-head">
+<div class="card-num">01</div>
+<div class="card-info">
+<h2>O Rótulo do Alto Risco e a Culpa</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~60s</span><span class="tag">Qualquer trimestre</span><span class="tag">✨ Diferencial Gaia</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 5s</span><span class="block-label">Gancho</span>
+<div class="script">"Oi, meninas! A primeira frase que a mulher escuta quando engravida depois dos 40 anos é: 'Cuidado, é uma gestação de alto risco'."</div>
+</div>
+<div class="block">
+<span class="block-time">5s – 15s</span><span class="block-label">Validação</span>
+<div class="script">"Isso cai como um peso enorme, né? Entra a culpa, o medo de perder o bebê... Mas deixa eu acalmar o seu coração hoje."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 35s</span><span class="block-label">Técnico Traduzido</span>
+<div class="script">"Pela ciência, sim, a idade aumenta chances de pré-eclâmpsia e alterações. Mas, na vida prática, um bom pré-natal acolhedor transforma esse 'risco genérico' em prevenção direcionada. A ciência avança para garantir paz e segurança para a mulher, de forma preventiva desde os primeiros exames."</div>
+</div>
+<div class="block">
+<span class="block-time">35s – 50s</span><span class="block-label">DNA Gaia</span>
+<div class="script">"Nós mapeamos ferritina, sono, e rastreamos sua pressão mês a mês para cuidar de você, e não da doença. Em grande parte das vezes, com controle e saúde equilibrados, a gravidez vai super bem e flui de forma serena."</div>
+</div>
+<div class="block">
+<span class="block-time">50s – 60s</span><span class="block-label">CTA Impessoal</span>
+<div class="script">"Ser mãe aos 40 é potente! Se esse vídeo tirou um peso das suas costas, compartilha com uma amiga que também precisa desse abraço virtual."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O rótulo do "Alto Risco" assusta, mas na prática, a ciência nos permite prever e prevenir com precisão. ✨ Engravidar após os 40 anos é cada vez mais comum e seguro. O nosso papel no pré-natal acolhedor é cuidar da mãe de forma preventiva, acompanhando não só exames de rotina, mas a sua imunidade, o seu metabolismo e o mais importante: suas emoções. 💙</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PreNatalAcolhedor #GravidezAos40 #GravidezSegura #SaúdaDaMulher #MédicaAmiga #Acolhimento</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 02: PRÉ-NATAL ACOLHEDOR (CÓPIA REAL DA PAUTA) -->
+<article class="card" id="reel-02">
+<div class="card-head">
+<div class="card-num">02</div>
+<div class="card-info">
+<h2>Pré-Natal Acolhedor: Um Cuidado Amplo e Individualizado</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~2 min 30s</span><span class="tag">Qualquer trimestre</span><span class="tag">✨ Diferencial Gaia</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0 – 15s</span><span class="block-label">Gancho</span>
+<div class="script">"O pré-natal na Gaia não cuida só da barriga crescendo. A gente cuida da mulher que está dentro dessa barriga. Porque gestação não é só útero — é corpo, mente, intestino, sono, vida."</div>
+</div>
+<div class="block">
+<span class="block-time">15s – 45s</span><span class="block-label">Contexto</span>
+<div class="script">"O pré-natal convencional garante o básico fundamental: consultas, exames e ultrassons. E eles são insubstituíveis. Mas o pré-natal acolhedor da Gaia vai além. Porque a gestante não é só uma barriga crescendo — ela é uma mulher com histórico, com emoções, com intestino, com sono, com estresse, com uma vida inteira acontecendo enquanto ela gera outra vida."</div>
+</div>
+<div class="block">
+<span class="block-time">45s – 1m45s</span><span class="block-label">Técnico traduzido</span>
+<div class="script">"Os pilares que a gente adiciona ao cuidado:<br><br><strong>Saúde intestinal</strong> — a microbiota da mãe durante a gestação influencia diretamente o sistema imunológico do bebê. O que vive no intestino da mãe é, em parte, o que o bebê vai herdar.<br><br><strong>Manejo do cortisol e do estresse</strong> — altos níveis de cortisol crônico durante a gestação aumentam o risco de crescimento intrauterino restrito e podem impactar o neurodesenvolvimento.<br><br><strong>Atividade física adaptada</strong> — comprovada para reduzir o risco de hipertensão gestacional e diabetes gestacional.<br><br><strong>Biomarcadores inflamatórios</strong> — avaliar a inflamação crônica de base da gestante que pode interferir no crescimento fetal.<br><br><strong>Sono</strong> — distúrbios de sono no terceiro trimestre estão associados a maior risco de complicações no trabalho de parto."</div>
+</div>
+<div class="block">
+<span class="block-time">1m45s – 2m15s</span><span class="block-label">Dicas práticas</span>
+<div class="script">"Isso não é luxo — é prevenção. A FEBRASGO já orienta que o papel do obstetra vai muito além dos exames, incluindo orientação de estilo de vida integral durante a gestação. Na Gaia, levamos isso a sério. Cada pilar tem impacto direto e mensurável na saúde do bebê."</div>
+</div>
+<div class="block">
+<span class="block-time">2m15s – 2m30s</span><span class="block-label">CTA</span>
+<div class="script">"Um pré-natal que integra saúde física, emocional e estilo de vida. O cuidado acolhedor faz a diferença na jornada da gestação. Informe-se com um especialista."</div>
+</div>
+</div>
+<div class="ref">
+<div class="ref-title">📚 Fontes Científicas</div>
+<a href="https://www.febrasgo.org.br" target="_blank">FEBRASGO (Femina, 2025) — Papel do obstetra na orientação de estilo de vida</a>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Na Gaia, o pré-natal cuida da mulher de forma ampla. 🌿 Além dos exames essenciais, olhamos para: microbiota, manejo do estresse, atividade física, biomarcadores inflamatórios e qualidade do sono. Cada pilar impacta diretamente a saúde do bebê. Conheça os benefícios de um acompanhamento acolhedor. 💙</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #PreNatalAcolhedor #Acolhimento #Gestação #CuidadoIntegral #MédicaAmiga #SaúdaDaMulher #GravidezSaudável</p>
+</div>
+</div>
+</article>
+
+</main>
+<footer>
+<p>Documento de uso interno — <strong>Gaia Medicina Integrada</strong></p>
+<p>Roteiros e Conteúdos Otimizados para Teleprompter Móvel</p>
+</footer>
+</body>
+</html>
