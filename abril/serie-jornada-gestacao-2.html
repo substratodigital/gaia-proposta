@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Jornada Secreta da Vida — Série Gestação · Gaia</title>
+    <meta name="description" content="Série educativa de 10 carrosséis acompanhando cada fase do desenvolvimento fetal com embasamento científico e acolhimento materno.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+            --cor-cream: #fdf8f8;
+            --sombra-card: 0 8px 32px rgba(133, 59, 80, 0.10);
+            --sombra-swiper: 0 14px 44px rgba(133, 59, 80, 0.20);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.65;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: linear-gradient(145deg, var(--cor-destaque) 0%, var(--cor-primaria) 100%);
+            padding: 52px 28px 42px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            right: -60px; top: -60px;
+            width: 240px; height: 240px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            left: -40px; bottom: -80px;
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 99px;
+            margin-bottom: 16px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        header h1 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        header p {
+            color: rgba(255,255,255,0.82);
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+        }
+        .header-ref {
+            margin-top: 18px;
+            display: inline-block;
+            background: rgba(0,0,0,0.15);
+            color: rgba(255,255,255,0.7);
+            font-size: 10.5px;
+            padding: 4px 14px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* ── NAV ── */
+        .nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding: 28px 20px 40px;
+        }
+        .nav-pills a {
+            display: inline-block;
+            background: var(--cor-branco);
+            border: 1.5px solid #eacfd3;
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 99px;
+            transition: all 0.25s ease;
+        }
+        .nav-pills a:hover {
+            background: var(--cor-destaque);
+            color: #fff;
+            border-color: var(--cor-destaque);
+            transform: translateY(-1px);
+        }
+
+        /* ── CONTAINER ── */
+        .container { max-width: 920px; margin: 0 auto; padding: 0 20px 80px; }
+
+        /* ── TEMA BLOCK ── */
+        .tema-block {
+            background: var(--cor-branco);
+            border-radius: 22px;
+            padding: 42px 40px;
+            margin-bottom: 56px;
+            box-shadow: var(--sombra-card);
+            scroll-margin-top: 20px;
+        }
+        .tema-header {
+            margin-bottom: 34px;
+            border-bottom: 2px solid #f5ebed;
+            padding-bottom: 24px;
+            text-align: center;
+        }
+        .tema-header .num-badge {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: #fff;
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 99px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 0 10px;
+            line-height: 1.3;
+        }
+        .tema-header .gancho {
+            font-weight: 600;
+            color: var(--cor-destaque);
+            font-size: 14.5px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .tema-header .ref-cientifica {
+            display: block;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #aaa;
+            font-style: normal;
+        }
+
+        /* ── SWIPER ── */
+        .swiper {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto 34px;
+            border-radius: 18px;
+            box-shadow: var(--sombra-swiper);
+        }
+        .swiper-slide {
+            background: var(--cor-branco);
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            padding: 48px 36px 40px;
+            text-align: center;
+            position: relative;
+            border: 3px solid #f0e0e3;
+            border-radius: 18px;
+        }
+        .swiper-slide.dark {
+            background: linear-gradient(150deg, var(--cor-destaque) 0%, #6b2d3d 100%);
+            color: #fff;
+            border: none;
+        }
+        .swiper-slide.accent {
+            background: linear-gradient(150deg, var(--cor-primaria) 0%, #8a1f2d 100%);
+            color: #fff;
+            border: none;
+        }
+
+        /* Slide final com imagem */
+        .swiper-slide.final-slide {
+            background: var(--cor-branco);
+            color: var(--cor-destaque);
+            padding: 20px 28px;
+            justify-content: flex-end;
+            border: none;
+        }
+        .final-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 52%;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .final-content {
+            position: relative;
+            z-index: 2;
+            margin-top: auto;
+            padding-top: 12px;
+        }
+
+        .slide-num {
+            position: absolute;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            opacity: 0.45;
+            white-space: nowrap;
+        }
+        .slide-icon { font-size: 30px; margin-bottom: 14px; }
+        .slide-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .dark .slide-title { color: #fff; }
+        .slide-title-bordo {
+            color: var(--cor-destaque);
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .slide-body {
+            font-size: 13.5px;
+            line-height: 1.65;
+            opacity: 0.92;
+        }
+        .final-slide .slide-body { color: #666; }
+        .slide-ref {
+            display: block;
+            font-size: 10px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            font-style: italic;
+        }
+        .light-ref {
+            color: #bbb;
+        }
+
+        .slide-cta-impessoal {
+            background: var(--cor-cream);
+            border: 2px solid #eacfd3;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cor-destaque);
+            margin-top: 14px;
+            display: inline-block;
+            line-height: 1.4;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--cor-destaque) !important;
+            transform: scale(0.55);
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover { opacity: 1; }
+        .swiper-pagination-bullet {
+            background: var(--cor-destaque) !important;
+            opacity: 0.3;
+        }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
+        /* ── LEGENDA ── */
+        .legenda-container {
+            background: var(--cor-cream);
+            border-left: 4px solid var(--cor-primaria);
+            border-radius: 4px 16px 16px 4px;
+            padding: 28px 30px;
+            margin-top: 30px;
+        }
+        .legenda-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-bottom: 16px;
+        }
+        .legenda-content {
+            font-size: 13.5px;
+            color: #555;
+            white-space: pre-wrap;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+        .legenda-aviso {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 14px;
+            padding: 10px 14px;
+            background: #faf0f0;
+            border-radius: 8px;
+            border: 1px solid #f0e0e3;
+        }
+        .legenda-tags {
+            font-size: 12.5px;
+            color: var(--cor-destaque);
+            font-weight: 600;
+            opacity: 0.7;
+            line-height: 1.9;
+        }
+        .legenda-tags-group {
+            display: block;
+            margin-bottom: 4px;
+        }
+        .legenda-tags-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bbb;
+            margin-right: 6px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 34px 20px;
+            color: #bbb;
+            font-size: 12px;
+            border-top: 1px solid #f0e6e8;
+        }
+        footer strong { color: var(--cor-destaque); }
+
+        @media (max-width: 768px) {
+            .tema-block { padding: 24px 20px; }
+            .slide-title, .slide-title-bordo { font-size: 17px; }
+            .slide-body { font-size: 12.5px; }
+            header h1 { font-size: 24px; }
+            header { padding: 40px 22px 34px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="badge">🤰 Série Educativa · Trilha Gestacional</div>
+        <h1>A Jornada Secreta da Vida</h1>
+        <p>10 carrosséis que acompanham cada fase do desenvolvimento fetal — unindo ciência embriológica ao sentir materno, com o acolhimento que cada gestante merece.</p>
+        <div class="header-ref">Referências: ACOG, FEBRASGO, Williams Obstetrics 26ª ed., Moore Embriologia Clínica</div>
+    </header>
+
+    <div class="nav-pills">
+        <a href="#c1">Semanas 1–4</a>
+        <a href="#c2">Semanas 5–8</a>
+        <a href="#c3">Semanas 9–13</a>
+        <a href="#c4">Semanas 14–17</a>
+        <a href="#c5">Semanas 18–22</a>
+        <a href="#c6">Semanas 23–26</a>
+        <a href="#c7">Semanas 27–31</a>
+        <a href="#c8">Semanas 32–35</a>
+        <a href="#c9">Semanas 36–40</a>
+        <a href="#c10">Saúde Emocional</a>
+    </div>
+
+    <div class="container">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 1 · SEMANAS 1–4              -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c1">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 1 · Semanas 1 a 4</div>
+                <h2>A Semente Que Já Carrega Tudo</h2>
+                <div class="gancho">"Você acabou de descobrir a gestação? Do tamanho de uma semente de papoula, o embrião já possui toda a informação genética que fará dele único no mundo."
+                    <span class="ref-cientifica">Ref.: Moore, K.L. — Embriologia Clínica, 11ª ed., Cap. 2 (Primeira Semana do Desenvolvimento Humano)</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 — Capa/Gancho -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você acabou de ver o positivo? 🌿</div>
+                        <div class="slide-body">Neste exato momento, dentro de você existe uma estrutura menor que uma semente de papoula — mas que já carrega absolutamente toda a informação genética que definirá a cor dos olhos, o formato do rosto e a personalidade do seu bebê.</div>
+                    </div>
+                    <!-- Slide 2 — Validação -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O que acontece nas primeiras semanas? 🧬</div>
+                        <div class="slide-body">Da 1ª à 4ª semana, após a fecundação, o zigoto percorre a trompa uterina por 4 a 5 dias até se implantar no endométrio. Esse processo, chamado nidação, é o momento em que ele "encontra abrigo" — e pode causar um pequeno sangramento, muitas vezes confundido com menstruação.</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 5</span>
+                    </div>
+                    <!-- Slide 3 — Conteúdo Educativo -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">O tubo neural começa a se formar ✨</div>
+                        <div class="slide-body">Ainda no final da 4ª semana, a estrutura que dará origem ao cérebro e à medula espinhal — o tubo neural — já inicia sua formação. É por isso que a suplementação de ácido fólico, idealmente iniciada antes mesmo da concepção, é tão importante nessa fase.</div>
+                        <span class="slide-ref">Ref.: FEBRASGO — Protocolo de Suplementação Pré-Concepcional</span>
+                    </div>
+                    <!-- Slide 4 — Sentir materno -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">E o que você está sentindo agora? 🤍</div>
+                        <div class="slide-body">Sonolência fora do comum, seios mais sensíveis, emoções que parecem uma montanha-russa — tudo isso é o aumento da progesterona e do hCG reorganizando o seu corpo para proteger essa nova vida. Não é exagero: é biologia a seu favor.</div>
+                    </div>
+                    <!-- Slide CTA (Impessoal) -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">O cuidado começa na primeira descoberta.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Se você acabou de descobrir a gestação, converse com o seu obstetra de confiança o quanto antes. O início precoce do pré-natal faz toda a diferença.</div>
+                            <div class="slide-cta-impessoal">💛 Salve este post e envie para quem acabou de contar a novidade</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, nossas grávidas! 🌿
+
+Você acabou de ver aquelas duas linhinhas no teste e o coração disparou? A gente entende. Pode parecer cedo demais para tanta emoção — mas a verdade cientifica é que, neste exato momento, dentro de você existe uma estrutura que já carrega absolutamente toda a informação genética que definirá quem esse bebê será.
+
+Das semanas 1 a 4, o zigoto percorre a trompa até encontrar abrigo no endométrio (esse processo se chama nidação e pode causar um pequeno sangramento — tranquilo, isso é esperado!). Ao final da 4ª semana, o tubo neural — que dará origem ao cérebro e à medula — já começa a se formar.
+
+E você? Pode estar sentindo uma sonolência diferente de tudo, seios mais sensíveis e emoções intensas. Isso acontece porque a progesterona e o hCG estão reorganizando o seu corpo inteiro para proteger essa nova vida. Não é frescura: é biologia trabalhando a seu favor. 🤍
+
+Se você acabou de descobrir, o passo mais importante agora é procurar o seu obstetra de confiança para iniciar o pré-natal. Quanto mais cedo, mais seguro para vocês dois.</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #saúdedamulher #prénatal #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#desenvolvimentofetal #primeiragravidez #mãedeprimeiraviagem #ácidofólico #nidação</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 2 · SEMANAS 5–8              -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c2">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 2 · Semanas 5 a 8</div>
+                <h2>O Primeiro Batimento do Coração</h2>
+                <div class="gancho">"Enquanto você sente um cansaço que parece não ter fim, lá dentro um coraçãozinho minúsculo acabou de começar a bater — cerca de 110 a 160 vezes por minuto."
+                    <span class="ref-cientifica">Ref.: ACOG — FAQ 156: Prenatal Development; Moore, Embriologia Clínica, Cap. 4</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você está exausta e isso faz todo sentido. 🤍</div>
+                        <div class="slide-body">Enquanto o cansaço toma conta de você, algo extraordinário acontece lá dentro: na 6ª semana, o coração embrionário inicia seus primeiros batimentos — entre 110 e 160 por minuto.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O sistema nervoso ganha forma 🧠</div>
+                        <div class="slide-body">Entre a 5ª e a 6ª semana, o tubo neural se fecha completamente e dá origem ao encéfalo e à medula espinhal. É a fundação de todo o sistema nervoso central. O embrião mede cerca de 4mm — menor que um grão de arroz.</div>
+                        <span class="slide-ref light-ref">Ref.: Moore, Embriologia Clínica, 11ª ed., Cap. 5</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">Os brotos dos membros aparecem 🌱</div>
+                        <div class="slide-body">Da 7ª à 8ª semana, surgem os brotos que darão origem aos braços e pernas. As cartilagens começam a se organizar no que futuramente serão ossos. O embrião já alcança entre 1,5 e 2 cm e começa a ter feições faciais rudimentares.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">"Doutora, por que sinto tanto enjoo?" 🤢</div>
+                        <div class="slide-body">As náuseas da gestação são mediadas principalmente pelo aumento rápido do hCG e pela hipersensibilidade olfativa. Atingem o pico entre as semanas 8 e 12 e, na maioria dos casos, diminuem após o primeiro trimestre. Seu corpo está redirecionando toda a energia para construir uma nova vida.</div>
+                        <span class="slide-ref light-ref">Ref.: ACOG Practice Bulletin nº 189 — Nausea and Vomiting of Pregnancy</span>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">O cansaço é passageiro. O que está sendo construído, não.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Se os enjoos estiverem muito intensos, converse com o seu obstetra. Existem orientações seguras que podem ajudar nessa fase.</div>
+                            <div class="slide-cta-impessoal">💛 Salve e envie para uma amiga que está no primeiro trimestre</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, mamães! 🤍
+
+Se o cansaço anda parecendo infinito, saiba que ele tem uma explicação linda: entre a 5ª e a 8ª semana, o seu corpo está numa verdadeira revolução silenciosa.
+
+Na 6ª semana, o coração embrionário inicia os primeiros batimentos — entre 110 e 160 por minuto. É aquele momento que costuma arrancar lágrimas no consultório, quando o ultrassom revela aquele "pisquinha" rápido pela primeira vez.
+
+Enquanto isso, o tubo neural se fecha para formar o cérebro e a medula, pequenos brotos aparecem dando origem a braços e pernas, e o embrião — que mede entre 1,5 e 2 cm — já começa a ganhar contornos de rosto.
+
+E as náuseas? Elas são causadas principalmente pelo pico do hormônio hCG e costumam melhorar bastante após a 12ª semana. A gente sabe que é difícil, mas esse desconforto é temporário — e ele acontece justamente porque o seu corpo está trabalhando a todo vapor por vocês dois.
+
+Se os enjoos estiverem muito intensos, converse com o seu obstetra de confiança. Existem condutas seguras que podem trazer alívio. 💛</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #primeirotrimestre #saúdedamulher #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#desenvolvimentofetal #enjoonagravidez #batimentocardíacofetal #hCG #embriologia</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 3 · SEMANAS 9–13             -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c3">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 3 · Semanas 9 a 13</div>
+                <h2>O Fim da Fase Embrionária</h2>
+                <div class="gancho">"A partir da 10ª semana, o embrião passa oficialmente a se chamar feto — e todos os sistemas de órgãos já estão formados. Agora é tempo de crescer e amadurecer."
+                    <span class="ref-cientifica">Ref.: Moore, Embriologia Clínica, 11ª ed., Cap. 9; FEBRASGO — Manual de Gestação de Alto Risco, 2022</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Parabéns: a fase mais crítica ficou para trás. ✨</div>
+                        <div class="slide-body">A partir da 10ª semana, o embrião passa oficialmente a ser chamado de feto. Todos os sistemas de órgãos já estão formados — agora o foco é crescer e amadurecer.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Da cabeça às unhas: tudo ganha detalhe 🔍</div>
+                        <div class="slide-body">Até a 12ª semana, os dedos se separam, as pálpebras se fundem (e só reabrirão por volta da 26ª semana), as orelhas se posicionam e as primeiras unhas começam a surgir. O feto mede entre 5 e 7 cm — mais ou menos o tamanho de um limão.</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 7</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">O ultrassom morfológico de primeiro trimestre 🩺</div>
+                        <div class="slide-body">Entre as semanas 11 e 14, é possível realizar o rastreamento de primeiro trimestre com a medida da translucência nucal — um exame não invasivo que avalia o risco para algumas condições genéticas. Converse com o seu obstetra sobre o melhor momento.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">E como você se sente nessa passagem? 🫶</div>
+                        <div class="slide-body">Para muitas gestantes, é nesta fase que a náusea começa a dar trégua e a energia volta aos poucos. As roupas começam a ficar mais justas — e o corpo vai ganhando novas curvas. Cada mudança é o reflexo de um processo impressionante que acontece dentro de você.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Uma fase se encerra. Outra, ainda mais bonita, começa.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Se você está nessa transição, lembre-se: cada consulta de pré-natal é uma camada de segurança para vocês dois.</div>
+                            <div class="slide-cta-impessoal">💛 Compartilhe com quem está chegando ao segundo trimestre</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, nossas grávidas! ✨
+
+Se você está entre a 9ª e a 13ª semana, celebre: a fase embrionária — que é considerada a mais sensível da gestação — ficou para trás. A partir da 10ª semana, o embrião passa a ser chamado oficialmente de feto, e todos os grandes sistemas de órgãos já estão formados. A partir daqui, o foco biológico é crescer e amadurecer.
+
+Os detalhes que surgem nessa fase são impressionantes: dedos separados, orelhas se posicionando na lateral da cabeça, unhinhas começando a aparecer. O feto já mede entre 5 e 7 cm — o tamanho de um limão! 🍋
+
+É também nessa janela (semanas 11–14) que pode ser realizado o rastreamento de primeiro trimestre com a translucência nucal — um exame simples e não invasivo que ajuda a avaliar o risco de algumas condições. Converse com o seu obstetra sobre o melhor momento para você.
+
+E no seu corpo? Para muitas gestantes, é agora que a náusea dá trégua e a energia começa a voltar. As roupas apertam — e, com elas, vem aquela sensação concreta de que, sim, tem alguém crescendo aí dentro. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #segundotrimestre #prénatal #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#translucêncianucal #morfológico #desenvolvimentofetal #faseembrionária #12semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 4 · SEMANAS 14–17            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c4">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 4 · Semanas 14 a 17</div>
+                <h2>Será Que Ele Já Escuta a Minha Voz?</h2>
+                <div class="gancho">"O aparelho auditivo fetal começa a amadurecer por volta da 16ª semana. Os sons que chegam são abafados pelo líquido amniótico — mas a voz da mãe, por vibrar também nos ossos, é a que ele mais percebe."
+                    <span class="ref-cientifica">Ref.: Kisilevsky et al. (2009), Developmental Science; Moore, Embriologia Clínica, Cap. 18</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Pode conversar com a barriga: ele já capta a sua voz. 🗣️</div>
+                        <div class="slide-body">Por volta da 16ª semana, o aparelho auditivo fetal começa a amadurecer. Os sons externos chegam filtrados pelo líquido amniótico — mas a voz da mãe, transmitida também pela vibração óssea, é a que ele mais percebe.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Os ossos ganham força, o corpo cresce rápido 🦴</div>
+                        <div class="slide-body">Na 14ª a 17ª semana, o esqueleto fetal passa por uma ossificação progressiva — a cartilagem vai sendo substituída por tecido ósseo. O feto já ultrapassa os 12 cm e 100 g, e seus movimentos, embora ainda sutis, podem começar a ser captados no ultrassom.</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 7</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">O famoso "glow" da gestação ✨</div>
+                        <div class="slide-body">Seu volume sanguíneo aumenta até 45% ao longo da gestação, e é nessa fase que muitas mulheres percebem pele mais viçosa e cabelo mais volumoso. Por trás do "brilho", está um organismo trabalhando incansavelmente para nutrir e oxigenar a placenta e o feto.</div>
+                        <span class="slide-ref">Ref.: Blackburn, S. — Maternal, Fetal & Neonatal Physiology, 6ª ed.</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">Uma dica de quem acompanha muitas gestantes 🤍</div>
+                        <div class="slide-body">Se a energia voltou e os enjoos diminuíram, este é um ótimo momento para reorganizar a rotina de consultas pré-natais e conversar com o seu obstetra sobre os exames do segundo trimestre — especialmente o morfológico, que costuma ser realizado entre 20 e 24 semanas.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">A voz que ele mais reconhece é a sua.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Converse com ele, cante, leia em voz alta. A ciência confirma: essa conexão começa muito antes do nascimento.</div>
+                            <div class="slide-cta-impessoal">💛 Qual foi a primeira música que você cantou para a barriga? Conta nos comentários!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, mamães e papais! 🗣️
+
+A partir da 16ª semana, o aparelho auditivo do feto começa a amadurecer — e ele já consegue captar sons. Os ruídos externos chegam filtrados pelo líquido amniótico, mas a voz da mãe tem um caminho especial: ela vibra através dos ossos e tecidos do corpo, sendo a mais percebida pelo bebê. Estudos publicados em Developmental Science mostram que recém-nascidos demonstram preferência clara pela voz materna — e essa familiaridade começa aqui, lá na barriga.
+
+Nesse período (semanas 14 a 17), o esqueleto do feto está em plena ossificação — a cartilagem vai dando lugar ao osso — e ele já ultrapassa os 12 cm. No corpo da gestante, o volume sanguíneo aumenta significativamente, trazendo aquele brilho diferente na pele e no cabelo. Lindo, né? Mas por trás desse "glow" está um organismo todo dedicado a nutrir e oxigenar a placenta.
+
+Este também é um ótimo momento para reorganizar a rotina de exames e conversar com o seu obstetra sobre o morfológico do segundo trimestre. 💛</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #segundotrimestre #prénatal #obstetrícia #desenvolvimentodobebê</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#audiçãofetal #ossificação #morfológico #glowdagravidez #16semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 5 · SEMANAS 18–22            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c5">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 5 · Semanas 18 a 22</div>
+                <h2>Das Borboletas aos Primeiros Chutes</h2>
+                <div class="gancho">"Aquele 'tremorzinho' no baixo ventre? São os primeiros movimentos fetais perceptíveis. Em gestantes de primeira viagem, costumam ser sentidos entre a 18ª e a 22ª semana."
+                    <span class="ref-cientifica">Ref.: ACOG FAQ 156; FEBRASGO — Assistência Pré-Natal, 2022</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Sentiu aquele tremorzinho diferente? 🦋</div>
+                        <div class="slide-body">Os primeiros movimentos fetais perceptíveis — chamados de quickening na literatura — costumam ser sentidos entre as semanas 18 e 22 em gestantes de primeira viagem. Muitas descrevem como "bolhinhas" ou "borboletas".</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O feto treina movimentos ativamente 🤸</div>
+                        <div class="slide-body">Nessa fase, o feto já ultrapassa 300 g e 25 cm. Com espaço ainda disponível na cavidade uterina, ele se move livremente: gira, estende os membros e já apresenta reflexos de preensão. Esses movimentos são fundamentais para o desenvolvimento neuromuscular.</div>
+                        <span class="slide-ref light-ref">Ref.: Moore, Embriologia Clínica, 11ª ed., Cap. 11</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">A proteção do vérnix caseoso ✨</div>
+                        <div class="slide-body">O feto é recoberto por uma camada esbranquiçada e gordurosa chamada vérnix caseoso. Ela protege a pele do bebê do contato prolongado com o líquido amniótico e possui propriedades antimicrobianas comprovadas — uma "armadura natural" que acompanha muitos recém-nascidos ao nascer.</div>
+                        <span class="slide-ref">Ref.: Hoath, S. et al. (2006) — J Obstet Gynecol Neonatal Nurs</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O que muda na mamãe? 🤍</div>
+                        <div class="slide-body">O útero está agora acima da cicatriz umbilical. Muitas gestantes começam a sentir desconfortos ligados ao estiramento dos ligamentos redondos — uma dor aguda e rápida na lateral do baixo ventre, especialmente ao mudar de posição. É esperado, mas sempre vale comentar com o seu obstetra.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Cada movimento é ele dizendo: "Estou aqui, mãe."</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Se você está sentindo esses primeiros chutes, aproveite esse momento único. E leve qualquer dúvida ao seu obstetra de confiança.</div>
+                            <div class="slide-cta-impessoal">💛 Salve para lembrar dessa fase e compartilhe com outra gestante</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, nossas grávidas! 🦋
+
+Aquele tremorzinho sutil no baixo ventre… será que foi imaginação? Provavelmente não! Entre as semanas 18 e 22, a maioria das gestantes de primeira viagem começa a perceber os primeiros movimentos fetais — e é uma das experiências mais emocionantes da gestação.
+
+Nessa fase, o feto já ultrapassa os 25 cm e 300 g. Com espaço ainda disponível dentro do útero, ele gira, estica, dobra — e cada um desses movimentos é fundamental para o amadurecimento neuromuscular.
+
+Outro detalhe lindo da natureza: a pele do bebê está agora recoberta pelo vérnix caseoso, uma camada esbranquiçada e gordurosa com propriedades antimicrobianas que o protege do contato contínuo com o líquido amniótico. Muitos bebês nascem ainda com resquícios dele — é sinal de proteção!
+
+No corpo da mamãe, o útero já está acima da cicatriz umbilical, e as dores nos ligamentos redondos podem aparecer (aquela pontada rápida ao levantar ou virar de lado). É esperado, mas sempre vale conversar com o seu obstetra. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #segundotrimestre #movimentosfetais #maternidade #obstetrícia</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#primeiroschutes #vérnixcaseoso #quickening #ligamentoredondo #20semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 6 · SEMANAS 23–26            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c6">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 6 · Semanas 23 a 26</div>
+                <h2>Os Ciclos de Sono e os Primeiros Sonhos</h2>
+                <div class="gancho">"O feto começa a alternar períodos de sono e vigília — e exames de eletroencefalografia fetal demonstram atividade cerebral compatível com o que chamamos de sono REM."
+                    <span class="ref-cientifica">Ref.: Peirano et al. (2003), Sleep Medicine Reviews; Moore, Embriologia Clínica, Cap. 18</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Ele dorme, acorda — e provavelmente já sonha. 🌙</div>
+                        <div class="slide-body">Entre as semanas 23 e 26, o feto desenvolve ciclos regulares de sono e vigília. Estudos de eletroencefalografia fetal identificaram atividade cerebral compatível com sono REM — a fase associada aos sonhos.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Os pulmões ensaiam a respiração 🫁</div>
+                        <div class="slide-body">O feto pratica movimentos respiratórios ritmados, inalando e expelindo líquido amniótico. Esse "treino" é essencial para o amadurecimento pulmonar. Os pneumócitos tipo II começam a produzir surfactante — a substância que impedirá os alvéolos de colabarem após o nascimento.</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 7; ACOG Committee Opinion nº 713</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">O cérebro em explosão de conexões 🧠</div>
+                        <div class="slide-body">Esta fase marca um pico de sinaptogênese — a formação acelerada de conexões entre neurônios. Os sulcos e giros do córtex cerebral começam a se definir, dando ao cérebro aquela aparência característica de "dobras". A complexidade cerebral fetal aumenta exponencialmente.</div>
+                        <span class="slide-ref">Ref.: Kostović, I. & Judaš, M. (2010) — Cerebral Cortex</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">E na mamãe: a fome sem fim 🍽️</div>
+                        <div class="slide-body">O aumento do apetite nessa fase é fisiológico — o metabolismo basal aumenta para sustentar o crescimento acelerado do feto, que agora ultrapassa 700 g. Opte por refeições fracionadas e nutritivas e converse com o seu obstetra ou nutricionista sobre o ganho de peso adequado.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Enquanto ele sonha, você constrói.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">O soluço rítmico na barriga? É ele treinando o diafragma. A natureza ensaia tudo antes da estreia.</div>
+                            <div class="slide-cta-impessoal">💛 O soluço já apareceu aí dentro? Conta nos comentários!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, mamães e papais! 🌙
+
+Sabia que entre as semanas 23 e 26 o feto já alterna períodos de sono e vigília? Estudos de eletroencefalografia identificaram atividade cerebral compatível com sono REM — a fase que, em nós adultos, está associada aos sonhos. Ou seja: há indícios de que ele já sonha aí dentro.
+
+Enquanto descansa, o feto também pratica algo vital: movimentos respiratórios. Ele inala e expele líquido amniótico num ritmo coordenado, e os pulmões começam a produzir surfactante — a substância que vai permitir que os alvéolos funcionem na primeira respiração fora do útero.
+
+O cérebro está em plena explosão de conexões. É nessa fase que os sulcos e giros do córtex começam a se formar, dando ao cérebro aquela aparência de "dobras" que conhecemos. A complexidade Neural aumenta a cada dia.
+
+E aquele apetite que não para? É fisiológico. O metabolismo da gestante aumenta para sustentar um feto que agora já ultrapassa 700 g. Converse com o seu obstetra ou nutricionista sobre o ganho de peso ideal para a sua gestação. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #segundotrimestre #desenvolvimentofetal #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#sonoREM #surfactante #sinaptogênese #amadurecimentopulmonar #24semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 7 · SEMANAS 27–31            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c7">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 7 · Semanas 27 a 31</div>
+                <h2>Os Olhos Se Abrem: Bem-Vinda ao Terceiro Trimestre</h2>
+                <div class="gancho">"Por volta da 28ª semana, as pálpebras fetais se abrem pela primeira vez. O feto já distingue variações de luminosidade através da parede abdominal materna."
+                    <span class="ref-cientifica">Ref.: Moore, Embriologia Clínica, 11ª ed., Cap. 18; Del Giudice, M. (2011) — Developmental Review</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Os olhinhos se abrem — no escuro quentinho. 🌅</div>
+                        <div class="slide-body">Por volta da 28ª semana, as pálpebras que estavam fundidas desde a 10ª semana finalmente se abrem. O feto já consegue distinguir entre claro e escuro através da parede abdominal da mãe.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O ganho de peso se acelera 📈</div>
+                        <div class="slide-body">O terceiro trimestre é marcado pelo acúmulo de gordura subcutânea — extremamente importante para a termorregulação após o nascimento. O feto pode praticamente dobrar de peso neste período, indo de cerca de 1 kg (semana 27) para quase 2 kg (semana 31).</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 44</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">Ele responde ao toque e à luz 🔦</div>
+                        <div class="slide-body">Com audição funcional e visão primitiva, o feto agora reage a estímulos externos: toque firme sobre o abdômen, mudanças bruscas de luminosidade e sons altos. As respostas incluem movimentos bruscos, alterações da frequência cardíaca e até mudanças posturais.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">Falta de ar na mamãe? Tem explicação. 😮‍💨</div>
+                        <div class="slide-body">O útero em rápida expansão pressiona o diafragma para cima, reduzindo a capacidade inspiratória. A dispneia (falta de ar) fisiológica da gestação é comum e tende a melhorar nas últimas semanas, quando o bebê "desce" para a pelve. Se for intensa ou acompanhar outros sintomas, sempre comunique ao seu obstetra.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Ele já sente a luz do mundo através de você.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Cada desconforto que você sente tem uma razão fisiológica e temporária. Você está fazendo um trabalho incrível.</div>
+                            <div class="slide-cta-impessoal">💛 Envie para quem está no terceiro trimestre e precisa ouvir isso</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, nossas grávidas! 🌅
+
+Bem-vindas ao terceiro trimestre. E para marcar essa passagem, um marco lindo: por volta da 28ª semana, as pálpebras que estavam fundidas desde a 10ª semana finalmente se abrem. O feto já distingue variações de luz através da sua barriga.
+
+É também neste período que o acúmulo de gordura subcutânea acelera — essa gordura é essencial para que o bebê consiga regular a própria temperatura após o nascimento. Em termos de peso, ele pode saltar de 1 kg para quase 2 kg entre as semanas 27 e 31.
+
+Com audição funcional e visão primitiva, o feto agora responde a estímulos: toque sobre o abdômen, mudanças de luz, sons altos. As respostas incluem movimentos bruscos e alterações de frequência cardíaca.
+
+E a falta de ar que aparece nessa fase? Tem explicação: o útero pressiona o diafragma para cima, reduzindo a capacidade respiratória. É fisiológico e tende a melhorar quando o bebê encaixar. Mas se for intensa, sempre converse com o seu obstetra. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #terceirotrimestre #desenvolvimentofetal #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#28semanas #termorregulação #visãofetal #dispneiadagestação #gordurafetal</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 8 · SEMANAS 32–35            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c8">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 8 · Semanas 32 a 35</div>
+                <h2>A Apresentação Cefálica e o Encaixe</h2>
+                <div class="gancho">"Até a 34ª semana, a maioria dos fetos já assumiu a posição cefálica — de cabeça para baixo — preparando-se para a passagem pelo canal de parto."
+                    <span class="ref-cientifica">Ref.: ACOG Practice Bulletin nº 745 — Management of Breech Presentation; FEBRASGO 2022</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">O bebê começa a se encaixar. 🤰</div>
+                        <div class="slide-body">Até a 34ª semana, a maioria dos fetos já assumiu a posição cefálica — de cabeça para baixo. O espaço dentro do útero é cada vez mais limitado, e os movimentos ficam mais contidos, mas não menos intensos.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Quase pronto: 2,5 kg e 45 cm 📏</div>
+                        <div class="slide-body">Nessa fase, o feto já ultrapassa 2,5 kg e 45 cm. A maturação pulmonar está em estágio avançado — a produção de surfactante é suficiente para a maioria dos prematuros tardios sobreviverem com suporte mínimo. Os ossos do crânio permanecem maleáveis, facilitando a passagem pelo canal de parto.</div>
+                        <span class="slide-ref light-ref">Ref.: Williams Obstetrics, 26ª ed., Cap. 44; ACOG Committee Opinion nº 713</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">A imunidade passa pela placenta 🛡️</div>
+                        <div class="slide-body">Nas últimas semanas, a placenta transfere ativamente imunoglobulinas G (IgG) da mãe para o feto. Essa imunidade passiva protegerá o recém-nascido nos primeiros meses de vida, até que o sistema imunológico dele amadureça o suficiente para produzir seus próprios anticorpos.</div>
+                        <span class="slide-ref">Ref.: Palmeira et al. (2012) — Clinical and Developmental Immunology</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O "andar de pinguim" tem explicação biomecânica 🐧</div>
+                        <div class="slide-body">O peso do útero gravídico desloca o centro de gravidade da gestante para frente, gerando uma lordose lombar compensatória. Os ligamentos pélvicos, sob efeito da relaxina, ficam mais frouxos. O resultado? Aquele caminhar característico, alargado e oscilante. É engenharia biológica em ação.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Cada passo seu está carregando uma vida inteira.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">As consultas semanais são importantes nessa reta final. Seu obstetra de confiança pode esclarecer todas as dúvidas sobre o encaixe e a via de parto.</div>
+                            <div class="slide-cta-impessoal">💛 Conhece alguém no oitavo mês? Envie com carinho</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, mamães! 🐧
+
+Se você está entre as semanas 32 e 35, talvez já tenha começado a sentir aquele peso diferente e o andar mais alargado. Tem explicação: o peso do útero desloca o centro de gravidade para frente, gerando uma lordose compensatória, enquanto a relaxina afrouxa os ligamentos da pelve. É engenharia biomecânica pura.
+
+Lá dentro, o bebê está se posicionando. Até a 34ª semana, a maioria dos fetos já está na posição cefálica — de cabeça para baixo. Ele já ultrapassa os 2,5 kg e 45 cm, e a maturação pulmonar está avançada.
+
+Uma informação que poucos falam: nas últimas semanas, a placenta transfere ativamente anticorpos (IgG) da mãe para o feto. Essa imunidade passiva vai proteger o recém-nascido nos primeiros meses de vida, até que o próprio sistema imunológico dele amadureça.
+
+As consultas semanais nessa reta final são fundamentais. Converse com o seu obstetra de confiança sobre o posicionamento do bebê e tire todas as suas dúvidas sobre a via de parto. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #terceirotrimestre #retafinal #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#apresentaçãocefálica #imunidadepassiva #surfactante #relaxina #34semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 9 · SEMANAS 36–40            -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c9">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 9 · Semanas 36 a 40</div>
+                <h2>Termo Completo: Ele Está Pronto</h2>
+                <div class="gancho">"A partir da 37ª semana, a gestação é considerada 'a termo'. Todos os sistemas orgânicos atingiram maturidade funcional suficiente para a vida extrauterina."
+                    <span class="ref-cientifica">Ref.: ACOG Committee Opinion nº 579 — Definition of Term Pregnancy; FEBRASGO 2022</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">As malas estão prontas. E ele também. 💛</div>
+                        <div class="slide-body">A partir da 37ª semana, a gestação é considerada "a termo" — todos os sistemas orgânicos do bebê atingiram maturidade funcional para sobreviver fora do útero. Agora, cada dia é reserva de energia para a grande estreia.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O último ajuste: reserva de gordura 🧸</div>
+                        <div class="slide-body">Nas últimas semanas, o feto acumula gordura marrom — um tipo especial que será fundamental para gerar calor e manter a temperatura corporal logo após o nascimento. O peso médio ao nascer fica entre 3 e 3,5 kg, mas há grande variação individual.</div>
+                        <span class="slide-ref light-ref">Ref.: Blackburn, S. — Maternal, Fetal & Neonatal Physiology, 6ª ed.</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">As contrações de treinamento ⏱️</div>
+                        <div class="slide-body">As contrações de Braxton-Hicks podem se intensificar nessa reta final. São irregulares, indolores ou levemente desconfortáveis, e não alteram o colo uterino. Elas são diferentes do trabalho de parto ativo, que se caracteriza por contrações regulares, progressivas e com dilatação cervical comprovada.</div>
+                        <span class="slide-ref">Ref.: ACOG FAQ 004 — How to Tell When Labor Begins</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O peso emocional da reta final 🤍</div>
+                        <div class="slide-body">A ansiedade pré-parto é comum e válida. A sensação de que "cada movimento é o trabalho de parto começando" faz parte. Estudos mostram que o suporte emocional do parceiro, da família e da equipe obstétrica tem impacto direto nos desfechos perinatais. Não hesite em compartilhar o que sente.</div>
+                        <span class="slide-ref light-ref">Ref.: Hodnett et al. (2013) — Cochrane Database of Systematic Reviews</span>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Você está quase lá. E vai ser lindo.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Mantenha as consultas semanais com o seu obstetra de confiança. Um nascimento seguro e acolhedor começa com informação e vínculo.</div>
+                            <div class="slide-cta-impessoal">💛 Salve para reler naquele momento de ansiedade pré-parto</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, nossas grávidas! 💛
+
+Se você está nas semanas 36 a 40, a contagem regressiva começou — e a ansiedade vem junto, a gente sabe. Mas vamos respirar e olhar com carinho para o que está acontecendo:
+
+A partir da 37ª semana, a gestação é oficialmente "a termo". Isso significa que todos os sistemas orgânicos do bebê atingiram maturidade funcional para a vida fora do útero. O foco agora é acumular reserva — especialmente a gordura marrom, que vai ajudá-lo a manter a temperatura do corpo após o nascimento.
+
+As contrações de Braxton-Hicks podem ficar mais frequentes. Elas são irregulares e não dilatam o colo do útero — diferente das contrações do trabalho de parto, que são regulares, progressivas e acompanhadas de dilatação.
+
+E o emocional? A ansiedade pré-parto é comum, válida e merece acolhimento. A ciência mostra que o suporte emocional — do parceiro, da família e da equipe — tem impacto real nos desfechos do nascimento. Compartilhe o que você sente. Você não precisa passar por isso sozinha.
+
+Mantenha as consultas semanais com o seu obstetra de confiança. Um nascimento seguro e acolhedor começa com informação de qualidade e um vínculo de confiança com quem cuida de você. 🤍</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#gestação #retafinalgestação #nascimento #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#braxtonhicks #gorduramarrom #ansiedadepréparto #atermo #40semanas</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CARROSSEL 10 · SAÚDE EMOCIONAL         -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="tema-block" id="c10">
+            <div class="tema-header">
+                <div class="num-badge">Carrossel 10 · Saúde Emocional e Fetal</div>
+                <h2>O Que Você Sente, o Bebê Também Percebe</h2>
+                <div class="gancho">"O estresse crônico materno altera os níveis de cortisol que atravessam a barreira placentária. Estudos longitudinais associam essa exposição a desfechos neonatais e de neurodesenvolvimento."
+                    <span class="ref-cientifica">Ref.: Glover, V. (2014) — Psychoneuroendocrinology; O'Donnell et al. (2012) — Brain, Behavior, and Immunity</span>
+                </div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">O seu bem-estar emocional importa para os dois. 🧠💛</div>
+                        <div class="slide-body">A ciência mostra que o estresse crônico materno pode alterar os níveis de cortisol que atravessam a placenta. Cuidar da saúde mental da gestante é, também, cuidar do bebê.</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">A via placentária do cortisol 🧪</div>
+                        <div class="slide-body">A placenta possui a enzima 11β-HSD2, que normalmente inativa parte do cortisol materno antes que ele chegue ao feto. Porém, em situações de estresse crônico ou intenso, essa barreira pode ser insuficiente — permitindo que níveis elevados de cortisol alcancem a circulação fetal.</div>
+                        <span class="slide-ref light-ref">Ref.: O'Donnell et al. (2012) — Brain, Behavior, and Immunity</span>
+                    </div>
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">O que a literatura científica aponta ⚠️</div>
+                        <div class="slide-body">Estudos longitudinais publicados em Psychoneuroendocrinology associam o estresse materno crônico a alterações no eixo hipotálamo-hipófise-adrenal do feto, com possíveis repercussões na reatividade ao estresse, regulação do peso e neurodesenvolvimento após o nascimento.</div>
+                        <span class="slide-ref">Ref.: Glover, V. (2014) — Psychoneuroendocrinology; Van den Bergh et al. (2017)</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O que você pode fazer? 🤍</div>
+                        <div class="slide-body">Conversar sobre o que sente não é fraqueza — é proteção. Compartilhe suas angústias com a sua rede de apoio e com o seu obstetra. Se necessário, uma avaliação com profissional de saúde mental pode fazer toda a diferença. Cuidar de você é, biologicamente, cuidar do seu filho.</div>
+                    </div>
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê recém-nascido" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Saúde mental materna é saúde fetal.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Nenhuma gestante precisa passar por dificuldades sozinha. Pedir ajuda é um ato de amor por você e pelo seu bebê.</div>
+                            <div class="slide-cta-impessoal">💛 Envie para quem precisa ouvir isso hoje. A informação liberta.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Oi, mamães, papais e famílias que nos acompanham. 🤍
+
+Precisamos falar sobre algo que a ciência vem estudando com cada vez mais rigor: o impacto do estresse crônico materno no desenvolvimento fetal.
+
+A placenta possui uma enzima (11β-HSD2) que funciona como uma espécie de filtro, inativando parte do cortisol da mãe antes que ele chegue ao bebê. Porém, em situações de estresse intenso e prolongado, essa barreira pode ser insuficiente — e níveis elevados de cortisol alcançam a circulação fetal.
+
+Estudos publicados em revistas como Psychoneuroendocrinology e Brain, Behavior, and Immunity associam essa exposição crônica a alterações no eixo hipotálamo-hipófise-adrenal do feto, com possíveis repercussões no neurodesenvolvimento, na regulação do peso e na reatividade ao estresse após o nascimento.
+
+Isso não é para gerar culpa — de forma alguma. É para validar algo muito importante: cuidar da saúde emocional da gestante não é luxo. É proteção biológica para os dois.
+
+Se você está passando por um momento difícil, converse com o seu obstetra de confiança. Se necessário, uma avaliação com profissional de saúde mental pode fazer toda a diferença. Pedir ajuda é um ato de amor. 💛</div>
+                <div class="legenda-aviso">⚕️ Este conteúdo é educativo e não substitui a consulta com o seu médico. Cada gestação é única e merece acompanhamento individualizado.</div>
+                <div class="legenda-tags">
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Amplas:</span>#saúdemental #gestação #saúdedamulher #obstetrícia #maternidade</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Nicho:</span>#cortisol #saúdementalmaterna #eixoHPA #estressegestacional #placentaefeto</span>
+                    <span class="legenda-tags-group"><span class="legenda-tags-label">Local:</span>#ginecologiaSP #obstetratatuapé #saúdeSP</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Série <strong>"A Jornada Secreta da Vida"</strong> · Conteúdo educativo para revisão da equipe médica</p>
+        <p style="margin-top: 6px;">Referências: ACOG, FEBRASGO, Williams Obstetrics 26ª ed., Moore Embriologia Clínica 11ª ed.</p>
+        <p style="margin-top: 6px; opacity: 0.7;">Gaia Medicina Integrada · Abril 2026</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.mySwiper').forEach(function (el) {
+            new Swiper(el, {
+                loop: false,
+                navigation: {
+                    nextEl: el.querySelector('.swiper-button-next'),
+                    prevEl: el.querySelector('.swiper-button-prev'),
+                },
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+            });
+        });
+
+        document.querySelectorAll('.nav-pills a').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
