@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Série O Diário de Bordo da Gestação — Gaia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38;
+            --cor-destaque: #853B50;
+            --cor-fundo: #FAF5F5;
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); margin: 0; padding: 0; line-height: 1.6; }
+
+        header { background-color: var(--cor-branco); padding: 40px 20px 32px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 48px; border-bottom: 3px solid #f0e6e8; }
+        header .badge { display: inline-block; background-color: #fee2e2; color: var(--cor-primaria); font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 99px; margin-bottom: 14px; letter-spacing: 0.5px; }
+        header h1 { color: var(--cor-destaque); margin: 0 0 10px 0; font-size: 28px; font-weight: 700; }
+        header p { color: #777; margin: 0 auto; max-width: 620px; font-size: 15px; }
+
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 0 20px; margin-bottom: 48px; }
+        .nav-pills a { display: inline-block; background-color: var(--cor-branco); border: 1.5px solid #eacfd3; color: var(--cor-destaque); text-decoration: none; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 99px; transition: all 0.2s; }
+        .nav-pills a:hover { background-color: var(--cor-destaque); color: white; border-color: var(--cor-destaque); }
+
+        .container { max-width: 920px; margin: 0 auto; padding: 0 20px 80px; }
+        .tema-block { background-color: var(--cor-branco); border-radius: 20px; padding: 40px; margin-bottom: 60px; box-shadow: 0 6px 28px rgba(133, 59, 80, 0.09); scroll-margin-top: 20px; }
+        
+        .tema-header { margin-bottom: 32px; border-bottom: 2px solid #f5ebed; padding-bottom: 22px; text-align: center; }
+        .tema-header .num-badge { display: inline-block; background-color: var(--cor-primaria); color: white; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 99px; margin-bottom: 12px; text-transform: uppercase; }
+        .tema-header h2 { color: var(--cor-primaria); font-size: 22px; margin: 0 0 10px 0; line-height: 1.3; }
+        .tema-header .gancho { font-weight: 600; color: var(--cor-destaque); font-size: 15px; font-style: italic; }
+
+        /* Swiper */
+        .swiper { width: 100%; max-width: 380px; margin: 0 auto 32px; border-radius: 16px; box-shadow: 0 12px 40px rgba(133, 59, 80, 0.22); }
+        .swiper-slide { background-color: var(--cor-branco); color: var(--cor-texto); display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 4/5; padding: 44px 36px; text-align: center; position: relative; border: 4px solid var(--cor-destaque); border-radius: 16px;}
+        
+        /* Tema Escuro para Slides de Intro e Passos */
+        .swiper-slide.dark { background-color: var(--cor-destaque); color: var(--cor-branco); border: none; }
+        .swiper-slide.accent { background-color: var(--cor-primaria); color: var(--cor-branco); border: none; }
+        
+        /* Slide Final com Imagem Inserida por Cima */
+        .swiper-slide.final-slide { background-color: var(--cor-branco); color: var(--cor-destaque); padding: 20px; justify-content: flex-end; }
+        .final-img { position: absolute; top: 0; left: 0; width: 100%; height: 50%; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+        .final-content { position: relative; z-index: 2; margin-top: auto; padding-top: 10px; background: white;}
+
+        .slide-num { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; white-space: nowrap; }
+        .slide-icon { font-size: 28px; margin-bottom: 14px; }
+        .slide-title { font-size: 21px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; color: inherit; }
+        .dark .slide-title { color: var(--cor-branco); }
+        .slide-title-bordo { color: var(--cor-destaque); font-size: 20px; font-weight: 700; line-height: 1.3; margin-bottom: 16px;}
+        .slide-body { font-size: 14px; opacity: 0.9; line-height: 1.6; color: inherit;}
+        .final-slide .slide-body { color: #555; }
+        
+        .slide-cta { background-color: var(--cor-primaria); color: white; border-radius: 10px; padding: 10px 20px; font-size: 13px; font-weight: 700; margin-top: 16px; display: inline-block; }
+        .slide-badge { background-color: rgba(0,0,0,0.06); color: var(--cor-destaque); border-radius: 8px; padding: 8px 14px; margin-top: 12px; font-size: 13px; font-weight: 600; }
+        .dark .slide-badge { background-color: rgba(255,255,255,0.15); color: white; }
+
+        .swiper-button-next, .swiper-button-prev { color: var(--cor-destaque) !important; transform: scale(0.6); opacity: 0.7; transition: opacity 0.3s; }
+        .dark .swiper-button-next, .dark .swiper-button-prev { color: white !important;}
+        .swiper-button-next:hover, .swiper-button-prev:hover { opacity: 1; }
+        .swiper-pagination-bullet { background: var(--cor-destaque) !important; opacity: 0.38; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
+        /* Legenda */
+        .legenda-container { background-color: #fdf8f8; border-left: 4px solid var(--cor-primaria); border-radius: 4px 14px 14px 4px; padding: 26px 28px; margin-top: 28px; }
+        .legenda-title { font-size: 12px; font-weight: 700; color: var(--cor-destaque); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+        .legenda-content { font-size: 14px; color: #444; white-space: pre-wrap; line-height: 1.7; margin-bottom: 16px; }
+        .legenda-tags { font-size: 13px; color: var(--cor-destaque); font-weight: 600; opacity: 0.75; line-height: 1.8; }
+
+        footer { text-align: center; padding: 30px 20px; color: #aaa; font-size: 13px; border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) {
+            .tema-block { padding: 22px 18px; }
+            .slide-title, .slide-title-bordo { font-size: 18px; }
+            .slide-body { font-size: 13px; }
+            header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="badge">🤰 Série Especial · Estratégia de Captação</div>
+        <h1>Diário de Bordo da Gestação</h1>
+        <p>10 Carrosséis sequenciais narrando o desenvolvimento fetal e o sentir materno. Todos utilizando a foto do bebê amassadinho no CTA.</p>
+    </header>
+
+    <div class="nav-pills">
+        <a href="#c1">S 1 · Fecundação</a>
+        <a href="#c2">S 2 · Mês 2</a>
+        <a href="#c3">S 3 · Mês 3</a>
+        <a href="#c4">S 4 · Mês 4</a>
+        <a href="#c5">S 5 · Mês 5</a>
+        <a href="#c6">S 6 · Mês 6</a>
+        <a href="#c7">S 7 · Mês 7</a>
+        <a href="#c8">S 8 · Mês 8</a>
+        <a href="#c9">S 9 · Mês 9</a>
+        <a href="#c10">S 10 · O Bebê Sente</a>
+    </div>
+
+    <div class="container">
+
+        <!-- ========= CARROSSEL 1 ========= -->
+        <div class="tema-block" id="c1">
+            <div class="tema-header">
+                <div class="num-badge">Semana 1 à 4 · Implantação e Tubo Neural</div>
+                <h2>A Semente da Vida e o Teste Positivo</h2>
+                <div class="gancho">"O seu bebê já carrega tudo que ele vai ser — do tamanho de uma semente de papoula"</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você descobriu agora a gestação? 🌿</div>
+                        <div class="slide-body">Seu bebê já carrega tudo que ele vai ser — mesmo sendo do tamanho de uma semente de papoula.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Milagre Microscópico 🧬</div>
+                        <div class="slide-body">Da 1ª a 4ª semana, os olhos não conseguem enxergar a olho nu, mas o corpo trabalha sem parar. A fecundação acontece e a semente encontra abrigo. O peso é literalmente imperceptível.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">As primeiras peças se encaixam</div>
+                        <div class="slide-body">Enquanto ocorre a implantação no útero, toda a informação genética que guiará seu filho já está a postos. A base da vida está alicerçada.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O que você está sentindo agora? 🤍</div>
+                        <div class="slide-body">Um sono estranho? Emoções rolando uma montanha-russa? É o seu próprio corpo mudando marcha para focar todas as energias no desenvolvimento dessa nova vida.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">O cuidado começa na primeira descoberta.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">A cada consulta, uma fase segura do seu bebê é construída.</div>
+                            <div class="slide-cta">🤰 Agende seu Pré-Natal</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">O seu bebê já carrega toda a informação genética e as características que o farão único — mesmo sendo hoje do tamanho de uma semente de papoula. 🌿
+
+Semanas 1 a 4 são o milagre microscópico. A fecundação encontra o abrigo da implantação, e o próprio corpo feminino muda sua engenharia. 
+
+Você se sente com um sono incontrolável? Com emoções balançando por qualquer coisinha? Não é exagero. É energia pura do seu corpo direcionada inteiramente para a sobrevivência dessa gestação recém-descoberta.
+
+Esse encontro foi idealizado muito antes do positivo. E agora ele precisa de acompanhamento.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Acompanhe nossa série semanal! Salve este post se você acabou de descobrir ou envie para quem acabou de contar a novidade! 🤍</div>
+                <div class="legenda-tags">#saúdedamulher #gestação #obstetricia #médicaamiga #testepositivo #maternidade #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 2 ========= -->
+        <div class="tema-block" id="c2">
+            <div class="tema-header">
+                <div class="num-badge">Semana 5 a 8 · Coração e Membros</div>
+                <h2>O Coração Bate como um Relógio Rápido</h2>
+                <div class="gancho">"Enquanto você só sente cansaço, seu bebê acabou de formar o coraçãozinho."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você está exausta? Faz sentido. 🤍</div>
+                        <div class="slide-body">Enquanto você só sente cansaço no segundo mês, o seu bebê acabou de formar as batidas do coração.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O Início do Ritmo ❤️</div>
+                        <div class="slide-body">O sistema nervoso começa a se organizar. E neste momento — entre 5ª e 6ª semana — o coração inicia seus primeiros batimentos, primitivos, mas fortes e acelerados, essenciais para a vida.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title-bordo">Das perninhas às cartilagens 🦴</div>
+                        <div class="slide-body">Chegando na 7ª a 8ª semana, surgem pequenos brotos que darão origem aos bracinhos e as pernas. O corpinho (agora medindo entre 1.5 e 2cm) é um turbilhão de organização estrutural.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title">"Doutora, porque sinto tango enjoo?"</div>
+                        <div class="slide-body">Seu limite cansaço não é culpa de rotina, é o corpo trabalhando para construir ossos, pernas e a famosa pontinha do nariz desse novo ser! Esse mal-estar passará.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Cuidado em toda etapa.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Acolhimento preventivo para o seu primeiro trimestre ser sereno.</div>
+                            <div class="slide-cta">🤰 Entenda sobre as consultas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Sim, a exaustão faz muito sentido. 🤍
+
+Entre 5 e 8 semanas, enquanto a mamãe experimenta picos de enjoo e precisa dormir além da conta, o bebê está em pleno vapor biológico. É nesse período (nas 6ª semana) que o sistema nervoso da base e o coração inicia aqueles batimentos fortes, que costuma arrancar lágrimas de muita mãe e pai nos primeiros ultrassons!
+
+O milagre não para: pequenos "brotinhos" começam a crescer até virarem braços e pernas. Tudo isso demanda uma energia surreal do seu corpo. Então, respeite esse cansaço, reduza o ritmo se puder. Os sintomas intensos vão passar.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Qual foi a semana que o seu parceiro ou parceira ouviu o coração lá dentro? Conta para mim aqui nos comentários e se identifique com outras mães! 🌿</div>
+                <div class="legenda-tags">#saúdedamulher #vidadegestante #primeirotrimestre #desenvolvimentofetal #médicaamiga #gaiaclinica #maternidadereal</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 3 ========= -->
+        <div class="tema-block" id="c3">
+            <div class="tema-header">
+                <div class="num-badge">Semana 9 a 13 · A Fase Embrionária Termina</div>
+                <h2>Bye-bye, Fase Embrionária!</h2>
+                <div class="gancho">"Se você ouvir 'feto' e não 'embrião', celebre: o risco maior acaba de passar!"</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você passou dessa fase crítica! ✅</div>
+                        <div class="slide-body">Se você começou a ouvir 'feto' em vez de 'embrião' nos ultrassons, celebre: a etapa de maior risco estatístico terminou.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">12ª Semana: O Fim do Primeiro Ciclo ✨</div>
+                        <div class="slide-body">Até a 12ª semana, todos os principais órgãos do bebê foram projetados. Os dedos agora estão separados, as orelhas alinhadas, e as unhas já começam a surgir.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title-bordo">Detalhes Finos e as Primeiras Caretas</div>
+                        <div class="slide-body">Medindo seus 5 a 6cm (uma mexerica), os bebês já treinam o que vão usar cá fora: ele engole líquido amniótico, ensaia as cordas vocais, e pode fazer sorrisos puramente reflexos.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title">Como a barriguinha reage? 🫶</div>
+                        <div class="slide-body">É agora que aquelas calças justas começam a incomodar bastante e a energia vai ressurgindo. Para a maioria das gestantes, a náusea diminui drasticamente ou zera de vez.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Estamos com você, passo a passo.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">As fases mudam, e nossa orientação no pré-natal te abraça por todas elas.</div>
+                            <div class="slide-cta">🤰 Iniciei meu segundo trimestre</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Tchau, Fase Embrionária! 👋
+
+Ao chegar entre a 9ª a 13ª semana, você deixa o primeiro trimestre e bate a maior marca de sucesso: do ponto de vista estatístico, a esmagadora maioria das perdas fetais ocorrem antes de 12 semanas. O risco diminui radicalmente com um ultrassom com feto desenvolvido após esse período!
+
+O corpinho ganha forma madura. Ele descola membranas das mãozinhas, amadurece as cartilagens e engole líquido já praticando instintos de deglutição.  
+Na mãe? As calças pedem para não serem mais apertadas, aquela náusea cruel, aos poucos, é substituída pela volta sorridente do apetite.
+
+Uma gravidez calma necessita de acompanhamento que ouça o que a grávida sente e como a mãe processa essa volta de enegia.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+As calças começaram a apertar exatamente em que semana por aí? Deixa seu comentário! 🌿</div>
+                <div class="legenda-tags">#segundotrimestre #saúdedamulher #vidadegestante #maternidade #obstetrícia #médicaamiga #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 4 ========= -->
+        <div class="tema-block" id="c4">
+            <div class="tema-header">
+                <div class="num-badge">Semana 14 a 17 · Ouvido e Crescimento Rápido</div>
+                <h2>"Será que ele já ouve a minha voz?"</h2>
+                <div class="gancho">"Seu bebê já pode escutar além do zumbido do ambiente da placenta"</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Será que ele já ouve a minha voz? 🗣️</div>
+                        <div class="slide-body">Seu bebê já começou a escutar para além dos ruídos abafados de dentro da bolsa. Falar e cantarolar nunca fez tanto sentido.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Ossos firmando e a audição 🦴 </div>
+                        <div class="slide-body">Da 13ª a 16ª semana, o corpo cresce em proporção gigantesca aos membros. As orelhas também encontram a posição fixa ideal e o sentido da audição dá o ar da graça.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">Você e o famoso Glow✨</div>
+                        <div class="slide-body">Enquanto o bebê bate os 100g e a detecção dos seus pequenos movimentos começa a ser captada no exame, a mamãe experimenta a circulação com mais vitalidade, refletindo no cabelo e na pele.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">Por trás do brilho extra... 🧬</div>
+                        <div class="slide-body">O organismo contínua ajustando o volume sanguíneo violentamente para sustentar e nutrir, levando todos os anticorpos e ferro. Não esqueça a rotina com o obstetra!</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Conheça a Medicina que Acolhe.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Dúvidas neste segundo momento são naturais. Leve cada uma para seu obstetra!</div>
+                            <div class="slide-cta">🤰 Mande mensagem para seu médico</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Pode começar a cantarolar agora: ele já te escuta! 🗣️
+
+No mês 4 (semanas 14 a 17), os ossos se fortificam a tal ponto que a audição dá seus primeiros pulos sensoriais. O bebê já começa a ouvir sons externos amortecidos pelo grande mar de líquido do útero.
+
+Para muitas gestantes, o "glow da gravidez" resplandece aqui: corpo ajustado com aumento expressivo do volume sanguíneo, sintomas de desgaste controlados nas nuvens, e o esqueleto fetal já toma seu tamanho fixo na biometria do exame de ultrassom.  
+
+É nesse momento doce do segundo trimestre que todo o cuidado preventivo de suporte de vitaminas passa a sustentar ele crescendo tão forte!
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Qual música você cantou primeiro sabendo que seu bebê ouviria? Conta lá nos comentários ou envia o post para registrar com aquela mamãe amada! 🤍</div>
+                <div class="legenda-tags">#segundotrimestre #obstetrícia #saúdedofeto #desenvolvimentoinfantil #gaiaclinica #médicaamiga #maternidadesemneurose</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 5 ========= -->
+        <div class="tema-block" id="c5">
+            <div class="tema-header">
+                <div class="num-badge">Semana 18 a 22 · Primeiros Chutes Fortes</div>
+                <h2>O Turbilhão de Amor nas Mãos</h2>
+                <div class="gancho">"Quando os primeiros espasmos leves deixam as 'borboletas do estômago' e viram de fato chutes precisos!"</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Essas já não são borboletas! 🦋</div>
+                        <div class="slide-body">Quando os leves espasmos ganham força e viram chutes concretos, a conexão atinge o seu pico emocional.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Entre a 18ª e 22ª Semana 👶</div>
+                        <div class="slide-body">O bebê adquire reações visíveis à estímulos auditivos bruscos ou alterações maternas respiratórias. Suas pernas e braços que pesam já chegam até mais de 300g ganham flexões diárias de força intensa.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title-bordo">Aquele Verniz Milagroso ✨</div>
+                        <div class="slide-body">O bebê é recoberto pelo vérnix caseoso — um revestimento branco esbalho que parece 'banha' e tem o propósito genial de proteger a sua pele numedecida por quase 9 meses da água morna amniótica.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title">Na mamãe: Transição da Pelve</div>
+                        <div class="slide-body">O útero ultrapassa drasticamente a linha abaixo da pelve, estufando a barriga de forma orgulhosa para a sociedade, mas pressionando ligamentos pela sustentação de peso novo. O amor cresce e você se pega tocando a barriga sem parar!</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">O corpo avisa que a alegria está ali.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Consulte sobre qualquer desconforto sempre usando a melhor ciência com afeto.</div>
+                            <div class="slide-cta">🤰 Compartilhe como está sua jornada!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Os chutes começam devagar como pequenas "borboletinhas" até chegarem nos pontapés visíveis, e ali a conexão com seu bebê sobe para o patamar máximo de amor tangível! 🦋
+
+No 5º Mês (sem 18 a 22), além desse estopim motor com todo o espaço aquático possível para dar os giros mortais que eles amam, surge também algo genial: O Vérnix Caseoso. É aquela camada gordurosa e cremosa protetora e hidradante, afinal a pele está sob 'água' o tempo inteiro!
+ 
+As mamães ficam com um abajur ligado com amor na barriga toda manifestação de chute. Para dar conta deste suporte de afeto e massa crescente de peso, o útero vence a região pélvica transformando em 'barriga cheia'.  
+
+Atenção, o segundo trimestre não significa ausência de cuidado preventivo: converse com seu profissional para avaliar a postura do ligamento do útero e ultrassons vitais da fase.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+De 1 a 10, qual nota de intensidade estão os pulinhos na sua barriga ou de quando você ficou grávida? Compartilhe e salva! 🌿</div>
+                <div class="legenda-tags">#ginecologiaeobstetricia #bebeacaminho #mãedeprimeiraviagem #saudefetal #desenvolvimentogestacional #médicaamiga #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 6 ========= -->
+        <div class="tema-block" id="c6">
+            <div class="tema-header">
+                <div class="num-badge">Semana 23 a 26 · Sonhos e Deglutição</div>
+                <h2>Você Dorme e o Seu Bebê Tambem Começa a Sonhar</h2>
+                <div class="gancho">"Quando o ciclo de sono é instalado no segundo trimestre, é oficial: seu feto pratica bocejos lá no quentinho."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Seu feto já boceja — e sonha! 🌙</div>
+                        <div class="slide-body">Quando os ciclos de sono e vigília se estruturam nesse mês, o feto passa ativamente a sonhar lá dentro.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Treino Fetal Total 🥊</div>
+                        <div class="slide-body">Caminhando das 23 às 26 semanas a coordenação salta. Ele engole líquido freneticamente pra treinar pulmão e estômago. E claro: começam os reflexos como os famosos "soluços".</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">E o cérebro a mil por hora! 🧠</div>
+                        <div class="slide-body">O cérebro tem o seu pico primário de sulcos e sinapses! Formando a inteligência básica da criança e refinando respostas da espinha dorsal.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">Mamãe e a Gastança de Energia!</div>
+                        <div class="slide-body">Na mãe? O apetite aumenta drasticamente. E isso faz muito sentido. O metabolismo precisa bombear nutrientes aos litros pra manter a formação óssea e pulmonar a mil.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">O ritmo diminui, mas não o amor!</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">A fadiga não vem do nada. Escute os sinais de seu corpo.</div>
+                            <div class="slide-cta">🤰 Compartilhe sem medo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Seu feto já boceja repetidas vezes e dorme... até que de repente você toma um 'soquinho' e descobre que ele acordou! 🌙
+
+Entre 23 a 26 Semanas o desenvolvimento é lindo. Os ciclos de sono começam a espelhar ciclos vigentes: e sim, ele já sonha. Para além do descanso, a medicina confirma através dos ultrassons avançados treinos constantes de pequenos soluços ritmados por ele engolir muita água para nutrir e alargar o pulmão fetal.
+
+E na mamãe todo esse amadurecimento exige um pagamento energético altíssimo: aumento de apetite em disparo. A natureza pede energia. Se alimente de modo nutritivo para ele e saudável para você, balanceando excessos sem sofrimentos ou culpas.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+O soluço repetido já apareceu por aí dentro da barriga? Salve para ter e compartilhe com as outras gravidinhas e pais ansiosos e repara se as calças já dão para fechar! 🤍🌿</div>
+                <div class="legenda-tags">#ginecologia #crescimentoFetal #gestaçãosaudavel #maternidadeacolhedora #médicaamiga #gaiamedicinaintegrativa #sonhofetal</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 7 ========= -->
+        <div class="tema-block" id="c7">
+            <div class="tema-header">
+                <div class="num-badge">Semana 27 a 31 · Olhos Abertos, Peso Duplo</div>
+                <h2>Abram as Portas (E as Pálpebras)!</h2>
+                <div class="gancho">"O terceiro trimestre chega mostrando literalmente os pequenos cílios nos ensaios diários para abrir ambos os olhos no escuro."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Bem-vinda ao terceiro trimestre. 🌅</div>
+                        <div class="slide-body">Os pequenos ensaios de piscar ocorrem abrindo seus olhinhos no quentinho aquático para diferenciar claro e escuro.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O Ganho Acelerado! 📈</div>
+                        <div class="slide-body">O feto entra na sua versão de "ganho em disparada". Os músculos começam a se compactar e o acúmulo de gordura termorreguladora acontece! Pula de quase 1kg para próximo de 2kg.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">Respondendo do Lado de Fora 🔦</div>
+                        <div class="slide-body">Por estar com audição plena e olhos ativos, eles começam a perceber as luzes e toques muito incisivos através do abdome. O afago importa como nunca!</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">Falta o Ar da Mamãe! 😮‍💨</div>
+                        <div class="slide-body">Todo o crescimento de músculos fetais encolhem absurdamente seu espaço físico. Os órgãos internos "sobem", o diafragma esmaga e sim... o seu "andar com o peito ofegante" de gravidez acaba de fazer pleno sentido.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Calma na reta de corrida.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Consulte sobre qualquer desconforto sempre usando o laço de confiança com seu médico.</div>
+                            <div class="slide-cta">🤰 Mande com carinho para alguém</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">As portas sensoriais para o contato externo se abrem: os olhinhos (pálpebras seladas) agora ensaiam piscadas que distinguem se o ambiente lá fora é claro ou neblinoso (entre 27 e 31 sem). 🌅
+
+No marco imenso e esperado do terceiro trimestre, a principal prioridade biológica do feto é simples: engordar e encorpar estrutura muscular. Como ele dobra rapidamente o tamanho, ocupando a casa inteira e a sua bexiga? Bem...
+O corpo humano feminino é extraordinário: todos os pulmões, estômago, diafragma materno sobem e encolhem!
+É o mês dos treinos de respiração longa ou ofegante na calçada mesmo, das azias por pressão de espaço!
+
+Saber os motivos por trâs do cansaço crônico materno empodera e traz tolerância à mente para vencer a linha de chegada. Mantenha os seus exames ultrassonográficos sempre muito bem alinhados no período!
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+O andar e fôlego deu tela azul no seu corpo ou você estava a 100km/h nesse período? Joga no comentário pro alívio emocional mútuo! Salva também! 🤍</div>
+                <div class="legenda-tags">#terceirotrimestre #gestante #maternidade #bebê #ganhodepeso #médicaamiga #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 8 ========= -->
+        <div class="tema-block" id="c8">
+            <div class="tema-header">
+                <div class="num-badge">Semana 32 a 35 · Aperto Final e Andar de Pinguim</div>
+                <h2>A Casa Ficou Pequena para Tanta Energia!</h2>
+                <div class="gancho">"Sabe a brincadeira do 'andar de pinguim'? O encaixe do bebê e o peso extremo fazem todo sentido agora."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">A Casa Ficou Muito Pequena! 🤰</div>
+                        <div class="slide-body">Quando você ri da comparação sobre o famoso andar esquisitinho, e na verdade os ossos da bacia provam o encaixe iminente.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">O Bebê assume posição 🔄</div>
+                        <div class="slide-body">A partir das 32 até 35 semanas, o grande movimento de "virada" ocorre: a versão cefálica. Os órgãos amadureceram todos praticamente so faltando refinamento de pulmões e fígado. Enorme em tamanho!</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">Espaço? Zero. Força? Bruta.</div>
+                        <div class="slide-body">O bebê já passa muito dos 2,5kg. E sim, um chute torto de pura energia numa perninha encaixada próximo de 47cm estende as suas costelas e tira totalmente o eixo do seu quadril!</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O famoso andado desconsertado 🐧</div>
+                        <div class="slide-body">A mamãe ajusta o centro de gravidade. Há uma adaptação gigantesca muscular para compensar a lordose momentânea, gerando o clássico e belo caminhar jogado das gestantes na rua.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Confie na maestria biológica.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Tudo encaixa como projetado, a natureza não erra.</div>
+                            <div class="slide-cta">🤰 Mande mensagem de orgulho pra uma mãe</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Quando você dá risada sobre o famoso “andar de pinguim”, na verdade é o seu corpo demonstrando a adaptação genial da sua pélvis para o peso extremado do encorpamento do oitavo mês (S32-S35). 🐧
+
+Uma gestante ajustando o passo compensa a lordose para caber o salto para 2,6kg e próximo de colossais 47cm. O espaço dentro é praticamente obsoleto: a maioria assume posição cefálica (virado de cabeça pra pelve).  
+Um soquinho nesse período machuca e tira o fôlego as costelas pra valer! Os órgãos do menino/menina focam a reta final só apenas no amadurecimento dos reservatórios de imunidade.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+O andar pinguim chegou na sua caminhada diária? Joga um pinguinzinho e salva nos comentários! 🤍🌿</div>
+                <div class="legenda-tags">#retafinalgestação #terceirotrimestre #maternidadenuaecrua #médicaamiga #tatuapé #obstetrasp #gaiaclinica</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 9 ========= -->
+        <div class="tema-block" id="c9">
+            <div class="tema-header">
+                <div class="num-badge">Semana 36 a 40 · Reta Final - Parto</div>
+                <h2>Termo Completo! As Malas Fechadas.</h2>
+                <div class="gancho">"Ele pode vir a qualquer instante, a maturação cessou. Tudo é energia mental agora na sua cabeça."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Termo Completo! ⏱️</div>
+                        <div class="slide-body">Ele pode vir a qualquer segundo daqui pra frente. As malas fechadas e o útero sinalizando com as famosas contrações de treinamento diárias.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Pronto para a Vida! 💛</div>
+                        <div class="slide-body">Da semana 36 à 40ª o bebê está todo pronto. Agora concentra energia batendo uns 3.4kg, em reserva extrema glicêmica pra sobreviver na maratona biológica fora da concha.</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">A Preparação para a Mamãe</div>
+                        <div class="slide-body">Cada dia da gestação daqui pesa mentalmente como 5 semanas cheies. É natural. Sentir que toda movimentação é o pingo ou trabalho de parto inicial.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">A Importância das Consultas de Última Hora</div>
+                        <div class="slide-body">Fazer acompanhamento semanal é central e exigido. Para acatar segurança numa via de parto bem informada e com muito acolhimento pautado apenas em desfecho excelente para vocês.</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">E se faltar ar, conte conosco.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Prevenção até o último segundo conta, orientando nos alertas.</div>
+                            <div class="slide-cta">🤰 Compartilhe essa jornada!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">As malas estão fechadas e você repete para você: “Daqui a pouco!” ⏱️
+
+Quando falamos entre as semanas 36 e as 40: falamos de um recém-nascido no ponto biológico ideal para o mundo. O foco nas últimas horas antes do nascer é unicamente reserva lipídica na pele para enfrentar sua maratona e controle de temperatura lá fora após que nasça.
+
+Para você mamãe: as contrações desordenadas e os falsos alarmes são o útero apenas se distendendo provando os músculos elásticos e se ajustando hormonalmente. A carga de cansaço emocional, de contar até as unhas e de picos intensos para saber se as águas vão romper pedem resguardo emocional fortíssimo! Confirme os preparativos não nas buscas doidas na web, mas com foco unicamente nas recomendações de quem detém seu histórico nas mãos. 
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+Com que semanas certinho o seu bebê resolveu conhecer o sol? Compartilha aqui se ele gostou do quentinho e conta na legenda salvando para enviar pros colegas! 🌿</div>
+                <div class="legenda-tags">#retafinalgestação #terceirotrimestre #viaDeParto #maternidadereal #médicaamiga #gaiaclinica #semana40 #obstetraSP</div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL 10 ========= -->
+        <div class="tema-block" id="c10">
+            <div class="tema-header">
+                <div class="num-badge">Série: O Que o Bebê Sente</div>
+                <h2>Seu Feto Sente Mais Que O Básico</h2>
+                <div class="gancho">"Ignorar as sensações emocionais da mamãe afeta a fábrica por trás da placenta, a ciência adverte."</div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Capa</div>
+                        <div class="slide-title">Você consegue imaginar tudo o que ele sente de fato? 🧠</div>
+                        <div class="slide-body">É por isso que as vezes negligenciamos os traumas na maternidade chamando displicentemente de "fases normais" para atenuar o abalo da mulher.</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title-bordo">Muito Mais do que Sensível</div>
+                        <div class="slide-body">O feto é humano ativo, ele sente dores. Estudos imensos dizem com robustez baseada em evidência que ele reconhece as vozes da família da 27a em diante mas capta a frequência de estresse diária!</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide dark">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">A Ação Cortisol no Feto ⚠️</div>
+                        <div class="slide-body">O comportamento de chutar ou bater reage a níveis cavalares de Cortisol (hormônio associado a estresses ou traumas maternos extremados). O útero reflete exatamente o estado lá fora.</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title-bordo">O Prático 🤱</div>
+                        <div class="slide-body">Bebês submetidos às cargas crônicas emocionais no ventre resultam de desequilíbrios do famoso eixo hipotálamo-hipófise (estudos atuais apontam distúrbios de peso e reatividade do bebê sem causa aparente!).</div>
+                    </div>
+                    <!-- Slide CTA Padrão -->
+                    <div class="swiper-slide final-slide">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" alt="Bebê com rostinho amassado de emoção" class="final-img">
+                        <div class="final-content">
+                            <div class="slide-title-bordo" style="font-size: 16px;">Saúde mental molda os batimentos de dentro.</div>
+                            <div class="slide-body" style="font-size: 12px; margin-bottom: 8px;">Por isso ter contato atencioso médico e da base familiar com as dores que as gravidas sentem ajuda o feto!</div>
+                            <div class="slide-cta">🤰 Compartilhe essa orientação com a rede de apoio</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Você consegue imaginar o que o seu bebê sente?
+
+Romantizar desespero ou cansaço disfuncional como coisas comuns na gestação é falho. Cuidar de uma mãe e atuar na defesa das tensões ajuda brutalmente a saúde da nova vida! A ciência diz exatamente como é que um pré-natal precisa sim ser acolhedor da porta a fora com a vida mental das mães.
+
+O feto da 27ª semana escuta ruídos! O seu comportamento corporal tem reação química frente ao aumento crônico do hormônio do estresse (Cortisol) através do sangue e do saco uterino. 🤯 E claro: se a gestante está em ambiente tenso ou traumatizante a chance e riscos metabólicos atestadas nos bebês no diário e distúrbios fora a longos prazos existem (segundo os achados do Journal of Origins of Health and Desease). Saúde do Útero é igual a paz na mãe também.
+
+(Este conteúdo é informativo e não substitui uma consulta com seu médico.)
+
+O acolhimento emocional liberta. Se essa postagem fez sentido, mande urgentemente e salve esse post para ler depois com quem não validou as suas dificuldades! O seu bebê sente! 🤍</div>
+                <div class="legenda-tags">#saudementalnainfancia #saudementaldamulher #vidadegestante #bebês #médicaamiga #gaiaclinica #saudefetal</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts de Interação da Página -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swipers = document.querySelectorAll('.mySwiper');
+        swipers.forEach(function (swiperContainer) {
+            new Swiper(swiperContainer, {
+                loop: false,
+                navigation: {
+                    nextEl: swiperContainer.querySelector('.swiper-button-next'),
+                    prevEl: swiperContainer.querySelector('.swiper-button-prev'),
+                },
+                pagination: {
+                    el: swiperContainer.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+            });
+        });
+
+        // Efeito simples do scroll suave na navigation
+        document.querySelectorAll('.nav-pills a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
