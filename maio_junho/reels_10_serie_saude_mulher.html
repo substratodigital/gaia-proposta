@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teleprompter GAIA — Série Saúde da Mulher</title>
+<meta name="description" content="10 roteiros completos para gravações sobre Saúde da Mulher — Gaia Medicina Integrada. Tom Médica Amiga, acolhedor e baseado em ciência.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--wine:#853B50;--wine-deep:#6B2D3E;--red:#B12A38;--cream:#FDF8F4;--sage:#E8F0E8;--gold:#C9A84C;--dark:#1a1a2e;--gray:#64748b;--light:#f8fafc}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:#1e293b;-webkit-font-smoothing:antialiased}
+.nav{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:900px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand span:first-child{font-size:2rem}
+.nav-title{font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:.15em}
+.nav-sub{font-size:.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.2em}
+.nav-meta{font-size:.75rem;color:#94a3b8;display:none}
+@media(min-width:640px){.nav-meta{display:block}}
+main{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}
+.hero{text-align:center;padding:4rem 0 3rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:800;color:var(--dark);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--red),var(--wine));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+.hero .rule{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.5rem 1.25rem;border-radius:99px;background:#fff1f2;color:var(--red);font-weight:600;font-size:.85rem}
+.card{background:#fff;border-radius:1.25rem;box-shadow:0 8px 30px rgba(0,0,0,.06);border:1px solid #e8e0db;margin-bottom:3.5rem;overflow:hidden}
+.card-head{padding:2rem 2rem 1.5rem;border-bottom:1px solid #f0ebe7;display:flex;gap:1.25rem;align-items:flex-start;flex-wrap:wrap}
+.card-num{width:3.5rem;height:3.5rem;border-radius:1rem;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 12px rgba(133,59,80,.3)}
+.card-info h2{font-size:1.6rem;font-weight:700;color:var(--dark);line-height:1.3}
+.card-tags{display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap}
+.tag{font-size:.7rem;font-weight:600;padding:.3rem .7rem;border-radius:99px;background:#f1f5f9;color:var(--gray)}
+.tag.dur{background:var(--sage);color:#2d5a2d}
+.card-body{padding:2rem}
+.tl{position:relative;padding-left:2.5rem}
+.tl::before{content:'';position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--wine),#e8e0db)}
+.block{position:relative;padding-bottom:2.5rem}
+.block:last-child{padding-bottom:0}
+.block::before{content:'';position:absolute;left:-2.5rem;top:10px;width:18px;height:18px;border-radius:50%;background:var(--wine);border:4px solid #fff;box-shadow:0 0 0 2px var(--wine);z-index:1}
+.block-time{display:inline-flex;align-items:center;padding:.3rem .85rem;border-radius:99px;background:var(--wine);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem}
+.block-label{display:inline-block;margin-left:.5rem;padding:.2rem .6rem;border-radius:4px;background:#fff1f2;color:var(--red);font-size:.7rem;font-weight:700}
+.script{font-family:'Lora',serif;font-size:1.3rem;line-height:1.9;color:#2c2c2c;background:var(--cream);padding:1.5rem 1.75rem;border-radius:.75rem;border-left:5px solid var(--wine)}
+.script strong{color:var(--wine-deep)}
+.copy-section{margin-top:1.5rem;padding:1.25rem 1.5rem;background:#fafaf8;border-radius:.75rem;border:1px dashed #d4cfc8}
+.copy-section h4{font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.copy-section p{font-size:.95rem;line-height:1.7;color:#555}
+.copy-section .hashtags{font-size:.8rem;color:var(--wine);margin-top:.5rem;font-weight:500}
+footer{background:var(--dark);color:#94a3b8;text-align:center;padding:3rem 1rem;font-size:.85rem}
+footer p+p{margin-top:.25rem}
+@media(max-width:768px){
+  main{padding:1rem .5rem 2rem}
+  .hero{padding:2rem 0}
+  .card-head{padding:1.25rem}
+  .card-body{padding:1rem .75rem}
+  .tl{padding-left:1.2rem}
+  .block::before{left:-1.2rem;width:14px;height:14px;border-width:3px}
+  .block-time{padding:.25rem .6rem;font-size:.7rem}
+  .script{padding:1rem;font-size:1.15rem;line-height:1.7}
+  .copy-section{padding:1rem}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="nav-brand"><span>🌿</span><div><div class="nav-title">Teleprompter GAIA</div><div class="nav-sub">Gaia Medicina Integrada</div></div></div><div class="nav-meta">10 Roteiros · Série Saúde da Mulher · Maio/Junho 2026</div></div></nav>
+
+<main>
+<div class="hero">
+<h1>Série: <em>Saúde da Mulher</em></h1>
+<p>Scripts completos para teleprompter. Tom <strong>Médica Amiga</strong>: acolhedor, seguro e baseado em ciência. Foco total na mulher.</p>
+<div class="rule">❌ Proibidas: "parto humanizado" · "pré-natal integrativo" · "medicina integrativa" · "tecnologia"</div>
+</div>
+
+<!-- REEL 01 -->
+<article class="card" id="reel-01">
+<div class="card-head">
+<div class="card-num">01</div>
+<div class="card-info">
+<h2>A Solidão que Ninguém Admite na Gravidez</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~30s</span><span class="tag">Saúde Emocional</span><span class="tag">✨ Acolhimento</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Tem um sentimento na gravidez que quase ninguém tem coragem de admitir."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 20s</span><span class="block-label">Validação + Explicação</span>
+<div class="script">"Mesmo cercada de amor, mesmo com o parceiro presente, mesmo com toda a família na torcida, muitas mulheres se sentem completamente sozinhas. Isso tem nome na medicina: ambivalência emocional gestacional. Não é ingratidão. Não é fraqueza. É o seu sistema nervoso e os seus hormônios respondendo a uma transformação que não tem precedente na vida de nenhuma mulher."</div>
+</div>
+<div class="block">
+<span class="block-time">20s – 30s</span><span class="block-label">CTA</span>
+<div class="script">"Se você sentiu isso alguma vez, saiba: você não está falhando. E você não está sozinha. Se fez sentido, comenta aqui embaixo com um 'eu'. Precisamos falar mais sobre isso."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A solidão na gravidez é um tabu, mas é profundamente real. 🤍 A ambivalência emocional gestacional é uma resposta fisiológica do seu corpo e do seu sistema nervoso a uma mudança sem precedentes. Sentir-se sozinha, mesmo acompanhada, não significa que você é fraca ou ingrata. É por isso que o acompanhamento médico precisa acolher suas emoções tanto quanto seus exames. Converse sempre com o profissional que te acompanha.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #SaudeEmocional #PreNatalAcolhedor #Gravidez #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 02 -->
+<article class="card" id="reel-02">
+<div class="card-head">
+<div class="card-num">02</div>
+<div class="card-info">
+<h2>Ansiedade na Gravidez Não é Frescura</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~40s</span><span class="tag">Ansiedade Gestacional</span><span class="tag">✨ Acolhimento</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Coração acelerado, medo de tudo e de nada ao mesmo tempo? Isso não é exagero seu."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 30s</span><span class="block-label">Técnico Traduzido</span>
+<div class="script">"A ansiedade gestacional afeta até vinte por cento das gestantes. E na maioria das vezes ela é invisível porque a mulher sente vergonha de sentir o que sente justamente no período em que 'deveria estar feliz'. Mas existe uma diferença entre a preocupação saudável, que vem em ondas e passa, e a ansiedade que paralisa. Que não deixa dormir por dias. Que coloca pensamentos de catástrofe na cabeça sem parar. Essa segunda precisa de atenção clínica. E faz parte do pré-natal acolhedor conversar sobre isso na consulta."</div>
+</div>
+<div class="block">
+<span class="block-time">30s – 40s</span><span class="block-label">CTA</span>
+<div class="script">"Se você reconheceu algum desses sinais, conta para a sua obstetra de confiança. Esse assunto merece o mesmo espaço que o ultrassom e os exames de sangue."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Não normalize uma ansiedade que te paralisa e rouba a sua paz. 🌿 O medo faz parte, mas quando os pensamentos catastróficos não param e o sono desaparece, seu corpo está pedindo ajuda. A ansiedade gestacional afeta até 20% das mulheres e merece tratamento e acompanhamento clínico, não julgamento. Se você está passando por isso, leve esse assunto para a sua consulta de pré-natal.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #AnsiedadeGestacional #SaudeDaMulher #PreNatalAcolhedor #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 03 -->
+<article class="card" id="reel-03">
+<div class="card-head">
+<div class="card-num">03</div>
+<div class="card-info">
+<h2>Quem Cuida da Mamãe no Pós-Parto?</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~45s</span><span class="tag">Puerpério e 4º Trimestre</span><span class="tag">✨ Reflexão</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"A gente fala muito de pré-natal. Mas quem cuida da mamãe depois que o bebê nasce?"</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 35s</span><span class="block-label">A Realidade Biológica e Social</span>
+<div class="script">"O pós-parto imediato é um dos maiores processos de transformação hormonal que o corpo de uma mulher pode viver. Com a saída da placenta, o estrogênio e a progesterona caem de forma brusca e abrupta. É como se o corpo desligasse um interruptor de uma hora para outra. E o que acontece na prática? A atenção toda vai para o bebê. A família pergunta do bebê. O médico da alta pergunta do bebê. O WhatsApp está cheio de fotos do bebê. E você, que acabou de passar por um evento físico e emocional imenso, de repente some completamente do centro da cena."</div>
+</div>
+<div class="block">
+<span class="block-time">35s – 45s</span><span class="block-label">CTA</span>
+<div class="script">"O pós-parto merece o mesmo cuidado clínico que a gestação inteira recebeu. Se você está chegando perto do final da gravidez, manda esse vídeo para quem vai estar com você nesse período. Ela precisa saber disso."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Nasce um bebê, mas a mulher que acabou de passar por uma transformação física e hormonal gigantesca não pode ser esquecida. 🤍 O puerpério é um evento fisiológico intenso, marcado pela queda abrupta de hormônios. Exigir que a mãe cuide perfeitamente do bebê sem que ninguém cuide dela é injusto. O acompanhamento clínico e a rede de apoio são essenciais no quarto trimestre.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Puerperio #PosParto #QuartoTrimestre #SaudeDaMulher #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 04 -->
+<article class="card" id="reel-04">
+<div class="card-head">
+<div class="card-num">04</div>
+<div class="card-info">
+<h2>Baby Blues Não é Fraqueza. É Biologia.</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~45s</span><span class="tag">Baby Blues x DPP</span><span class="tag">✨ Ciência + Acolhimento</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Você está chorando sem saber por quê, dois dias depois de ter o bebê? Antes de se julgar, precisa entender o que está acontecendo no seu corpo."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 35s</span><span class="block-label">Explicação Médica</span>
+<div class="script">"Quando a placenta sai, os hormônios da gestação caem de um nível altíssimo para quase zero em questão de horas. Essa queda é fisiológica e esperada. E ela provoca o que chamamos de disforia puerperal, o Baby Blues. Choro sem motivo. Irritabilidade. Sensação de estar no limite. Isso afeta entre cinquenta e oitenta por cento das mulheres nos primeiros dias. O pico costuma ser no quarto ou quinto dia. E em geral melhora sozinho dentro dos primeiros quinze dias. O que não pode acontecer é confundir isso com Depressão Pós-Parto. Se a tristeza persistir por mais de quinze dias, se houver dificuldade de se vincular ao bebê, se aparecerem pensamentos que assustam, esse é o sinal para buscar ajuda especializada imediatamente."</div>
+</div>
+<div class="block">
+<span class="block-time">35s – 45s</span><span class="block-label">Mensagem Central</span>
+<div class="script">"A Depressão Pós-Parto não passa sozinha. E pedir ajuda não significa que você é uma mãe ruim. Significa que você está se cuidando para cuidar melhor."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Chorar no puerpério não é falta de amor, é resposta biológica. 🌿 O Baby Blues atinge a grande maioria das mulheres por causa da queda brusca hormonal após a retirada da placenta. Mas atenção: se a tristeza não melhorar após 15 dias, ou se houver pensamentos que assustam e dificuldade de vínculo com o bebê, pode ser Depressão Pós-Parto. Pedir ajuda médica é o maior ato de cuidado que você pode ter por si mesma e pela sua família.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #BabyBlues #DepressaoPosParto #Puerperio #SaudeEmocional #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 05 -->
+<article class="card" id="reel-05">
+<div class="card-head">
+<div class="card-num">05</div>
+<div class="card-info">
+<h2>Você Não Vai Dar Conta de Tudo. E Tá Tudo Bem.</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~40s</span><span class="tag">Desconstrução da Positividade Tóxica</span><span class="tag">✨ Acolhimento</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Existe uma frase que as pessoas dizem com carinho mas que pode fazer muito mal a uma mãe no pós-parto."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 30s</span><span class="block-label">Desmistificação</span>
+<div class="script">"'Você vai dar conta. Toda mãe dá conta.' A gente ouve isso em todo lugar. E quando o caos chega, quando o sono vai embora, quando o bebê chora sem parar e você não sabe mais quem você é, a mulher pensa: todo mundo está dando conta e eu não estou. O problema sou eu. Como obstetra, eu prefiro dizer para as minhas pacientes a verdade: você não vai dar conta de tudo. E isso não significa que você está falhando. Significa que você é humana. Que pedir ajuda não é fraqueza. É inteligência. É autocuidado. É amor, inclusive."</div>
+</div>
+<div class="block">
+<span class="block-time">30s – 40s</span><span class="block-label">CTA</span>
+<div class="script">"Se alguém te disse isso hoje e você se sentiu sufocada pela expectativa, respira. Você não precisa ser heroína para ser uma boa mãe. Manda esse vídeo para quem precisa ouvir isso agora."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O mito da mãe heroína é exaustivo. 🤍 A verdade nua e crua é que você não vai dar conta de tudo no puerpério — e tentar fazer isso é o caminho mais rápido para o adoecimento emocional. Pedir ajuda não é sinal de que você falhou como mãe, é sinal de que você entende os seus limites e precisa de rede de apoio. Cuide de você para poder cuidar do seu filho.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #MaternidadeReal #AutocuidadoMaterno #PosParto #Puerperio #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 06 -->
+<article class="card" id="reel-06">
+<div class="card-head">
+<div class="card-num">06</div>
+<div class="card-info">
+<h2>A Matemática que Ninguém Ensina Para as Mães</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~40s</span><span class="tag">O Mito da Mulher-Maravilha</span><span class="tag">✨ Cuidado Amplo</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Antes de ser mãe, você era cem por cento você. Depois que o bebê chegou, a conta ficou estranha. Deixa eu explicar."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 30s</span><span class="block-label">A Divisão Real</span>
+<div class="script">"A sociedade espera que você seja cem por cento presente para o filho, cem por cento dedicada ao trabalho, cem por cento disponível para o parceiro e cem por cento cuidando da própria saúde. A conta dá quatrocentos por cento. E você continua sendo uma só pessoa. A matemática real, a que a gente aprende de consultório, é outra. Você não se multiplica. Você divide. Você tem cem por cento de energia, e esses cem por cento precisam ser distribuídos entre as áreas da sua vida. Em dia de crise, o bebê leva sessenta, o trabalho leva trinta e sobram dez para você. No dia seguinte a divisão muda. E está tudo bem."</div>
+</div>
+<div class="block">
+<span class="block-time">30s – 40s</span><span class="block-label">CTA</span>
+<div class="script">"Quem tenta ser cem por cento em tudo ao mesmo tempo acaba chegando ao esgotamento. Não porque é fraca. Mas porque ultrapassou os seus limites por tempo demais. Salva esse vídeo para rever nos dias difíceis."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>A matemática da maternidade exige divisão, não multiplicação das suas energias. 🌿 Cobrar de si mesma 100% de dedicação em todas as áreas da vida simultaneamente é a receita para o esgotamento extremo (burnout materno). Aceite que a cada dia a divisão de energia será diferente, e isso faz parte da dinâmica de ter um filho. Proteja os seus limites.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #EsgotamentoMaterno #SaudeDaMulher #MaternidadeReal #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 07 -->
+<article class="card" id="reel-07">
+<div class="card-head">
+<div class="card-num">07</div>
+<div class="card-info">
+<h2>Cuidar de Você não é Egoísmo</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~35s</span><span class="tag">Autocuidado Materno</span><span class="tag">✨ Conscientização</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Sabe aquela instrução no avião, de colocar a sua máscara de oxigênio antes de ajudar a criança? Isso não é descuido com o filho. É sobrevivência."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 25s</span><span class="block-label">O Pilar da Saúde</span>
+<div class="script">"E é exatamente assim que a gente precisa pensar o autocuidado materno. Cuidar da sua glicemia, do seu colesterol, da sua saúde mental, do seu sono. Isso não é egoísmo. É necessidade fisiológica. Porque ninguém pode fazer isso por você. Nenhuma médica, nenhum parceiro, nenhuma mãe dedicada. E quando a mãe adoece, todo o sistema familiar sente."</div>
+</div>
+<div class="block">
+<span class="block-time">25s – 35s</span><span class="block-label">CTA</span>
+<div class="script">"Mãe feliz não é mito. É a condição mais real para uma família saudável. Quando foi a última vez que você foi ao seu ginecologista? Pensa nisso."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Coloque a sua máscara de oxigênio primeiro. 🤍 O autocuidado materno não é um luxo ou egoísmo — é a sustentação da sua saúde e da sua família. Uma mãe que adoece física ou emocionalmente sobrecarrega todo o sistema. Agendar suas consultas de rotina e priorizar exames básicos é cuidar de você para poder continuar cuidando de quem você ama. Quando foi a sua última consulta de rotina?</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #AutocuidadoMaterno #SaudeDaMulher #CheckupFeminino #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 08 -->
+<article class="card" id="reel-08">
+<div class="card-head">
+<div class="card-num">08</div>
+<div class="card-info">
+<h2>Seu Filho Prematuro Tem Duas Idades. E Você Precisa Saber Calcular.</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~45s</span><span class="tag">Prematuridade</span><span class="tag">✨ Ciência + Explicação</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Se o seu filho nasceu prematuro, existe um cálculo que toda família precisa conhecer para não sofrer à toa."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 35s</span><span class="block-label">Técnico Traduzido</span>
+<div class="script">"O bebê prematuro tem duas idades. A idade cronológica, que é a contada a partir do dia do nascimento, igual para todos os bebês. E a idade corrigida, que é a que as pediatras usam para avaliar o desenvolvimento de um bebê que chegou antes do tempo. A gente faz a correção subtraindo as semanas que faltaram para completar as quarenta semanas de gestação. Por exemplo: se o bebê nasceu de trinta e cinco semanas, faltaram cinco semanas. Quando ele tiver seis meses de idade cronológica, a pediatra vai avaliá-lo como um bebê de quatro meses e três semanas. Essa correção precisa ser feita até os dois anos de idade. E sempre com a curva específica de prematuro, não com a tabela padrão."</div>
+</div>
+<div class="block">
+<span class="block-time">35s – 45s</span><span class="block-label">A Mensagem Central</span>
+<div class="script">"Se você não usa a idade corrigida, o bebê vai parecer atrasado em tudo. E ele não está atrasado. Ele só chegou antes. Leva essa dúvida para a pediatra de confiança do seu filho."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Mães de prematuros, não comparem os marcos do seu bebê com as tabelas padrão da internet! 🌿 O bebê prematuro é avaliado pela "Idade Corrigida" até os 2 anos de idade. Ela leva em conta o tempo que faltou para completar as 40 semanas de gestação. Sem essa correção, seu filho vai parecer sempre atrasado — o que gera uma angústia enorme e desnecessária. Sempre esclareça o desenvolvimento do bebê nas consultas com seu pediatra de confiança.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Prematuridade #IdadeCorrigida #Pediatria #BebePrematuro #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 09 -->
+<article class="card" id="reel-09">
+<div class="card-head">
+<div class="card-num">09</div>
+<div class="card-info">
+<h2>DIU: O Maior Medo que a Internet Colocou na Sua Cabeça</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~50s</span><span class="tag">DIU e Mitos</span><span class="tag">✨ Desmistificação</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Você morre de vontade de colocar DIU, mas toda vez que abre o Instagram para pesquisar, aparece uma história que te assusta. Vou te explicar o que é realidade e o que é mito."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 40s</span><span class="block-label">Explicação Clara</span>
+<div class="script">"Primeiro mito: a colocação é insuportável. A sensação de inserção existe, especialmente para mulheres que nunca tiveram filho. Mas existem opções de analgesia para tornar o procedimento mais confortável. Converse com a sua ginecologista sobre isso antes de ir. Segundo mito: o DIU causa aborto. Não. O DIU hormonal age criando um ambiente hostil ao espermatozoide e alterando o muco cervical. O DIU de cobre e prata tem um mecanismo adicional de impedir a fertilização. Nenhum deles age sobre uma gravidez já implantada. Terceiro mito: quem nunca teve filho não pode usar. Isso já foi superado pela medicina. Existem modelos de DIU menores, desenvolvidos especificamente para mulheres sem gestação anterior."</div>
+</div>
+<div class="block">
+<span class="block-time">40s – 50s</span><span class="block-label">CTA</span>
+<div class="script">"O DIU é um dos métodos contraceptivos mais eficazes e seguros disponíveis. Mas a escolha certa depende do seu histórico, do seu ciclo e dos seus objetivos. Essa decisão precisa ser feita junto com a sua ginecologista, não com base nos comentários de uma publicação."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>O DIU é cercado de mitos assustadores na internet, mas a ciência nos diz o contrário. 🤍 A colocação pode ser feita com analgesia, ele NÃO é um método abortivo, e mulheres que nunca tiveram filhos podem (e usam com sucesso) métodos intrauterinos. O DIU é um dos contraceptivos mais seguros do mundo. A escolha do melhor tipo (hormonal, cobre, prata) depende apenas do seu histórico e avaliação clínica individual. Agende uma consulta para tirar suas dúvidas com seu médico de confiança.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #Contracepcao #DIU #MitosDoDIU #SaudeDaMulher #Ginecologia #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+<!-- REEL 10 -->
+<article class="card" id="reel-10">
+<div class="card-head">
+<div class="card-num">10</div>
+<div class="card-info">
+<h2>DIU Depois da Gravidez: Quando Colocar e o que Esperar</h2>
+<div class="card-tags"><span class="tag dur">⏱️ ~50s</span><span class="tag">DIU Pós-Parto</span><span class="tag">✨ Adaptação Realista</span></div>
+</div>
+</div>
+<div class="card-body">
+<div class="tl">
+<div class="block">
+<span class="block-time">0s – 3s</span><span class="block-label">Gancho</span>
+<div class="script">"Você acabou de ter um filho e já quer saber quando pode colocar o DIU. Essa é uma dúvida muito mais comum do que parece. E tem resposta."</div>
+</div>
+<div class="block">
+<span class="block-time">3s – 40s</span><span class="block-label">Técnico + Cuidados</span>
+<div class="script">"O DIU pode ser inserido logo após o parto, ainda na maternidade, dentro das primeiras quarenta e oito horas. Ou então é feito a partir de quatro a seis semanas depois do parto, na consulta de revisão puerperal com a sua obstetra. Sobre os medos mais frequentes que as pacientes trazem para o consultório: o medo da expulsão. A expulsão espontânea do DIU é rara, acontece com mais frequência nos primeiros meses. O ultrassom feito logo após a inserção confirma se ele está bem posicionado. O medo do período de adaptação. Nos primeiros três meses, é normal ter sangramentos irregulares e cólicas intermitentes. Isso faz parte da adaptação do útero. Muitas mulheres desistem nessa fase achando que o método não funciona para elas, mas é justamente a fase que pede paciência. O medo de interferir na amamentação. O DIU hormonal com levonorgestrel é considerado compatível com a amamentação, mas a escolha final sempre deve ser discutida com a sua médica."</div>
+</div>
+<div class="block">
+<span class="block-time">40s – 50s</span><span class="block-label">Mensagem Central</span>
+<div class="script">"Cada corpo tem o seu tempo e a sua resposta ao método. Não existe a escolha certa da internet. Existe a escolha certa para o seu caso específico. Leva essas dúvidas para a sua consulta."</div>
+</div>
+</div>
+<div class="copy-section">
+<h4>📝 Copy da Legenda</h4>
+<p>Planejando o DIU pós-parto? Existem janelas ideais de inserção (ainda na maternidade ou após 4-6 semanas). 🌿 É fundamental entender que o DIU exige um período de adaptação do útero nos primeiros meses, e ter paciência nessa fase é o segredo do sucesso do método. Converse abertamente com o seu médico sobre os seus medos, seja o receio de interferir na amamentação ou a preocupação com sangramentos irregulares iniciais.</p>
+<p class="hashtags">#GaiaMedicinaIntegrada #DIUPosParto #Puerperio #Contracepcao #PlanejamentoFamiliar #SaudeDaMulher #MédicaAmiga</p>
+</div>
+</div>
+</article>
+
+</main>
+<footer>
+<p>Documento de uso interno — <strong>Gaia Medicina Integrada</strong></p>
+<p>Roteiros para Teleprompter · Série Saúde da Mulher · Maio/Junho 2026</p>
+</footer>
+</body>
+</html>
