@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrosséis de Pediatria — Maio/Junho 2026 | Gaia Medicina Integrada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --cor-primaria: #B12A38; /* Vermelho Gaia */
+            --cor-destaque: #853B50; /* Vinho Gaia */
+            --cor-fundo: #FAF5F5;    /* Creme Rosado */
+            --cor-texto: #232323;
+            --cor-branco: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--cor-branco);
+            padding: 40px 20px 32px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 48px;
+            border-bottom: 3px solid #f0e6e8;
+        }
+
+        header .badge {
+            display: inline-block;
+            background-color: #fee2e2;
+            color: var(--cor-primaria);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 99px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            color: var(--cor-destaque);
+            margin: 0 0 10px 0;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: #777;
+            margin: 0 auto;
+            max-width: 620px;
+            font-size: 15px;
+        }
+
+        .nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            padding: 0 20px;
+            margin-bottom: 48px;
+        }
+
+        .nav-pills a {
+            display: inline-block;
+            background-color: var(--cor-branco);
+            border: 1.5px solid #eacfd3;
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 99px;
+            transition: all 0.2s;
+        }
+
+        .nav-pills a:hover {
+            background-color: var(--cor-destaque);
+            color: white;
+            border-color: var(--cor-destaque);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .tema-block {
+            background-color: var(--cor-branco);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 6px 28px rgba(133, 59, 80, 0.09);
+            scroll-margin-top: 20px;
+        }
+
+        .tema-header {
+            margin-bottom: 32px;
+            border-bottom: 2px solid #f5ebed;
+            padding-bottom: 22px;
+            text-align: center;
+        }
+
+        .tema-header .num-badge {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 99px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .tema-header h2 {
+            color: var(--cor-primaria);
+            font-size: 22px;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        .tema-header .gancho {
+            font-weight: 600;
+            color: var(--cor-destaque);
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        /* Swiper */
+        .swiper {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto 32px;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(133, 59, 80, 0.22);
+        }
+
+        .swiper-slide {
+            background-color: var(--cor-destaque);
+            color: var(--cor-branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4/5;
+            padding: 44px 36px;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-num {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            white-space: nowrap;
+        }
+
+        .slide-icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .slide-title {
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        .slide-body {
+            font-size: 13.5px;
+            opacity: 0.88;
+            line-height: 1.6;
+        }
+
+        .slide-highlight {
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-top: 12px;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--cor-branco) !important;
+            transform: scale(0.6);
+            opacity: 0.45;
+            transition: opacity 0.3s;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover { opacity: 1; }
+
+        .swiper-pagination-bullet { background: var(--cor-branco) !important; opacity: 0.38; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
+        /* Legenda */
+        .legenda-container {
+            background-color: #fdf8f8;
+            border-left: 4px solid var(--cor-primaria);
+            border-radius: 4px 14px 14px 4px;
+            padding: 26px 28px;
+            margin-top: 28px;
+        }
+
+        .legenda-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--cor-destaque);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .legenda-content {
+            font-size: 14px;
+            color: #444;
+            white-space: pre-wrap;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .legenda-tags {
+            font-size: 13px;
+            color: var(--cor-destaque);
+            font-weight: 600;
+            opacity: 0.75;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #aaa;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            background-color: #fff;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .tema-block { padding: 22px 18px; }
+            .slide-title { font-size: 17px; }
+            .slide-body { font-size: 12.5px; }
+            header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="badge">👶 Pediatria & Neonatologia · Maio/Junho 2026</div>
+        <h1>Carrosséis de Pediatria</h1>
+        <p>Ideias de carrosséis para a Dra. Kátia ("Dicas da Tia Kátia") divididas em duas séries especiais: Doenças Respiratórias de Inverno e Bebês Prematuros.</p>
+    </header>
+
+    <div class="nav-pills">
+        <a href="#c-f-1">Série F · C1</a>
+        <a href="#c-f-2">Série F · C2</a>
+        <a href="#c-f-3">Série F · C3</a>
+        <a href="#c-f-4">Série F · C4</a>
+        <a href="#c-g-1">Série G · C1</a>
+        <a href="#c-g-2">Série G · C2</a>
+        <a href="#c-g-3">Série G · C3</a>
+        <a href="#c-g-4">Série G · C4</a>
+    </div>
+
+    <div class="container">
+
+        <!-- ========= CARROSSEL F1 ========= -->
+        <div class="tema-block" id="c-f-1">
+            <div class="tema-header">
+                <div class="num-badge">Série F · Carrossel 1 · Dicas da Tia Kátia</div>
+                <h2>Isso NÃO causa bronquiolite vs. Isso SIM causa</h2>
+                <div class="gancho">Tema: Desmistificação do contágio da bronquiolite (mitos do frio vs. perigo real de vírus e aglomerações).</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">Isso NÃO causa bronquiolite vs. Isso SIM causa</div>
+                        <div class="slide-body">* "ISSO NÃO CAUSA BRONQUIOLITE</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title">* "Pé descalço ou brincar no chão NÃO causa bronquiolite.<br><br>* "Visitas que tocam e beijam as mãos ou o rosto do bebê SIM podem transmitir o vírus.</div>
+                        <div class="slide-body"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title">* "Banho em dia fresco ou pegar vento frio NÃO causa bronquiolite.<br><br>* "Parquinhos fechados, piscinas de bolinhas e aglomerações SIM facilitam o contágio.</div>
+                        <div class="slide-body"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title">* "Janela aberta ou ar-condicionado limpo NÃO causa bronquiolite.<br><br>* "Ambientes fechados com pouca circulação de ar e aglomerações SIM aumentam o risco.</div>
+                        <div class="slide-body"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A bronquiolite é causada por vírus, principalmente o VSR. A prevenção não é trancar o bebê no calor, mas sim evitar aglomerações, manter a lavagem das mãos constante e higienizar os brinquedos compartilhados.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar de um lembrete protetor.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Muitas vezes o foco da prevenção da bronquiolite vai para o lado errado. É comum ouvirmos que o bebê ficou doente porque pegou um vento frio, andou descalço ou brincou no chão da sala.
+
+A verdade científica é muito diferente. A bronquiolite é uma infecção viral, causada principalmente pelo Vírus Sincicial Respiratório, o VSR. O contágio acontece de pessoa para pessoa, através de gotículas de saliva, contato físico ou superfícies contaminadas.
+
+Passear ao ar livre no parque faz bem para a saúde e imunidade do bebê. O perigo real está nos ambientes fechados, aglomerações, parquinhos públicos e, principalmente, no hábito aparentemente inofensivo de visitas beijarem as mãos ou o rosto do bebê.
+
+A prevenção eficiente envolve higiene das mãos, evitar locais fechados com aglomerações e orientar as visitas a não tocarem no bebê se tiverem qualquer sinal de resfriado leve.
+
+Consulte o pediatra do seu filho para manter o acompanhamento preventivo em dia.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL F2 ========= -->
+        <div class="tema-block" id="c-f-2">
+            <div class="tema-header">
+                <div class="num-badge">Série F · Carrossel 2 · Dicas da Tia Kátia</div>
+                <h2>O que é a Bronquiolite e quais os sinais de alerta?</h2>
+                <div class="gancho">Tema: Explicação fisiológica simplificada da bronquiolite e identificação de sinais de esforço respiratório (urgência).</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Meu bebê está resfriado ou é bronquiolite?</div>
+                        <div class="slide-body">* "A diferença silenciosa que toda mãe precisa saber identificar no inverno.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A bronquiolite é a inflamação dos bronquíolos, que são os menores canais que levam o ar até os pulmões do bebê. Quando eles inflamam, acumulam muco e dificultam a passagem do ar.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Sinal de Alerta 1: Esforço para respirar. Observe se a pele abaixo das costelas ou na base do pescoço afunda quando o bebê puxa o ar. Isso indica cansaço respiratório.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Sinal de Alerta 2: Batimento de asa do nariz. Se as narinas do bebê se abrem muito a cada respiração, é sinal de que ele está fazendo força extra para puxar o ar.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Sinal de Alerta 3: Recusa alimentar. O bebê cansado não consegue mamar e respirar ao mesmo tempo. Se ele recusa o peito ou a mamadeira com frequência, preste atenção.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title">Resfriado Comum: * Coriza leve, espirros, febre baixa ou ausente, bebê ativo e mamando bem.<br><br>Bronquiolite: * Chiado no peito, respiração rápida, esforço abdominal, cansaço para mamar e sonolência.</div>
+                        <div class="slide-body"></div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 7</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Identificar precocemente os sinais de que um resfriado comum está evoluindo para bronquiolite é uma das medidas mais importantes para garantir a segurança do seu bebê durante o inverno.
+
+Como os bebês têm os canais respiratórios muito pequenos e delicados, a inflamação e o excesso de muco causados pelo vírus podem obstruir a passagem do ar de forma rápida. O resfriado costuma atingir apenas as vias superiores (nariz e garganta), enquanto a bronquiolite afeta a parte mais profunda dos pulmões.
+
+Fique muito atenta aos movimentos do tórax e da barriga do bebê enquanto ele respira. O afundamento da pele entre as costelas, o esforço no pescoço, o movimento excessivo das narinas e a recusa para mamar são indicativos importantes de que a respiração exige esforço físico além do normal.
+
+Ao notar esses sinais de esforço ou cansaço respiratório, busque atendimento médico imediato para uma avaliação profissional completa.
+
+Converse sempre com o pediatra do seu bebê para orientações personalizadas.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL F3 ========= -->
+        <div class="tema-block" id="c-f-3">
+            <div class="tema-header">
+                <div class="num-badge">Série F · Carrossel 3 · Dicas da Tia Kátia</div>
+                <h2>Vacina de Influenza (Gripe): Mitos e Verdades</h2>
+                <div class="gancho">Tema: Desmistificação da vacina da gripe para crianças e importância de sua aplicação.</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "A vacina da gripe pode deixar meu filho gripado?</div>
+                        <div class="slide-body">* "Desmistificando os medos da vacinação de inverno com base na ciência.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Mito: A vacina da gripe NÃO causa gripe. Ela é feita com o vírus totalmente inativo, ou seja, morto e fragmentado. É biologicamente impossível que ela provoque a doença no bebê.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Por que alguns bebês ficam resfriados após vacinar? A vacina leva cerca de duas semanas para atingir a proteção total. Se o bebê pegar um resfriado nesse intervalo, não tem relação com a vacina aplicada.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Reações normais da vacina: Febre baixa, irritabilidade leve e dor local são reações esperadas que duram no máximo 48 horas. É apenas o sistema de defesa do bebê aprendendo a combater o vírus.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A importância real da vacina: Ela reduz drasticamente o risco de complicações respiratórias graves, como a pneumonia, diminuindo as chances de internação hospitalar das crianças no inverno.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A vacinação contra a Influenza é recomendada anualmente pelo calendário nacional de imunização para todas as crianças a partir dos 6 meses de idade. Mantenha a caderneta do seu bebê sempre atualizada.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 7</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">A vacinação contra a Influenza (gripe) é uma das defesas mais potentes que temos para proteger as crianças contra as complicações respiratórias graves do inverno.
+
+Ainda é muito comum ouvirmos o receio de que a vacina possa provocar a própria gripe no bebê. Do ponto de vista científico, isso é um mito. O imunizante é composto por vírus fragmentados e inativos, que estimulam as células de defesa a criarem anticorpos sem nenhuma capacidade de causar a infecção ativa.
+
+A febre baixa ou o incômodo local que ocorrem em alguns casos após a aplicação são reações biológicas esperadas e passageiras, indicando que o sistema imunológico está respondendo de forma ativa para construir a proteção.
+
+O maior benefício da vacina não é apenas evitar um resfriado simples, mas sim prevenir quadros severos de pneumonia e a necessidade de suporte hospitalar nas épocas de maior circulação do vírus.
+
+Consulte o pediatra do seu filho para esclarecer dúvidas sobre o calendário vacinal e garantir essa camada extra de cuidado.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL F4 ========= -->
+        <div class="tema-block" id="c-f-4">
+            <div class="tema-header">
+                <div class="num-badge">Série F · Carrossel 4 · Dicas da Tia Kátia</div>
+                <h2>O "Efeito Casulo" e a Higiene do Inverno</h2>
+                <div class="gancho">Tema: Medidas práticas de higiene e proteção coletiva (vacinação de casulo e lavagem nasal).</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Como blindar o pulmão do seu bebê sem trancá-lo em casa.</div>
+                        <div class="slide-body">* "Entenda a estratégia do 'Efeito Casulo' e os hábitos práticos que evitam as viroses.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "O que é o Efeito Casulo? Consiste em vacinar e proteger todos os adultos e cuidadores que convivem diretamente com o bebê. Se as pessoas ao redor não ficam doentes, o vírus não chega até a criança.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Higiene essencial: A lavagem constante das mãos e o uso de álcool em gel pelos adultos antes de tocar no bebê ou em seus objetos é a barreira física número um contra a transmissão de vírus.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A força da lavagem nasal: Lavar o nariz do bebê com soro fisiológico morno limpa as impurezas, remove o muco e mantém a mucosa hidratada, dificultando a fixação de vírus respiratórios.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Regra de ouro para visitas: Evite que beijem as mãos ou o rosto do bebê, especialmente no inverno. As mãos do bebê vão direto à boca, levando o vírus que estava na saliva da visita resfriada.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Proteger a saúde respiratória dos bebês durante o inverno não exige isolamento total ou manter a casa completamente fechada. O caminho mais eficiente está na combinação de hábitos higiênicos simples e na proteção coletiva.
+
+O chamado 'Efeito Casulo' é uma estratégia muito recomendada na pediatria: ao vacinar pais, avós, irmãos e cuidadores contra a Influenza e o VSR, criamos um escudo protetor ao redor do bebê que ainda não tem o esquema vacinal completo.
+
+Além disso, a rotina diária de lavagem nasal com soro fisiológico ajuda a manter a barreira de defesa natural do nariz hidratada e livre de vírus. Somando isso à higienização das mãos dos adultos antes de tocar no bebê e aos limites gentis com as visitas nas épocas de frio, conseguimos passar pelo inverno com muito mais tranquilidade.
+
+Consulte o pediatra do seu bebê para receber orientações preventivas completas.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL G1 ========= -->
+        <div class="tema-block" id="c-g-1">
+            <div class="tema-header">
+                <div class="num-badge">Série G · Carrossel 1 · Dicas da Tia Kátia</div>
+                <h2>Por que o meu bebê tem duas idades?</h2>
+                <div class="gancho">Tema: Apresentação didática e acolhedora da diferença entre Idade Cronológica e Idade Corrigida.</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Idade Cronológica vs. Idade Corrigida</div>
+                        <div class="slide-body">* "A diferença que acalma o coração e tira a culpa das mães de bebês prematuros.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Bebês prematuros têm duas idades. A Cronológica é calculada a partir do dia em que ele nasceu de verdade. A Corrigida é calculada a partir da data em que ele deveria ter nascido se tivesse completado as 40 semanas de gestação.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Por que a Idade Corrigida importa? O cérebro e o corpo do bebê prematuro precisam de tempo para amadurecer os órgãos que deveriam ter se desenvolvido no útero. A idade corrigida serve para avaliar o bebê de acordo com a sua maturidade real, e não pelo tempo de nascimento.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A armadilha da comparação: Comparar o desenvolvimento de um bebê prematuro com o de um bebê que nasceu no tempo certo usando a idade cronológica gera cobranças desnecessárias. O ritmo biológico do seu bebê merece ser respeitado.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Até quando corrigimos a idade? A maioria dos protocolos pediátricos recomenda corrigir a idade do bebê prematuro até que ele complete 2 anos de idade cronológica. Depois disso, o desenvolvimento costuma se equivaler.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Se você é mãe ou pai de um bebê prematuro, provavelmente já sentiu aquela ponta de ansiedade ao comparar o desenvolvimento dele com o de outros bebês que nasceram no tempo certo.
+
+É para acalmar esse sentimento que a pediatria utiliza a 'Idade Corrigida'. Entender que o corpo e o cérebro do bebê que nasceu antes do tempo precisam de semanas adicionais para completar a maturação que deveria ter ocorrido dentro do útero é essencial para avaliar o desenvolvimento de forma justa e sem pressões.
+
+Ao avaliar marcos motores como sustentar a cabecinha ou sorrir, a régua correta a ser utilizada é a idade corrigida. Respeitar o tempo biológico do bebê é o primeiro passo para um acompanhamento saudável e sem culpas.
+
+Consulte o pediatra do seu bebê para acompanhar os marcos de desenvolvimento adequados.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL G2 ========= -->
+        <div class="tema-block" id="c-g-2">
+            <div class="tema-header">
+                <div class="num-badge">Série G · Carrossel 2 · Dicas da Tia Kátia</div>
+                <h2>Como calcular a Idade Corrigida (Guia Prático)</h2>
+                <div class="gancho">Tema: Explicação matemática ultra-simples e passo a passo de como calcular a idade corrigida.</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Como calcular a Idade Corrigida do seu bebê</div>
+                        <div class="slide-body">* "Guia prático e sem complicações para mães de bebês prematuros.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Passo 1: Descubra o número de semanas de prematuridade do bebê. Para isso, basta subtrair a idade gestacional do nascimento de 40 semanas. Exemplo: se nasceu com 32 semanas, ele nasceu 8 semanas antes (cerca de 2 meses antes).</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Passo 2: Calcule a Idade Cronológica atual do bebê em meses ou semanas. Esse é o tempo real de vida dele desde o dia do nascimento.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Passo 3: Aplique a fórmula. Subtraia as semanas de prematuridade da idade cronológica atual do bebê para descobrir a idade de maturação real dele.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Exemplo Prático: Um bebê nascido de 32 semanas (8 semanas antes do tempo) que hoje tem 4 meses cronológicos (16 semanas de vida).</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Calcular a idade corrigida do seu bebê prematuro é mais simples do que parece e ajuda muito a aliviar a ansiedade nos primeiros dois anos de vida.
+
+Essa matemática simples serve para descontar as semanas em que o bebê nasceu antes do tempo, permitindo que a avaliação do seu ganho de peso, crescimento e marcos motores seja feita de forma correta e sem cobranças inadequadas.
+
+Lembre-se de que a idade corrigida deve ser a referência usada nas consultas pediátricas para acompanhar o desenvolvimento global do seu filho de forma segura.
+
+Consulte o pediatra do seu bebê para realizar as avaliações no tempo biológico ideal.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL G3 ========= -->
+        <div class="tema-block" id="c-g-3">
+            <div class="tema-header">
+                <div class="num-badge">Série G · Carrossel 3 · Dicas da Tia Kátia</div>
+                <h2>Marcos de Desenvolvimento: Quando cobrar?</h2>
+                <div class="gancho">Tema: Aplicação da idade corrigida na avaliação dos marcos motores e cognitivos do prematuro.</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Marcos de Desenvolvimento no bebê prematuro: quando cobrar?</div>
+                        <div class="slide-body">* "Entenda por que a pressa não combina com o tempo do prematuro.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Sustentar a cabeça: Bebês termo costumam sustentar a cabeça por volta dos 3 meses. Se o seu bebê nasceu 2 meses antes, ele fará isso com 3 meses corrigidos, o que equivale a 5 meses cronológicos de vida.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Rolar e sentar: O rolar surge em média aos 4 meses e o sentar com apoio por volta dos 6 meses. Use sempre a idade corrigida do seu bebê prematuro para acompanhar essas conquistas sem pressões desnecessárias.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Sorriso social e interação: A resposta interativa do bebê ao estímulo visual e sonoro também deve acompanhar a maturação neurológica calculada pela idade corrigida.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Lembre-se: O desenvolvimento do bebê prematuro não é uma corrida. Avaliar cada avanço pela idade corrigida garante um olhar justo sobre o potencial real do seu filho, reduzindo a ansiedade da família.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">Acompanhar as pequenas conquistas do bebê prematuro é uma jornada emocionante, mas que exige paciência e o uso dos critérios médicos adequados.
+
+Quando falamos de marcos como sustentar a cabecinha, rolar, sentar ou balbuciar, o desenvolvimento neurológico e a força muscular dependem da maturidade real alcançada pelo corpo. Por isso, a avaliação desses marcos deve ser sempre baseada na idade corrigida.
+
+Cobrar conquistas pela idade cronológica pode gerar a falsa impressão de atrasos no desenvolvimento, causando ansiedade desnecessária aos pais. Cada bebê tem o seu tempo de adaptação e evolução.
+
+Consulte o pediatra do seu filho para avaliações periódicas e acompanhamento seguro.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+        <!-- ========= CARROSSEL G4 ========= -->
+        <div class="tema-block" id="c-g-4">
+            <div class="tema-header">
+                <div class="num-badge">Série G · Carrossel 4 · Dicas da Tia Kátia</div>
+                <h2>Introdução Alimentar no Prematuro</h2>
+                <div class="gancho">Tema: Orientações sobre o início da introdução alimentar no bebê prematuro, focando na maturidade em vez da idade cronológica.</div>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-num">Slide 1</div>
+                        <div class="slide-icon">🌱</div>
+                        <div class="slide-title">* "Introdução Alimentar do bebê prematuro: a regra dos 6 meses vale?</div>
+                        <div class="slide-body">* "Por que começar a comer exige maturidade biológica e não apenas calendário.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 2</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "O mito dos 6 meses cronológicos: Iniciar a introdução alimentar estritamente aos 6 meses de nascimento pode ser prejudicial para o prematuro, pois o sistema digestivo e a postura dele ainda podem não estar prontos.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 3</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "A maturação interna: Os rins e o intestino do bebê prematuro precisam de tempo para conseguir processar os primeiros alimentos sólidos. Esse amadurecimento acompanha a idade corrigida.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#6b3044;">
+                        <div class="slide-num">Slide 4</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Os sinais de prontidão essenciais: O bebê deve mostrar sinais biológicos de que está pronto para comer. Esses sinais costumam aparecer por volta dos 6 meses de idade corrigida.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:#5a2839;">
+                        <div class="slide-num">Slide 5</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Cada prematuro é único. O início da alimentação deve ser planejado de forma individualizada com o pediatra, avaliando a prontidão motora e a idade corrigida para garantir uma transição segura e prazerosa.</div>
+                    </div>
+                    <div class="swiper-slide" style="background-color:var(--cor-primaria);">
+                        <div class="slide-num">Slide 6</div>
+                        <div class="slide-title"></div>
+                        <div class="slide-body">* "Salva esse post para consultar sempre que precisar.</div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="legenda-container">
+                <div class="legenda-title">📝 Legenda para Instagram</div>
+                <div class="legenda-content">A introdução alimentar é um momento muito esperado na rotina das famílias, mas nos casos de bebês prematuros, exige um olhar atento que vai além da idade cronológica do calendário de nascimento.
+
+Para começar a comer com segurança, o bebê precisa de maturidade em dois sistemas essenciais: o motor (para sustentar o tronco e engolir os alimentos sem engasgar) e o digestivo (para processar os novos nutrientes de forma adequada).
+
+Por isso, na pediatria, a referência para o início da introdução de alimentos sólidos costuma ser os 6 meses de idade corrigida, somados aos sinais clássicos de prontidão biológica da criança. Iniciar o processo antes desse momento de maturação real pode dificultar a aceitação e gerar riscos desnecessários.
+
+Converse sempre com o pediatra do seu bebê para planejar o início da introdução alimentar de forma individualizada e segura.
+
+Salva esse post para consultar sempre que precisar."
+
+---</div>
+                <div class="legenda-tags"></div>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+
+    <footer>
+        Gaia Medicina Integrada · Pediatria · Maio/Junho 2026 — Dicas da Tia Kátia
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach(function (el) {
+                new Swiper(el, {
+                    grabCursor: true,
+                    pagination: {
+                        el: el.querySelector('.swiper-pagination'),
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: el.querySelector('.swiper-button-next'),
+                        prevEl: el.querySelector('.swiper-button-prev')
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
