@@ -2,733 +2,168 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calendário de Conteúdo – GAIA Medicina Integrada</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="theme-color" content="#2b3a2e"/>
+  <title>Calendário de Pautas – GAIA Medicina Integrada</title>
+
   <!-- Fontes Premium -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      /* Cores da Identidade GAIA */
       --verde-escuro: #2b3a2e;
       --verde: #4a7c59;
       --verde-medio: #5a6b5d;
       --verde-claro: #6a9e7a;
       --verde-pale: #e8f0eb;
       --terracota: #b07d52;
+      --terracota-pale: #f5ede5;
       --creme: #faf7f3;
       --gelo: #f2ede8;
       --branco: #ffffff;
       --cinza-texto: #555555;
-      --cinza-suave: #888888;
-      --borda: #dde8df;
-      --shadow-sm: 0 2px 8px rgba(43, 58, 46, 0.05);
-      --shadow-md: 0 8px 24px rgba(43, 58, 46, 0.08);
-      --shadow-lg: 0 16px 40px rgba(43, 58, 46, 0.12);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      
-      /* Cores das Pautas (6 Níveis) */
-      --cor-ginecologia: #ec4899; /* Rosa */
-      --cor-obstetricia: #8b5cf6; /* Roxo */
-      --cor-pediatria: #10b981;    /* Verde */
-      --cor-mastologia: #f97316;    /* Laranja */
-      --cor-comemorativa: #a78bfa;  /* Lilás */
-      --cor-pessoal: #64748b;       /* Cinza/Branco (para contraste do texto) */
+      --cinza-suave: #999999;
+      --borda: #e0dbd5;
+      --shadow-sm: 0 2px 8px rgba(43,58,46,0.06);
+      --shadow-md: 0 8px 24px rgba(43,58,46,0.10);
+      --shadow-lg: 0 20px 50px rgba(43,58,46,0.15);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius: 16px;
+      --nav-height: 68px;
+      --header-height: 64px;
+
+      /* Cores das Pautas */
+      --cor-ginecologia: #ec4899;
+      --cor-obstetricia: #8b5cf6;
+      --cor-pediatria: #10b981;
+      --cor-mastologia: #f97316;
+      --cor-comemorativa: #a78bfa;
+      --cor-pessoal: #64748b;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    body {
+    html, body {
+      height: 100%;
+      overflow: hidden;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--gelo);
+      background: var(--gelo);
       color: var(--verde-escuro);
-      min-height: 100vh;
-      line-height: 1.5;
     }
 
-    /* ── CONTAINER PRINCIPAL ── */
-    .app-container {
-      max-width: 1440px;
+    /* ══════════════════════════════════════
+       LAYOUT RAIZ
+    ══════════════════════════════════════ */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      height: 100vh;
+      max-width: 520px;
       margin: 0 auto;
       background: var(--branco);
-      min-height: 100vh;
-      box-shadow: 0 0 60px rgba(43, 58, 46, 0.08);
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── HEADER PREMIUM ── */
-    header {
-      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde) 100%);
-      padding: 40px 60px;
       position: relative;
       overflow: hidden;
-      color: var(--branco);
-      border-bottom: 4px solid var(--terracota);
-    }
-    
-    header::before {
-      content: '';
-      position: absolute;
-      right: -100px;
-      top: -100px;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.03);
-      pointer-events: none;
     }
 
-    .header-content {
-      position: relative;
-      z-index: 1;
+    /* ══════════════════════════════════════
+       HEADER COMPACTO
+    ══════════════════════════════════════ */
+    .app-header {
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde) 100%);
+      padding: 0 20px;
+      height: var(--header-height);
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .header-logo-title h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-
-    .header-logo-title p {
-      font-size: 15px;
-      opacity: 0.85;
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    .header-meta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--branco);
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
     }
 
-    .badge-terracota {
-      background: rgba(176, 125, 82, 0.2);
-      border-color: rgba(176, 125, 82, 0.4);
-      color: #ffe8d6;
-    }
-
-    /* ── BARRA DE CONTROLE & FILTROS ── */
-    .controls-section {
-      padding: 30px 60px;
-      background: var(--creme);
-      border-bottom: 1px solid var(--borda);
+    .header-left {
       display: flex;
       flex-direction: column;
-      gap: 24px;
     }
 
-    /* Primeira Linha: Meses e Visualizações */
-    .controls-row-1 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+    .header-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
-    /* Navegação do Mês */
-    .month-nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn-icon {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--verde);
-      font-size: 16px;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn-icon:hover {
-      background: var(--verde);
-      color: var(--branco);
-      border-color: var(--verde);
-      transform: translateY(-2px);
-    }
-
-    .current-month-display {
+    .header-month {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--verde-escuro);
-      min-width: 180px;
-      text-align: center;
+      color: var(--branco);
+      line-height: 1.1;
       text-transform: capitalize;
     }
 
-    /* Alternador de Visualização */
-    .view-switcher {
+    .header-right {
       display: flex;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      padding: 4px;
-      border-radius: 30px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .view-btn {
-      background: none;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 25px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--verde-medio);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .view-btn.active {
-      background: var(--verde);
-      color: var(--branco);
-    }
-
-    /* Barra de Busca */
-    .search-box {
-      position: relative;
-      min-width: 250px;
-    }
-
-    .search-input {
-      width: 100%;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      padding: 10px 16px 10px 40px;
-      border-radius: 30px;
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--verde-escuro);
-      outline: none;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .search-input:focus {
-      border-color: var(--verde-claro);
-      box-shadow: 0 0 0 3px rgba(106, 158, 122, 0.15);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--cinza-suave);
-      font-size: 14px;
-      pointer-events: none;
-    }
-
-    /* Segunda Linha: Painel de Filtros Avançados */
-    .filters-panel {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 16px;
-      padding: 20px 24px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .filter-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--terracota);
-    }
-
-    .filter-options {
-      display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 8px;
     }
 
-    /* Botões/Tags de Filtro */
-    .filter-tag {
-      background: var(--creme);
-      border: 1px solid var(--borda);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--cinza-texto);
-      cursor: pointer;
-      transition: var(--transition);
-      user-select: none;
-    }
-
-    .filter-tag:hover {
-      background: var(--gelo);
-      border-color: var(--verde-claro);
-    }
-
-    .filter-tag.active {
-      background: var(--verde);
-      color: var(--branco);
-      border-color: var(--verde);
-    }
-
-    /* Cores personalizadas para tags ativas das pautas */
-    .filter-tag.pauta-ginecologia.active { background: var(--cor-ginecologia); border-color: var(--cor-ginecologia); }
-    .filter-tag.pauta-obstetricia.active { background: var(--cor-obstetricia); border-color: var(--cor-obstetricia); }
-    .filter-tag.pauta-pediatria.active { background: var(--cor-pediatria); border-color: var(--cor-pediatria); }
-    .filter-tag.pauta-mastologia.active { background: var(--cor-mastologia); border-color: var(--cor-mastologia); }
-    .filter-tag.pauta-comemorativa.active { background: var(--cor-comemorativa); border-color: var(--cor-comemorativa); }
-    .filter-tag.pauta-pessoal.active { background: var(--cor-pessoal); border-color: var(--cor-pessoal); }
-
-    /* Indicador Visual de Cores de Pautas no Painel */
-    .pauta-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
+    .btn-header-icon {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      margin-right: 6px;
-    }
-    .dot-ginecologia { background: var(--cor-ginecologia); }
-    .dot-obstetricia { background-color: var(--cor-obstetricia); }
-    .dot-pediatria { background: var(--cor-pediatria); }
-    .dot-mastologia { background: var(--cor-mastologia); }
-    .dot-comemorativa { background: var(--cor-comemorativa); }
-    .dot-pessoal { background: #dddddd; border: 1px solid var(--cor-pessoal); }
-
-    /* Botão Reset Filtros */
-    .reset-filters-btn {
-      align-self: flex-end;
-      background: none;
-      border: 1px dashed var(--terracota);
-      color: var(--terracota);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: auto;
-      text-align: center;
-    }
-
-    .reset-filters-btn:hover {
-      background: var(--terracota);
-      color: var(--branco);
-    }
-
-    /* ── CONTEÚDO PRINCIPAL ── */
-    main {
-      padding: 40px 60px;
-      flex: 1;
-    }
-
-    /* ── VISUALIZAÇÃO EM CALENDÁRIO (MENSAL) ── */
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
-      opacity: 1;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    .calendar-grid.fade-out {
-      opacity: 0;
-    }
-
-    .weekday-header {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--verde-medio);
-      padding: 10px 0;
-      border-bottom: 2px solid var(--borda);
-    }
-
-    /* Célula do Dia */
-    .calendar-day {
-      min-height: 140px;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 12px;
-      padding: 10px;
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--branco);
+      font-size: 16px;
       transition: var(--transition);
-      position: relative;
+      flex-shrink: 0;
     }
 
-    .calendar-day:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-      border-color: var(--verde-claro);
-    }
+    .btn-header-icon:active { background: rgba(255,255,255,0.25); transform: scale(0.95); }
 
-    .calendar-day.other-month {
-      background: var(--creme);
-      opacity: 0.45;
-    }
-
-    .calendar-day.today {
-      border-color: var(--terracota);
-      background: linear-gradient(to bottom, #fffcf9, #ffffff);
-    }
-
-    .calendar-day.today::before {
-      content: 'HOJE';
+    .filter-badge {
       position: absolute;
-      top: 10px;
-      right: 32px;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      background: var(--terracota);
+      border-radius: 50%;
       font-size: 9px;
       font-weight: 800;
-      color: var(--terracota);
-      letter-spacing: 1px;
-    }
-
-    .day-number {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--verde-escuro);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      transition: var(--transition);
+      border: 2px solid var(--verde-escuro);
     }
 
-    .calendar-day.today .day-number {
-      background: var(--terracota);
-      color: var(--branco);
-    }
+    .btn-wrapper { position: relative; }
 
-    /* Cards de Post no Calendário */
-    .post-card-mini {
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      border-left: 4px solid transparent;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .post-card-mini:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Cores das Células de Acordo com a Pauta */
-    .pauta-ginecologia { background-color: rgba(236, 72, 153, 0.08); border-left-color: var(--cor-ginecologia); color: #9d174d; }
-    .pauta-obstetricia { background-color: rgba(139, 92, 246, 0.08); border-left-color: var(--cor-obstetricia); color: #5b21b6; }
-    .pauta-pediatria { background-color: rgba(16, 185, 129, 0.08); border-left-color: var(--cor-pediatria); color: #065f46; }
-    .pauta-mastologia { background-color: rgba(249, 115, 22, 0.08); border-left-color: var(--cor-mastologia); color: #9a3412; }
-    .pauta-comemorativa { background-color: rgba(167, 139, 250, 0.08); border-left-color: var(--cor-comemorativa); color: #6d28d9; }
-    .pauta-pessoal { background-color: rgba(248, 250, 252, 1); border-left-color: #94a3b8; border: 1px solid var(--borda); color: #334155; }
-
-    .post-time-meta {
-      font-size: 9.5px;
-      opacity: 0.75;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 500;
-    }
-
-    .post-title-mini {
-      line-height: 1.3;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .post-badges-mini {
-      display: flex;
-      gap: 4px;
-      margin-top: auto;
-      font-size: 8.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      opacity: 0.9;
-    }
-
-    .badge-mini {
-      padding: 1px 4px;
-      border-radius: 3px;
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    /* ── VISUALIZAÇÃO EM LISTA ── */
-    .list-view {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .list-item {
-      display: grid;
-      grid-template-columns: 100px 140px 1fr 120px 100px 120px;
-      align-items: center;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 12px;
-      padding: 16px 24px;
-      gap: 20px;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .list-item:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--verde-claro);
-      transform: translateX(4px);
-    }
-
-    .list-date {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .list-date-day {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--verde-escuro);
-      line-height: 1.1;
-    }
-
-    .list-date-weekday {
-      font-size: 11px;
-      color: var(--cinza-suave);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .list-pauta-badge {
-      padding: 6px 12px;
-      border-radius: 30px;
-      font-size: 11px;
-      font-weight: 700;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .list-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--verde-escuro);
-    }
-
-    .list-doc {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--verde-medio);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .list-doc::before {
-      content: '🩺';
-    }
-
-    .list-format {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--terracota);
-      text-transform: uppercase;
-      background: var(--creme);
-      padding: 4px 10px;
-      border-radius: 6px;
-      text-align: center;
-      border: 1px solid var(--borda);
-    }
-
-    .list-status {
-      font-size: 11px;
-      font-weight: 700;
-      text-align: center;
-      padding: 4px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
-    }
-
-    /* Cores de Status */
-    .status-rascunho { background: #f1f5f9; color: #475569; }
-    .status-producao { background: #fef3c7; color: #d97706; }
-    .status-aprovado { background: #dcfce7; color: #16a34a; }
-    .status-publicado { background: #e0f2fe; color: #0284c7; }
-
-    /* ── VISUALIZAÇÃO EM SEMANA ── */
-    .weekly-view {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 16px;
-    }
-
-    .weekly-day {
-      min-height: 400px;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 16px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .weekly-day-header {
-      border-bottom: 2px solid var(--gelo);
-      padding-bottom: 12px;
-      margin-bottom: 4px;
-    }
-
-    .weekly-day-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--verde-escuro);
-    }
-
-    .weekly-day-date {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--terracota);
-      line-height: 1;
-      margin-top: 2px;
-    }
-
-    .weekly-posts-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .weekly-post-card {
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 12.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      border-left: 5px solid transparent;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .weekly-post-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    /* ── MODAL DE DETALHES (POPUP) ── */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(43, 58, 46, 0.6);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-container {
-      background: var(--branco);
-      width: 90%;
-      max-width: 800px;
-      max-height: 85vh;
-      border-radius: 20px;
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-      border: 1px solid var(--borda);
-    }
-
-    .modal-overlay.open .modal-container {
-      transform: translateY(0);
-    }
-
-    /* Modal Header */
-    .modal-header {
-      padding: 30px 40px;
+    /* ══════════════════════════════════════
+       BARRA DE NAVEGAÇÃO DO MÊS (sub-header)
+    ══════════════════════════════════════ */
+    .month-nav-bar {
       background: var(--creme);
       border-bottom: 1px solid var(--borda);
-      position: relative;
+      padding: 0 16px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
     }
 
-    .modal-close-btn {
-      position: absolute;
-      top: 24px;
-      right: 30px;
+    .btn-nav-month {
       background: var(--branco);
       border: 1px solid var(--borda);
       width: 36px;
@@ -738,91 +173,745 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 16px;
-      transition: var(--transition);
       color: var(--verde);
+      font-size: 14px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
     }
 
-    .modal-close-btn:hover {
-      background: var(--verde-escuro);
-      color: var(--branco);
-      border-color: var(--verde-escuro);
-    }
+    .btn-nav-month:active { background: var(--verde); color: var(--branco); transform: scale(0.94); }
 
-    .modal-meta-top {
+    .active-filters-strip {
       display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      flex: 1;
+      padding: 0 8px;
+      scrollbar-width: none;
+    }
+    .active-filters-strip::-webkit-scrollbar { display: none; }
+
+    .active-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--verde-pale);
+      border: 1px solid var(--verde-claro);
+      padding: 3px 8px 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--verde);
+      white-space: nowrap;
+      cursor: pointer;
     }
 
-    .modal-pauta-badge {
+    .active-filter-chip .chip-x { font-size: 10px; opacity: 0.7; }
+
+    .no-filters-label {
+      font-size: 11px;
+      color: var(--cinza-suave);
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       ÁREA DE CONTEÚDO (SCROLLÁVEL)
+    ══════════════════════════════════════ */
+    .view-area {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 12px 14px calc(var(--nav-height) + 20px);
+    }
+
+    /* ══════════════════════════════════════
+       BARRA DE BUSCA INLINE (dentro da view-area, no topo)
+    ══════════════════════════════════════ */
+    .search-inline {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .search-inline input {
+      width: 100%;
+      background: var(--creme);
+      border: 1.5px solid var(--borda);
+      padding: 11px 16px 11px 40px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--verde-escuro);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-inline input:focus {
+      border-color: var(--verde-claro);
+      background: var(--branco);
+      box-shadow: 0 0 0 3px rgba(106,158,122,0.15);
+    }
+
+    .search-inline .s-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cinza-suave);
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════
+       VISUALIZAÇÃO LISTA (padrão mobile)
+    ══════════════════════════════════════ */
+    .list-view { display: flex; flex-direction: column; gap: 10px; }
+
+    .list-card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .list-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 16px 0 0 16px;
+    }
+
+    .list-card:active { transform: scale(0.98); box-shadow: none; }
+
+    .list-card.pauta-ginecologia::before { background: var(--cor-ginecologia); }
+    .list-card.pauta-obstetricia::before { background: var(--cor-obstetricia); }
+    .list-card.pauta-pediatria::before   { background: var(--cor-pediatria); }
+    .list-card.pauta-mastologia::before  { background: var(--cor-mastologia); }
+    .list-card.pauta-comemorativa::before{ background: var(--cor-comemorativa); }
+    .list-card.pauta-pessoal::before     { background: var(--cor-pessoal); }
+
+    .card-date-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 42px;
+      padding-top: 2px;
+    }
+
+    .card-day {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--verde-escuro);
+      line-height: 1;
+    }
+
+    .card-weekday {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--cinza-suave);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-month-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--cinza-suave);
+      margin-top: 2px;
+    }
+
+    .card-divider {
+      width: 1px;
+      background: var(--borda);
+      align-self: stretch;
+      margin: 2px 0;
+    }
+
+    .card-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 20px;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 4px 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .chip-pauta { color: white; }
+    .chip-pauta.pauta-ginecologia { background: var(--cor-ginecologia); }
+    .chip-pauta.pauta-obstetricia { background: var(--cor-obstetricia); }
+    .chip-pauta.pauta-pediatria   { background: var(--cor-pediatria); }
+    .chip-pauta.pauta-mastologia  { background: var(--cor-mastologia); }
+    .chip-pauta.pauta-comemorativa{ background: var(--cor-comemorativa); }
+    .chip-pauta.pauta-pessoal     { background: var(--cor-pessoal); }
+
+    .chip-format {
+      background: var(--creme);
+      border: 1px solid var(--borda);
+      color: var(--terracota);
+    }
+
+    .chip-status {
+      margin-left: auto;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-doctor {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--verde-medio);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-time {
+      font-size: 11px;
+      color: var(--cinza-suave);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    /* Status chips */
+    .status-rascunho   { background: #f1f5f9; color: #475569; }
+    .status-producao   { background: #fef3c7; color: #d97706; }
+    .status-aprovado   { background: #dcfce7; color: #16a34a; }
+    .status-publicado  { background: #dbeafe; color: #1d4ed8; }
+
+    /* ══════════════════════════════════════
+       VISUALIZAÇÃO CALENDÁRIO SEMANAL (mobile-friendly)
+    ══════════════════════════════════════ */
+    .week-view { }
+
+    .week-days-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      margin-bottom: 14px;
+    }
+    .week-days-strip::-webkit-scrollbar { display: none; }
+
+    .week-day-col {
+      flex-shrink: 0;
+      width: calc((100vw - 28px) / 4);
+      max-width: 110px;
+      background: var(--branco);
+      border: 1.5px solid var(--borda);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .week-day-col.has-posts { border-color: var(--verde-claro); }
+
+    .week-day-header {
+      background: var(--creme);
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--borda);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+
+    .week-day-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--cinza-suave);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .week-day-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--verde-escuro);
+      line-height: 1;
+    }
+
+    .week-day-col.is-today .week-day-header { background: var(--verde); }
+    .week-day-col.is-today .week-day-name,
+    .week-day-col.is-today .week-day-num { color: var(--branco); }
+
+    .week-day-posts {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 60px;
+    }
+
+    .week-post-pill {
+      padding: 6px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border-left: 3px solid transparent;
+    }
+
+    .week-post-pill:active { opacity: 0.7; transform: scale(0.97); }
+
+    .week-post-pill.pauta-ginecologia { background: rgba(236,72,153,0.08); border-left-color: var(--cor-ginecologia); }
+    .week-post-pill.pauta-obstetricia { background: rgba(139,92,246,0.08); border-left-color: var(--cor-obstetricia); }
+    .week-post-pill.pauta-pediatria   { background: rgba(16,185,129,0.08); border-left-color: var(--cor-pediatria); }
+    .week-post-pill.pauta-mastologia  { background: rgba(249,115,22,0.08); border-left-color: var(--cor-mastologia); }
+    .week-post-pill.pauta-comemorativa{ background: rgba(167,139,250,0.08); border-left-color: var(--cor-comemorativa); }
+    .week-post-pill.pauta-pessoal     { background: rgba(100,116,139,0.08); border-left-color: var(--cor-pessoal); }
+
+    .week-post-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .week-post-doc {
+      font-size: 9px;
+      color: var(--cinza-suave);
+      margin-top: 3px;
+    }
+
+    .week-empty-day {
+      text-align: center;
+      font-size: 10px;
+      color: var(--borda);
+      padding: 8px 0;
+    }
+
+    /* ══════════════════════════════════════
+       SEÇÃO DE VAZIO
+    ══════════════════════════════════════ */
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--cinza-suave);
+    }
+
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-title { font-size: 16px; font-weight: 700; color: var(--verde-medio); margin-bottom: 8px; }
+    .empty-desc { font-size: 13px; line-height: 1.6; }
+
+    /* ══════════════════════════════════════
+       BOTTOM NAVIGATION
+    ══════════════════════════════════════ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      height: var(--nav-height);
+      background: var(--branco);
+      border-top: 1px solid var(--borda);
+      display: flex;
+      align-items: stretch;
+      z-index: 100;
+      box-shadow: 0 -8px 24px rgba(43,58,46,0.08);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      background: none;
+      font-family: inherit;
+      padding: 8px 4px 12px;
+      position: relative;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--verde);
+      border-radius: 0 0 4px 4px;
+      transition: var(--transition);
+    }
+
+    .nav-item.active::before { width: 32px; }
+
+    .nav-icon { font-size: 20px; transition: var(--transition); }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--cinza-suave);
+      transition: var(--transition);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-item.active .nav-icon { transform: translateY(-1px); }
+    .nav-item.active .nav-label { color: var(--verde); font-weight: 700; }
+
+    /* ══════════════════════════════════════
+       DRAWER DE FILTROS (bottom-sheet)
+    ══════════════════════════════════════ */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(43,58,46,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .filter-drawer {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+      width: 100%;
+      max-width: 520px;
+      background: var(--branco);
+      border-radius: 24px 24px 0 0;
+      z-index: 201;
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-drawer.open {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .drawer-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--borda);
+      border-radius: 2px;
+      margin: 12px auto 4px;
+      flex-shrink: 0;
+    }
+
+    .drawer-header {
+      padding: 8px 20px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .drawer-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--verde-escuro);
+    }
+
+    .btn-drawer-close {
+      background: var(--gelo);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--verde-medio);
+    }
+
+    .drawer-body {
+      overflow-y: auto;
+      flex: 1;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .filter-section { display: flex; flex-direction: column; gap: 10px; }
+
+    .filter-section-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--terracota);
+    }
+
+    .filter-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .ftag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--creme);
+      border: 1.5px solid var(--borda);
+      padding: 7px 14px;
       border-radius: 30px;
-      letter-spacing: 1px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cinza-texto);
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .ftag:active { transform: scale(0.95); }
+    .ftag.active { background: var(--verde); color: var(--branco); border-color: var(--verde); }
+    .ftag.active.pauta-ginecologia { background: var(--cor-ginecologia); border-color: var(--cor-ginecologia); }
+    .ftag.active.pauta-obstetricia { background: var(--cor-obstetricia); border-color: var(--cor-obstetricia); }
+    .ftag.active.pauta-pediatria   { background: var(--cor-pediatria);   border-color: var(--cor-pediatria); }
+    .ftag.active.pauta-mastologia  { background: var(--cor-mastologia);  border-color: var(--cor-mastologia); }
+    .ftag.active.pauta-comemorativa{ background: var(--cor-comemorativa);border-color: var(--cor-comemorativa); }
+    .ftag.active.pauta-pessoal     { background: var(--cor-pessoal);     border-color: var(--cor-pessoal); }
+
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .drawer-footer {
+      padding: 12px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+      border-top: 1px solid var(--borda);
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn-outline {
+      flex: 1;
+      background: none;
+      border: 1.5px solid var(--borda);
+      padding: 12px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cinza-texto);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-outline:active { background: var(--gelo); }
+
+    .btn-apply {
+      flex: 2;
+      background: var(--verde);
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--branco);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-apply:active { background: var(--verde-escuro); }
+
+    /* ══════════════════════════════════════
+       MODAL (bottom-sheet nativo)
+    ══════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(43,58,46,0.55);
+      backdrop-filter: blur(6px);
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(102%);
+      width: 100%;
+      max-width: 520px;
+      background: var(--branco);
+      border-radius: 24px 24px 0 0;
+      z-index: 301;
+      transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-sheet.open {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--borda);
+      border-radius: 2px;
+      margin: 12px auto 0;
+      flex-shrink: 0;
+    }
+
+    .modal-top-bar {
+      padding: 12px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .modal-pauta-chip {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 20px;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-modal-close {
+      background: var(--gelo);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--verde-medio);
+      transition: var(--transition);
+    }
+
+    .btn-modal-close:active { background: var(--borda); }
+
+    .modal-title-block {
+      padding: 10px 20px 14px;
+      flex-shrink: 0;
     }
 
     .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--verde-escuro);
       line-height: 1.3;
     }
 
-    .modal-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      padding: 14px 20px;
-      border-radius: 12px;
-    }
-
-    .modal-meta-item {
+    .modal-meta-row {
       display: flex;
-      flex-direction: column;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
-    .modal-meta-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--cinza-suave);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .modal-meta-value {
-      font-size: 13.5px;
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--creme);
+      border: 1px solid var(--borda);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--verde-escuro);
-      margin-top: 2px;
+      color: var(--verde-medio);
     }
 
-    /* Modal Body / Abas */
+    /* Abas do modal */
     .modal-tabs {
       display: flex;
-      background: var(--creme);
-      border-bottom: 1px solid var(--borda);
-      padding: 0 40px;
+      border-bottom: 1.5px solid var(--borda);
+      padding: 0 20px;
+      gap: 0;
+      flex-shrink: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+
+    .modal-tabs::-webkit-scrollbar { display: none; }
 
     .modal-tab-btn {
       background: none;
       border: none;
-      padding: 16px 24px;
+      border-bottom: 2.5px solid transparent;
+      padding: 12px 14px;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      color: var(--verde-medio);
+      color: var(--cinza-suave);
       cursor: pointer;
-      border-bottom: 3px solid transparent;
+      white-space: nowrap;
       transition: var(--transition);
+      margin-bottom: -1.5px;
     }
 
     .modal-tab-btn.active {
@@ -831,406 +920,477 @@
     }
 
     .modal-body {
-      padding: 30px 40px;
       overflow-y: auto;
       flex: 1;
-      background: var(--branco);
+      padding: 16px 20px;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.2s ease; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Conteúdos das Abas */
-    .copy-container {
-      position: relative;
-    }
-
-    .btn-copy {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: var(--verde-pale);
-      border: 1px solid var(--verde-claro);
-      color: var(--verde);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-copy:hover {
-      background: var(--verde);
-      color: var(--branco);
-    }
-
-    .copy-text-area {
-      background: var(--creme);
-      border: 1px solid var(--borda);
-      padding: 24px;
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--verde-escuro);
-      white-space: pre-wrap;
-      margin-top: 12px;
-      font-family: inherit;
-    }
-
-    /* Estilo de Roteiro e Cronograma */
-    .timeline-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    /* Timeline do roteiro */
+    .timeline { display: flex; flex-direction: column; gap: 16px; }
 
     .timeline-block {
       border-left: 3px solid var(--terracota);
-      padding-left: 20px;
+      padding-left: 16px;
       position: relative;
     }
 
     .timeline-block::before {
       content: '';
       position: absolute;
-      left: -7px;
-      top: 0;
-      width: 11px;
-      height: 11px;
+      left: -6px; top: 2px;
+      width: 10px; height: 10px;
       border-radius: 50%;
       background: var(--terracota);
       border: 2px solid var(--branco);
     }
 
-    .timeline-badge {
+    .tl-label {
       display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      background: var(--gelo);
-      padding: 3px 8px;
+      font-size: 9px;
+      font-weight: 800;
+      background: var(--terracota-pale);
+      color: var(--terracota);
+      padding: 2px 8px;
       border-radius: 4px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .timeline-text {
-      font-size: 14px;
+    .tl-text {
+      font-size: 13.5px;
       color: var(--verde-escuro);
       line-height: 1.6;
     }
 
-    /* Rodapé do Modal */
-    .modal-footer {
-      padding: 20px 40px;
-      background: var(--creme);
-      border-top: 1px solid var(--borda);
+    /* Copy textarea */
+    .copy-block { position: relative; }
+
+    .btn-copy {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--verde-pale);
+      border: 1px solid var(--verde-claro);
+      color: var(--verde);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
     }
 
-    .btn-primary {
-      background: var(--verde);
-      color: var(--branco);
-      border: none;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: 13px;
+    .btn-copy.copied { background: var(--verde); color: var(--branco); }
+
+    .copy-text-box {
+      background: var(--creme);
+      border: 1px solid var(--borda);
+      padding: 14px 14px 14px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--verde-escuro);
+      white-space: pre-wrap;
+      margin-top: 36px;
+      font-family: inherit;
+    }
+
+    /* Refs */
+    .refs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ref-item {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--cinza-texto);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .ref-item::before {
+      content: counter(ref-count, decimal) '.';
+      counter-increment: ref-count;
+      position: absolute;
+      left: 0;
+      color: var(--terracota);
       font-weight: 700;
+    }
+
+    .refs-list { counter-reset: ref-count; }
+
+    /* Modal bottom safe area */
+    .modal-safe-bottom {
+      height: env(safe-area-inset-bottom, 12px);
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       SEÇÃO DE HEADER DE SEMANA / AGRUPAMENTO
+    ══════════════════════════════════════ */
+    .week-header-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cinza-suave);
+      margin: 16px 0 8px;
+    }
+
+    .week-header-label:first-child { margin-top: 0; }
+
+    /* ══════════════════════════════════════
+       DESKTOP (mantém layout original melhorado)
+    ══════════════════════════════════════ */
+    @media (min-width: 521px) {
+      html, body { overflow: auto; }
+
+      .app {
+        max-width: 1440px;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+      }
+
+      .app-header {
+        height: auto;
+        padding: 28px 40px;
+      }
+
+      .header-month { font-size: 28px; }
+      .header-label { font-size: 11px; }
+
+      .month-nav-bar { padding: 0 40px; height: 52px; }
+
+      .view-area {
+        padding: 24px 40px 40px;
+        overflow-y: auto;
+        height: auto;
+        min-height: 60vh;
+      }
+
+      .bottom-nav { display: none; }
+
+      /* Desktop: mostrar tabs na barra de controle */
+      .desktop-view-switcher {
+        display: flex !important;
+      }
+    }
+
+    /* Botão desktop tabs (inline no month-nav-bar) */
+    .desktop-view-switcher {
+      display: none;
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      padding: 4px;
+      border-radius: 30px;
+      box-shadow: var(--shadow-sm);
+      gap: 2px;
+    }
+
+    .dview-btn {
+      background: none;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 25px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--verde-medio);
       cursor: pointer;
       transition: var(--transition);
     }
 
-    .btn-primary:hover {
-      background: var(--verde-escuro);
-      transform: translateY(-1px);
+    .dview-btn.active { background: var(--verde); color: var(--branco); }
+
+    /* Desktop month calendar grid */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
     }
 
-    /* ── FOOTER DO SITE ── */
-    footer {
-      background: var(--verde-escuro);
-      color: rgba(255, 255, 255, 0.6);
-      padding: 24px 60px;
+    .weekday-header {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--verde-medio);
+      padding: 8px 0;
+      border-bottom: 2px solid var(--borda);
+    }
+
+    .calendar-day {
+      min-height: 120px;
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      padding: 8px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 12px;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition);
+      cursor: default;
     }
 
-    footer strong {
+    .calendar-day:hover { box-shadow: var(--shadow-md); border-color: var(--verde-claro); }
+    .calendar-day.other-month { background: var(--creme); opacity: 0.4; }
+    .calendar-day.today { border-color: var(--terracota); }
+
+    .day-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .calendar-day.today .day-num {
+      background: var(--terracota);
       color: var(--branco);
     }
 
-    /* ── RESPONSIVIDADE ── */
-    @media(max-width: 1024px) {
-      header, .controls-section, main, footer {
-        padding-left: 30px;
-        padding-right: 30px;
-      }
-      
-      .calendar-grid {
-        grid-template-columns: repeat(7, minmax(100px, 1fr));
-        overflow-x: auto;
-      }
-      
-      .list-item {
-        grid-template-columns: 80px 120px 1fr 100px;
-        gap: 12px;
-      }
-      
-      .list-doc, .list-status {
-        display: none;
-      }
+    .cal-post-mini {
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: var(--transition);
     }
 
-    @media(max-width: 768px) {
-      header {
-        padding-top: 30px;
-        padding-bottom: 30px;
-      }
-      
-      .controls-row-1 {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      
-      .view-switcher {
-        width: 100%;
-        justify-content: space-between;
-      }
-      
-      .search-box {
-        width: 100%;
-      }
-      
-      .weekly-view {
-        grid-template-columns: 1fr;
-      }
-      
-      .list-item {
-        grid-template-columns: 1fr;
-        padding: 16px;
-        text-align: center;
-      }
-      
-      .list-date, .list-doc, .list-format, .list-status {
-        align-items: center;
-        justify-content: center;
-      }
-    }
+    .cal-post-mini:hover { opacity: 0.8; }
+
+    .cal-post-mini.pauta-ginecologia { background: rgba(236,72,153,0.08); border-left-color: var(--cor-ginecologia); color: #9d174d; }
+    .cal-post-mini.pauta-obstetricia { background: rgba(139,92,246,0.08); border-left-color: var(--cor-obstetricia); color: #5b21b6; }
+    .cal-post-mini.pauta-pediatria   { background: rgba(16,185,129,0.08); border-left-color: var(--cor-pediatria); color: #065f46; }
+    .cal-post-mini.pauta-mastologia  { background: rgba(249,115,22,0.08); border-left-color: var(--cor-mastologia); color: #9a3412; }
+    .cal-post-mini.pauta-comemorativa{ background: rgba(167,139,250,0.08); border-left-color: var(--cor-comemorativa); color: #6d28d9; }
+    .cal-post-mini.pauta-pessoal     { background: rgba(248,250,252,1); border-left-color: #94a3b8; color: #334155; }
   </style>
 </head>
 <body>
 
-<div class="app-container">
+<div class="app">
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
-      <div class="header-logo-title">
-        <p>🌿 GAIA MEDICINA INTEGRADA</p>
-        <h1>Calendário de Pautas</h1>
-        <p>Acompanhamento e aprovação de posts das doutoras</p>
-      </div>
-      <div class="header-meta">
-        <span class="badge">📍 Tatuapé, SP</span>
-        <span class="badge badge-terracota">Planejamento Editorial</span>
+  <!-- ── HEADER ── -->
+  <header class="app-header">
+    <div class="header-left">
+      <span class="header-label">🌿 Gaia Medicina Integrada</span>
+      <span class="header-month" id="monthDisplay">Junho 2026</span>
+    </div>
+    <div class="header-right">
+      <div class="btn-wrapper">
+        <button class="btn-header-icon" onclick="openFilterDrawer()" title="Filtros" id="filterBtn">⚙️</button>
+        <span class="filter-badge" id="filterBadge" style="display:none">0</span>
       </div>
     </div>
   </header>
 
-  <!-- CONTROLES & FILTROS -->
-  <section class="controls-section">
-    
-    <!-- Linha 1: Navegador de Mês, Switcher e Busca -->
-    <div class="controls-row-1">
-      <div class="month-nav">
-        <button class="btn-icon" onclick="changeMonth(-1)">◀</button>
-        <h2 class="current-month-display" id="monthDisplay">Junho 2026</h2>
-        <button class="btn-icon" onclick="changeMonth(1)">▶</button>
-      </div>
-      
-      <div class="view-switcher">
-        <button class="view-btn active" id="btn-month" onclick="switchView('month')">Mensal</button>
-        <button class="view-btn" id="btn-week" onclick="switchView('week')">Semanal</button>
-        <button class="view-btn" id="btn-list" onclick="switchView('list')">Lista</button>
-      </div>
+  <!-- ── SUB-HEADER: NAVEGAÇÃO DO MÊS + CHIPS ATIVOS ── -->
+  <div class="month-nav-bar">
+    <button class="btn-nav-month" onclick="changeMonth(-1)">◀</button>
 
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="searchInput" placeholder="Pesquisar pautas..." oninput="applyFilters()"/>
-      </div>
+    <div class="active-filters-strip" id="activeFiltersStrip">
+      <span class="no-filters-label">Todos os posts</span>
     </div>
 
-    <!-- Linha 2: Painel de Filtros Avançados -->
-    <div class="filters-panel">
-      <!-- Pautas (Especialidade) -->
-      <div class="filter-group">
-        <span class="filter-label">Especialidade / Pauta</span>
-        <div class="filter-options" id="pauta-filters">
-          <div class="filter-tag" data-filter="Ginecologia" onclick="toggleFilter('pauta', 'Ginecologia', this)"><span class="pauta-dot dot-ginecologia"></span>Ginecologia</div>
-          <div class="filter-tag" data-filter="Obstetrícia" onclick="toggleFilter('pauta', 'Obstetrícia', this)"><span class="pauta-dot dot-obstetricia"></span>Obstetrícia</div>
-          <div class="filter-tag" data-filter="Pediatria" onclick="toggleFilter('pauta', 'Pediatria', this)"><span class="pauta-dot dot-pediatria"></span>Pediatria</div>
-          <div class="filter-tag" data-filter="Mastologia" onclick="toggleFilter('pauta', 'Mastologia', this)"><span class="pauta-dot dot-mastologia"></span>Mastologia</div>
-          <div class="filter-tag" data-filter="Datas Comemorativas" onclick="toggleFilter('pauta', 'Datas Comemorativas', this)"><span class="pauta-dot dot-comemorativa"></span>Datas Comemorativas</div>
-          <div class="filter-tag" data-filter="Pessoais" onclick="toggleFilter('pauta', 'Pessoais', this)"><span class="pauta-dot dot-pessoal"></span>Pessoais</div>
-        </div>
-      </div>
+    <button class="btn-nav-month" onclick="changeMonth(1)">▶</button>
+  </div>
 
-      <!-- Formato -->
-      <div class="filter-group">
-        <span class="filter-label">Formato de Conteúdo</span>
-        <div class="filter-options" id="format-filters">
-          <div class="filter-tag" data-filter="Carrossel" onclick="toggleFilter('format', 'Carrossel', this)">Carrossel</div>
-          <div class="filter-tag" data-filter="Reels" onclick="toggleFilter('format', 'Reels', this)">Reels</div>
-          <div class="filter-tag" data-filter="Stories" onclick="toggleFilter('format', 'Stories', this)">Stories</div>
-        </div>
-      </div>
+  <!-- ── DESKTOP VIEW SWITCHER (visível apenas em desktop) ── -->
+  <div class="month-nav-bar" id="desktopViewBar" style="display:none; justify-content:center; background:var(--branco);">
+    <div class="desktop-view-switcher" id="desktopViewSwitcher">
+      <button class="dview-btn active" id="dbtn-list" onclick="switchView('list', 'dbtn-list')">📋 Lista</button>
+      <button class="dview-btn" id="dbtn-week" onclick="switchView('week', 'dbtn-week')">🗓 Semanal</button>
+      <button class="dview-btn" id="dbtn-month" onclick="switchView('month', 'dbtn-month')">📆 Mensal</button>
+    </div>
+  </div>
 
-      <!-- Doutora -->
-      <div class="filter-group">
-        <span class="filter-label">Doutora Responsável</span>
-        <div class="filter-options" id="doctor-filters">
-          <div class="filter-tag" data-filter="Andrea" onclick="toggleFilter('doctor', 'Andrea', this)">Dra. Andrea</div>
-          <div class="filter-tag" data-filter="Katia" onclick="toggleFilter('doctor', 'Katia', this)">Dra. Katia</div>
-          <div class="filter-tag" data-filter="Gabriela" onclick="toggleFilter('doctor', 'Gabriela', this)">Dra. Gabriela</div>
-          <div class="filter-tag" data-filter="Natalia" onclick="toggleFilter('doctor', 'Natalia', this)">Dra. Natalia</div>
-        </div>
-      </div>
-
-      <!-- Status -->
-      <div class="filter-group" style="min-width: 140px;">
-        <span class="filter-label">Status do Post</span>
-        <div class="filter-options" id="status-filters">
-          <div class="filter-tag" data-filter="Rascunho" onclick="toggleFilter('status', 'Rascunho', this)">Rascunho</div>
-          <div class="filter-tag" data-filter="Produção" onclick="toggleFilter('status', 'Produção', this)">Em Produção</div>
-          <div class="filter-tag" data-filter="Aprovado" onclick="toggleFilter('status', 'Aprovado', this)">Aprovado</div>
-          <div class="filter-tag" data-filter="Publicado" onclick="toggleFilter('status', 'Publicado', this)">Publicado</div>
-        </div>
-      </div>
-
-      <!-- Reset -->
-      <button class="reset-filters-btn" onclick="resetFilters()">Limpar Filtros</button>
+  <!-- ── ÁREA PRINCIPAL SCROLLÁVEL ── -->
+  <main class="view-area" id="viewArea">
+    <!-- Barra de busca inline -->
+    <div class="search-inline">
+      <span class="s-icon">🔍</span>
+      <input type="search" id="searchInput" placeholder="Buscar pauta..." oninput="render()" autocomplete="off"/>
     </div>
 
-  </section>
-
-  <!-- CONTEÚDO PRINCIPAL (ÁREA DE VISUALIZAÇÃO) -->
-  <main id="view-container">
-    <!-- Será preenchido dinamicamente via Javascript -->
+    <!-- Conteúdo dinâmico -->
+    <div id="viewContainer"></div>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Desenvolvido por <strong>Mauricio Barros (Substrato Digital)</strong></p>
-    <p>GAIA Medicina Integrada © 2026 · Todos os direitos reservados</p>
-  </footer>
+  <!-- ── BOTTOM NAV (mobile) ── -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" id="nav-list" onclick="switchView('list','nav-list')">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">Lista</span>
+    </button>
+    <button class="nav-item" id="nav-week" onclick="switchView('week','nav-week')">
+      <span class="nav-icon">🗓</span>
+      <span class="nav-label">Semana</span>
+    </button>
+    <button class="nav-item" id="nav-month" onclick="switchView('month','nav-month')">
+      <span class="nav-icon">📆</span>
+      <span class="nav-label">Mensal</span>
+    </button>
+  </nav>
 
-</div>
+</div><!-- /app -->
 
-<!-- MODAL DE DETALHES -->
-<div class="modal-overlay" id="postModal" onclick="closeModal(event)">
-  <div class="modal-container" onclick="event.stopPropagation()">
-    
-    <button class="modal-close-btn" onclick="closeModal()">✕</button>
-    
-    <div class="modal-header">
-      <div class="modal-meta-top">
-        <span class="modal-pauta-badge" id="modalPautaBadge">Especialidade</span>
-      </div>
-      <h3 class="modal-title" id="modalTitle">Título da Pauta</h3>
-      
-      <div class="modal-meta-grid">
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Doutora</span>
-          <span class="modal-meta-value" id="modalDoctor">Dra. Nome</span>
+<!-- ══════════════════════════════════════
+     DRAWER DE FILTROS
+══════════════════════════════════════ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeFilterDrawer()"></div>
+
+<div class="filter-drawer" id="filterDrawer">
+  <div class="drawer-handle"></div>
+
+  <div class="drawer-header">
+    <span class="drawer-title">Filtrar Pautas</span>
+    <button class="btn-drawer-close" onclick="closeFilterDrawer()">✕</button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- Especialidade -->
+    <div class="filter-section">
+      <span class="filter-section-label">Especialidade / Pauta</span>
+      <div class="filter-tags-row" id="pauta-filters">
+        <div class="ftag pauta-ginecologia" data-cat="pauta" data-val="Ginecologia" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-ginecologia)"></span>Ginecologia
         </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Formato</span>
-          <span class="modal-meta-value" id="modalFormat">Carrossel</span>
+        <div class="ftag pauta-obstetricia" data-cat="pauta" data-val="Obstetrícia" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-obstetricia)"></span>Obstetrícia
         </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Status</span>
-          <span class="modal-meta-value" id="modalStatus">Agendado</span>
+        <div class="ftag pauta-pediatria" data-cat="pauta" data-val="Pediatria" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-pediatria)"></span>Pediatria
         </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Horário</span>
-          <span class="modal-meta-value" id="modalTime">18:00</span>
+        <div class="ftag pauta-mastologia" data-cat="pauta" data-val="Mastologia" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-mastologia)"></span>Mastologia
         </div>
-      </div>
-    </div>
-    
-    <div class="modal-tabs">
-      <button class="modal-tab-btn active" onclick="switchModalTab('roteiro', this)">Roteiro / Visual</button>
-      <button class="modal-tab-btn" onclick="switchModalTab('copy', this)">Legenda (Copy)</button>
-      <button class="modal-tab-btn" onclick="switchModalTab('referencias', this)">Referências Científicas</button>
-    </div>
-    
-    <div class="modal-body">
-      <!-- Aba Roteiro / Visual -->
-      <div class="tab-content active" id="tab-roteiro">
-        <div class="timeline-container" id="modalRoteiroTimeline">
-          <!-- Preenchido via JS -->
+        <div class="ftag pauta-comemorativa" data-cat="pauta" data-val="Datas Comemorativas" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-comemorativa)"></span>Comemorativas
         </div>
-      </div>
-      
-      <!-- Aba Legenda -->
-      <div class="tab-content" id="tab-copy">
-        <div class="copy-container">
-          <button class="btn-copy" onclick="copyText()">
-            <span id="copyBtnIcon">📋</span> <span id="copyBtnText">Copiar Legenda</span>
-          </button>
-          <div class="copy-text-area" id="modalCopyText">
-            Texto da legenda aqui...
-          </div>
-        </div>
-      </div>
-      
-      <!-- Aba Referências -->
-      <div class="tab-content" id="tab-referencias">
-        <div style="font-size: 14px; line-height: 1.6;" id="modalReferencesList">
-          Sem referências associadas.
+        <div class="ftag pauta-pessoal" data-cat="pauta" data-val="Pessoais" onclick="toggleFilter(this)">
+          <span class="dot" style="background:var(--cor-pessoal)"></span>Pessoais
         </div>
       </div>
     </div>
-    
-    <div class="modal-footer">
-      <button class="btn-primary" onclick="closeModal()">Fechar Detalhes</button>
+
+    <!-- Formato -->
+    <div class="filter-section">
+      <span class="filter-section-label">Formato de Conteúdo</span>
+      <div class="filter-tags-row">
+        <div class="ftag" data-cat="format" data-val="Carrossel" onclick="toggleFilter(this)">🖼 Carrossel</div>
+        <div class="ftag" data-cat="format" data-val="Reels" onclick="toggleFilter(this)">🎬 Reels</div>
+        <div class="ftag" data-cat="format" data-val="Stories" onclick="toggleFilter(this)">📱 Stories</div>
+      </div>
     </div>
-    
+
+    <!-- Doutora -->
+    <div class="filter-section">
+      <span class="filter-section-label">Doutora Responsável</span>
+      <div class="filter-tags-row">
+        <div class="ftag" data-cat="doctor" data-val="Andrea" onclick="toggleFilter(this)">🩺 Dra. Andrea</div>
+        <div class="ftag" data-cat="doctor" data-val="Katia" onclick="toggleFilter(this)">🩺 Dra. Kátia</div>
+        <div class="ftag" data-cat="doctor" data-val="Gabriela" onclick="toggleFilter(this)">🩺 Dra. Gabriela</div>
+        <div class="ftag" data-cat="doctor" data-val="Natalia" onclick="toggleFilter(this)">🩺 Dra. Natalia</div>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="filter-section">
+      <span class="filter-section-label">Status do Post</span>
+      <div class="filter-tags-row">
+        <div class="ftag" data-cat="status" data-val="Rascunho" onclick="toggleFilter(this)">📝 Rascunho</div>
+        <div class="ftag" data-cat="status" data-val="Produção" onclick="toggleFilter(this)">⚙️ Em Produção</div>
+        <div class="ftag" data-cat="status" data-val="Aprovado" onclick="toggleFilter(this)">✅ Aprovado</div>
+        <div class="ftag" data-cat="status" data-val="Publicado" onclick="toggleFilter(this)">📤 Publicado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <button class="btn-outline" onclick="resetFilters()">Limpar</button>
+    <button class="btn-apply" onclick="closeFilterDrawer()">Ver Resultados</button>
   </div>
 </div>
 
-<!-- BANCO DE DADOS & LÓGICA DE PROGRAMAÇÃO -->
+<!-- ══════════════════════════════════════
+     MODAL DE DETALHES (BOTTOM SHEET)
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="postModal" onclick="closeModal()"></div>
+
+<div class="modal-sheet" id="modalSheet">
+  <div class="modal-handle"></div>
+
+  <div class="modal-top-bar">
+    <span class="modal-pauta-chip" id="modalPautaChip">Especialidade</span>
+    <button class="btn-modal-close" onclick="closeModal()">✕</button>
+  </div>
+
+  <div class="modal-title-block">
+    <h3 class="modal-title" id="modalTitle">Título</h3>
+    <div class="modal-meta-row" id="modalMetaRow">
+      <!-- Preenchido via JS -->
+    </div>
+  </div>
+
+  <div class="modal-tabs">
+    <button class="modal-tab-btn active" onclick="switchModalTab('roteiro', this)">Roteiro</button>
+    <button class="modal-tab-btn" onclick="switchModalTab('copy', this)">Legenda</button>
+    <button class="modal-tab-btn" onclick="switchModalTab('referencias', this)">Referências</button>
+  </div>
+
+  <div class="modal-body">
+    <div class="tab-content active" id="tab-roteiro">
+      <div class="timeline" id="modalTimeline"></div>
+    </div>
+
+    <div class="tab-content" id="tab-copy">
+      <div class="copy-block">
+        <button class="btn-copy" id="btnCopy" onclick="copyLegenda()">
+          <span id="copyIcon">📋</span> <span id="copyText">Copiar</span>
+        </button>
+        <div class="copy-text-box" id="modalCopyText"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-referencias">
+      <div class="refs-list" id="modalRefsList"></div>
+    </div>
+  </div>
+
+  <div class="modal-safe-bottom"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
 <script>
-  /**
-   * 💡 BANCO DE DADOS DOS POSTS (ATUALIZE ESTE BLOCO MENSALMENTE)
-   * 
-   * Instruções para atualização:
-   * 1. Insira os posts dentro do array `POSTS_DATABASE`.
-   * 2. Formato da data: 'YYYY-MM-DD' (ex: '2026-06-12').
-   * 3. Especialidades permitidas: 'Ginecologia', 'Obstetrícia', 'Pediatria', 'Mastologia', 'Datas Comemorativas', 'Pessoais'.
-   * 4. Formatos permitidos: 'Carrossel', 'Reels', 'Stories'.
-   * 5. Doutoras permitidas: 'Andrea', 'Katia', 'Gabriela', 'Natalia'.
-   * 6. Status permitidos: 'Rascunho', 'Produção', 'Aprovado', 'Publicado'.
-   */
+  /* ─── BANCO DE DADOS ─── */
   const POSTS_DATABASE = [
     {
       id: 1,
@@ -1242,22 +1402,14 @@
       doctor: 'Natalia',
       status: 'Aprovado',
       timeline: [
-        { time: '00:00 - 00:15', label: 'GANCHO', text: 'Seu bebê nasceu prematuro e você vive preocupada porque ele ainda não engatinhou no mesmo mês que o primo que nasceu no tempo certo? Calma!' },
+        { time: '00:00 - 00:15', label: 'GANCHO', text: 'Seu bebê nasceu prematuro e você vive preocupada porque ele ainda não engatinhou no mesmo mês que o primo? Calma!' },
         { time: '00:15 - 00:45', label: 'CASO DE CONSULTÓRIO', text: 'Muitas mães chegam apavoradas ao consultório achando que o filho tem atraso de desenvolvimento, quando na verdade estamos medindo o bebê com a régua errada.' },
-        { time: '00:45 - 01:30', label: 'DESENVOLVIMENTO TÉCNICO', text: 'Bebês que nascem antes das 37 semanas precisam usar a idade corrigida até os 2 anos. Se ele nasceu 2 meses antes, o desenvolvimento dele deve ser avaliado como se ele tivesse 2 meses a menos do que a data de nascimento.' },
+        { time: '00:45 - 01:30', label: 'DESENVOLVIMENTO TÉCNICO', text: 'Bebês que nascem antes das 37 semanas precisam usar a idade corrigida até os 2 anos. Se ele nasceu 2 meses antes, o desenvolvimento dele deve ser avaliado como se ele tivesse 2 meses a menos.' },
         { time: '01:30 - 02:15', label: 'DICAS PRÁTICAS', text: 'Anote a data prevista de nascimento. Use essa data para olhar as tabelas de marcos do desenvolvimento. Não compare com outros bebês.' },
         { time: '02:15 - 02:45', label: 'TRANQUILIZAÇÃO', text: 'Cada bebê tem seu próprio ritmo e a prematuridade requer apenas que respeitemos o tempo biológico dele.' },
         { time: '02:45 - 03:00', label: 'CTA', text: 'Converse sempre com o pediatra do seu filho para analisar o caso dele de forma individualizada.' }
       ],
-      copy: `✨ Idade Corrigida vs. Idade Cronológica (Dra. Natalia)
-
-Seu bebê nasceu prematuro e você vive preocupada porque ele ainda não engatinhou no mesmo mês que o primo que nasceu no tempo certo? Calma!
-
-No novo vídeo da nossa pediatra Dra. Natalia, explicamos por que você não deve comparar o desenvolvimento do bebê prematuro com a idade real de nascimento. Até os dois anos, usamos a Idade Corrigida!
-
-👉 Salve esse post para ter essa informação sempre que precisar consultar.
-
-#saudepediatrica #pediatriadescomplicada #bebe-prematuro #idadecorrigida #desenvolvimentoinfantil #gaia`,
+      copy: `✨ Idade Corrigida vs. Idade Cronológica (Dra. Natalia)\n\nSeu bebê nasceu prematuro e você vive preocupada porque ele ainda não engatinhou no mesmo mês que o primo que nasceu no tempo certo? Calma!\n\nNo novo vídeo da nossa pediatra Dra. Natalia, explicamos por que você não deve comparar o desenvolvimento do bebê prematuro com a idade real de nascimento. Até os dois anos, usamos a Idade Corrigida!\n\n👉 Salve esse post para ter essa informação sempre que precisar consultar.\n\n#saudepediatrica #pediatriadescomplicada #bebe-prematuro #idadecorrigida #desenvolvimentoinfantil #gaia`,
       references: [
         'Sociedade Brasileira de Pediatria (SBP). Manual de Seguimento do Recém-nascido Pré-termo. 2023. Disponível em: https://www.sbp.com.br',
         'World Health Organization (WHO). Born Too Soon: Decade of Action on Preterm Birth. 2023.'
@@ -1280,15 +1432,7 @@ No novo vídeo da nossa pediatra Dra. Natalia, explicamos por que você não dev
         { time: 'Slide 5', label: 'DICA 2', text: 'A Terapia Hormonal, quando iniciada na janela de oportunidade, protege a função cognitiva.' },
         { time: 'Slide 6', label: 'CTA', text: 'Consulte seu ginecologista de confiança para avaliar os benefícios no seu caso.' }
       ],
-      copy: `🧠 Esqueceu onde colocou a chave de novo? A névoa mental na menopausa é real e tem explicação biológica!
-
-Na transição para a menopausa, a queda de estrogênio impacta a circulação cerebral e a atividade de neurotransmissores importantes para o foco e memória.
-
-Você não está ficando louca, isso é parte de uma flutuação hormonal. Veja no carrossel algumas atitudes simples para reverter esse quadro.
-
-Compartilhe essa orientação com uma amiga que também precisa saber disso!
-
-#menopausasemmedo #nevoamental #ginecologiasp #saudedamulher #tatuape #gaia`,
+      copy: `🧠 Esqueceu onde colocou a chave de novo? A névoa mental na menopausa é real e tem explicação biológica!\n\nNa transição para a menopausa, a queda de estrogênio impacta a circulação cerebral e a atividade de neurotransmissores importantes para o foco e memória.\n\nVocê não está ficando louca, isso é parte de uma flutuação hormonal. Veja no carrossel algumas atitudes simples para reverter esse quadro.\n\nCompartilhe essa orientação com uma amiga que também precisa saber disso!\n\n#menopausasemmedo #nevoamental #ginecologiasp #saudedamulher #tatuape #gaia`,
       references: [
         'Maki PM, Jaff NG. Brain fog in perimenopause: What is the evidence? Climacteric. 2022;25(4):322-329.',
         'North American Menopause Society (NAMS). The 2022 hormone therapy position statement. Menopause. 2022.'
@@ -1306,19 +1450,11 @@ Compartilhe essa orientação com uma amiga que também precisa saber disso!
       timeline: [
         { time: '00:00 - 00:20', label: 'GANCHO', text: 'Chorar sem motivo no terceiro dia com o bebê nos braços significa que você é uma mãe ruim ou tem depressão? Não!' },
         { time: '00:20 - 00:50', label: 'CASO DE CONSULTÓRIO', text: 'Muitas mulheres sentem uma tristeza profunda e culpa logo após o parto. É o famoso Baby Blues, que atinge até 80% das mães.' },
-        { time: '00:50 - 01:30', label: 'DIFERENÇA CRÍTICA', text: 'O Baby Blues é hormonal e passageiro (dura até 2 semanas). A Depressão Pós-Parto é mais persistente, incapacitante e necessita de ajuda especializada imediata.' },
+        { time: '00:50 - 01:30', label: 'DIFERENÇA CRÍTICA', text: 'O Baby Blues é hormonal e passageiro (dura até 2 semanas). A Depressão Pós-Parto é mais persistente e necessita de ajuda especializada imediata.' },
         { time: '01:30 - 02:00', label: 'RECOMENDAÇÃO', text: 'Acolhimento da rede de apoio e acompanhamento médico contínuo são as chaves para atravessar essa transição.' },
         { time: '02:00 - 02:15', label: 'CTA', text: 'Se os sintomas de angústia durarem mais de duas semanas, converse com seu obstetra de confiança.' }
       ],
-      copy: `🤱 Tristeza após o nascimento do bebê? Entenda a diferença entre o Baby Blues e a Depressão Pós-Parto.
-
-A queda hormonal após o parto causa uma melancolia passageira em até 80% das mulheres (Baby Blues). Porém, se a angústia for persistente e durar mais de duas semanas, pode ser depressão.
-
-Cuidar de quem cuida é fundamental. Assista ao vídeo da Dra. Katia para saber como identificar e agir.
-
-Se fez sentido para você, compartilhe essa orientação.
-
-#puerperio #posparto #babyblues #depressaoposparto #obstetricia #saudementalmaterna #gaia`,
+      copy: `🤱 Tristeza após o nascimento do bebê? Entenda a diferença entre o Baby Blues e a Depressão Pós-Parto.\n\nA queda hormonal após o parto causa uma melancolia passageira em até 80% das mulheres (Baby Blues). Porém, se a angústia for persistente e durar mais de duas semanas, pode ser depressão.\n\nCuidar de quem cuida é fundamental. Assista ao vídeo da Dra. Kátia para saber como identificar e agir.\n\nSe fez sentido para você, compartilhe essa orientação.\n\n#puerperio #posparto #babyblues #depressaoposparto #obstetricia #saudementalmaterna #gaia`,
       references: [
         'American College of Obstetricians and Gynecologists (ACOG). Clinical Consensus No. 4: Screening for Perinatal Depression. 2023.',
         'Ministério da Saúde. Diretrizes para Atenção à Saúde Gestacional e Pós-parto. 2022.'
@@ -1340,17 +1476,9 @@ Se fez sentido para você, compartilhe essa orientação.
         { time: 'Slide 4', label: 'COMUNICAÇÃO', text: 'Conversar com o parceiro e desmistificar que a dor é normal ajuda a diminuir a pressão emocional.' },
         { time: 'Slide 5', label: 'CTA', text: 'Converse com o ginecologista para analisar as melhores opções terapêuticas para a sua rotina.' }
       ],
-      copy: `🌹 Neste Dia dos Namorados, que tal focar no relacionamento mais importante da sua vida: você com você mesma?
-
-Na menopausa, a dor na relação íntima e a falta de lubrificação podem afetar profundamente a autoestima. Mas saiba que não precisa ser assim.
-
-Existem tratamentos modernos de ginecologia regenerativa que devolvem a elasticidade e o conforto. Veja as dicas no carrossel de hoje!
-
-Deixe sua maior dúvida aqui nos comentários.
-
-#diadosnamorados #autoestimafeminina #ginecologiaregenerativa #menopausasemdor #saudedamulher #gaia`,
+      copy: `🌹 Neste Dia dos Namorados, que tal focar no relacionamento mais importante da sua vida: você com você mesma?\n\nNa menopausa, a dor na relação íntima e a falta de lubrificação podem afetar profundamente a autoestima. Mas saiba que não precisa ser assim.\n\nExistem tratamentos modernos de ginecologia regenerativa que devolvem a elasticidade e o conforto. Veja as dicas no carrossel de hoje!\n\nDeixe sua maior dúvida aqui nos comentários.\n\n#diadosnamorados #autoestimafeminina #ginecologiaregenerativa #menopausasemdor #saudedamulher #gaia`,
       references: [
-        'Portman DJ, Gass ML. Genitourinary syndrome of menopause: New terminology for vulvovaginal atrophy. Menopause. 2014;21(10):1063-1068.',
+        'Portman DJ, Gass ML. Genitourinary syndrome of menopause. Menopause. 2014;21(10):1063-1068.',
         'Federação Brasileira das Associações de Ginecologia e Obstetrícia (FEBRASGO). Climatério e Menopausa: Guia Prático. 2024.'
       ]
     },
@@ -1370,15 +1498,7 @@ Deixe sua maior dúvida aqui nos comentários.
         { time: '01:15 - 01:45', label: 'DICA SUPLEMENTO', text: 'O uso de D-manose e Cranberry concentrado pode ajudar a evitar que as bactérias grudem na bexiga.' },
         { time: '01:45 - 02:00', label: 'CTA', text: 'Se você tem crises repetidas, consulte um especialista para criar um protocolo preventivo individualizado.' }
       ],
-      copy: `💧 Cansada de tomar antibiótico para infecção urinária toda hora?
-
-A cistite de repetição exige uma mudança de hábitos no dia a dia, e não apenas o tratamento rápido com antibióticos na hora da dor.
-
-Assista ao vídeo da Dra. Andrea para descobrir hábitos simples de higiene e hidratação que farão toda a diferença na sua imunidade.
-
-Salve esse vídeo para consultar sempre que precisar.
-
-#cistitederepeticao #infeccaourinaria #prevencaoativa #ginecologiasp #tatuape #gaia`,
+      copy: `💧 Cansada de tomar antibiótico para infecção urinária toda hora?\n\nA cistite de repetição exige uma mudança de hábitos no dia a dia, e não apenas o tratamento rápido com antibióticos na hora da dor.\n\nAssista ao vídeo da Dra. Andrea para descobrir hábitos simples de higiene e hidratação que farão toda a diferença na sua imunidade.\n\nSalve esse vídeo para consultar sempre que precisar.\n\n#cistitederepeticao #infeccaourinaria #prevencaoativa #ginecologiasp #tatuape #gaia`,
       references: [
         'European Association of Urology (EAU). Guidelines on Urological Infections. 2023.',
         'FEBRASGO. Infecção Urinária de Repetição na Mulher: Protocolo Clínico. 2022.'
@@ -1400,15 +1520,7 @@ Salve esse vídeo para consultar sempre que precisar.
         { time: 'Slide 4', label: 'ESTILO DE VIDA', text: 'Atividade física regular, controle do peso e limitação de bebidas alcoólicas diminuem significativamente o risco geral.' },
         { time: 'Slide 5', label: 'CTA', text: 'Procure uma mastologista de confiança para calcular seu risco genético e definir um plano personalizado.' }
       ],
-      copy: `🎗️ Minha mãe teve câncer de mama. Qual é o meu real risco?
-
-Ter um caso na família gera medo, mas a informação correta acalma. Apenas uma minoria dos tumores é de origem genética hereditária direta.
-
-Saiba quando começar os exames de mamografia e ressonância preventiva e quais hábitos de vida ajudam a reduzir os riscos. Confira o guia no carrossel de hoje!
-
-Compartilhe essa orientação com quem você ama.
-
-#mastologista #cancerdemama #prevencaoaocancer #historicofamiliar #saudedamulher #gaia`,
+      copy: `🎗️ Minha mãe teve câncer de mama. Qual é o meu real risco?\n\nTer um caso na família gera medo, mas a informação correta acalma. Apenas uma minoria dos tumores é de origem genética hereditária direta.\n\nSaiba quando começar os exames de mamografia e ressonância preventiva e quais hábitos de vida ajudam a reduzir os riscos. Confira o guia no carrossel de hoje!\n\nCompartilhe essa orientação com quem você ama.\n\n#mastologista #cancerdemama #prevencaoaocancer #historicofamiliar #saudedamulher #gaia`,
       references: [
         'Sociedade Brasileira de Mastologia (SBM). Recomendações para Rastreamento do Câncer de Mama. 2023.',
         'National Comprehensive Cancer Network (NCCN). Breast Cancer Screening and Diagnosis Guidelines. 2024.'
@@ -1428,7 +1540,7 @@ Compartilhe essa orientação com quem você ama.
         { time: 'Story 2', label: 'ALIMENTAÇÃO', text: 'Café da manhã nutritivo: ovos mexidos, abacate e frutas vermelhas. Nutrir o corpo para ter energia o dia todo.' },
         { time: 'Story 3', label: 'MENSAGEM', text: 'Cuidar de si mesma não é egoísmo, é combustível. Pratique o autocuidado hoje!' }
       ],
-      copy: `Sem legenda extensa (formato Stories). Focar em enquete interactiva sobre hábitos matinais das seguidoras.`,
+      copy: `Sem legenda extensa (formato Stories). Focar em enquete interativa sobre hábitos matinais das seguidoras.`,
       references: []
     },
     {
@@ -1446,15 +1558,7 @@ Compartilhe essa orientação com quem você ama.
         { time: '00:50 - 01:20', label: 'INDICAÇÃO', text: 'Mesmo adultos que já iniciaram a vida sexual ou tiveram contato com o vírus se beneficiam da vacina, evitando reinfecções.' },
         { time: '01:20 - 01:45', label: 'CTA', text: 'Procure sempre seu médico de confiança para avaliar a indicação da vacina para você ou seus filhos.' }
       ],
-      copy: `🛡️ Vacina do HPV: por que ela ainda é importante para você, mesmo na vida adulta?
-
-Existe o mito de que a vacina é apenas para pré-adolescentes. Na verdade, homens e mulheres adultos também se beneficiam amplamente da imunização preventiva contra novos subtipos.
-
-Assista ao vídeo da Dra. Andrea e tire suas dúvidas sobre a eficácia da vacina!
-
-Deixe sua maior dúvida aqui nos comentários.
-
-#vacina-hpv #hpv #cancerdecolodeutero #ginecologista #tatuape #prevencaoativa #gaia`,
+      copy: `🛡️ Vacina do HPV: por que ela ainda é importante para você, mesmo na vida adulta?\n\nExiste o mito de que a vacina é apenas para pré-adolescentes. Na verdade, homens e mulheres adultos também se beneficiam amplamente da imunização preventiva contra novos subtipos.\n\nAssista ao vídeo da Dra. Andrea e tire suas dúvidas sobre a eficácia da vacina!\n\nDeixe sua maior dúvida aqui nos comentários.\n\n#vacina-hpv #hpv #cancerdecolodeutero #ginecologista #tatuape #prevencaoativa #gaia`,
       references: [
         'Organização Mundial da Saúde (OMS). Guia de Vacinação contra o Papilomavírus Humano (HPV). 2023.',
         'FEBRASGO. Vacinação contra HPV na Mulher Adulta: Posicionamento Oficial. 2023.'
@@ -1462,428 +1566,413 @@ Deixe sua maior dúvida aqui nos comentários.
     }
   ];
 
-  // Configurações do Calendário
-  let currentDate = new Date(2026, 5, 3); // 3 de Junho de 2026 (Data atual simulada)
-  let currentView = 'month'; // month, week, list
-  let selectedFilters = {
-    pauta: [],
-    format: [],
-    doctor: [],
-    status: []
-  };
+  /* ─── ESTADO GLOBAL ─── */
+  let currentDate = new Date(2026, 5, 1);
+  let currentView = 'list';
+  let selectedFilters = { pauta: [], format: [], doctor: [], status: [] };
+  const MONTHS_PT   = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const WEEKDAYS_PT = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const WEEKDAYS_FULL = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 
-  // Nomes dos meses em português
-  const MONTHS_PT = [
-    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-  ];
+  /* ─── DETECÇÃO DESKTOP ─── */
+  const IS_DESKTOP = () => window.innerWidth > 520;
 
-  // Nomes dos dias da semana
-  const WEEKDAYS_PT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-
-  // Renderização inicial
   window.addEventListener('DOMContentLoaded', () => {
+    adaptToScreen();
     render();
   });
 
-  // Função principal de renderização baseada na visualização ativa
-  function render() {
-    const container = document.getElementById('view-container');
-    const monthDisplay = document.getElementById('monthDisplay');
-    
-    // Atualiza o indicador do mês no cabeçalho
-    monthDisplay.innerText = `${MONTHS_PT[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-    
-    // Filtra os posts do banco de dados de acordo com os filtros selecionados
-    const filteredPosts = getFilteredPosts();
-    
-    if (currentView === 'month') {
-      renderMonthView(container, filteredPosts);
-    } else if (currentView === 'week') {
-      renderWeekView(container, filteredPosts);
-    } else if (currentView === 'list') {
-      renderListView(container, filteredPosts);
+  window.addEventListener('resize', () => {
+    adaptToScreen();
+    render();
+  });
+
+  function adaptToScreen() {
+    const desktopBar = document.getElementById('desktopViewBar');
+    if (IS_DESKTOP()) {
+      desktopBar.style.display = 'flex';
+      document.getElementById('desktopViewSwitcher').style.display = 'flex';
+    } else {
+      desktopBar.style.display = 'none';
     }
   }
 
-  // ── FILTROS E PESQUISA ──
+  /* ─── RENDERIZAÇÃO PRINCIPAL ─── */
+  function render() {
+    const monthEl = document.getElementById('monthDisplay');
+    monthEl.textContent = `${MONTHS_PT[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+    updateActiveFilterStrip();
+    updateFilterBadge();
+
+    const posts = getFilteredPosts();
+    const container = document.getElementById('viewContainer');
+
+    if (currentView === 'list')  renderList(container, posts);
+    else if (currentView === 'week')  renderWeek(container, posts);
+    else if (currentView === 'month') renderMonth(container, posts);
+  }
+
+  /* ─── FILTROS ─── */
   function getFilteredPosts() {
-    const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
-    
-    return POSTS_DATABASE.filter(post => {
-      // 1. Filtro por Busca de Texto
-      if (searchQuery && !post.title.toLowerCase().includes(searchQuery) && !post.copy.toLowerCase().includes(searchQuery)) {
-        return false;
-      }
-      
-      // 2. Filtro por Pauta
-      if (selectedFilters.pauta.length > 0 && !selectedFilters.pauta.includes(post.pauta)) {
-        return false;
-      }
-      
-      // 3. Filtro por Formato
-      if (selectedFilters.format.length > 0 && !selectedFilters.format.includes(post.format)) {
-        return false;
-      }
-      
-      // 4. Filtro por Doutora
-      if (selectedFilters.doctor.length > 0 && !selectedFilters.doctor.includes(post.doctor)) {
-        return false;
-      }
-      
-      // 5. Filtro por Status
-      if (selectedFilters.status.length > 0 && !selectedFilters.status.includes(post.status)) {
-        return false;
-      }
-      
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    return POSTS_DATABASE.filter(p => {
+      if (q && !p.title.toLowerCase().includes(q) && !p.copy.toLowerCase().includes(q)) return false;
+      if (selectedFilters.pauta.length  && !selectedFilters.pauta.includes(p.pauta))   return false;
+      if (selectedFilters.format.length && !selectedFilters.format.includes(p.format)) return false;
+      if (selectedFilters.doctor.length && !selectedFilters.doctor.includes(p.doctor)) return false;
+      if (selectedFilters.status.length && !selectedFilters.status.includes(p.status)) return false;
       return true;
     });
   }
 
-  function toggleFilter(category, value, element) {
-    const index = selectedFilters[category].indexOf(value);
-    
-    if (index === -1) {
-      selectedFilters[category].push(value);
-      element.classList.add('active');
-    } else {
-      selectedFilters[category].splice(index, 1);
-      element.classList.remove('active');
-    }
-    
+  function toggleFilter(el) {
+    const cat = el.dataset.cat;
+    const val = el.dataset.val;
+    const idx = selectedFilters[cat].indexOf(val);
+    if (idx === -1) { selectedFilters[cat].push(val); el.classList.add('active'); }
+    else            { selectedFilters[cat].splice(idx, 1); el.classList.remove('active'); }
     render();
   }
 
   function resetFilters() {
     selectedFilters = { pauta: [], format: [], doctor: [], status: [] };
     document.getElementById('searchInput').value = '';
-    
-    // Remove classe ativa de todas as tags
-    document.querySelectorAll('.filter-tag').forEach(tag => {
-      tag.classList.remove('active');
-    });
-    
+    document.querySelectorAll('.ftag').forEach(t => t.classList.remove('active'));
     render();
   }
 
-  function applyFilters() {
-    render();
+  function updateFilterBadge() {
+    const total = Object.values(selectedFilters).reduce((a, b) => a + b.length, 0);
+    const badge = document.getElementById('filterBadge');
+    badge.style.display = total > 0 ? 'flex' : 'none';
+    badge.textContent = total;
   }
 
-  // ── MUDANÇA DE MÊS ──
-  function changeMonth(direction) {
-    currentDate.setMonth(currentDate.getMonth() + direction);
-    render();
-  }
+  function updateActiveFilterStrip() {
+    const strip = document.getElementById('activeFiltersStrip');
+    const all = [
+      ...selectedFilters.pauta.map(v => ({ label: v, cat: 'pauta', val: v })),
+      ...selectedFilters.format.map(v => ({ label: v, cat: 'format', val: v })),
+      ...selectedFilters.doctor.map(v => ({ label: `Dra. ${v}`, cat: 'doctor', val: v })),
+      ...selectedFilters.status.map(v => ({ label: v, cat: 'status', val: v }))
+    ];
 
-  // ── ALTERNAR VISUALIZAÇÃO (MENSAL, SEMANAL, LISTA) ──
-  function switchView(view) {
-    currentView = view;
-    
-    // Atualiza botões
-    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(`btn-${view}`).classList.add('active');
-    
-    render();
-  }
-
-  // ── RENDERIZAR MENSAL ──
-  function renderMonthView(container, posts) {
-    let html = `<div class="calendar-grid">`;
-    
-    // Dias da semana cabeçalho
-    WEEKDAYS_PT.forEach(day => {
-      html += `<div class="weekday-header">${day}</div>`;
-    });
-
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    // Primeiro dia do mês e total de dias
-    const firstDayIndex = new Date(year, month, 1).getDay();
-    const totalDays = new Date(year, month + 1, 0).getDate();
-    const prevTotalDays = new Date(year, month, 0).getDate();
-
-    // Renderizar dias vazios/anteriores
-    for (let i = firstDayIndex; i > 0; i--) {
-      const dayNum = prevTotalDays - i + 1;
-      html += `<div class="calendar-day other-month">
-        <span class="day-number">${dayNum}</span>
-      </div>`;
-    }
-
-    // Renderizar dias do mês corrente
-    const today = new Date();
-    for (let day = 1; day <= totalDays; day++) {
-      const isToday = today.getDate() === day && today.getMonth() === month && today.getFullYear() === year;
-      const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      
-      // Filtrar posts do dia específico
-      const dayPosts = posts.filter(post => post.date === dateString);
-      
-      html += `
-        <div class="calendar-day ${isToday ? 'today' : ''}">
-          <span class="day-number">${day}</span>
-          <div style="display:flex; flex-direction:column; gap:6px; flex:1; overflow-y:auto;">
-      `;
-
-      dayPosts.forEach(post => {
-        const pautaClass = getPautaClass(post.pauta);
-        html += `
-          <div class="post-card-mini ${pautaClass}" onclick="openModal(${post.id})">
-            <div class="post-time-meta">
-              <span>🕒 ${post.time}</span>
-              <span>${post.doctor}</span>
-            </div>
-            <div class="post-title-mini">${post.title}</div>
-            <div class="post-badges-mini">
-              <span class="badge-mini">${post.format}</span>
-            </div>
-          </div>
-        `;
-      });
-
-      html += `
-          </div>
-        </div>
-      `;
-    }
-
-    // Renderizar dias do mês seguinte para completar o grid
-    const totalCells = firstDayIndex + totalDays;
-    const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-    for (let i = 1; i <= remainingCells; i++) {
-      html += `<div class="calendar-day other-month">
-        <span class="day-number">${i}</span>
-      </div>`;
-    }
-
-    html += `</div>`;
-    container.innerHTML = html;
-  }
-
-  // ── RENDERIZAR SEMANAL ──
-  function renderWeekView(container, posts) {
-    let html = `<div class="weekly-view">`;
-    
-    // Obter o domingo da semana atual da data selecionada
-    const startOfWeek = new Date(currentDate);
-    const dayOfWeek = startOfWeek.getDay();
-    startOfWeek.setDate(startOfWeek.getDate() - dayOfWeek);
-
-    for (let i = 0; i < 7; i++) {
-      const dayDate = new Date(startOfWeek);
-      dayDate.setDate(startOfWeek.getDate() + i);
-      
-      const dateString = `${dayDate.getFullYear()}-${String(dayDate.getMonth() + 1).padStart(2, '0')}-${String(dayDate.getDate()).padStart(2, '0')}`;
-      const dayPosts = posts.filter(post => post.date === dateString);
-      
-      html += `
-        <div class="weekly-day">
-          <div class="weekly-day-header">
-            <div class="weekly-day-title">${WEEKDAYS_PT[i]}</div>
-            <div class="weekly-day-date">${dayDate.getDate()} / ${dayDate.getMonth() + 1}</div>
-          </div>
-          <div class="weekly-posts-container">
-      `;
-
-      dayPosts.forEach(post => {
-        const pautaClass = getPautaClass(post.pauta);
-        html += `
-          <div class="weekly-post-card ${pautaClass}" onclick="openModal(${post.id})">
-            <div style="font-size:10px; opacity:0.8; display:flex; justify-content:space-between;">
-              <span>🕒 ${post.time}</span>
-              <span>Dra. ${post.doctor}</span>
-            </div>
-            <div>${post.title}</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-              <span class="badge-mini" style="font-size:9px;">${post.format}</span>
-              <span class="list-status status-${post.status.toLowerCase().replace('ç', 'c')}" style="font-size:8.5px; padding:2px 6px;">${post.status}</span>
-            </div>
-          </div>
-        `;
-      });
-
-      if (dayPosts.length === 0) {
-        html += `<div style="text-align:center; color:var(--cinza-suave); font-size:11px; margin-top:40px; font-style:italic;">Sem pautas</div>`;
-      }
-
-      html += `
-          </div>
-        </div>
-      `;
-    }
-
-    html += `</div>`;
-    container.innerHTML = html;
-  }
-
-  // ── RENDERIZAR LISTA ──
-  function renderListView(container, posts) {
-    if (posts.length === 0) {
-      container.innerHTML = `<div style="text-align:center; padding:80px; color:var(--cinza-suave);">Nenhum post agendado encontrado para os filtros selecionados.</div>`;
+    if (all.length === 0) {
+      strip.innerHTML = '<span class="no-filters-label">Todos os posts</span>';
       return;
     }
 
-    // Ordenar posts por data
-    const sortedPosts = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
+    strip.innerHTML = all.map(f =>
+      `<span class="active-filter-chip" onclick="removeFilterChip('${f.cat}','${f.val}')">
+        ${f.label} <span class="chip-x">✕</span>
+      </span>`
+    ).join('');
+  }
 
-    let html = `<div class="list-view">`;
-    
-    sortedPosts.forEach(post => {
-      const dateObj = new Date(post.date + 'T00:00:00');
-      const formattedDay = String(dateObj.getDate()).padStart(2, '0');
-      const formattedMonth = MONTHS_PT[dateObj.getMonth()].substring(0, 3);
-      const weekday = WEEKDAYS_PT[dateObj.getDay()];
-      
-      const pautaClass = getPautaClass(post.pauta);
-      const statusClass = `status-${post.status.toLowerCase().replace('ç', 'c')}`;
+  function removeFilterChip(cat, val) {
+    const idx = selectedFilters[cat].indexOf(val);
+    if (idx !== -1) selectedFilters[cat].splice(idx, 1);
+    // Desmarcar tag no drawer
+    document.querySelectorAll(`.ftag[data-cat="${cat}"][data-val="${val}"]`)
+      .forEach(t => t.classList.remove('active'));
+    render();
+  }
 
-      html += `
-        <div class="list-item" onclick="openModal(${post.id})">
-          <div class="list-date">
-            <span class="list-date-day">${formattedDay} ${formattedMonth}</span>
-            <span class="list-date-weekday">${weekday}</span>
-          </div>
-          <div class="list-pauta-badge ${pautaClass}" style="border: none;">
-            ${post.pauta}
-          </div>
-          <div class="list-title">
-            ${post.title}
-          </div>
-          <div class="list-doc">
-            Dra. ${post.doctor}
-          </div>
-          <div class="list-format">
-            ${post.format}
-          </div>
-          <div class="list-status ${statusClass}">
-            ${post.status}
-          </div>
-        </div>
-      `;
+  /* ─── TROCA DE VIEW ─── */
+  function switchView(view, btnId) {
+    currentView = view;
+
+    // Mobile nav
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    const mobileBtn = document.getElementById(`nav-${view}`);
+    if (mobileBtn) mobileBtn.classList.add('active');
+
+    // Desktop nav
+    document.querySelectorAll('.dview-btn').forEach(b => b.classList.remove('active'));
+    const dBtn = document.getElementById(`dbtn-${view}`);
+    if (dBtn) dBtn.classList.add('active');
+
+    render();
+  }
+
+  /* ─── MUDANÇA DE MÊS ─── */
+  function changeMonth(dir) {
+    currentDate.setMonth(currentDate.getMonth() + dir);
+    render();
+  }
+
+  /* ══════════════════════════════════════
+     RENDERIZAÇÕES
+  ══════════════════════════════════════ */
+
+  /* ── LISTA ── */
+  function renderList(container, posts) {
+    if (!posts.length) { container.innerHTML = emptyState(); return; }
+
+    // Agrupar por semana
+    const groups = {};
+    const sorted = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    sorted.forEach(p => {
+      const d = new Date(p.date + 'T00:00:00');
+      const weekStart = new Date(d);
+      weekStart.setDate(d.getDate() - d.getDay());
+      const key = weekStart.toISOString().split('T')[0];
+      if (!groups[key]) groups[key] = { label: weekLabel(weekStart), posts: [] };
+      groups[key].posts.push(p);
     });
 
-    html += `</div>`;
-    container.innerHTML = html;
-  }
-
-  // Helper para obter a classe css da pauta
-  function getPautaClass(pauta) {
-    switch(pauta) {
-      case 'Ginecologia': return 'pauta-ginecologia';
-      case 'Obstetrícia': return 'pauta-obstetricia';
-      case 'Pediatria': return 'pauta-pediatria';
-      case 'Mastologia': return 'pauta-mastologia';
-      case 'Datas Comemorativas': return 'pauta-comemorativa';
-      case 'Pessoais': return 'pauta-pessoal';
-      default: return '';
-    }
-  }
-
-  // ── LÓGICA DO MODAL ──
-  let activePost = null;
-
-  function openModal(postId) {
-    activePost = POSTS_DATABASE.find(post => post.id === postId);
-    if (!activePost) return;
-
-    // Cabeçalho & Metadados
-    const pautaBadge = document.getElementById('modalPautaBadge');
-    pautaBadge.innerText = activePost.pauta;
-    pautaBadge.className = 'modal-pauta-badge ' + getPautaClass(activePost.pauta);
-    
-    document.getElementById('modalTitle').innerText = activePost.title;
-    document.getElementById('modalDoctor').innerText = `Dra. ${activePost.doctor}`;
-    document.getElementById('modalFormat').innerText = activePost.format;
-    document.getElementById('modalTime').innerText = activePost.time;
-    
-    const statusVal = document.getElementById('modalStatus');
-    statusVal.innerText = activePost.status;
-    statusVal.className = 'modal-meta-value list-status status-' + activePost.status.toLowerCase().replace('ç', 'c');
-    statusVal.style.display = 'inline-block';
-
-    // Aba Roteiro / Timeline
-    const timelineContainer = document.getElementById('modalRoteiroTimeline');
-    if (activePost.timeline && activePost.timeline.length > 0) {
-      let timelineHtml = '';
-      activePost.timeline.forEach(item => {
-        timelineHtml += `
-          <div class="timeline-block">
-            <span class="timeline-badge">${item.time} • ${item.label}</span>
-            <div class="timeline-text">"${item.text}"</div>
+    let html = '<div class="list-view">';
+    Object.values(groups).forEach(g => {
+      html += `<div class="week-header-label">${g.label}</div>`;
+      g.posts.forEach(p => {
+        const d = new Date(p.date + 'T00:00:00');
+        const pClass = getPautaClass(p.pauta);
+        const sClass = getStatusClass(p.status);
+        html += `
+          <div class="list-card ${pClass}" onclick="openModal(${p.id})">
+            <div class="card-date-col">
+              <span class="card-day">${d.getDate()}</span>
+              <span class="card-weekday">${WEEKDAYS_PT[d.getDay()]}</span>
+              <span class="card-month-label">${MONTHS_PT[d.getMonth()].slice(0,3)}</span>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-content">
+              <div class="card-badges">
+                <span class="chip chip-pauta ${pClass}">${p.pauta}</span>
+                <span class="chip chip-format">${p.format}</span>
+              </div>
+              <div class="card-title">${p.title}</div>
+              <div class="card-meta-row">
+                <span class="card-doctor">🩺 Dra. ${p.doctor}</span>
+                <span class="chip ${sClass}" style="font-size:10px;padding:2px 8px;">${p.status}</span>
+              </div>
+            </div>
           </div>
         `;
       });
-      timelineContainer.innerHTML = timelineHtml;
-    } else {
-      timelineContainer.innerHTML = `<p style="font-style: italic; color: var(--cinza-suave);">Roteiro não preenchido para esta publicação.</p>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function weekLabel(weekStart) {
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    return `${weekStart.getDate()} a ${weekEnd.getDate()} de ${MONTHS_PT[weekEnd.getMonth()]}`;
+  }
+
+  /* ── SEMANA ── */
+  function renderWeek(container, posts) {
+    const start = new Date(currentDate);
+    start.setDate(currentDate.getDate() - currentDate.getDay());
+
+    const today = new Date();
+    let html = '<div class="week-view"><div class="week-days-strip">';
+
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      const ds = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const dayPosts = posts.filter(p => p.date === ds);
+      const isToday = d.toDateString() === today.toDateString();
+
+      html += `<div class="week-day-col ${dayPosts.length ? 'has-posts' : ''} ${isToday ? 'is-today' : ''}">
+        <div class="week-day-header">
+          <span class="week-day-name">${WEEKDAYS_PT[i]}</span>
+          <span class="week-day-num">${d.getDate()}</span>
+        </div>
+        <div class="week-day-posts">`;
+
+      if (dayPosts.length === 0) {
+        html += `<div class="week-empty-day">—</div>`;
+      } else {
+        dayPosts.forEach(p => {
+          html += `<div class="week-post-pill ${getPautaClass(p.pauta)}" onclick="openModal(${p.id})">
+            <div class="week-post-title">${p.title}</div>
+            <div class="week-post-doc">Dra. ${p.doctor}</div>
+          </div>`;
+        });
+      }
+
+      html += `</div></div>`;
     }
 
-    // Aba Legenda
-    document.getElementById('modalCopyText').innerText = activePost.copy || 'Sem legenda cadastrada.';
-    resetCopyButton();
+    html += '</div></div>';
+    container.innerHTML = html;
+  }
 
-    // Aba Referências
-    const refsList = document.getElementById('modalReferencesList');
-    if (activePost.references && activePost.references.length > 0) {
-      let refsHtml = '<ol style="padding-left: 20px; display:flex; flex-direction:column; gap:10px;">';
-      activePost.references.forEach(ref => {
-        // Substituir links por tags <a>
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        const linkedRef = ref.replace(urlRegex, url => `<a href="${url}" target="_blank" style="color:var(--verde); text-decoration:underline;">${url}</a>`);
-        refsHtml += `<li>${linkedRef}</li>`;
+  /* ── MENSAL (desktop only really) ── */
+  function renderMonth(container, posts) {
+    const year  = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDayIdx  = new Date(year, month, 1).getDay();
+    const totalDays    = new Date(year, month + 1, 0).getDate();
+    const prevTotal    = new Date(year, month, 0).getDate();
+    const today        = new Date();
+
+    let html = '<div class="calendar-grid">';
+    WEEKDAYS_PT.forEach(d => { html += `<div class="weekday-header">${d}</div>`; });
+
+    for (let i = firstDayIdx; i > 0; i--) {
+      html += `<div class="calendar-day other-month"><span class="day-num">${prevTotal - i + 1}</span></div>`;
+    }
+
+    for (let day = 1; day <= totalDays; day++) {
+      const ds = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const isToday = today.getDate() === day && today.getMonth() === month && today.getFullYear() === year;
+      const dayPosts = posts.filter(p => p.date === ds);
+
+      html += `<div class="calendar-day ${isToday ? 'today' : ''}">
+        <span class="day-num">${day}</span>`;
+      dayPosts.forEach(p => {
+        html += `<div class="cal-post-mini ${getPautaClass(p.pauta)}" onclick="openModal(${p.id})">${p.title}</div>`;
       });
-      refsHtml += '</ol>';
-      refsList.innerHTML = refsHtml;
-    } else {
-      refsList.innerHTML = `<p style="font-style: italic; color: var(--cinza-suave);">Sem referências científicas associadas a este post.</p>`;
+      html += `</div>`;
     }
 
-    // Abre modal
-    document.getElementById('postModal').classList.add('open');
+    const remaining = (firstDayIdx + totalDays) % 7;
+    if (remaining > 0) {
+      for (let i = 1; i <= 7 - remaining; i++) {
+        html += `<div class="calendar-day other-month"><span class="day-num">${i}</span></div>`;
+      }
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
   }
 
-  function closeModal(event) {
-    document.getElementById('postModal').classList.remove('open');
-    // Resetar abas do modal para a primeira aba
-    document.querySelectorAll('.modal-tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  /* ─── HELPERS ─── */
+  function emptyState() {
+    return `<div class="empty-state">
+      <div class="empty-icon">🗓</div>
+      <div class="empty-title">Nenhuma pauta encontrada</div>
+      <div class="empty-desc">Tente ajustar os filtros ou navegue para outro mês.</div>
+    </div>`;
+  }
+
+  function getPautaClass(p) {
+    const map = {
+      'Ginecologia': 'pauta-ginecologia',
+      'Obstetrícia': 'pauta-obstetricia',
+      'Pediatria':   'pauta-pediatria',
+      'Mastologia':  'pauta-mastologia',
+      'Datas Comemorativas': 'pauta-comemorativa',
+      'Pessoais':    'pauta-pessoal'
+    };
+    return map[p] || '';
+  }
+
+  function getStatusClass(s) {
+    const map = { 'Rascunho': 'status-rascunho', 'Produção': 'status-producao', 'Aprovado': 'status-aprovado', 'Publicado': 'status-publicado' };
+    return map[s] || '';
+  }
+
+  /* ══════════════════════════════════════
+     DRAWER
+  ══════════════════════════════════════ */
+  function openFilterDrawer() {
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('filterDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFilterDrawer() {
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('filterDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+    render();
+  }
+
+  /* ══════════════════════════════════════
+     MODAL
+  ══════════════════════════════════════ */
+  function openModal(id) {
+    const p = POSTS_DATABASE.find(x => x.id === id);
+    if (!p) return;
+
+    const pClass = getPautaClass(p.pauta);
+    const sClass = getStatusClass(p.status);
+
+    // Header
+    const chip = document.getElementById('modalPautaChip');
+    chip.textContent = p.pauta;
+    chip.className = `modal-pauta-chip ${pClass}`;
+
+    document.getElementById('modalTitle').textContent = p.title;
+
+    document.getElementById('modalMetaRow').innerHTML = `
+      <span class="meta-pill">🩺 Dra. ${p.doctor}</span>
+      <span class="meta-pill">${p.format}</span>
+      <span class="meta-pill">🕒 ${p.time}</span>
+      <span class="meta-pill chip ${sClass}">${p.status}</span>
+    `;
+
+    // Timeline
+    let tlHtml = '';
+    (p.timeline || []).forEach(t => {
+      tlHtml += `<div class="timeline-block">
+        <span class="tl-label">${t.time} • ${t.label}</span>
+        <div class="tl-text">"${t.text}"</div>
+      </div>`;
+    });
+    document.getElementById('modalTimeline').innerHTML = tlHtml || '<p style="color:var(--cinza-suave);font-style:italic">Sem roteiro cadastrado.</p>';
+
+    // Copy
+    document.getElementById('modalCopyText').textContent = p.copy || 'Sem legenda cadastrada.';
+    resetCopyBtn();
+
+    // Refs
+    let refsHtml = '';
+    if (p.references && p.references.length > 0) {
+      p.references.forEach(r => {
+        const linked = r.replace(/(https?:\/\/[^\s]+)/g, url => `<a href="${url}" target="_blank" style="color:var(--verde)">${url}</a>`);
+        refsHtml += `<div class="ref-item">${linked}</div>`;
+      });
+    } else {
+      refsHtml = '<p style="color:var(--cinza-suave);font-style:italic;font-size:13px">Sem referências científicas associadas.</p>';
+    }
+    document.getElementById('modalRefsList').innerHTML = refsHtml;
+
+    // Resetar para primeira aba
+    document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     document.querySelector('.modal-tab-btn').classList.add('active');
-    document.querySelector('.tab-content').classList.add('active');
+    document.getElementById('tab-roteiro').classList.add('active');
+
+    document.getElementById('postModal').classList.add('open');
+    document.getElementById('modalSheet').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
-  function switchModalTab(tabId, element) {
-    // Esconder todas as abas
-    document.querySelectorAll('.modal-tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-    
-    // Ativar aba clicada
-    element.classList.add('active');
+  function closeModal() {
+    document.getElementById('postModal').classList.remove('open');
+    document.getElementById('modalSheet').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function switchModalTab(tabId, el) {
+    document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
     document.getElementById(`tab-${tabId}`).classList.add('active');
   }
 
-  // Copiar legenda para o CTRL+C
-  function copyText() {
-    const copyTextStr = document.getElementById('modalCopyText').innerText;
-    navigator.clipboard.writeText(copyTextStr).then(() => {
-      const copyBtnText = document.getElementById('copyBtnText');
-      const copyBtnIcon = document.getElementById('copyBtnIcon');
-      
-      copyBtnText.innerText = 'Copiado!';
-      copyBtnIcon.innerText = '✓';
-      
-      setTimeout(() => {
-        resetCopyButton();
-      }, 2000);
-    }).catch(err => {
-      console.error('Erro ao copiar texto: ', err);
-    });
+  function copyLegenda() {
+    const text = document.getElementById('modalCopyText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('btnCopy');
+      document.getElementById('copyIcon').textContent = '✓';
+      document.getElementById('copyText').textContent = 'Copiado!';
+      btn.classList.add('copied');
+      setTimeout(resetCopyBtn, 2000);
+    }).catch(() => {});
   }
 
-  function resetCopyButton() {
-    document.getElementById('copyBtnText').innerText = 'Copiar Legenda';
-    document.getElementById('copyBtnIcon').innerText = '📋';
+  function resetCopyBtn() {
+    document.getElementById('copyIcon').textContent = '📋';
+    document.getElementById('copyText').textContent = 'Copiar';
+    document.getElementById('btnCopy').classList.remove('copied');
   }
 </script>
 
