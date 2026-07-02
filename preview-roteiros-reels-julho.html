@@ -7,11 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{--gaia-red:#B12A38;}
+:root{--gaia-red:#B12A38;--gaia-dark:#853B50;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Outfit',sans-serif;background:#f1f5f9;color:#1e293b;min-height:100vh;}
 .script-text{font-family:'Roboto',sans-serif;font-size:1.1rem;line-height:1.9;color:#334155;}
-.glass-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08),0 4px 10px -3px rgba(0,0,0,.04);border:1px solid #e2e8f0;overflow:hidden;margin-bottom:2.5rem;}
+.glass-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08),0 4px 10px -3px rgba(0,0,0,.04);border:1px solid #e2e8f0;overflow:hidden;margin-bottom:2.5rem;transition:all 0.3s ease;}
 .timeline-badge{font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:.25rem .75rem;border-radius:9999px;display:inline-flex;align-items:center;white-space:nowrap;text-transform:uppercase;margin-bottom:.6rem;}
 .time-block{border-left:4px solid #e2e8f0;padding-left:1.5rem;position:relative;padding-bottom:2rem;}
 .time-block:last-child{border-left-color:transparent;padding-bottom:0;}
@@ -25,11 +25,85 @@ header h1{font-size:2.8rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
 header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-height:1.7;}
 .header-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem;}
 .header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);padding:.5rem 1rem;border-radius:9999px;font-size:.8rem;font-weight:700;}
+
+/* Filtros */
 .filter-bar{position:sticky;top:60px;z-index:90;background:#fff;border-bottom:1px solid #e2e8f0;padding:.8rem 1rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.filter-inner{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;}
+.filter-inner{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;}
 .btn-series{padding:.5rem 1.1rem;border-radius:9999px;font-size:.78rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .25s ease;font-family:'Outfit',sans-serif;letter-spacing:.04em;}
 .btn-series:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
-.btn-all{background:#1e293b;color:white;border-color:#1e293b;}
+.btn-all{background:#e2e8f0;color:#1e293b;border-color:#cbd5e1;}
+.btn-all.active-btn{background:#1e293b;color:white;border-color:#1e293b;}
+.btn-series.active-btn {
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1), inset 0 2px 4px rgba(0,0,0,0.1);
+    transform: scale(0.97);
+}
+.filter-select {
+    padding: .45rem 1.2rem;
+    border-radius: 9999px;
+    font-size: .78rem;
+    font-weight: 700;
+    border: 2px solid #e2e8f0;
+    background: white;
+    color: #1e293b;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: all .25s ease;
+}
+.filter-select:hover {
+    border-color: #cbd5e1;
+}
+.filter-select:focus {
+    border-color: var(--gaia-red);
+}
+.filter-divider {
+    width: 2px;
+    height: 24px;
+    background: #e2e8f0;
+    margin: 0 0.5rem;
+}
+
+/* Badges de Status e Médica */
+.status-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1px solid;
+}
+.status-pendente {
+    background-color: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
+}
+.status-gravado {
+    background-color: #fef9c3;
+    color: #a16207;
+    border-color: #fef08a;
+}
+.status-publicado {
+    background-color: #dcfce7;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+.doctor-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
 main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem;}
 .series-container{display:none;}
 .series-container.active{display:block;}
@@ -67,15 +141,40 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <span class="header-badge">📚 Baseado em Evidências FEBRASGO / OMS / INCA</span>
     </div>
 </header>
-<div class="filter-bar"><div class="filter-inner"><button class="btn-series btn-all" onclick="showSeries('all')">📋 Todas as Séries</button>
-<button class="btn-series" onclick="showSeries('A')" style="background:#fce7f3;color:#be185d;border-color:#ec4899;">🌸 Série A · Climatério</button>
-<button class="btn-series" onclick="showSeries('B')" style="background:#ede9fe;color:#6d28d9;border-color:#8b5cf6;">🔬 Série B · Urologia Feminina</button>
-<button class="btn-series" onclick="showSeries('C')" style="background:#d1fae5;color:#065f46;border-color:#10b981;">🌿 Série C · Microbiota</button>
-<button class="btn-series" onclick="showSeries('D')" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">🛡️ Série D · HPV</button>
-<button class="btn-series" onclick="showSeries('E')" style="background:#dbeafe;color:#1e40af;border-color:#3b82f6;">🔭 Série E · Patologia Cervical</button>
-<button class="btn-series" onclick="showSeries('E1')" style="background:#cffafe;color:#0e7490;border-color:#06b6d4;">💊 Série E1 · Contracepção</button>
-<button class="btn-series" onclick="showSeries('E2')" style="background:#ffedd5;color:#c2410c;border-color:#f97316;">🏃‍♀️ Série E2 · Esporte Feminino</button>
-</div></div>
+
+    <div class="filter-bar">
+        <div class="filter-inner">
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:.5rem;width:100%;">
+                <button class="btn-series btn-all active-btn" onclick="showSeries('all', this)">📋 Todas as Séries</button>
+<button class="btn-series" onclick="showSeries('A', this)" style="background:#fce7f3;color:#be185d;border-color:#ec4899;">🌸 Série A · Climatério</button>
+<button class="btn-series" onclick="showSeries('B', this)" style="background:#ede9fe;color:#6d28d9;border-color:#8b5cf6;">🔬 Série B · Urologia Feminina</button>
+<button class="btn-series" onclick="showSeries('C', this)" style="background:#d1fae5;color:#065f46;border-color:#10b981;">🌿 Série C · Microbiota</button>
+<button class="btn-series" onclick="showSeries('D', this)" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">🛡️ Série D · HPV</button>
+<button class="btn-series" onclick="showSeries('E', this)" style="background:#dbeafe;color:#1e40af;border-color:#3b82f6;">🔬 Série E · Patologia Cervical</button>
+<button class="btn-series" onclick="showSeries('E1', this)" style="background:#cffafe;color:#0e7490;border-color:#06b6d4;">💊 Série E1 · Contracepção</button>
+<button class="btn-series" onclick="showSeries('E2', this)" style="background:#ffedd5;color:#c2410c;border-color:#f97316;">🏃‍♀️ Série E2 · Esporte Feminino</button>
+
+            </div>
+            <div class="filter-divider" style="margin-bottom:.5rem;display:none;"></div>
+            <div style="display:flex;gap:.5rem;justify-content:center;align-items:center;">
+                
+    <select id="status-filter" onchange="applyFilters()" class="filter-select">
+        <option value="all">🎬 Todos os Status</option>
+        <option value="pendente">⏳ A Gravar</option>
+        <option value="gravado">🎬 Gravados</option>
+        <option value="publicado">🟢 Publicados</option>
+    </select>
+    
+                
+    <select id="doctor-filter" onchange="applyFilters()" class="filter-select">
+        <option value="all">👩‍⚕️ Todas as Médicas</option>
+        <option value="Dra. Lilian Barros">Dra. Lilian Barros</option>
+    </select>
+    
+            </div>
+        </div>
+    </div>
+    
 <main>
 
 <div id="series-A" class="series-container active">
@@ -88,12 +187,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Perimenopausa</span>
         </div>
@@ -146,12 +247,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Climatério: Diagnóstico e Tratamento. Protocolo Febrasgo, 2024 https://www.febrasgo.org.br<br>2. NAMS (North American Menopause Society). The 2022 Hormone Therapy Position Statement. Menopause, 2022.<br>3. Sociedade Brasileira de Climatério (SOBRAC). Consenso Brasileiro de Terapêutica Hormonal da Menopausa, 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Cognição</span>
         </div>
@@ -204,12 +307,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Weber, M. et al. Cognition and mood in perimenopause: a systematic review and meta-analysis. Journal of Steroid Biochemistry and Molecular Biology, 2014.<br>2. Maki, P. M. &amp; Sundermann, E. Hormone therapy and cognitive function. Menopause, 2024.<br>3. NAMS. Nonhormone management of menopause-associated vasomotor symptoms: 2023 position statement.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Sono · Saúde Mental</span>
         </div>
@@ -262,12 +367,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Baker, F. C. et al. Sleep problems during the menopausal transition: prevalence, impact, and management challenges. Nature and Science of Sleep, 2018.<br>2. FEBRASGO. Manual de Climatério, capítulo sobre sintomas vasomotores e qualidade do sono, 2024.<br>3. OMS. Menopausa: folha informativa atualizada, 2024 https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Metabolismo · Composição Corporal</span>
         </div>
@@ -320,12 +427,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Greendale, G. A. et al. Changes in body composition and weight during the menopause transition. JCI Insight, 2019.<br>2. Davis, S. R. et al. Menopause. Nature Reviews Disease Primers, 2015.<br>3. FEBRASGO. Consenso sobre Terapêutica Hormonal e Risco Metabólico, 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Terapia Hormonal · Segurança</span>
         </div>
@@ -378,12 +487,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Posicionamento sobre Terapêutica Hormonal da Menopausa, 2024 https://www.febrasgo.org.br<br>2. Hodis, H. N. &amp; Mack, W. J. The timing hypothesis and hormone replacement therapy: a paradigm shift in the primary prevention of coronary heart disease in women. Journal of Clinical Endocrinology &amp; Metabolism, 2022.<br>3. IMS (International Menopause Society). Recommendations on hormone therapy, 2024 https://www.imsociety.org</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Saúde Sexual · Atrofia Vaginal</span>
         </div>
@@ -436,12 +547,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. NAMS. Genitourinary Syndrome of Menopause. Position Statement, 2020 https://www.menopause.org<br>2. FEBRASGO. Protocolo de Atrofia Vulvovaginal, 2024 https://www.febrasgo.org.br<br>3. Portman, D. J. &amp; Gass, M. L. Genitourinary syndrome of menopause: new terminology for vulvovaginal atrophy. Menopause, 2014.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Procedimentos · Laser Íntimo</span>
         </div>
@@ -494,12 +607,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Salvatore, S. et al. Fractional CO2 laser for vulvovaginal atrophy: a systematic review. Menopause, 2021.<br>2. FEBRASGO. Nota sobre uso de laser em ginecologia, 2024 https://www.febrasgo.org.br<br>3. Aguiar, L. B. et al. Hyaluronic acid for genitourinary syndrome of menopause: a systematic review. Lasers in Surgery and Medicine, 2023.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Longevidade · Prevenção</span>
         </div>
@@ -563,12 +678,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Cistite Recorrente · Anatomia Feminina · Introdução da Série</span>
         </div>
@@ -619,12 +736,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Infecção do Trato Urinário na Mulher: Diagnóstico e Tratamento. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Foxman, B. Epidemiology of urinary tract infections: incidence, morbidity, and economic costs. Disease-a-Month, 2003;49(2):53–70. (PubMed PMID: 12601337)<br>3. Hooton, T. M. Uncomplicated urinary tract infection. New England Journal of Medicine, 2012;366(11):1028–1037. (PubMed PMID: 22417256)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Microbiota Vaginal · Lactobacilos · Prevenção</span>
         </div>
@@ -675,12 +794,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Stapleton, A. E. The vaginal microbiota and urinary tract infection. Microbiology Spectrum, 2016;4(6). (PubMed PMID: 27974000)<br>2. Ravel, J. et al. Vaginal microbiome of reproductive-age women. PNAS, 2011;108(Suppl 1):4680–4687. (PubMed PMID: 20534435)<br>3. FEBRASGO. Infecção Urinária Recorrente e Microbiota Vaginal: Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Estrogênio · Perimenopausa · Amamentação · Mucosa Uretral</span>
         </div>
@@ -731,12 +852,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Perrotta, C. et al. Oestrogens for preventing recurrent urinary tract infection in postmenopausal women. Cochrane Database of Systematic Reviews, 2008;(2):CD005131. (PubMed PMID: 18425940)<br>2. Raz, R. &amp; Stamm, W. E. A controlled trial of intravaginal estriol in postmenopausal women with recurrent urinary tract infections. New England Journal of Medicine, 1993;329(11):753–756. (PubMed PMID: 8350884)<br>3. FEBRASGO. Estrogênio Tópico Vaginal e Prevenção de ITU Recorrente: Protocolo, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Assoalho Pélvico · Hipertonia Pélvica · Esvaziamento Vesical</span>
         </div>
@@ -787,12 +910,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Fitzgerald, M. P. et al. Pelvic floor muscle dysfunction and recurrent urinary tract infections. Journal of Women's Health Physical Therapy, 2012;36(3):122–128.<br>2. Faubion, S. S. et al. Recognition and management of nonrelaxing pelvic floor dysfunction. Mayo Clinic Proceedings, 2012;87(2):187–198. (PubMed PMID: 22305029)<br>3. FEBRASGO. Fisioterapia Pélvica na Prevenção de ITU Recorrente. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Resistência Bacteriana · Microbiota Vaginal · Urocultura</span>
         </div>
@@ -843,12 +968,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. OMS. Antimicrobial Resistance: Global Report on Surveillance, 2024. https://www.who.int<br>2. Gupta, K. et al. International clinical practice guidelines for the treatment of acute uncomplicated cystitis and pyelonephritis in women. Clinical Infectious Diseases, 2011;52(5):e103–e120. (PubMed PMID: 21292654)<br>3. FEBRASGO. Protocolo de Manejo da Infecção Urinária Recorrente: Diagnóstico e Resistência Bacteriana, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Cistite Pós-Coito · Anatomia Feminina · Saúde Sexual</span>
         </div>
@@ -899,12 +1026,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Hooton, T. M. et al. A prospective study of risk factors for symptomatic urinary tract infection in young women. New England Journal of Medicine, 1996;335(7):468–474. (PubMed PMID: 8672152)<br>2. Scholes, D. et al. Risk factors associated with acute pyelonephritis in healthy women. Annals of Internal Medicine, 2005;142(1):20–27. (PubMed PMID: 15630105)<br>3. FEBRASGO. Cistite Pós-Coital: Diagnóstico, Prevenção e Manejo. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · D-Manose · Probióticos · Prevenção Não Antibiótica</span>
         </div>
@@ -955,12 +1084,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Kranjčec, B. et al. D-Mannose powder for prophylaxis of recurrent urinary tract infections in women: a randomized clinical trial. BJU International, 2014;113(1):9–15. (PubMed PMID: 23941526)<br>2. Reid, G. et al. Oral use of Lactobacillus rhamnosus GR-1 and L. reuteri RC-14 significantly alters vaginal flora. FEMS Immunology and Medical Microbiology, 2003;35(2):131–134. (PubMed PMID: 12628548)<br>3. FEBRASGO. Prevenção Não Antibiótica da ITU Recorrente e Probióticos em Ginecologia. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Plano Preventivo · Integração · Encerramento da Série</span>
         </div>
@@ -1022,12 +1153,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Microbiota Vaginal · Higiene Íntima</span>
         </div>
@@ -1078,12 +1211,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Protocolo de Vulvovaginites, 2024.<br>2. Ravel J, et al. "Vaginal microbiome of reproductive-age women." Proc Natl Acad Sci USA. 2011;108 Suppl 1:4680–4687. (PubMed PMID: 20534435)<br>3. OMS — Diretrizes sobre Saúde Sexual e Reprodutiva, 2021.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Automedicação · Candidíase Recorrente</span>
         </div>
@@ -1134,12 +1269,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Diretriz de Candidíase Vulvovaginal Recorrente, 2023.<br>2. Sobel JD. "Recurrent vulvovaginal candidiasis." Am J Obstet Gynecol. 2016;214(1):15–21. (PubMed PMID: 26164695)<br>3. Denning DW, et al. "Global burden of recurrent vulvovaginal candidiasis." Lancet Infect Dis. 2018;18(11):e339–e347. (PubMed PMID: 30078662)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Diagnóstico Diferencial · Vaginose Citolítica</span>
         </div>
@@ -1190,12 +1327,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Cibley LJ, Cibley LJ. "Cytolytic vaginosis." Am J Obstet Gynecol. 1991;165(4 Pt 2):1245–1249. (PubMed PMID: 1951582)<br>2. FEBRASGO — Manual de Orientação em Trato Genital Inferior e Colposcopia, 2023.<br>3. Cerikcioglu N, Beksac MS. "Cytolytic vaginosis: misdiagnosed as candidal vaginitis." Infect Dis Obstet Gynecol. 2004;12(1):13–16. (PubMed PMID: 15460190)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Candidíase Resistente · Diagnóstico Laboratorial</span>
         </div>
@@ -1246,12 +1385,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Sobel JD. "Vulvovaginal candidosis." Lancet. 2007;369(9577):1961–1971. (PubMed PMID: 17560449)<br>2. FEBRASGO — Protocolo de Candidíase Vulvovaginal, 2024.<br>3. Pappas PG, et al. "Clinical Practice Guideline for the Management of Candidiasis: 2016 Update by IDSA." Clin Infect Dis. 2016;62(4):e1–e50. (PubMed PMID: 26679628)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Microbiota Intestinal · Alimentação e Saúde Vaginal</span>
         </div>
@@ -1302,12 +1443,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Barratt MJ, et al. "The gut microbiota, food science, and human nutrition: a timely marriage." Cell Host Microbe. 2017;22(2):134–141. (PubMed PMID: 28799899)<br>2. Bradford LL, Ravel J. "The vaginal mycobiome: a contemporary perspective on fungi in women's health and diseases." Virulence. 2017;8(3):342–351. (PubMed PMID: 27657355)<br>3. FEBRASGO — Comissão Nacional de Infecções do Trato Genital Inferior, Recomendações 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Estresse · Imunidade Vaginal</span>
         </div>
@@ -1358,12 +1501,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Amabebe E, Anumba DOC. "Psychosocial stress, cortisol levels, and maintenance of vaginal health." Front Endocrinol. 2018;9:568. (PubMed PMID: 30319545)<br>2. Eschenbach DA. "Chronic vulvovaginal candidiasis." N Engl J Med. 2004;351(9):851–852.<br>3. FEBRASGO — Comissão Nacional Especializada em Trato Genital Inferior, 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Probióticos · Microbiota Vaginal</span>
         </div>
@@ -1414,12 +1559,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Reid G, et al. "Oral use of Lactobacillus rhamnosus GR-1 and L. reuteri RC-14 significantly alters vaginal flora." FEMS Immunol Med Microbiol. 2003;35(2):131–134. (PubMed PMID: 12628548)<br>2. Cohen CR, et al. "Randomized trial of Lactin-V to prevent recurrence of bacterial vaginosis." N Engl J Med. 2020;382(20):1906–1915. (PubMed PMID: 32402161)<br>3. FEBRASGO — Probióticos em Ginecologia, Posicionamento 2023.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Prevenção · Hábitos de Vida</span>
         </div>
@@ -1481,12 +1628,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Acolhimento · Diagnóstico</span>
         </div>
@@ -1537,12 +1686,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO (Federação Brasileira das Associações de Ginecologia e Obstetrícia). Diretrizes de Rastreamento e Conduta em HPV. 2023.<br>2. OMS (Organização Mundial da Saúde). Human Papillomavirus (HPV) and Cervical Cancer. Fact Sheet, 2024 https://www.who.int/news-room/fact-sheets/detail/cervical-cancer<br>3. INCA (Instituto Nacional de Câncer). Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero. 2a edição revisada, 2016.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Imunologia · Clearance Viral</span>
         </div>
@@ -1593,12 +1744,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Rodríguez AC, Schiffman M, Herrero R, et al. Rapid clearance of human papillomavirus and implications for clinical focus on persistent infections. J Natl Cancer Inst. 2008;100(7):513-7. PubMed.<br>2. OMS. Human Papillomavirus (HPV) and Cervical Cancer. 2024 https://www.who.int/news-room/fact-sheets/detail/cervical-cancer<br>3. FEBRASGO. Consenso sobre Infecção pelo HPV e Lesões Intraepiteliais do Colo, Vagina e Vulva. 2023.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · NIC · Papanicolau · Lesões Cervicais</span>
         </div>
@@ -1649,12 +1802,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. INCA (Instituto Nacional de Câncer). Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero. 2a edição revisada, 2016.<br>2. FEBRASGO. Consenso de Condutas em Lesões Intraepiteliais do Colo Uterino. 2023.<br>3. WHO Guidelines for Screening and Treatment of Cervical Pre-cancer Lesions for Cervical Cancer Prevention. 2nd Edition, 2021 https://www.who.int/publications/i/item/9789240030824</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Papanicolau · Teste DNA HPV · Rastreamento</span>
         </div>
@@ -1705,12 +1860,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. WHO Guideline for Screening and Treatment of Cervical Pre-cancer Lesions. 2nd Edition, 2021 https://www.who.int/publications/i/item/9789240030824<br>2. INCA. Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero, 2016.<br>3. Ronco G, Dillner J, Elfström KM, et al. Efficacy of HPV-based screening for prevention of invasive cervical cancer. Lancet. 2014;383(9916):524-32. PubMed.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Colposcopia · Biópsia · Exame Ginecológico</span>
         </div>
@@ -1761,12 +1918,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Manual de Colposcopia. Comissão Nacional Especializada em Trato Genital Inferior. 2022.<br>2. INCA. Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero, 2016.<br>3. Prendiville W, Sankaranarayanan R. Colposcopy and Treatment of Cervical Precancer. IARC Technical Publication No. 45, WHO/IARC https://screening.iarc.fr/colpo.php</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Vacina · Imunização · Adultos</span>
         </div>
@@ -1817,12 +1976,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Nota Técnica sobre Vacinação contra HPV em Mulheres Adultas. 2023.<br>2. Sociedade Brasileira de Imunizações (SBIm). Calendário de Vacinação do Adulto. 2024 https://sbim.org.br/calendarios-de-vacinacao<br>3. Giuliano AR, Palefsky JM, Goldstone S, et al. Efficacy of quadrivalent HPV vaccine against HPV infection and disease in males. N Engl J Med. 2011;364(5):401-11. PubMed.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Relacionamento · Parceiros · Mitos</span>
         </div>
@@ -1873,12 +2034,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Infecção pelo HPV: Papel do Parceiro e Manejo Clínico. 2023.<br>2. Giuliano AR, et al. Epidemiology of human papillomavirus infection in men, cancers other than cervical and benign conditions. Vaccine. 2008;26 Suppl 10:K17-28. PubMed.<br>3. Hernandez BY, et al. Transmission of human papillomavirus in heterosexual couples. Emerg Infect Dis. 2008;14(6):888-94. PubMed.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f59e0b;">
+<article class="glass-card" style="border-left:4px solid #f59e0b;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f59e0b;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · HPV · Prevenção · Acompanhamento · Rastreamento</span>
         </div>
@@ -1932,7 +2095,7 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 </div>
 <div id="series-E" class="series-container ">
     <div class="series-header" style="border-color:#3b82f6;">
-        <span style="font-size:2.5rem;">🔭</span>
+        <span style="font-size:2.5rem;">🔬</span>
         <div>
             <span class="series-tag" style="color:#1e40af;background:#dbeafe;border-color:#93c5fd;">Ginecologia / Patologia Cervical</span>
             <h2>Série E: Decifrando a Colposcopia</h2>
@@ -1940,12 +2103,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Preventivo Alterado</span>
         </div>
@@ -1996,12 +2161,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Diretrizes de Rastreamento e Diagnóstico do Câncer de Colo Uterino (2024).<br>2. INCA — Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero, 3ª edição (2016) https://www.inca.gov.br<br>3. WHO — Guidelines for Screening and Treatment of Cervical Pre-Cancer Lesions for Cervical Cancer Prevention (2021) https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Preparo Emocional</span>
         </div>
@@ -2052,12 +2219,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Manual de Colposcopia (Comissão Nacional Especializada em PTGI, 2023).<br>2. ASCCP — Guidelines for Management of Abnormal Cervical Cancer Screening Tests (2019 Updated Consensus) https://www.asccp.org<br>3. INCA — Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero (2016).</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Ácido Acético · Lugol</span>
         </div>
@@ -2108,12 +2277,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Manual de Colposcopia e Patologia do Trato Genital Inferior (2023).<br>2. Sellors, J.W. &amp; Sankaranarayanan, R. — Colposcopy and Treatment of Cervical Intraepithelial Neoplasia: A Beginners' Manual. IARC/WHO (2003) https://screening.iarc.fr<br>3. INCA — Atlas de Colposcopia: Princípios e Prática (adaptação brasileira).</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Biópsia Cervical</span>
         </div>
@@ -2164,12 +2335,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Recomendações sobre Condutas em Lesões Intraepiteliais Cervicais (2024).<br>2. ASCCP — 2019 Consensus Management Guidelines for Abnormal Cervical Cancer Screening Tests and Cancer Precursors. Journal of Lower Genital Tract Disease, 24(2), 2020.<br>3. WHO — Cervical Cancer: Elimination Strategy and Guidelines (2021) https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Preparação para o Exame</span>
         </div>
@@ -2220,12 +2393,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Protocolo de Preparo para Colposcopia e Exames do Trato Genital Inferior (2023).<br>2. INCA — Diretrizes Brasileiras para o Rastreamento do Câncer do Colo do Útero (2016).<br>3. Sellors, J.W. &amp; Sankaranarayanan, R. — Colposcopy and Treatment of Cervical Intraepithelial Neoplasia. IARC/WHO (2003).</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Pós Exame · Cuidados</span>
         </div>
@@ -2276,12 +2451,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO — Orientações Pós Colposcopia e Biópsia Cervical (Comissão Nacional de PTGI, 2023).<br>2. ASCCP — Patient Education: What to Expect After Colposcopy (2020) https://www.asccp.org<br>3. NHS — Colposcopy: What Happens and Recovery https://www.nhs.uk/conditions/colposcopy</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Colposcopia · Laudo · Terminologia</span>
         </div>
@@ -2332,12 +2509,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. IFCPC — International Federation for Cervical Pathology and Colposcopy: Nomenclatura Colposcópica Atualizada (Rio de Janeiro, 2011) https://www.ifcpc.org<br>2. FEBRASGO — Terminologia Colposcópica e Classificação das Lesões Cervicais (2023).<br>3. Bornstein, J. et al. — 2011 Colposcopic Terminology of the IFCPC. Obstetrics &amp; Gynecology, 120(1), 2012.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #3b82f6;">
+<article class="glass-card" style="border-left:4px solid #3b82f6;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#3b82f6;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · PTGI · Patologia Cervical · Especialista</span>
         </div>
@@ -2399,12 +2578,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · DIU Hormonal · DIU de Cobre · Endométrio · Comparativo</span>
         </div>
@@ -2455,12 +2636,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Métodos Contraceptivos Reversíveis de Longa Ação (LARCs): Protocolo de Orientação, 2024. https://www.febrasgo.org.br<br>2. Bahamondes, L. et al. Non-contraceptive benefits and risks of the levonorgestrel intrauterine system. Human Reproduction Update, 2015;21(5):640–651. (PubMed PMID: 25935149)<br>3. OMS. Selected Practice Recommendations for Contraceptive Use, 4th Edition, 2024. https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Implante Subdérmico · Implanon · Etonogestrel · LARC</span>
         </div>
@@ -2511,12 +2694,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Implante Subdérmico de Etonogestrel: Indicações e Manejo. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Mommers, E. et al. Nexplanon, a radiopaque etonogestrel implant in combination with a next-generation applicator. European Journal of Contraception and Reproductive Health Care, 2012;17(2):150–162. (PubMed PMID: 22339656)<br>3. OMS. Medical Eligibility Criteria for Contraceptive Use, 6th Edition, 2024. https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Spotting · Adaptação Endometrial · DIU Hormonal · Implanon</span>
         </div>
@@ -2567,12 +2752,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Manejo dos Efeitos Colaterais de LARCs: Sangramento de Escape. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Mansour, D. et al. Bleeding patterns in women using progestogen-only long-acting reversible contraception. Journal of Family Planning and Reproductive Health Care, 2011;37(3):156–169. (PubMed PMID: 21727242)<br>3. Backman, T. et al. Length of use and symptoms associated with premature removal of the levonorgestrel intrauterine system. Contraception, 2000;61(6):353–360. (PubMed PMID: 10958863)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · DIU Perdido · Fio Retraído · Anatomia Uterina · Mitos</span>
         </div>
@@ -2623,12 +2810,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Manejo do DIU com Fio Não Visível: Protocolo de Orientação, 2024. https://www.febrasgo.org.br<br>2. Prager, S. &amp; Darney, P. D. The levonorgestrel intrauterine system in nulliparous women. Contraception, 2007;75(6 Suppl):S12–S15. (PubMed PMID: 17531603)<br>3. Heinemann, K. et al. Risk of uterine perforation with levonorgestrel-releasing and copper intrauterine devices. Contraception, 2015;92(4):377–385. (PubMed PMID: 26153745)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Histeroscopia · Retirada de DIU · Procedimento Ambulatorial</span>
         </div>
@@ -2679,12 +2868,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Histeroscopia Diagnóstica e Operatória: Indicações e Técnica. Manual FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Di Spiezio Sardo, A. et al. Hysteroscopy for the management of IUD complications. Best Practice &amp; Research Clinical Obstetrics &amp; Gynaecology, 2015;29(7):981–993. (PubMed PMID: 25890676)<br>3. Cicinelli, E. et al. Office hysteroscopy: state of the art. European Journal of Obstetrics &amp; Gynecology and Reproductive Biology, 2018;227:43–48. (PubMed PMID: 29778920)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Perimenopausa · DIU Hormonal · Terapia Hormonal · Proteção Endometrial</span>
         </div>
@@ -2735,12 +2926,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. SIU-LNG como Proteção Endometrial na Terapia Hormonal da Menopausa. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Bitzer, J. et al. Use of the levonorgestrel-releasing intrauterine system in the management of menopausal hormone therapy. Climacteric, 2019;22(4):336–342. (PubMed PMID: 30889379)<br>3. NAMS (North American Menopause Society). The 2022 Hormone Therapy Position Statement. Menopause, 2022;29(7):767–794.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Contracepção · Puerpério · Amamentação · Planejamento Reprodutivo</span>
         </div>
@@ -2791,12 +2984,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. OMS. Medical Eligibility Criteria for Contraceptive Use, 6th Edition, 2024. https://www.who.int<br>2. FEBRASGO. Anticoncepção no Puerpério: Protocolo de Orientação, 2024. https://www.febrasgo.org.br<br>3. Conde-Agudelo, A. et al. Birth spacing and risk of adverse perinatal outcomes: a meta-analysis. JAMA, 2006;295(15):1809–1823. (PubMed PMID: 16622143)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · DIU · Pós-Parto Imediato · LARC · Inserção Pós-Placentária</span>
         </div>
@@ -2858,12 +3053,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Anticoncepcional · Eixo Hormonal · Corrida · Bloqueio Ovariano</span>
         </div>
@@ -2914,12 +3111,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Anticoncepção Hormonal Combinada: Mecanismo de Ação e Impacto no Eixo Reprodutivo. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Elliott-Sale, K. J. et al. Endocrine effects of relative energy deficiency in sport. International Journal of Sport Nutrition and Exercise Metabolism, 2018;28(4):335–349. (PubMed PMID: 29580074)<br>3. OMS. Medical Eligibility Criteria for Contraceptive Use, 6th Edition, 2024. https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Ciclo Menstrual · Sinal Vital · Ovulação · Saúde Feminina</span>
         </div>
@@ -2970,12 +3169,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. ACOG Committee Opinion No. 651. Menstruation in Girls and Adolescents: Using the Menstrual Cycle as a Vital Sign. Obstetrics &amp; Gynecology, 2015;126(6):e143–e146. (PubMed PMID: 26595586)<br>2. Gordon, C. M. et al. Functional hypothalamic amenorrhea: an Endocrine Society clinical practice guideline. Journal of Clinical Endocrinology &amp; Metabolism, 2017;102(5):1413–1439. (PubMed PMID: 28368518)<br>3. FEBRASGO. Amenorreia: Diagnóstico Diferencial e Investigação. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · RED-S · Déficit Energético · Eixo Hormonal · Mulher Esportista</span>
         </div>
@@ -3026,12 +3227,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Mountjoy, M. et al. IOC consensus statement on Relative Energy Deficiency in Sport (RED-S): 2023 update. British Journal of Sports Medicine, 2023;57(17):1073–1098. (PubMed PMID: 37316210)<br>2. Gordon, C. M. et al. Functional hypothalamic amenorrhea: an Endocrine Society clinical practice guideline. JCEM, 2017;102(5):1413–1439. (PubMed PMID: 28368518)<br>3. De Souza, M. J. et al. 2014 Female Athlete Triad Coalition Consensus Statement. British Journal of Sports Medicine, 2014;48(4):289. (PubMed PMID: 24463911)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 4</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Mascaramento · Pílula · RED-S · Amenorreia · Diagnóstico</span>
         </div>
@@ -3082,12 +3285,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Mountjoy, M. et al. IOC consensus statement on RED-S: 2023 update. BJSM, 2023;57(17):1073–1098. (PubMed PMID: 37316210)<br>2. De Souza, M. J. et al. Misusing the Female Athlete Triad as a screening tool: the risks of oral contraceptive masking. British Journal of Sports Medicine, 2014;48(20):1461–1465. (PubMed PMID: 23334244)<br>3. Ackerman, K. E. et al. Bone health and the female athlete triad in adolescent athletes. Physician and Sportsmedicine, 2012;40(1):131–142. (PubMed PMID: 22508259)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 5</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Estrogênio · Saúde Óssea · Metabolismo Ósseo · Mulher Atleta</span>
         </div>
@@ -3138,12 +3343,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Ackerman, K. E. et al. Fractures in relation to menstrual status and bone parameters in young athletes. Medicine &amp; Science in Sports &amp; Exercise, 2015;47(8):1577–1586. (PubMed PMID: 25397605)<br>2. Nattiv, A. et al. American College of Sports Medicine position stand: The Female Athlete Triad. Medicine &amp; Science in Sports &amp; Exercise, 2007;39(10):1867–1882. (PubMed PMID: 17909417)<br>3. FEBRASGO. Saúde Óssea da Mulher e Fatores Hormonais. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Amenorreia Hipotalâmica · Eixo Ovariano · Diagnóstico · Exercício</span>
         </div>
@@ -3194,12 +3401,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Gordon, C. M. et al. Functional hypothalamic amenorrhea: an Endocrine Society clinical practice guideline. JCEM, 2017;102(5):1413–1439. (PubMed PMID: 28368518)<br>2. Loucks, A. B. &amp; Thuma, J. R. Luteinizing hormone pulsatility is disrupted at a threshold of energy availability in regularly menstruating women. JCEM, 2003;88(1):297–311. (PubMed PMID: 12519869)<br>3. FEBRASGO. Amenorreia: Classificação, Diagnóstico e Tratamento. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · SHBG · Testosterona Livre · Pílula Combinada · Recuperação Muscular</span>
         </div>
@@ -3250,12 +3459,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Zimmerman, Y. et al. The effect of combined oral contraception on testosterone levels in healthy women: a systematic review and meta-analysis. Human Reproduction Update, 2014;20(1):76–105. (PubMed PMID: 24082040)<br>2. Panzer, C. et al. Impact of oral contraceptives on sex hormone-binding globulin and androgen levels: a retrospective study in women with sexual dysfunction. Journal of Sexual Medicine, 2006;3(1):104–113. (PubMed PMID: 16409223)<br>3. FEBRASGO. Andrógenos e Saúde da Mulher. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #f97316;">
+<article class="glass-card" style="border-left:4px solid #f97316;" data-status="pendente" data-doctor="Dra. Lilian Barros">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#f97316;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
+                <span class="status-badge status-pendente">⏳ A Gravar</span>
+                <span class="doctor-badge">👩‍⚕️ Dra. Lilian Barros</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Equilíbrio Hormonal · Contracepção Não Hormonal · Periodização · Ovulação</span>
         </div>
@@ -3315,12 +3526,64 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 </footer>
 
 <script>
-function showSeries(id){
-    document.querySelectorAll('.series-container').forEach(c=>c.classList.remove('active'));
-    if(id==='all'){document.querySelectorAll('.series-container').forEach(c=>c.classList.add('active'));}
-    else{var el=document.getElementById('series-'+id);if(el)el.classList.add('active');}
+let currentSeries = 'all';
+
+function showSeries(id, btn){
+    currentSeries = id;
+    
+    // Gerencia as classes ativas nos botoes
+    document.querySelectorAll('.btn-series').forEach(b => b.classList.remove('active-btn'));
+    if(btn) {
+        btn.classList.add('active-btn');
+    } else {
+        // Se chamado sem botao (ex: inicializacao)
+        const selector = id === 'all' ? '.btn-all' : `[onclick*="showSeries('${id}'"]`;
+        const activeBtn = document.querySelector(selector);
+        if(activeBtn) activeBtn.classList.add('active-btn');
+    }
+    
+    applyFilters();
     window.scrollTo({top:0,behavior:'smooth'});
 }
+
+function applyFilters() {
+    const statusFilter = document.getElementById('status-filter').value;
+    const doctorFilter = document.getElementById('doctor-filter').value;
+    
+    // 1. Mostrar/ocultar conteineres de series
+    document.querySelectorAll('.series-container').forEach(c => {
+        const sId = c.id.replace('series-', '');
+        if (currentSeries === 'all' || sId === currentSeries) {
+            c.classList.add('active');
+        } else {
+            c.classList.remove('active');
+        }
+    });
+    
+    // 2. Mostrar/ocultar episodios individuais com base nos filtros
+    let visibleEpsCount = 0;
+    document.querySelectorAll('article.glass-card').forEach(art => {
+        const status = art.getAttribute('data-status');
+        const doctor = art.getAttribute('data-doctor');
+        const parentSeries = art.closest('.series-container');
+        
+        const matchSeries = (currentSeries === 'all' || parentSeries.id === 'series-' + currentSeries);
+        const matchStatus = (statusFilter === 'all' || status === statusFilter);
+        const matchDoctor = (doctorFilter === 'all' || doctor === doctorFilter);
+        
+        if (matchSeries && matchStatus && matchDoctor) {
+            art.style.display = 'block';
+            visibleEpsCount++;
+        } else {
+            art.style.display = 'none';
+        }
+    });
+}
+
+// Inicializa a pagina marcando a primeira serie ativa
+document.addEventListener('DOMContentLoaded', () => {
+    showSeries('all');
+});
 </script>
 
 </body>
