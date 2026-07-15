@@ -27,15 +27,43 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
 .header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);padding:.5rem 1rem;border-radius:9999px;font-size:.8rem;font-weight:700;}
 
 /* Filtros */
-.filter-bar{position:sticky;top:60px;z-index:90;background:#fff;border-bottom:1px solid #e2e8f0;padding:.8rem 1rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.filter-inner{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;}
-.btn-series{padding:.5rem 1.1rem;border-radius:9999px;font-size:.78rem;font-weight:700;cursor:pointer;border:2px solid transparent;transition:all .25s ease;font-family:'Outfit',sans-serif;letter-spacing:.04em;}
-.btn-series:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
-.btn-all{background:#e2e8f0;color:#1e293b;border-color:#cbd5e1;}
-.btn-all.active-btn{background:#1e293b;color:white;border-color:#1e293b;}
-.btn-series.active-btn {
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.1), inset 0 2px 4px rgba(0,0,0,0.1);
-    transform: scale(0.97);
+.filter-bar {
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    padding: .5rem 1rem;
+    transition: all 0.3s ease;
+}
+.filter-header-mobile {
+    display: none;
+}
+.filters-panel {
+    display: block;
+}
+.filter-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.selects-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+.stats-row {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: .25rem;
 }
 .filter-select {
     padding: .45rem 1.2rem;
@@ -56,12 +84,62 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
 .filter-select:focus {
     border-color: var(--gaia-red);
 }
-.filter-divider {
-    width: 2px;
-    height: 24px;
-    background: #e2e8f0;
-    margin: 0 0.5rem;
+
+@media(max-width: 768px) {
+    .filter-header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: .25rem 0;
+    }
+    .filter-title {
+        font-size: .85rem;
+        font-weight: 800;
+        color: #1e293b;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+    .btn-toggle {
+        background: #1e293b;
+        color: white;
+        border: none;
+        padding: .35rem .8rem;
+        border-radius: 6px;
+        font-size: .75rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .btn-toggle:hover {
+        background: #334155;
+    }
+    .filters-panel {
+        max-height: 500px;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .filters-panel.collapsed-mobile {
+        max-height: 0;
+        margin-top: 0;
+    }
+    .selects-row {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: .5rem;
+        width: 100%;
+    }
+    .filter-select {
+        width: 100%;
+        text-align: left;
+    }
+    .stats-row {
+        justify-content: center;
+        margin-top: .5rem;
+        width: 100%;
+    }
 }
+
 
 /* Badges de Status e Médica */
 .status-badge {
@@ -163,20 +241,18 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 </header>
 
     <div class="filter-bar">
-        <div class="filter-inner">
-            <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:.5rem;width:100%;">
-                <button class="btn-series btn-all active-btn" onclick="showSeries('all', this)">📋 Todas as Séries</button>
-<button class="btn-series" onclick="showSeries('A', this)" style="background:#fce7f3;color:#be185d;border-color:#ec4899;">🌸 Série A · Climatério</button>
-<button class="btn-series" onclick="showSeries('B', this)" style="background:#ede9fe;color:#6d28d9;border-color:#8b5cf6;">🔬 Série B · Urologia Feminina</button>
-<button class="btn-series" onclick="showSeries('C', this)" style="background:#d1fae5;color:#065f46;border-color:#10b981;">🌿 Série C · Microbiota</button>
-<button class="btn-series" onclick="showSeries('D', this)" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">🛡️ Série D · HPV</button>
-<button class="btn-series" onclick="showSeries('E', this)" style="background:#dbeafe;color:#1e40af;border-color:#3b82f6;">🔬 Série E · Patologia Cervical</button>
-<button class="btn-series" onclick="showSeries('E1', this)" style="background:#cffafe;color:#0e7490;border-color:#06b6d4;">💊 Série E1 · Contracepção</button>
-<button class="btn-series" onclick="showSeries('E2', this)" style="background:#ffedd5;color:#c2410c;border-color:#f97316;">🏃‍♀️ Série E2 · Esporte Feminino</button>
-
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;width:100%;margin-top:.25rem;">
-                <div style="display:flex;gap:.5rem;align-items:center;">
+        <div class="filter-header-mobile">
+            <span class="filter-title">⚙️ Filtros e Estatísticas</span>
+            <button id="btn-toggle-filters" onclick="toggleFiltersPanel()" class="btn-toggle">Mostrar Filtros ▼</button>
+        </div>
+        <div id="filters-panel" class="filters-panel collapsed-mobile">
+            <div class="filter-inner">
+                <div class="selects-row">
+                    
+    <select id="series-filter" onchange="applyFilters()" class="filter-select">
+        <option value="all">📋 Todas as Séries</option><option value="A">🌸 Série A - Menopausa e Terapia Hormonal Sem Medo</option><option value="B">🔬 Série B - Cistite de Repetição — O Olhar da Ginecologia</option><option value="C">🌿 Série C - O Enigma dos Corrimentos e a Microbiota</option><option value="D">🛡️ Série D - HPV Desmistificado</option><option value="E">🔬 Série E - Decifrando a Colposcopia</option><option value="E1">💊 Série Esp. 1: A Jornada da Contracepção</option><option value="E2">🏃‍♀️ Série Esp. 2: A Mulher Corredora e os Hormônios</option>
+    </select>
+    
                     
     <select id="status-filter" onchange="applyFilters()" class="filter-select">
         <option value="all">🎬 Todos os Status</option>
@@ -194,7 +270,7 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
     </select>
     
                 </div>
-                <div id="dynamic-stats" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;align-items:center;">
+                <div id="dynamic-stats" class="stats-row">
                     <!-- Preenchido dinamicamente via JS -->
                 </div>
             </div>
@@ -3552,27 +3628,20 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 </footer>
 
 <script>
-let currentSeries = 'all';
-
-function showSeries(id, btn){
-    currentSeries = id;
-    
-    // Gerencia as classes ativas nos botoes
-    document.querySelectorAll('.btn-series').forEach(b => b.classList.remove('active-btn'));
-    if(btn) {
-        btn.classList.add('active-btn');
+function toggleFiltersPanel() {
+    const panel = document.getElementById('filters-panel');
+    const btn = document.getElementById('btn-toggle-filters');
+    if (panel.classList.contains('collapsed-mobile')) {
+        panel.classList.remove('collapsed-mobile');
+        btn.innerText = 'Esconder Filtros ▲';
     } else {
-        // Se chamado sem botao (ex: inicializacao)
-        const selector = id === 'all' ? '.btn-all' : `[onclick*="showSeries('${id}'"]`;
-        const activeBtn = document.querySelector(selector);
-        if(activeBtn) activeBtn.classList.add('active-btn');
+        panel.classList.add('collapsed-mobile');
+        btn.innerText = 'Mostrar Filtros ▼';
     }
-    
-    applyFilters();
-    window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function applyFilters() {
+    const seriesFilter = document.getElementById('series-filter').value;
     const statusFilter = document.getElementById('status-filter').value;
     const doctorFilter = document.getElementById('doctor-filter').value;
     
@@ -3583,7 +3652,7 @@ function applyFilters() {
     // 1. Mostrar/ocultar episodios individuais com base nos filtros e acumular estatisticas
     document.querySelectorAll('.series-container').forEach(c => {
         const sId = c.id.replace('series-', '');
-        const matchSeries = (currentSeries === 'all' || sId === currentSeries);
+        const matchSeries = (seriesFilter === 'all' || sId === seriesFilter);
         let visibleEpsInSeries = 0;
         
         c.querySelectorAll('article.glass-card').forEach(art => {
@@ -3627,9 +3696,9 @@ function applyFilters() {
     }
 }
 
-// Inicializa a pagina marcando a primeira serie ativa
+// Inicializa a pagina carregando os filtros
 document.addEventListener('DOMContentLoaded', () => {
-    showSeries('all');
+    applyFilters();
 });
 </script>
 
