@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAIA Teleprompter — Roteiros Completos Julho 2026</title>
+<title>GAIA Teleprompter — Roteiros Completos Setembro 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{--gaia-red:#B12A38;--gaia-dark:#853B50;}
+:root{--gaia-red:#B12A38;--gaia-dark:#853B50;--setembro-yellow:#ca8a04;--setembro-dark-yellow:#854d0e;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:#f1f5f9;color:#1e293b;min-height:100vh;}
+body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#1e293b;min-height:100vh;}
 .script-text{font-family:'Roboto',sans-serif;font-size:1.1rem;line-height:1.9;color:#334155;}
 .glass-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08),0 4px 10px -3px rgba(0,0,0,.04);border:1px solid #e2e8f0;overflow:hidden;margin-bottom:2.5rem;transition:all 0.3s ease;}
 .timeline-badge{font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:.25rem .75rem;border-radius:9999px;display:inline-flex;align-items:center;white-space:nowrap;text-transform:uppercase;margin-bottom:.6rem;}
@@ -19,12 +19,15 @@ body{font-family:'Outfit',sans-serif;background:#f1f5f9;color:#1e293b;min-height
 nav{background:#0f172a;color:white;position:sticky;top:0;z-index:100;box-shadow:0 4px 6px -1px rgba(0,0,0,.3);}
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
 .nav-brand{font-size:1.1rem;font-weight:800;letter-spacing:.08em;}
-.nav-sub{font-size:.7rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
-header{background:linear-gradient(135deg,#1e293b 0%,#312e81 50%,#B12A38 100%);padding:4rem 1.5rem 3rem;text-align:center;color:white;}
-header h1{font-size:2.8rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
-header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-height:1.7;}
+.nav-sub{font-size:.7rem;color:#fef08a;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+
+/* Hero Setembro Amarelo */
+header{background:linear-gradient(135deg,#1e1b4b 0%,#713f12 45%,#a16207 100%);padding:4rem 1.5rem 3rem;text-align:center;color:white;position:relative;overflow:hidden;}
+header::before {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at top right, rgba(254, 240, 138, 0.15), transparent 70%);pointer-events:none;}
+header h1{font-size:2.8rem;font-weight:800;margin-bottom:1rem;line-height:1.2;color:#ffffff;}
+header p{font-size:1.1rem;opacity:.92;max-width:750px;margin:0 auto 1.5rem;line-height:1.7;color:#fef9c3;}
 .header-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem;}
-.header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);padding:.5rem 1rem;border-radius:9999px;font-size:.8rem;font-weight:700;}
+.header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(254,240,138,.3);backdrop-filter:blur(4px);padding:.5rem 1rem;border-radius:9999px;font-size:.8rem;font-weight:700;color:#fef08a;}
 
 /* Filtros */
 .filter-bar {
@@ -34,7 +37,7 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
     background: #fff;
     border-bottom: 1px solid #e2e8f0;
     box-shadow: 0 2px 8px rgba(0,0,0,.06);
-    padding: .5rem 1rem;
+    padding: .75rem 1rem;
     transition: all 0.3s ease;
 }
 .filter-header-mobile {
@@ -48,7 +51,44 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: .6rem;
+}
+.search-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+.search-input {
+    width: 100%;
+    padding: .6rem 1rem .6rem 2.5rem;
+    border-radius: 9999px;
+    font-size: .9rem;
+    font-weight: 500;
+    border: 2px solid #cbd5e1;
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: all .25s ease;
+}
+.search-input:focus {
+    border-color: var(--setembro-yellow);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.2);
+}
+.search-icon {
+    position: absolute;
+    left: .9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-size: .95rem;
+    pointer-events: none;
 }
 .selects-row {
     display: flex;
@@ -82,7 +122,7 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
     border-color: #cbd5e1;
 }
 .filter-select:focus {
-    border-color: var(--gaia-red);
+    border-color: var(--setembro-yellow);
 }
 
 @media(max-width: 768px) {
@@ -140,7 +180,6 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
     }
 }
 
-
 /* Badges de Status e Médica */
 .status-badge {
     font-size: 0.68rem;
@@ -163,11 +202,6 @@ header p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto 1.5rem;line-
     background-color: #fef9c3;
     color: #a16207;
     border-color: #fef08a;
-}
-.status-publicado {
-    background-color: #dcfce7;
-    color: #15803d;
-    border-color: #bbf7d0;
 }
 .doctor-badge {
     font-size: 0.68rem;
@@ -228,25 +262,31 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 
 </head>
 <body>
-<nav><div class="nav-inner"><div class="nav-brand">🌿 GAIA TELEPROMPTER</div><div class="nav-sub">Roteiros Completos — Julho 2026</div></div></nav>
+<nav><div class="nav-inner"><div class="nav-brand">💛 GAIA TELEPROMPTER</div><div class="nav-sub">Roteiros Completos — Setembro 2026</div></div></nav>
 <header>
-    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);padding:.5rem 1.25rem;border-radius:9999px;font-size:.8rem;font-weight:700;margin-bottom:1.25rem;border:1px solid rgba(255,255,255,.2);">🎬 7 Séries Completas · 56 Episódios</div>
-    <h1>Roteiros Cinematográficos<br>Médicos — Versão Julho 2026</h1>
-    <p>Todos os roteiros de Teleprompter da Gaia Medicina Integrada para Julho de 2026, com casos de consultório, desenvolvimento técnico e CTAs revisados.</p>
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(254,240,138,.2);padding:.5rem 1.25rem;border-radius:9999px;font-size:.8rem;font-weight:700;margin-bottom:1.25rem;border:1px solid rgba(254,240,138,.4);color:#fef08a;">💛 Setembro Amarelo · Mês de Conscientização sobre a Vida</div>
+    <h1>Roteiros Cinematográficos<br>Médicos — Edição Setembro 2026</h1>
+    <p>Todos os roteiros de Teleprompter da Gaia Medicina Integrada para Setembro de 2026, com casos de consultório, desenvolvimento técnico, acolhimento e CTAs revisados.</p>
     <div class="header-badges">
-        <span class="header-badge">🎯 Tom: Médica Amiga / CTA Impessoal</span>
+        <span class="header-badge">🎯 Tom: Médica Amiga / Acolhimento</span>
         <span class="header-badge">⏱️ ~3 Minutos por Episódio</span>
-        <span class="header-badge">📚 Baseado em Evidências FEBRASGO / OMS / INCA</span>
+        <span class="header-badge">📚 Baseado em Evidências FEBRASGO / OMS</span>
     </div>
 </header>
 
     <div class="filter-bar">
         <div class="filter-header-mobile">
-            <span class="filter-title">⚙️ Filtros e Estatísticas</span>
+            <span class="filter-title">⚙️ Filtros e Busca</span>
             <button id="btn-toggle-filters" onclick="toggleFiltersPanel()" class="btn-toggle">Mostrar Filtros ▼</button>
         </div>
         <div id="filters-panel" class="filters-panel collapsed-mobile">
             <div class="filter-inner">
+                <div class="search-row">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-filter" onkeyup="applyFilters()" placeholder="Buscar por palavra-chave (ex: Implanon, Cortisol, Cistite)..." class="search-input">
+                    </div>
+                </div>
                 <div class="selects-row">
                     
     <select id="series-filter" onchange="applyFilters()" class="filter-select">
@@ -258,7 +298,6 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <option value="all">🎬 Todos os Status</option>
         <option value="pendente">⏳ A Gravar</option>
         <option value="gravado">🎬 Gravados</option>
-        <option value="publicado">🟢 Publicados</option>
     </select>
     
                     
@@ -289,13 +328,13 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="publicado" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-publicado">🟢 Publicado</span>
+                <span class="status-badge status-gravado">🎬 Gravado</span>
                 <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Perimenopausa</span>
@@ -349,13 +388,13 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Climatério: Diagnóstico e Tratamento. Protocolo Febrasgo, 2024 https://www.febrasgo.org.br<br>2. NAMS (North American Menopause Society). The 2022 Hormone Therapy Position Statement. Menopause, 2022.<br>3. Sociedade Brasileira de Climatério (SOBRAC). Consenso Brasileiro de Terapêutica Hormonal da Menopausa, 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="publicado" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-publicado">🟢 Publicado</span>
+                <span class="status-badge status-gravado">🎬 Gravado</span>
                 <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Cognição</span>
@@ -409,13 +448,13 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Weber, M. et al. Cognition and mood in perimenopause: a systematic review and meta-analysis. Journal of Steroid Biochemistry and Molecular Biology, 2014.<br>2. Maki, P. M. &amp; Sundermann, E. Hormone therapy and cognitive function. Menopause, 2024.<br>3. NAMS. Nonhormone management of menopause-associated vasomotor symptoms: 2023 position statement.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="publicado" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-publicado">🟢 Publicado</span>
+                <span class="status-badge status-gravado">🎬 Gravado</span>
                 <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Sono · Saúde Mental</span>
@@ -589,14 +628,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Posicionamento sobre Terapêutica Hormonal da Menopausa, 2024 https://www.febrasgo.org.br<br>2. Hodis, H. N. &amp; Mack, W. J. The timing hypothesis and hormone replacement therapy: a paradigm shift in the primary prevention of coronary heart disease in women. Journal of Clinical Endocrinology &amp; Metabolism, 2022.<br>3. IMS (International Menopause Society). Recommendations on hormone therapy, 2024 https://www.imsociety.org</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 6</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Saúde Sexual · Atrofia Vaginal</span>
         </div>
@@ -649,14 +688,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. NAMS. Genitourinary Syndrome of Menopause. Position Statement, 2020 https://www.menopause.org<br>2. FEBRASGO. Protocolo de Atrofia Vulvovaginal, 2024 https://www.febrasgo.org.br<br>3. Portman, D. J. &amp; Gass, M. L. Genitourinary syndrome of menopause: new terminology for vulvovaginal atrophy. Menopause, 2014.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Procedimentos · Laser Íntimo</span>
         </div>
@@ -709,14 +748,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Salvatore, S. et al. Fractional CO2 laser for vulvovaginal atrophy: a systematic review. Menopause, 2021.<br>2. FEBRASGO. Nota sobre uso de laser em ginecologia, 2024 https://www.febrasgo.org.br<br>3. Aguiar, L. B. et al. Hyaluronic acid for genitourinary syndrome of menopause: a systematic review. Lasers in Surgery and Medicine, 2023.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="pendente" data-doctor="Doutora Andrea">
+<article class="glass-card" style="border-left:4px solid #ec4899;" data-status="gravado" data-doctor="Doutora Andrea">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#ec4899;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Andrea</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Climatério · Longevidade · Prevenção</span>
         </div>
@@ -838,14 +877,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Infecção do Trato Urinário na Mulher: Diagnóstico e Tratamento. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Foxman, B. Epidemiology of urinary tract infections: incidence, morbidity, and economic costs. Disease-a-Month, 2003;49(2):53–70. (PubMed PMID: 12601337)<br>3. Hooton, T. M. Uncomplicated urinary tract infection. New England Journal of Medicine, 2012;366(11):1028–1037. (PubMed PMID: 22417256)</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="pendente" data-doctor="Doutora Nathalia">
+<article class="glass-card" style="border-left:4px solid #8b5cf6;" data-status="gravado" data-doctor="Doutora Nathalia">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#8b5cf6;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Nathalia</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Microbiota Vaginal · Lactobacilos · Prevenção</span>
         </div>
@@ -1255,13 +1294,13 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #10b981;" data-status="publicado" data-doctor="Doutora Nathalia">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="gravado" data-doctor="Doutora Nathalia">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-publicado">🟢 Publicado</span>
+                <span class="status-badge status-gravado">🎬 Gravado</span>
                 <span class="doctor-badge">👩‍⚕️ Doutora Nathalia</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Microbiota Vaginal · Higiene Íntima</span>
@@ -1603,14 +1642,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Amabebe E, Anumba DOC. "Psychosocial stress, cortisol levels, and maintenance of vaginal health." Front Endocrinol. 2018;9:568. (PubMed PMID: 30319545)<br>2. Eschenbach DA. "Chronic vulvovaginal candidiasis." N Engl J Med. 2004;351(9):851–852.<br>3. FEBRASGO — Comissão Nacional Especializada em Trato Genital Inferior, 2024.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Doutora Nathalia">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="gravado" data-doctor="Doutora Nathalia">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 7</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Nathalia</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Probióticos · Microbiota Vaginal</span>
         </div>
@@ -1661,14 +1700,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. Reid G, et al. "Oral use of Lactobacillus rhamnosus GR-1 and L. reuteri RC-14 significantly alters vaginal flora." FEMS Immunol Med Microbiol. 2003;35(2):131–134. (PubMed PMID: 12628548)<br>2. Cohen CR, et al. "Randomized trial of Lactin-V to prevent recurrence of bacterial vaginosis." N Engl J Med. 2020;382(20):1906–1915. (PubMed PMID: 32402161)<br>3. FEBRASGO — Probióticos em Ginecologia, Posicionamento 2023.</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #10b981;" data-status="pendente" data-doctor="Doutora Nathalia">
+<article class="glass-card" style="border-left:4px solid #10b981;" data-status="gravado" data-doctor="Doutora Nathalia">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#10b981;">Episódio 8</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Nathalia</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Prevenção · Hábitos de Vida</span>
         </div>
@@ -2680,13 +2719,13 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         </div>
     </div>
     
-<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="publicado" data-doctor="Doutora Gabriela">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="gravado" data-doctor="Doutora Gabriela">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 1</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-publicado">🟢 Publicado</span>
+                <span class="status-badge status-gravado">🎬 Gravado</span>
                 <span class="doctor-badge">👩‍⚕️ Doutora Gabriela</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · DIU Hormonal · DIU de Cobre · Endométrio · Comparativo</span>
@@ -2738,14 +2777,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Métodos Contraceptivos Reversíveis de Longa Ação (LARCs): Protocolo de Orientação, 2024. https://www.febrasgo.org.br<br>2. Bahamondes, L. et al. Non-contraceptive benefits and risks of the levonorgestrel intrauterine system. Human Reproduction Update, 2015;21(5):640–651. (PubMed PMID: 25935149)<br>3. OMS. Selected Practice Recommendations for Contraceptive Use, 4th Edition, 2024. https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Doutora Gabriela">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="gravado" data-doctor="Doutora Gabriela">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 2</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Gabriela</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Implante Subdérmico · Implanon · Etonogestrel · LARC</span>
         </div>
@@ -2796,14 +2835,14 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
         <div class="refs-list">1. FEBRASGO. Implante Subdérmico de Etonogestrel: Indicações e Manejo. Protocolo FEBRASGO, 2024. https://www.febrasgo.org.br<br>2. Mommers, E. et al. Nexplanon, a radiopaque etonogestrel implant in combination with a next-generation applicator. European Journal of Contraception and Reproductive Health Care, 2012;17(2):150–162. (PubMed PMID: 22339656)<br>3. OMS. Medical Eligibility Criteria for Contraceptive Use, 6th Edition, 2024. https://www.who.int</div>
     </div>
 </article>
-<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="pendente" data-doctor="Doutora Gabriela">
+<article class="glass-card" style="border-left:4px solid #06b6d4;" data-status="gravado" data-doctor="Doutora Gabriela">
     <div class="article-header" style="background:#f9f9fb;border-bottom:1px solid #eee;">
         <div class="article-meta">
             <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
                 <span class="ep-badge" style="background:#eee;color:#06b6d4;">Episódio 3</span>
                 <span class="teleprompter-badge">Teleprompter</span>
-                <span class="status-badge status-pendente">⏳ A Gravar</span>
-                
+                <span class="status-badge status-gravado">🎬 Gravado</span>
+                <span class="doctor-badge">👩‍⚕️ Doutora Gabriela</span>
             </div>
             <span style="font-size:0.75rem;color:#666;">Duração estimada: ~3min &nbsp;|&nbsp; Tags: Ginecologia · Spotting · Adaptação Endometrial · DIU Hormonal · Implanon</span>
         </div>
@@ -3622,9 +3661,9 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2rem 1rem;font
 </div>
 </main>
 <footer>
-    <p>🌿 <strong style="color:white;">GAIA Medicina Integrada</strong> — Roteiros de Conteúdo Julho 2026</p>
-    <p style="margin-top:.5rem;">7 Séries · 56 Episódios · Tom "Médica Amiga" · Baseado em Evidências FEBRASGO, OMS, INCA</p>
-    <p style="margin-top:.5rem;font-size:.7rem;color:#475569;">Uso exclusivo interno. CTAs seguem as diretrizes do CFM — impessoais, educativos e acolhedores.</p>
+    <p>💛 <strong style="color:white;">GAIA Medicina Integrada</strong> — Roteiros de Conteúdo Setembro 2026 (Setembro Amarelo)</p>
+    <p style="margin-top:.5rem;">7 Séries · 56 Episódios · Tom "Médica Amiga" · Baseado em Evidências FEBRASGO, OMS</p>
+    <p style="margin-top:.5rem;font-size:.7rem;color:#94a3b8;">Uso exclusivo interno. CTAs seguem as diretrizes do CFM — impessoais, educativos e acolhedores.</p>
 </footer>
 
 <script>
@@ -3644,10 +3683,10 @@ function applyFilters() {
     const seriesFilter = document.getElementById('series-filter').value;
     const statusFilter = document.getElementById('status-filter').value;
     const doctorFilter = document.getElementById('doctor-filter').value;
+    const searchQuery = document.getElementById('search-filter').value.toLowerCase().strip ? document.getElementById('search-filter').value.toLowerCase().trim() : document.getElementById('search-filter').value.toLowerCase();
     
     let totalPendente = 0;
     let totalGravado = 0;
-    let totalPublicado = 0;
     
     // 1. Mostrar/ocultar episodios individuais com base nos filtros e acumular estatisticas
     document.querySelectorAll('.series-container').forEach(c => {
@@ -3658,17 +3697,18 @@ function applyFilters() {
         c.querySelectorAll('article.glass-card').forEach(art => {
             const status = art.getAttribute('data-status');
             const doctor = art.getAttribute('data-doctor');
+            const textContent = art.innerText.toLowerCase();
             
             const matchStatus = (statusFilter === 'all' || status === statusFilter);
             const matchDoctor = (doctorFilter === 'all' || doctor === doctorFilter);
+            const matchSearch = (searchQuery === '' || textContent.includes(searchQuery));
             
-            if (matchSeries && matchStatus && matchDoctor) {
+            if (matchSeries && matchStatus && matchDoctor && matchSearch) {
                 art.style.display = 'block';
                 visibleEpsInSeries++;
                 
                 if (status === 'pendente') totalPendente++;
                 else if (status === 'gravado') totalGravado++;
-                else if (status === 'publicado') totalPublicado++;
             } else {
                 art.style.display = 'none';
             }
@@ -3685,13 +3725,12 @@ function applyFilters() {
     // 2. Atualizar contadores dinamicos de estatisticas
     const statsContainer = document.getElementById('dynamic-stats');
     if (statsContainer) {
-        const total = totalPendente + totalGravado + totalPublicado;
+        const total = totalPendente + totalGravado;
         let doctorText = doctorFilter === 'all' ? 'Geral' : doctorFilter;
         statsContainer.innerHTML = `
             <div class="stats-pill stats-info">📊 ${doctorText}: <strong>${total}</strong></div>
             <div class="stats-pill status-pendente">⏳ A Gravar: <strong>${totalPendente}</strong></div>
             <div class="stats-pill status-gravado">🎬 Gravados: <strong>${totalGravado}</strong></div>
-            <div class="stats-pill status-publicado">🟢 Publicados: <strong>${totalPublicado}</strong></div>
         `;
     }
 }
