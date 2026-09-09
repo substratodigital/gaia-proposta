@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série D: HPV Desmistificado · Método da Conversa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#1e293b;min-height:100vh;}
+.wrap{max-width:920px;margin:0 auto;padding:0 1.25rem;}
+
+nav{background:#0f172a;color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 4px 6px -1px rgba(0,0,0,.3);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.85rem;padding-bottom:.85rem;flex-wrap:wrap;}
+.nav-title{font-weight:800;font-size:.95rem;letter-spacing:-.01em;}
+.nav-sub{font-size:.7rem;color:#fcd34d;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.nav-eps{display:flex;gap:.35rem;flex-wrap:wrap;}
+.nav-eps a{display:inline-flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;border-radius:.45rem;
+  background:rgba(255,255,255,.08);color:#e2e8f0;text-decoration:none;font-size:.8rem;font-weight:700;transition:.2s;}
+.nav-eps a:hover{background:#f59e0b;color:#0f172a;}
+
+header{background:linear-gradient(135deg,#1e1b4b 0%,#713f12 45%,#a16207 100%);padding:3.5rem 1.5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(254,240,138,.15),transparent 70%);pointer-events:none;}
+header h1{font-size:2.5rem;font-weight:800;margin-bottom:.9rem;line-height:1.15;}
+header p{font-size:1.05rem;opacity:.93;max-width:720px;margin:0 auto 1.4rem;line-height:1.7;color:#fef9c3;}
+.badges{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;}
+.header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(254,240,138,.3);padding:.45rem 1rem;border-radius:9999px;font-size:.78rem;font-weight:700;color:#fef08a;}
+
+main{padding:2.75rem 0 1rem;}
+.glass-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08),0 4px 10px -3px rgba(0,0,0,.04);
+  border:1px solid #e2e8f0;overflow:hidden;margin-bottom:2.25rem;}
+.panel{padding:1.75rem;}
+.panel h2{font-size:1.35rem;font-weight:800;margin-bottom:.35rem;}
+.panel .lead{color:#64748b;font-size:.9rem;margin-bottom:1.25rem;}
+.panel p{color:#475569;font-size:.92rem;line-height:1.75;margin-bottom:.85rem;}
+.panel ul{margin:0 0 .85rem 1.1rem;color:#475569;font-size:.92rem;line-height:1.75;}
+.panel li{margin-bottom:.3rem;}
+.panel strong{color:#1e293b;}
+
+.conv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem;margin-top:1.1rem;}
+.conv div{background:#f8fafc;border:1px solid #e2e8f0;border-left:3px solid #f59e0b;border-radius:.6rem;padding:.9rem 1rem;font-size:.85rem;color:#475569;line-height:1.65;}
+.conv b{display:block;color:#1e293b;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem;}
+
+table{width:100%;border-collapse:collapse;font-size:.83rem;}
+thead th{background:#0f172a;color:#fff;text-align:left;padding:.7rem .8rem;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;}
+tbody td{padding:.75rem .8rem;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.6;color:#475569;}
+tbody tr:nth-child(even){background:#f8fafc;}
+td.num{font-weight:800;color:#94a3b8;width:2rem;}
+td.old{color:#9f1239;}
+td.new{color:#166534;}
+td.ep{font-weight:700;color:#92400e;white-space:nowrap;}
+.tablewrap{overflow-x:auto;}
+
+.article-header{background:#fffbeb;border-bottom:1px solid #fde68a;padding:1.4rem 1.75rem;}
+.ah-top{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.7rem;}
+.ep-badge{background:#fef3c7;color:#92400e;border:1px solid #fcd34d;font-size:.7rem;font-weight:800;padding:.25rem .7rem;border-radius:.375rem;text-transform:uppercase;letter-spacing:.05em;}
+.forma-badge{background:#f1f5f9;color:#475569;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:.375rem;}
+.status-badge{background:#e0f2fe;color:#0369a1;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:.375rem;margin-left:auto;}
+.article-header h3{font-size:1.4rem;font-weight:800;color:#1e293b;line-height:1.25;margin-bottom:.45rem;}
+.ah-meta{font-size:.75rem;color:#78716c;}
+
+.card-body{padding:1.75rem;}
+.sec-label{font-size:.7rem;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.9rem;}
+.script-text{font-family:'Roboto',sans-serif;font-size:1.08rem;line-height:1.95;color:#334155;}
+.script-text p{margin-bottom:1.15rem;}
+.script-text strong{color:#0f172a;font-weight:700;background:linear-gradient(transparent 62%,#fef08a 62%);}
+.script-text .callout{background:#f8fafc;border-left:3px solid #cbd5e1;padding:.8rem 1rem;font-size:.9rem;color:#64748b;border-radius:.4rem;margin-bottom:1.15rem;font-family:'Outfit',sans-serif;}
+
+.travas{background:#fffbeb;border-top:1px solid #fde68a;padding:1.25rem 1.75rem;}
+.travas-label{color:#b45309;}
+.travas ul{margin-left:1.1rem;font-size:.86rem;color:#78350f;line-height:1.8;}
+.travas li{margin-bottom:.25rem;}
+
+.legenda{background:#f8fafc;border-top:1px solid #e2e8f0;padding:1.4rem 1.75rem;}
+.legenda-label{color:#7c3aed;}
+.legenda p{font-size:.9rem;color:#475569;line-height:1.75;margin-bottom:.7rem;}
+.legenda strong{color:#1e293b;}
+
+.references-footer{background:#0f172a;padding:1.25rem 1.75rem;}
+.refs-label{font-size:.68rem;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.55rem;}
+.refs-list{font-size:.75rem;color:#94a3b8;line-height:1.85;}
+.refs-list ol{margin-left:1.1rem;}
+.refs-list a{color:#fcd34d;word-break:break-all;text-decoration:none;}
+.refs-list a:hover{text-decoration:underline;}
+.refs-list .callout{background:rgba(255,255,255,.05);border-left:3px solid #f59e0b;padding:.7rem .9rem;border-radius:.4rem;margin-top:.7rem;color:#cbd5e1;}
+.refs-list .callout strong{color:#fcd34d;}
+
+.src-h{font-size:1.05rem;font-weight:800;color:#1e293b;margin:1.6rem 0 .5rem;padding-top:1.2rem;border-top:1px solid #e2e8f0;}
+.src-block:first-child .src-h{border-top:none;padding-top:0;margin-top:0;}
+.src-sub{font-size:.75rem;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:.05em;margin:.9rem 0 .4rem;}
+.src-block p{font-size:.85rem;color:#475569;line-height:1.75;margin-bottom:.6rem;}
+.src-block ul{margin-left:1.1rem;font-size:.85rem;color:#475569;line-height:1.75;margin-bottom:.6rem;}
+.src-block li{margin-bottom:.3rem;}
+.src-block a{color:#a16207;word-break:break-all;}
+.src-block code{background:#f1f5f9;padding:.1rem .35rem;border-radius:.25rem;font-size:.8rem;color:#475569;}
+.callout{background:#fffbeb;border-left:3px solid #f59e0b;padding:.8rem 1rem;border-radius:.4rem;margin-bottom:.85rem;font-size:.85rem;color:#78350f;line-height:1.7;}
+
+footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2.25rem 1.25rem;font-size:.8rem;margin-top:2rem;line-height:1.8;}
+footer strong{color:#fff;}
+
+@media(max-width:640px){
+  header h1{font-size:1.85rem;}
+  header p{font-size:.95rem;}
+  .panel,.card-body,.article-header,.travas,.legenda,.references-footer{padding-left:1.15rem;padding-right:1.15rem;}
+  .script-text{font-size:1.05rem;line-height:1.9;}
+  .article-header h3{font-size:1.2rem;}
+  .status-badge{margin-left:0;}
+}
+@media print{
+  nav,.nav-eps{display:none;}
+  body{background:#fff;}
+  .glass-card{box-shadow:none;border:1px solid #cbd5e1;page-break-inside:avoid;}
+  header{background:#0f172a;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div>
+      <div class="nav-title">Série D: HPV Desmistificado</div>
+      <div class="nav-sub">Método da Conversa · v2 · para revisão</div>
+    </div>
+    <div class="nav-eps"><a href="#ep1">1</a><a href="#ep2">2</a><a href="#ep3">3</a><a href="#ep4">4</a><a href="#ep5">5</a><a href="#ep6">6</a><a href="#ep7">7</a><a href="#ep8">8</a></div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1>Série D: HPV Desmistificado</h1>
+    <p>Oito roteiros reescritos pelo Método da Conversa, com as fontes conferidas nos documentos primários em setembro de 2026. Esta página é para a revisão da Dra. Andrea antes da gravação.</p>
+    <div class="badges">
+      <span class="header-badge">8 episódios</span>
+      <span class="header-badge">Ginecologia / HPV</span>
+      <span class="header-badge">Dra. Andrea</span>
+      <span class="header-badge">Todos a gravar</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="glass-card panel">
+    <h2>Como ler esta página</h2>
+    <p class="lead">Três convenções, e elas valem para os oito roteiros.</p>
+    <div class="conv">
+      <div><b>Texto limpo</b>O roteiro é texto corrido, sem marcação dentro da fala. É o que aparece no teleprompter.</div>
+      <div><b>Negrito é ênfase</b>Todas as perguntas e as frases de virada estão em negrito. É onde a voz marca e onde se faz a pausa.</div>
+      <div><b>Travas</b>Abaixo de cada roteiro, as frases que precisam ser lidas exatamente como estão escritas: número, sigla de laudo, faixa etária e prazo. O resto é livre.</div>
+    </div>
+  </section>
+
+  <section class="glass-card panel">
+    <h2>O que mudou na medicina desde os roteiros de Julho</h2>
+    <p class="lead">A comparação que interessa não é de estilo, é de conteúdo clínico. Cada linha abaixo foi conferida no documento primário.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Versão de Julho</th><th>Fonte primária hoje</th><th>Ep</th></tr></thead>
+        <tbody><tr><td class='num'>1</td><td class='old'>Papanicolau é o rastreamento, teste de DNA &quot;tem sido recomendado&quot;</td><td class='new'>O teste molecular de DNA-HPV <strong>é</strong> o método primário no SUS desde a Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025. De 25 a 64 anos, a cada 5 anos quando negativo</td><td class='ep'>4, 8</td></tr><tr><td class='num'>2</td><td class='old'>Recomenda o coteste, os dois exames juntos</td><td class='new'>Coteste <strong>não é recomendado</strong> (Recomendação 3, forte, certeza alta). A citologia entra depois, reflexa, na mesma amostra</td><td class='ep'>4</td></tr><tr><td class='num'>3</td><td class='old'>&quot;NIC 1 no resultado do Papanicolau&quot;</td><td class='new'>NIC é classificação <strong>histológica</strong>, vem da biópsia. O preventivo fala LSIL e HSIL</td><td class='ep'>3</td></tr><tr><td class='num'>4</td><td class='old'>NIC 1 como lesão leve a acompanhar</td><td class='new'>NIC I <strong>não é considerada lesão precursora</strong> do câncer de colo. É a expressão de uma infecção transitória</td><td class='ep'>3</td></tr><tr><td class='num'>5</td><td class='old'>Vacina no SUS: meninas de 9 a 14, duas doses</td><td class='new'><strong>Dose única</strong> de 9 a 14 anos desde 2024. Resgate gratuito de 15 a 19 anos aberto <strong>até 31/12/2026</strong></td><td class='ep'>6</td></tr><tr><td class='num'>6</td><td class='old'>&quot;A vacina disponível no Brasil é a nonavalente&quot;</td><td class='new'>No SUS é a <strong>quadrivalente</strong>. A nonavalente está na rede privada desde março de 2023, de 9 a 45 anos, ambos os sexos</td><td class='ep'>6</td></tr><tr><td class='num'>7</td><td class='old'>Parceiro deve procurar urologista para peniscopia</td><td class='new'>Rastrear e notificar parcerias <strong>não é recomendado</strong> para HPV. O exame da parceria atual deve ser considerado, sobretudo para procurar <strong>outras</strong> IST</td><td class='ep'>7</td></tr><tr><td class='num'>8</td><td class='old'>HPV 16 e 18 causam &quot;cerca de 70%&quot; dos casos</td><td class='new'>A OMS descreve <strong>cerca de 76%</strong></td><td class='ep'>1</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+
+<article class="glass-card" id="ep1">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 1</span>
+      <span class="forma-badge">A. A doença explicada</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O QUE UM RESULTADO DE HPV POSITIVO REALMENTE DIZ</h3>
+    <div class="ah-meta">~2min45 &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Rastreamento · Acolhimento</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">Vou começar pela frase que é difícil de ouvir direito no dia em que ela chega. HPV positivo. O papel chega, o olho bate nessas duas palavras e o corpo inteiro reage antes de a cabeça entender qualquer coisa. Então respira comigo, porque eu vou te explicar com calma o que esse resultado diz de verdade.</p>
+<p class="">E ele diz muito menos do que parece.</p>
+<p class="">O teste de HPV é um exame de rastreio. Rastreio não é diagnóstico. A função dele é olhar uma população grande de mulheres sem sintoma nenhum e separar quem precisa de investigação de quem não precisa. Ele não foi construído para dar veredito sobre ninguém. Está escrito na própria diretriz que organiza o rastreamento no Brasil que um resultado positivo não indica necessariamente presença de lesão nem de câncer. Isso não é uma frase para te acalmar. <strong>É a definição técnica do que o exame faz.</strong></p>
+<p class="">Agora deixa eu te explicar o que ele encontrou.</p>
+<p class="">O HPV não é um vírus só. É uma família enorme, com mais de duzentos tipos já identificados, e cerca de quarenta deles chegam à região genital. Esses quarenta se dividem em dois grupos com comportamentos bem diferentes. Existe o grupo de baixo risco, onde estão os tipos 6 e 11, que pode causar verruga e praticamente não tem relação com câncer. E existe o grupo de alto risco, os chamados oncogênicos, onde estão o 16, o 18, o 31, o 33, o 45, o 52 e o 58, entre outros. Dentro desse segundo grupo ainda existe hierarquia. Os tipos 16 e 18 são os que mais pesam, porque sozinhos respondem por perto de três em cada quatro casos de câncer de colo do útero no mundo.</p>
+<p class="">Por isso a primeira pergunta útil depois de um resultado positivo não é se você tem HPV. <strong>É qual HPV.</strong></p>
+<p class="">E é aqui que o exame de hoje ficou bom de verdade. O teste que se usa agora faz genotipagem, ou seja, ele não diz apenas que achou vírus. Ele separa o 16 e o 18 dos demais tipos oncogênicos. E essa separação decide o caminho inteiro. Quando aparece o 16 ou o 18, o encaminhamento é direto para a colposcopia, porque são os de maior risco de progressão. Quando aparece outro tipo oncogênico, a conduta é usar a mesma amostra que já foi colhida para fazer a citologia, e é ela que vai dizer se a colposcopia é necessária agora ou se o caso é de acompanhar. Duas rotas completamente diferentes saindo do mesmo tubo.</p>
+<p class=""><strong>E aí você me pergunta: se é assim, por que esse resultado assusta tanto?</strong></p>
+<p class="">Porque o tamanho do susto não corresponde ao tamanho do achado. Um estudo feito em vinte e seis capitais brasileiras e no Distrito Federal, com mais de seis mil mulheres jovens, encontrou o vírus em mais da metade delas. <strong>Mais da metade.</strong> E do total de pessoas infectadas, só uma parcela pequena desenvolve verruga, e uma parcela também pequena chega a ter alteração no preventivo. A imensa maioria não desenvolve nada.</p>
+<p class="">O que o exame encontrou é a presença de um vírus muito espalhado, que pode ter entrado há muitos anos, e que na maior parte das vezes o corpo resolve sozinho. <strong>Ele não diz mais do que isso.</strong></p>
+<p class="">E tem uma linha nesse laudo que passa despercebida, porque ela vem discreta, no meio da folha, em letra menor que o resto. É a linha da genotipagem. É ela que diz qual tipo apareceu. E é ela, e não a palavra positivo lá em cima, que decide o seu próximo passo.</p>
+<p class="">O que eu não consigo te dizer daqui é qual é o seu caso. Isso depende do tipo que apareceu e do que a citologia mostrou, e essa conversa é com quem está com o seu exame na mão.</p>
+<p class="">Então leva duas perguntas anotadas para a sua consulta: qual tipo de HPV apareceu no meu exame, e se a citologia já foi feita nessa mesma amostra. Chegando com essas duas perguntas na mão, a sua consulta começa num lugar muito melhor do que ela começaria.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;mais de duzentos tipos já identificados, e cerca de quarenta deles chegam à região genital&quot;</li><li>&quot;os tipos 6 e 11, que pode causar verruga e praticamente não tem relação com câncer&quot;</li><li>&quot;onde estão o 16, o 18, o 31, o 33, o 45, o 52 e o 58&quot;</li><li>&quot;sozinhos respondem por perto de três em cada quatro casos de câncer de colo do útero no mundo&quot;</li><li>&quot;Quando aparece o 16 ou o 18, o encaminhamento é direto para a colposcopia&quot;</li><li>&quot;vinte e seis capitais brasileiras e no Distrito Federal, com mais de seis mil mulheres jovens&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">HPV positivo não é diagnóstico de doença.</p>
+<p class="">O teste de HPV é um exame de rastreio, e rastreio não é diagnóstico. A diretriz brasileira de rastreamento diz isso com todas as letras: um resultado positivo não indica necessariamente lesão nem câncer.</p>
+<p class="">O HPV não é um vírus só. São mais de 200 tipos identificados, cerca de 40 chegam à região genital, e eles se dividem em baixo risco (como o 6 e o 11, que causam verruga) e alto risco (16, 18, 31, 33, 45, 52, 58 e outros). Os tipos 16 e 18 respondem por cerca de três em cada quatro casos de câncer de colo do útero.</p>
+<p class="">Por isso a pergunta que muda a conduta não é &quot;eu tenho HPV&quot;. É qual tipo. O 16 e o 18 levam direto à colposcopia. Os outros oncogênicos pedem a citologia na mesma amostra antes de decidir.</p>
+<p class="">Um estudo em 26 capitais e no Distrito Federal, com mais de 6 mil mulheres jovens, encontrou o vírus em mais da metade delas. A imensa maioria não desenvolve nada.</p>
+<p class="">Leva na consulta: qual tipo apareceu, e se a citologia foi feita na mesma coleta.</p>
+<p class="">Fontes Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Ministério da Saúde, 2025 · Protocolo Brasileiro para IST 2020, capítulo HPV, Epidemiologia e Serviços de Saúde · OMS, Cervical cancer fact sheet</p>
+<p class="">#HPV #saudedamulher #ginecologia #preventivo #colodoutero #rastreamento</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><p class="">Rodapé do card e legenda. Não são faladas. 1. Ministério da Saúde. Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a> 2. Carvalho NS et al. Protocolo Brasileiro para IST 2020: infecção pelo papilomavírus humano (HPV). Epidemiol Serv Saúde, Ministério da Saúde. <a href="https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt" target="_blank" rel="noopener">https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt</a> 3. OMS. Cervical cancer, fact sheet. <a href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/cervical-cancer</a></p></div>
+  </div>
+</article>
+<article class="glass-card" id="ep2">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 2</span>
+      <span class="forma-badge">B. A frase que circula por aí</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>QUEM RESOLVE ISSO É O SEU PRÓPRIO CORPO</h3>
+    <div class="ah-meta">~2min30 &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Imunidade · Acompanhamento</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">Tem uma informação sobre o HPV que deveria vir junto com o diagnóstico e nem sempre vem, e ela é a mais importante de todas: na maior parte das vezes, quem resolve isso é o seu próprio corpo. Sozinho. Sem remédio nenhum.</p>
+<p class="">E eu preciso começar desfazendo um mal entendido, porque ele gera angústia à toa. Não existe antiviral que mate o HPV. Nenhum comprimido, nenhuma pomada, nenhuma injeção elimina esse vírus. Quando alguém diz que está tratando HPV, o que está sendo tratado é a lesão que ele produziu, e não o vírus em si. <strong>O vírus quem tira é a sua imunidade.</strong></p>
+<p class="">E o protocolo brasileiro descreve isso com clareza: a grande maioria das infecções por HPV em mulheres se resolve espontaneamente num período de aproximadamente até vinte e quatro meses.</p>
+<p class=""><strong>Vinte e quatro meses parece uma eternidade, e você deve estar se perguntando por que demora tanto assim.</strong></p>
+<p class="">Demora por causa do esconderijo que esse vírus escolheu. O HPV infecta as células da camada mais superficial do colo do útero e vive dentro delas, usando a maquinaria da própria célula para se multiplicar. Só que ele não cai na corrente sanguínea em momento nenhum. E ele não provoca aquela inflamação barulhenta, com febre e dor, que faz o sistema imune correr para o local. Ele é silencioso de propósito, e isso é uma estratégia de sobrevivência do vírus. Funciona: a sua defesa demora para reconhecer que tem um invasor ali dentro.</p>
+<p class="">Quando ela finalmente reconhece, a resposta que resolve não é a de anticorpo circulando no sangue. É uma resposta celular. São células de defesa que precisam ir até o tecido, identificar quais células estão infectadas e eliminar uma por uma. Esse é um trabalho lento por natureza. <strong>Mas ele funciona, e funciona na maioria das vezes.</strong></p>
+<p class="">Tem uma coisa que confunde no acompanhamento e vale saber antes de acontecer com você. O exame pode voltar positivo de novo, seis meses ou um ano depois, sem que isso signifique que você pegou o vírus outra vez. Pode ser exatamente a mesma infecção, que ainda não terminou de sair. Não é recaída. É processo em andamento.</p>
+<p class=""><strong>E aí você me pergunta: se some sozinho, então por que continuam me chamando para repetir exame?</strong></p>
+<p class="">Porque o que decide o risco não é ter o vírus. É quanto tempo ele fica. O que abre caminho para uma lesão é a infecção que se instala e persiste ano após ano, não a que passou e foi embora. O acompanhamento existe justamente para identificar quem está nesse grupo, que é a minoria, antes que qualquer coisa aconteça.</p>
+<p class="">Agora eu preciso ser muito honesta com você sobre uma coisa. Não existe suplemento, chá, vitamina ou protocolo que acelere essa eliminação. Se estão te vendendo isso, estão te vendendo. O que está descrito no protocolo é bem mais simples e bem menos glamoroso: o uso do preservativo abrevia o processo de eliminação viral, favorece a regressão das lesões e diminui a chance de as verrugas voltarem. Não é uma barreira perfeita, porque o vírus pode estar na pele em volta, numa área que a camisinha não cobre. Mas ela mexe no relógio a seu favor, e nesse assunto o relógio é tudo.</p>
+<p class="">Me conta aqui embaixo se alguém já te disse que HPV é para a vida toda. Essa frase circula muito, e na maioria dos casos ela simplesmente não é verdade.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;a grande maioria das infecções por HPV em mulheres se resolve espontaneamente num período de aproximadamente até vinte e quatro meses&quot;</li><li>&quot;o uso do preservativo abrevia o processo de eliminação viral, favorece a regressão das lesões e diminui a chance de as verrugas voltarem&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">&quot;HPV não tem cura&quot; é uma frase errada na maioria dos casos.</p>
+<p class="">Não existe antiviral que mate o HPV. Quando se trata HPV, o que se trata é a lesão que ele produziu. O vírus quem elimina é a sua imunidade, e o protocolo brasileiro descreve que a grande maioria das infecções em mulheres se resolve sozinha em até 24 meses.</p>
+<p class="">Por que demora tanto? Porque o vírus vive dentro das células da camada superficial do colo, não cai na corrente sanguínea e não provoca inflamação intensa. O sistema imune demora a reconhecer o invasor. E a resposta que resolve é celular: células de defesa vão até o tecido e eliminam as células infectadas uma a uma.</p>
+<p class="">Detalhe que confunde no acompanhamento: o exame pode voltar positivo meses depois sem que isso seja nova infecção. Pode ser a mesma, que ainda não terminou de sair.</p>
+<p class="">O que decide o risco não é ter o vírus. É quanto tempo ele fica.</p>
+<p class="">Sem suplemento milagroso. O que está descrito: o preservativo abrevia a eliminação viral, favorece a regressão das lesões e reduz a recidiva das verrugas.</p>
+<p class="">Fontes Protocolo Brasileiro para IST 2020, capítulo HPV, Epidemiologia e Serviços de Saúde · Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Ministério da Saúde, 2025</p>
+<p class="">#HPV #imunidade #saudedamulher #ginecologia #preventivo</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>Carvalho NS et al. Protocolo Brasileiro para IST 2020: infecção pelo papilomavírus humano (HPV). Epidemiol Serv Saúde, Ministério da Saúde. <a href="https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt" target="_blank" rel="noopener">https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt</a></li><li>Ministério da Saúde. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I, 2025. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep3">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 3</span>
+      <span class="forma-badge">C. Lendo junto (o laudo)</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O QUE É NIC, EXPLICADO DEVAGAR</h3>
+    <div class="ah-meta">~3min &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · NIC · LSIL · Laudo</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">NIC. Três letras que chegam num laudo e derrubam o dia inteiro de quem lê. E eu queria muito que alguém tivesse te explicado o que elas significam antes de esse papel chegar na sua mão, porque a explicação é bem menos assustadora do que a sigla.</p>
+<p class="">Então vamos devagar. E vamos começar pelo colo do útero, não pela sigla.</p>
+<p class="">O colo do útero é revestido por um tecido chamado epitélio. Esse tecido é organizado em camadas, empilhadas uma sobre a outra, como uma parede feita de fileiras. Lá embaixo, na base, ficam as células jovens, que nascem ali. Conforme novas células vão nascendo, as antigas vão sendo empurradas para cima, e no caminho elas vão amadurecendo, mudando de formato, até chegarem à superfície já maduras. Esse é o funcionamento normal do seu colo do útero, e ele acontece o tempo todo, sem que você sinta nada.</p>
+<p class="">O que o HPV faz é atrapalhar esse amadurecimento. Ele entra nas células lá da base e bagunça o programa delas. Aí, em vez de subir amadurecendo, a célula sobe imatura, com o núcleo grande demais, com o formato errado. Quando o patologista olha isso no microscópio, é exatamente isso que ele enxerga: células que deveriam estar maduras naquela altura da parede e não estão.</p>
+<p class="">Agora sim, a sigla. NIC quer dizer Neoplasia Intraepitelial Cervical. E cada uma dessas três palavras está trabalhando.</p>
+<p class="">Cervical é o lugar, o colo do útero. Neoplasia quer dizer crescimento novo e desorganizado, que é exatamente a bagunça que eu acabei de descrever. E intraepitelial é a palavra mais importante das três, porque ela quer dizer dentro do epitélio. <strong>Dentro. Ou seja: não saiu dali.</strong> O próprio nome já está te dizendo que aquilo não atravessou a base do tecido, e é atravessar a base que define um câncer invasor.</p>
+<p class="">E o número que vem depois da sigla diz apenas até que altura da parede a bagunça chegou.</p>
+<p class="">NIC 1 é quando a alteração está no terço de baixo, mais perto da base. NIC 2 é quando ela subiu até o meio. NIC 3 é quando ela ocupa a espessura toda do epitélio. E mesmo o NIC 3, que é o mais avançado dos três, ainda não é câncer, porque a base continua intacta. <strong>NIC 3 não é câncer.</strong> É a lesão mais avançada que existe antes dele, e é justamente por ser assim que ela é tratável com um procedimento de consultório.</p>
+<p class="">Agora tem um detalhe de vocabulário que confunde, inclusive dentro da área. NIC é uma palavra da biópsia, não do preventivo. São dois exames diferentes falando línguas diferentes sobre o mesmo colo. O preventivo, que é a citologia, olha células soltas raspadas da superfície, e por isso ele não consegue dizer a que altura da parede a alteração chegou. Ele fala em lesão de baixo grau e lesão de alto grau, que aparecem no laudo escritas como LSIL e HSIL. A biópsia é que retira um pedacinho do tecido inteiro, com todas as camadas empilhadas, e só ela consegue medir profundidade. <strong>Se te disseram que o seu preventivo deu NIC, ou o exame foi outro, ou a palavra se perdeu no caminho.</strong></p>
+<p class="">E aqui vem a parte menos esperada. O NIC 1 não é considerado lesão precursora do câncer de colo do útero. Não é. Ele é descrito como a expressão da própria infecção pelo HPV nas células, uma infecção transitória, com alta probabilidade de regredir sozinha. Por isso a conduta diante de um NIC 1 costuma ser acompanhar, e não tratar.</p>
+<p class=""><strong>E aí você me pergunta: então NIC 1 é para ignorar?</strong></p>
+<p class="">Não. É para acompanhar, que é uma coisa completamente diferente. A diferença entre ignorar e acompanhar é uma data de retorno marcada na agenda.</p>
+<p class="">O NIC 2 já pede mais atenção, e ele tem uma particularidade importante: a idade muda o prognóstico dele. Em mulheres com menos de trinta anos, a regressão espontânea observada foi de setenta por cento em trinta e seis meses. Dos trinta anos em diante, foi de quarenta e quatro por cento em vinte e quatro meses. Mesma sigla no laudo, dois cenários bem diferentes. É por isso que a conduta pergunta a sua idade antes de perguntar praticamente qualquer outra coisa.</p>
+<p class="">E eu preciso ser honesta sobre o limite de tudo isso. Regressão é probabilidade, não é promessa. Existe uma parte que não regride, e é para encontrar essa parte a tempo que o acompanhamento existe. Quando uma alteração de baixo grau persiste por vinte e quatro meses, a orientação muda e a colposcopia volta para a mesa.</p>
+<p class="">Guarda esse aqui para o dia em que um laudo desses chegar na sua mão. Entender a palavra já tira metade do susto.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;NIC quer dizer Neoplasia Intraepitelial Cervical&quot;</li><li>&quot;NIC 1 é quando a alteração está no terço de baixo, mais perto da base. NIC 2 é quando ela subiu até o meio. NIC 3 é quando ela ocupa a espessura toda do epitélio&quot;</li><li>&quot;NIC 3 não é câncer&quot;</li><li>&quot;Ele fala em lesão de baixo grau e lesão de alto grau, que aparecem no laudo escritas como LSIL e HSIL&quot;</li><li>&quot;O NIC 1 não é considerado lesão precursora do câncer de colo do útero&quot;</li><li>&quot;a regressão espontânea observada foi de setenta por cento em trinta e seis meses. Dos trinta anos em diante, foi de quarenta e quatro por cento em vinte e quatro meses&quot;</li><li>&quot;Quando uma alteração de baixo grau persiste por vinte e quatro meses, a orientação muda e a colposcopia volta para a mesa&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">NIC não é uma sentença. É uma medida de profundidade.</p>
+<p class="">O colo do útero é revestido por um tecido em camadas. As células nascem na base, sobem e vão amadurecendo até a superfície. O HPV atrapalha esse amadurecimento: a célula sobe imatura, com o núcleo grande e o formato errado. É isso que o patologista enxerga no microscópio.</p>
+<p class="">NIC quer dizer Neoplasia Intraepitelial Cervical. A palavra mais importante é intraepitelial: dentro do epitélio. Ou seja, não atravessou a base. E é atravessar a base que define câncer invasor.</p>
+<p class="">O número diz até que altura da parede a alteração chegou. NIC 1 é o terço de baixo. NIC 2 vai até o meio. NIC 3 ocupa a espessura toda, com a base intacta. Mesmo o NIC 3 não é câncer.</p>
+<p class="">Detalhe de vocabulário: NIC vem da biópsia, não do preventivo. A citologia olha células soltas da superfície e por isso não mede profundidade, então ela fala LSIL e HSIL. Só a biópsia, que retira o tecido com as camadas empilhadas, consegue dizer NIC.</p>
+<p class="">E o que mais surpreende: o INCA descreve que o NIC I não é considerado lesão precursora do câncer de colo. É a expressão de uma infecção transitória por HPV, com alta probabilidade de regredir.</p>
+<p class="">O NIC 2 muda com a idade: regressão espontânea de 70% em 36 meses abaixo dos 30 anos, e de 44% em 24 meses dos 30 em diante.</p>
+<p class="">Guarda para o dia em que o laudo chegar.</p>
+<p class="">Fontes INCA, Diretrizes brasileiras para o rastreamento do câncer do colo do útero, 2ª ed. revista, 2016 · Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Ministério da Saúde, 2025</p>
+<p class="">#HPV #NIC #preventivo #papanicolau #colodoutero #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>INCA. Diretrizes brasileiras para o rastreamento do câncer do colo do útero, 2ª edição revista, ampliada e atualizada, 2016. <a href="https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf" target="_blank" rel="noopener">https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf</a></li><li>Ministério da Saúde. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I, 2025. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep4">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 4</span>
+      <span class="forma-badge">D. As duas opções na mesa</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O PAPANICOLAU CONTINUA. O QUE MUDOU FOI A ORDEM</h3>
+    <div class="ah-meta">~3min &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Rastreamento · Papanicolau · Teste de DNA</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">Se o seu preventivo mudou de nome, de prazo ou de forma de coleta nos últimos tempos, existe uma explicação, e ela não é erro do laboratório nem do seu médico. O rastreamento do câncer de colo do útero no Brasil está sendo reorganizado.</p>
+<p class="">E eu quero começar pela parte que mais gera confusão, para tirar ela do caminho logo. <strong>O Papanicolau não vai deixar de existir.</strong> Ele continua sendo essencial, continua sendo feito e continua respondendo uma pergunta que nenhum outro exame responde. O que mudou foi a ordem em que as perguntas são feitas.</p>
+<p class="">Então deixa eu te explicar quais são essas duas perguntas, porque aí tudo fica simples.</p>
+<p class="">O Papanicolau, que é a citologia, coleta células do colo do útero e olha essas células no microscópio. Ele procura alteração de formato, de tamanho, de núcleo. A pergunta dele é: <strong>essa célula já mudou?</strong> Ele enxerga a consequência, e é o único dos dois que consegue enxergar isso.</p>
+<p class="">O teste molecular de DNA de HPV faz outra coisa. Ele procura o material genético do vírus dentro do material colhido. A pergunta dele é: <strong>o vírus que pode causar essa alteração está aqui?</strong> Ele enxerga a causa, e consegue enxergar antes de a célula ter mudado qualquer coisa.</p>
+<p class="">São perguntas diferentes, e nenhuma das duas substitui a outra. O que a diretriz nacional fez, em julho de 2025, foi definir qual delas abre o processo no rastreamento organizado. E ela definiu o teste molecular como o primeiro passo, dos vinte e cinco aos sessenta e quatro anos, com repetição a cada cinco anos quando o resultado vem negativo.</p>
+<p class=""><strong>E aí você me pergunta: por que começar pela causa e não pela consequência?</strong></p>
+<p class="">Porque começar pela causa amplia a janela de tempo. Quando o exame consegue apontar que o vírus está presente antes de qualquer alteração aparecer na célula, dá para acompanhar aquela mulher desde muito mais cedo. E isso está medido: o rastreamento feito com teste de DNA de HPV oferece proteção sessenta a setenta por cento maior contra carcinoma invasor do que o rastreamento feito apenas com citologia. Ele também tem um valor preditivo negativo muito alto, que é a forma técnica de dizer que, quando ele não encontra vírus, a chance de estar deixando alguma coisa passar é baixa. É essa segurança que permite o intervalo de cinco anos, no lugar do intervalo mais curto de antes.</p>
+<p class="">E é exatamente aqui que o Papanicolau entra no desenho novo.</p>
+<p class="">Quando o teste molecular encontra um tipo oncogênico que não é o 16 nem o 18, a citologia é feita, e ela é feita preferencialmente na mesma amostra que já tinha sido colhida. Isso tem um nome: citologia reflexa. E é o resultado dela que vai definir se aquela mulher precisa de colposcopia agora ou se o caso é de acompanhar. Ou seja: <strong>o Papanicolau deixou de ser o primeiro passo e passou a ser o passo que decide a conduta.</strong> É uma função tão importante quanto a anterior, e em alguns aspectos mais delicada, porque é sobre a leitura dele que o encaminhamento se apoia.</p>
+<p class="">E existe uma situação em que o teste molecular já basta sozinho para encaminhar. Quando o que aparece é o 16 ou o 18, que são os tipos de maior risco, a orientação é ir direto para a colposcopia, sem passar pela citologia antes.</p>
+<p class="">Tem ainda um ponto dessa diretriz que responde uma dúvida bem antiga. O rastreamento não deve começar antes dos vinte e cinco anos. E isso não é economia de recurso. É porque a presença do HPV atinge o pico logo depois do início da vida sexual, e nessa faixa a maior parte dessas infecções é transitória e vai embora sozinha. Rastrear antes disso encontraria muita coisa que iria regredir de qualquer jeito, e o resultado prático seria investigação e procedimento em mulheres muito jovens que não precisariam de nenhum dos dois.</p>
+<p class="">Agora eu preciso ser honesta com você sobre o estado das coisas. Essa reorganização está em curso e ainda não terminou. A parte da diretriz que define a conduta depois de um resultado positivo ainda não estava concluída quando eu escrevi isso. E um país deste tamanho não muda um programa de rastreamento de um mês para o outro. Então o seu serviço pode estar seguindo o modelo anterior, com a citologia abrindo o processo, e isso está correto também.</p>
+<p class="">Pergunta na sua próxima consulta como o rastreamento está organizado no seu serviço hoje. Não é para cobrar ninguém. É para você saber o que esperar e em quanto tempo voltar.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;O Papanicolau não vai deixar de existir&quot;</li><li>&quot;em julho de 2025&quot;</li><li>&quot;o teste molecular como o primeiro passo, dos vinte e cinco aos sessenta e quatro anos&quot;</li><li>&quot;repetição a cada cinco anos quando o resultado vem negativo&quot;</li><li>&quot;proteção sessenta a setenta por cento maior contra carcinoma invasor do que o rastreamento feito apenas com citologia&quot;</li><li>&quot;Quando o teste molecular encontra um tipo oncogênico que não é o 16 nem o 18, a citologia é feita, e ela é feita preferencialmente na mesma amostra&quot;</li><li>&quot;Quando o que aparece é o 16 ou o 18 ... a orientação é ir direto para a colposcopia&quot;</li><li>&quot;O rastreamento não deve começar antes dos vinte e cinco anos&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">O Papanicolau não vai deixar de existir. O que mudou foi a ordem.</p>
+<p class="">O rastreamento do câncer de colo do útero no Brasil está sendo reorganizado, e os dois exames continuam necessários. Eles fazem perguntas diferentes.</p>
+<p class="">O Papanicolau (citologia) olha as células no microscópio e procura alteração de formato, de tamanho e de núcleo. A pergunta dele é: essa célula já mudou? Ele enxerga a consequência, e é o único dos dois que consegue enxergar isso.</p>
+<p class="">O teste molecular de DNA de HPV procura o material genético do vírus. A pergunta dele é: o vírus que pode causar essa alteração está aqui? Ele enxerga a causa, antes de a célula ter mudado.</p>
+<p class="">Em julho de 2025 a diretriz nacional definiu o teste molecular como o primeiro passo do rastreamento organizado, dos 25 aos 64 anos, repetido a cada 5 anos quando negativo. Começar pela causa amplia a janela de acompanhamento, e o rastreamento com DNA de HPV oferece proteção 60 a 70% maior contra carcinoma invasor do que o feito apenas com citologia.</p>
+<p class="">E é aí que o Papanicolau entra no desenho novo: quando o teste encontra um tipo oncogênico que não é 16 nem 18, a citologia é feita na mesma amostra já colhida (citologia reflexa), e é o resultado dela que define se a colposcopia é necessária agora. O Papanicolau deixou de ser o primeiro passo e passou a ser o passo que decide a conduta.</p>
+<p class="">A reorganização está em curso. Pergunta na consulta como o seu serviço está organizado hoje.</p>
+<p class="">Fontes Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025, Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I · INCA, comunicado sobre a mudança nas diretrizes</p>
+<p class="">#HPV #preventivo #papanicolau #testedeHPV #rastreamento #colodoutero #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>Ministério da Saúde. Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li><li>INCA. INCA alerta gestores para mudança nas diretrizes do rastreamento do câncer do colo do útero. <a href="https://www.gov.br/inca/pt-br/assuntos/noticias/2024/inca-alerta-gestores-para-mudanca-nas-diretrizes-do-rastreamento-do-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/inca/pt-br/assuntos/noticias/2024/inca-alerta-gestores-para-mudanca-nas-diretrizes-do-rastreamento-do-cancer-do-colo-do-utero</a></li></ol>
+<div class="callout"><strong>Conferir antes de gravar.</strong> A Parte II das Diretrizes, que trata da conduta a partir da colposcopia, estava em consulta pública em junho de 2026. Se ela tiver sido publicada até a gravação, trocar &quot;ainda não estava concluída quando eu escrevi isso&quot; por &quot;foi publicada em&quot; mais a data. O resto do roteiro não muda.</div>
+<div class="callout"><strong>Decisão editorial.</strong> A recomendação de não realizar o coteste, ou seja, os dois exames simultâneos, ficou fora deste roteiro de propósito. É o ponto mais controverso da diretriz, e ele não muda nada na conduta da paciente, que não escolhe protocolo. Fica registrado no bloco de fontes, para consulta da equipe.</div></div>
+  </div>
+</article>
+<article class="glass-card" id="ep5">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 5</span>
+      <span class="forma-badge">F. O que acontece antes e depois</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O COLPOSCÓPIO NÃO ENTRA EM VOCÊ</h3>
+    <div class="ah-meta">~3min &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Colposcopia · Biópsia · Laudo</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">Colposcopia é uma daquelas palavras que assustam muito mais do que o exame em si. E esse medo tem uma causa bem concreta: ninguém entra tranquila num exame sem saber o que vai acontecer ali dentro. Então vamos fazer o contrário aqui.</p>
+<p class="">Começando pelo aparelho, porque essa é a primeira confusão. O colposcópio não entra e não encosta em você. Ele é um microscópio montado num pedestal, que fica a distância, do lado de fora, com uma luz forte e lentes de aumento. A função dele é ampliar a imagem do colo do útero para o médico enxergar detalhes que não dá para ver a olho nu. <strong>O que entra é o espéculo, o mesmo instrumento do preventivo.</strong> Nada além dele.</p>
+<p class="">O exame começa igual a uma consulta de rotina. A diferença vem depois, e é a parte que eu quero te contar em detalhe: duas soluções são aplicadas no colo, uma de cada vez, e cada uma tem uma função diferente.</p>
+<p class="">A primeira é o ácido acético, que é vinagre diluído. Ele reage com as áreas onde as células estão alteradas e faz essas áreas ficarem esbranquiçadas por alguns instantes, enquanto o tecido saudável em volta continua rosado. É como se o exame revelasse um desenho que estava invisível ali. No laudo isso aparece com o nome de epitélio acetobranco. E o médico ainda registra a intensidade: acetobranco tênue conta como achado menor, acetobranco denso conta como achado maior. <strong>A intensidade do branco importa tanto quanto a presença dele.</strong> Na hora da aplicação pode arder um pouco, por poucos segundos, e passa.</p>
+<p class="">A segunda solução é o lugol, que é uma solução de iodo. E o mecanismo aqui é bonito de entender. O tecido do colo, quando está maduro e saudável, armazena glicogênio, que é uma forma de açúcar. O iodo se liga a esse glicogênio. Então o tecido saudável absorve o lugol e fica marrom escuro. O tecido alterado, que não amadureceu direito, não tem esse glicogênio guardado, não absorve nada, e fica claro no meio do marrom, denunciando exatamente onde está o ponto que precisa ser olhado.</p>
+<p class="">No laudo isso aparece com o nome de teste de Schiller. E aqui mora uma inversão que confunde na hora de ler o laudo. <strong>Schiller positivo quer dizer que a área não corou.</strong> Positivo, nesse teste, é o achado que chama atenção, e não o resultado tranquilizador. É o inverso do que a palavra sugere na linguagem do dia a dia. Se você ler Schiller positivo no seu laudo, isso não quer dizer que deu tudo certo, e também não quer dizer câncer. Quer dizer que existe uma área que precisa ser investigada.</p>
+<p class=""><strong>E aí você me pergunta: e a biópsia, dói?</strong></p>
+<p class="">A biópsia só é feita se aparecer alguma área que precise ser examinada por dentro. Ela não é rotina do exame. É a retirada de um fragmento bem pequeno de tecido, para o patologista analisar no microscópio. E eu vou te dizer a verdade: incomoda. Costuma dar uma cólica curta, parecida com uma cólica menstrual forte que passa rápido. Eu prefiro te falar isso agora do que você descobrir sozinha na cadeira achando que era para não sentir nada.</p>
+<p class="">E tem uma linha do laudo que passa batida e que decide muita coisa da conduta. Vem escrito zona de transformação tipo 1, tipo 2 ou tipo 3. A zona de transformação é justamente a região do colo onde as lesões nascem, e esse número diz o quanto dela o médico conseguiu enxergar. Tipo 1 é quando ela está toda visível. Tipo 2 é quando ela entra um pouco pelo canal, mas ainda dá para ver. Tipo 3 é quando ela recuou para dentro do canal e não dá para visualizar, coisa que pode acontecer depois da menopausa. E isso muda a conduta mesmo que a colposcopia não tenha achado nada de anormal, porque ninguém pode garantir que não tem nada exatamente onde não se conseguiu olhar.</p>
+<p class="">Depois do exame pode aparecer um corrimento escuro nos primeiros dias. Não é sangramento. É resto das soluções saindo.</p>
+<p class="">Guarda esse aqui para a véspera do seu exame. Chegar sabendo o que vai acontecer é o que mais diminui o medo na hora.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;O colposcópio não entra e não encosta em você&quot;</li><li>&quot;No laudo isso aparece com o nome de epitélio acetobranco&quot;</li><li>&quot;acetobranco tênue conta como achado menor, acetobranco denso conta como achado maior&quot;</li><li>&quot;No laudo isso aparece com o nome de teste de Schiller&quot;</li><li>&quot;Schiller positivo quer dizer que a área não corou&quot;</li><li>&quot;Vem escrito zona de transformação tipo 1, tipo 2 ou tipo 3&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">O colposcópio não entra e não encosta em você.</p>
+<p class="">Ele é um microscópio montado num pedestal, que fica a distância, com luz forte e lentes de aumento. O que entra é o espéculo, o mesmo do preventivo.</p>
+<p class="">O que acontece durante o exame: duas soluções são aplicadas no colo.</p>
+<p class="">Ácido acético (vinagre diluído): reage com as áreas alteradas e as deixa esbranquiçadas por alguns instantes. No laudo isso é &quot;epitélio acetobranco&quot;, registrado como tênue (achado menor) ou denso (achado maior).</p>
+<p class="">Lugol (iodo): o tecido maduro e saudável armazena glicogênio, e o iodo se liga a ele, então o tecido saudável fica marrom escuro. O tecido alterado não tem esse glicogênio, não absorve e fica claro no meio do marrom. No laudo isso vira o teste de Schiller.</p>
+<p class="">Atenção à inversão: Schiller positivo significa que a área NÃO corou. Positivo, aqui, é o achado que chama atenção, não o resultado tranquilizador.</p>
+<p class="">A linha que quase ninguém lê: &quot;zona de transformação tipo 1, 2 ou 3&quot;. Ela diz o quanto foi possível enxergar da região onde as lesões nascem, e muda a conduta mesmo sem achado nenhum.</p>
+<p class="">A biópsia só é feita se houver área a investigar. É um fragmento bem pequeno, incomoda e costuma dar uma cólica curta.</p>
+<p class="">Guarda para a véspera do exame.</p>
+<p class="">Fontes INCA, Diretrizes brasileiras para o rastreamento do câncer do colo do útero, 2ª ed. revista, 2016, Anexo 3 (terminologia colposcópica IFCPC 2011) · Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Ministério da Saúde, 2025</p>
+<p class="">#colposcopia #HPV #biopsia #preventivo #ginecologia #saudedamulher</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>INCA. Diretrizes brasileiras para o rastreamento do câncer do colo do útero, 2ª edição revista, 2016. Anexo 3, Terminologia colposcópica do colo do útero, adaptada da IFCPC 2011. <a href="https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf" target="_blank" rel="noopener">https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf</a></li><li>Ministério da Saúde. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I, 2025. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep6">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 6</span>
+      <span class="forma-badge">D. As duas opções na mesa</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>DUAS PORTAS PARA A MESMA VACINA</h3>
+    <div class="ah-meta">~3min &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Vacina · Imunização</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">Tem uma pergunta sobre a vacina do HPV que eu quero responder com bastante cuidado, porque a resposta errada faz perder uma proteção que ainda estava disponível. A pergunta é se ainda vale a pena tomar depois de adulta.</p>
+<p class="">E para responder direito eu preciso te mostrar antes que existem duas portas diferentes no Brasil hoje, e elas não oferecem a mesma coisa.</p>
+<p class="">Mas antes das portas, uma palavra sobre como essa vacina funciona, porque isso explica todo o resto. A vacina do HPV não tem vírus vivo dentro dela e não tem material genético do vírus. O que ela tem é uma partícula que imita a casca externa do HPV, oca, sem nada dentro. O seu sistema imune vê essa casca, entende como ameaça e produz defesa contra ela. <strong>Não existe possibilidade de a vacina causar a infecção</strong>, porque não tem vírus ali para causar coisa alguma. E a defesa que ela gera é bem mais robusta que a da infecção natural: os anticorpos produzidos pela vacina ficam numa quantidade cerca de dez vezes maior do que os que o corpo produz quando encontra o vírus na vida real.</p>
+<p class="">Agora as duas portas.</p>
+<p class="">Na rede pública, o esquema hoje é de dose única para crianças e adolescentes de nove a quatorze anos. Dose única mesmo, e isso mudou em 2024. <strong>Quem tomou uma só não está com esquema incompleto.</strong> A segunda dose que existia no esquema anterior saiu da recomendação.</p>
+<p class="">E existe uma janela aberta neste momento que eu faço questão de destacar. Quem tem entre quinze e dezenove anos e nunca se vacinou pode tomar a dose gratuita no sistema público até o fim deste ano. Essa janela é uma estratégia de resgate, ela tem prazo, e o prazo é dezembro. Se tem alguém nessa idade na sua casa, essa é a parte prática deste vídeo.</p>
+<p class="">Alguns grupos seguem com três doses na rede pública, entre eles pessoas vivendo com HIV, pessoas transplantadas e pacientes em tratamento oncológico, e nesses casos a indicação vai até os quarenta e cinco anos.</p>
+<p class="">Na rede privada a conversa é outra. Lá existe a vacina de nove tipos, que cobre o 6, o 11, o 16, o 18, o 31, o 33, o 45, o 52 e o 58. Ela está indicada para mulheres e homens de nove a quarenta e cinco anos, em três doses a partir dos quinze. Comparada com a que está no calendário público, ela acrescenta cinco tipos oncogênicos à cobertura.</p>
+<p class=""><strong>E aí você me pergunta: eu já tive HPV, então já perdi a hora?</strong></p>
+<p class="">Não é assim que funciona, e por dois motivos.</p>
+<p class="">O primeiro é que ter tido um tipo de HPV não protege você dos outros. São dezenas de tipos oncogênicos circulando, e a chance de você ter encontrado justamente todos os que a vacina cobre é muito baixa. Ela continua protegendo contra tudo aquilo que ainda não chegou até você.</p>
+<p class="">O segundo motivo é bem menos conhecido e é importante. Em pessoas que já tiveram lesão causada por HPV e que já foram tratadas, as evidências mostram redução do risco de a lesão voltar e de nova infecção depois da vacinação. <strong>A vacina não trata o que já está lá.</strong> Ela não faz o vírus atual ir embora e não substitui o tratamento de lesão nenhuma. Mas ela reduz a chance de o problema se repetir.</p>
+<p class="">Agora a parte honesta, porque ela existe. Depois dos quinze anos o benefício é menor do que aos onze, e o motivo é simples: parte da exposição ao vírus já aconteceu. Menor não significa nulo, e é justamente por isso que a vacinação de recuperação é indicada e entra em prescrição médica. Mas essa é uma decisão para tomar junto com quem te acompanha, olhando a sua idade, a sua história e o que você já encontrou pelo caminho.</p>
+<p class="">Assiste esse aqui junto com quem tem adolescente em casa. A parte da janela de dezembro é a que tem prazo para acabar.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;dose única para crianças e adolescentes de nove a quatorze anos&quot;</li><li>&quot;Quem tem entre quinze e dezenove anos e nunca se vacinou pode tomar a dose gratuita no sistema público até o fim deste ano&quot;</li><li>&quot;pessoas vivendo com HIV, pessoas transplantadas e pacientes em tratamento oncológico, e nesses casos a indicação vai até os quarenta e cinco anos&quot;</li><li>&quot;a vacina de nove tipos, que cobre o 6, o 11, o 16, o 18, o 31, o 33, o 45, o 52 e o 58&quot;</li><li>&quot;indicada para mulheres e homens de nove a quarenta e cinco anos, em três doses a partir dos quinze&quot;</li><li>&quot;as evidências mostram redução do risco de a lesão voltar e de nova infecção depois da vacinação&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">Vacina de HPV no Brasil tem duas portas, e elas não oferecem a mesma coisa.</p>
+<p class="">Antes das portas, como ela funciona: a vacina não tem vírus vivo nem material genético do vírus. Ela tem uma partícula oca que imita a casca externa do HPV. Não existe possibilidade de causar a infecção. E os anticorpos que ela produz ficam em quantidade cerca de 10 vezes maior do que os da infecção natural.</p>
+<p class="">Rede pública: dose única para crianças e adolescentes de 9 a 14 anos, desde 2024. Quem tomou uma só não está com esquema incompleto.</p>
+<p class="">Janela aberta agora: quem tem de 15 a 19 anos e nunca se vacinou pode tomar a dose gratuita até o fim deste ano. É uma estratégia de resgate e tem prazo.</p>
+<p class="">Alguns grupos seguem com 3 doses na rede pública, entre eles pessoas vivendo com HIV, transplantadas e em tratamento oncológico, com indicação até os 45 anos.</p>
+<p class="">Rede privada: a vacina de 9 tipos (6, 11, 16, 18, 31, 33, 45, 52 e 58), indicada de 9 a 45 anos para mulheres e homens, em 3 doses a partir dos 15. Acrescenta 5 tipos oncogênicos à cobertura do calendário público.</p>
+<p class="">&quot;Já tive HPV, perdi a hora?&quot; Não. Ter tido um tipo não protege dos outros. E em quem já teve lesão e já tratou, as evidências mostram redução do risco de a lesão voltar e de nova infecção. A vacina não trata o que já está lá, mas reduz a chance de repetir.</p>
+<p class="">Manda para quem tem adolescente em casa.</p>
+<p class="">Fontes Nota Técnica nº 16/2025-DPNI/SVSA/MS, Ministério da Saúde · Ministério da Saúde, resgate vacinal contra HPV de 15 a 19 anos · FEBRASGO, Recomendações para a vacina HPV 9, Comissão Nacional Especializada em Vacinas</p>
+<p class="">#vacinaHPV #HPV #imunizacao #SUS #saudedamulher #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>Ministério da Saúde. Nota Técnica nº 16/2025-DPNI/SVSA/MS. Esquemas de vacinação contra o HPV e grupos com recomendação. <a href="https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf" target="_blank" rel="noopener">https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf</a></li><li>Ministério da Saúde. Resgate vacinal contra o HPV para jovens de 15 a 19 anos, ampliado até dezembro. <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos</a></li><li>FEBRASGO. Recomendações FEBRASGO para a vacina HPV 9, Comissão Nacional Especializada em Vacinas. <a href="https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/</a></li></ol>
+<div class="callout"><strong>Conferir a data antes de gravar.</strong> O prazo do resgate para 15 a 19 anos já foi prorrogado mais de uma vez. O encerramento em 31 de dezembro de 2026 foi confirmado em comunicado do Ministério da Saúde às secretarias estaduais e municipais, noticiado em julho de 2026 pela Agência Gov (<a href="https://agenciagov.ebc.com.br/noticias/202607/vacinacao-contra-o-hpv-para-jovens-de-15-a-19-anos-e-prorrogada-ate-dezembro" target="_blank" rel="noopener">https://agenciagov.ebc.com.br/noticias/202607/vacinacao-contra-o-hpv-para-jovens-de-15-a-19-anos-e-prorrogada-ate-dezembro</a>). Vale abrir no navegador e conferir a data vigente na semana da gravação.</div></div>
+  </div>
+</article>
+<article class="glass-card" id="ep7">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 7</span>
+      <span class="forma-badge">E. A pergunta que chegou</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>MEU PARCEIRO PRECISA TRATAR?</h3>
+    <div class="ah-meta">~90s &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Parceria · IST</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class=""><strong>A pergunta que chegou aqui foi essa: descobri que tenho HPV, o meu parceiro precisa tratar?</strong></p>
+<p class="">E eu quero responder ela inteira, porque dentro dela existe uma segunda pergunta, que nem sempre é dita em voz alta. <strong>É essa: de quem eu peguei isso?</strong></p>
+<p class="">Então eu vou pela segunda primeiro, porque ela é a que mais machuca.</p>
+<p class="">Descobrir o HPV agora não diz absolutamente nada sobre quando ele entrou. O vírus pode permanecer inativo dentro das células por períodos muito longos, sem produzir sintoma nenhum e sem aparecer em exame nenhum. O primeiro sinal pode surgir meses depois da infecção, ou anos depois dela. <strong>O exame data a descoberta, não o contágio.</strong> Não existe cálculo, não existe exame e não existe médico no mundo que consiga te dizer de quem e em que momento você contraiu esse vírus.</p>
+<p class="">Agora a primeira pergunta, sobre tratar.</p>
+<p class="">O protocolo brasileiro é bem direto nisso: rastrear e notificar parcerias sexuais não é recomendado no caso do HPV. O que ele orienta é que o exame da parceria atual deve ser considerado, principalmente com o objetivo de procurar outras infecções sexualmente transmissíveis. <strong>Então o motivo de ele ir ao médico existe. O motivo é que não é caçar o HPV dele.</strong></p>
+<p class="">E vale deixar claro: não existe remédio que elimine esse vírus em ninguém, nem em você nem nele. O que se trata é lesão, quando ela existe e quando ela aparece.</p>
+<p class="">A parte incômoda dessa conversa é que informação não desfaz sozinha uma desconfiança que já se instalou dentro de casa. Eu não vou fingir que um vídeo resolve isso. Mas ela tira o chão científico da acusação, e nessa conversa específica isso já muda bastante.</p>
+<p class="">Me conta aqui embaixo se essa foi a primeira pergunta que passou pela sua cabeça. Ela chega antes até da pergunta sobre o próprio corpo, e isso diz muito sobre o peso que esse assunto ainda carrega.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;O vírus pode permanecer inativo dentro das células por períodos muito longos&quot;</li><li>&quot;rastrear e notificar parcerias sexuais não é recomendado no caso do HPV&quot;</li><li>&quot;o exame da parceria atual deve ser considerado, principalmente com o objetivo de procurar outras infecções sexualmente transmissíveis&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">&quot;Descobri que tenho HPV. Meu parceiro precisa tratar?&quot;</p>
+<p class="">Dentro dessa pergunta existe uma segunda, que nem sempre é dita em voz alta: de quem eu peguei isso?</p>
+<p class="">Descobrir o HPV agora não diz nada sobre quando ele entrou. O vírus pode permanecer inativo dentro das células por períodos muito longos, e o primeiro sinal pode surgir meses ou anos depois da infecção. O exame data a descoberta, não o contágio.</p>
+<p class="">Sobre tratar: o protocolo brasileiro de IST orienta que rastrear e notificar parcerias sexuais não é recomendado no caso do HPV. O exame da parceria atual deve ser considerado, principalmente para procurar outras infecções sexualmente transmissíveis.</p>
+<p class="">O motivo de ele ir ao médico existe. O motivo é que não é caçar o HPV dele.</p>
+<p class="">E não existe remédio que elimine esse vírus em ninguém. O que se trata é lesão, quando ela aparece.</p>
+<p class="">Essa foi a primeira pergunta que passou pela sua cabeça? Conta aqui embaixo.</p>
+<p class="">Fonte Protocolo Brasileiro para Infecções Sexualmente Transmissíveis 2020, capítulo HPV, Ministério da Saúde, publicado em Epidemiologia e Serviços de Saúde</p>
+<p class="">#HPV #IST #relacionamento #saudedamulher #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>Carvalho NS et al. Protocolo Brasileiro para IST 2020: infecção pelo papilomavírus humano (HPV). Epidemiol Serv Saúde, Ministério da Saúde. <a href="https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt" target="_blank" rel="noopener">https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep8">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 8</span>
+      <span class="forma-badge">F. O que acontece antes e depois</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O TEMPO É O ESCUDO</h3>
+    <div class="ah-meta">~3min &nbsp;|&nbsp; Dra. Andrea &nbsp;|&nbsp; Ginecologia · HPV · Rastreamento · Prevenção · Autocoleta</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p class="">O HPV não vira câncer da noite para o dia. Ele precisa de duas coisas acontecendo ao mesmo tempo: muito tempo, e ninguém olhando. E eu quero conversar sobre a segunda, porque das duas ela é a única que está na sua mão.</p>
+<p class="">A história natural dessa doença é longa e é previsível, e é isso que faz dela uma das doenças mais evitáveis que existem. Desde a infecção que se instala e persiste até o surgimento de um câncer costumam se passar de quinze a vinte anos. Quinze a vinte anos é uma janela enorme, e o rastreamento existe exatamente para ocupar essa janela inteira.</p>
+<p class="">E durante todo esse período a doença não avisa. Não dói, não sangra fora de hora, não muda o ciclo e não dá um corrimento diferente. Ela é silenciosa por natureza, e não por descuido de ninguém. <strong>É por isso que o exame não é para quem tem sintoma. É para quem não tem.</strong> Esperar sentir alguma coisa é esperar o pior momento possível.</p>
+<p class="">No Brasil se estimam cerca de dezessete mil casos novos de câncer de colo do útero por ano, com risco maior no Norte, no Nordeste e no Centro-Oeste. E o que sustenta esse número não é falta de tecnologia, porque a tecnologia existe e agora está incorporada no sistema público. O que sustenta é que o rastreamento aqui ainda acontece muito por oportunidade, quando a mulher aparece por outro motivo, em vez de acontecer por convocação organizada, que é quando o sistema chama a mulher pelo nome na hora certa. Essa diferença é a diferença entre os países que estão eliminando essa doença e os que não estão.</p>
+<p class=""><strong>E aí você me pergunta: eu tomei a vacina, ainda preciso fazer o exame?</strong></p>
+<p class="">Precisa, e essa confusão é perigosa. A orientação atual é que o rastreamento não dependa do status vacinal, e o motivo é que a vacina não cobre todos os tipos oncogênicos que existem. Ela cobre os mais importantes, o que já é muita coisa, e não cobre todos. <strong>Vacina e preventivo não se substituem.</strong> Eles se somam.</p>
+<p class="">Tem uma novidade nessa diretriz que derruba uma barreira antiga. A amostra para o teste de HPV pode ser obtida por autocoleta, feita pela própria mulher, sem espéculo, e a sensibilidade para detectar as lesões que importam é semelhante à da coleta feita por um profissional. Isso não substitui a consulta e não serve para toda situação, porque se depois for necessária a citologia, aí sim vai ser preciso uma coleta feita por profissional. Mas para quem trava na hora do exame, por medo, por história de violência, por dor ou por qualquer outro motivo, isso deixou de ser um impedimento absoluto.</p>
+<p class="">E eu não vou fingir que a adesão é fácil. O exame é desconfortável, a fila é real e a vida empurra isso para o mês que vem. Então eu vou te dizer onde o esforço rende mais: mulheres entre trinta e quarenta e nove anos que estão há mais de três anos sem rastrear são o grupo prioritário definido na diretriz. Se você está nesse grupo, o seu exame vale mais do que a média.</p>
+<p class="">É isso. Leva essa conversa para o seu médico de confiança.</p></div>
+  </div>
+
+  <div class="travas">
+    <div class="sec-label travas-label">Travas · ler exatamente como está escrito</div>
+    <ul><li>&quot;costumam se passar de quinze a vinte anos&quot;</li><li>&quot;cerca de dezessete mil casos novos de câncer de colo do útero por ano, com risco maior no Norte, no Nordeste e no Centro-Oeste&quot;</li><li>&quot;a orientação atual é que o rastreamento não dependa do status vacinal&quot;</li><li>&quot;A amostra para o teste de HPV pode ser obtida por autocoleta, feita pela própria mulher, sem espéculo&quot;</li><li>&quot;mulheres entre trinta e quarenta e nove anos que estão há mais de três anos sem rastrear são o grupo prioritário&quot;</li></ul>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p class="">O HPV não vira câncer da noite para o dia. Ele precisa de duas coisas ao mesmo tempo: muito tempo, e ninguém olhando.</p>
+<p class="">Da infecção que persiste até o câncer costumam se passar 15 a 20 anos. É essa janela inteira que o rastreamento ocupa. E nesse período a doença não dói, não sangra, não muda o ciclo e não dá corrimento diferente. Por isso o exame não é para quem tem sintoma, é para quem não tem.</p>
+<p class="">No Brasil se estimam cerca de 17 mil casos novos por ano, com risco maior no Norte, Nordeste e Centro-Oeste. O gargalo não é tecnologia. É o rastreamento acontecer por oportunidade, quando a mulher aparece, em vez de por convocação organizada.</p>
+<p class="">&quot;Tomei a vacina, ainda preciso do exame?&quot; Precisa. A orientação atual é que o rastreamento não dependa do status vacinal, porque a vacina não cobre todos os tipos oncogênicos. Vacina e preventivo se somam, não se substituem.</p>
+<p class="">Novidade que derruba barreira: a amostra para o teste de HPV pode ser obtida por autocoleta, pela própria mulher, sem espéculo, com sensibilidade semelhante à da coleta feita por profissional. Não serve para toda situação, mas para quem trava na hora do exame deixou de ser um impedimento absoluto.</p>
+<p class="">Onde o esforço rende mais: mulheres de 30 a 49 anos há mais de 3 anos sem rastrear são o grupo prioritário da diretriz.</p>
+<p class="">Fontes OMS, Cervical cancer fact sheet · Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Ministério da Saúde, 2025 (Recomendações 4, 15 e 16) · INCA, números do câncer do colo do útero</p>
+<p class="">#HPV #preventivo #autocoleta #rastreamento #colodoutero #saudedamulher</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · não são faladas</div>
+    <div class="refs-list"><ol><li>OMS. Cervical cancer, fact sheet. <a href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/cervical-cancer</a></li><li>Ministério da Saúde. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I, 2025. Recomendações 4, 15 e 16. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li><li>INCA. Câncer do colo do útero, números. <a href="https://www.gov.br/inca/pt-br/assuntos/cancer/numeros" target="_blank" rel="noopener">https://www.gov.br/inca/pt-br/assuntos/cancer/numeros</a></li></ol></div>
+  </div>
+</article>
+
+  <section class="glass-card panel" id="fontes">
+    <h2>Fontes conferidas</h2>
+    <p class="lead">Consulta feita em 09/09/2026. Todas as fontes foram abertas e lidas. Cada bloco traz o que a fonte afirma e o que não pode ser dito com base nela.</p>
+    <div class="src-block"><p class="">Consulta feita em 09/09/2026. Todas abertas e lidas. Segue o padrão de <code>05_FONTES_VERIFICADAS.md</code> e pode ser portado para lá como bloco 9.</p>
+<p class="">## 1. Rastreamento primário: a mudança oficial</p>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Fonte primária&lt;/h4&gt;</p>
+<ul><li>Ministério da Saúde. <strong>Portaria Conjunta SAES/SECTICS nº 13, de 29 de julho de 2025</strong>, que aprova as Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I, rastreamento organizado utilizando testes moleculares para detecção de DNA-HPV oncogênico. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li><li>INCA. Comunicado sobre a mudança nas diretrizes. <a href="https://www.gov.br/inca/pt-br/assuntos/noticias/2024/inca-alerta-gestores-para-mudanca-nas-diretrizes-do-rastreamento-do-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/inca/pt-br/assuntos/noticias/2024/inca-alerta-gestores-para-mudanca-nas-diretrizes-do-rastreamento-do-cancer-do-colo-do-utero</a></li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que a fonte afirma&lt;/h4&gt;</p>
+<ul><li><strong>Recomendação 1:</strong> teste de DNA-HPV oncogênico com genotipagem parcial ou estendida como método de rastreamento primário (forte, certeza moderada).</li><li><strong>Recomendação 3:</strong> a citologia simultânea ao teste, o coteste, <strong>não é recomendada</strong> (forte, certeza alta).</li><li><strong>Recomendação 4:</strong> a amostra pode ser obtida por médico, por profissional de enfermagem ou por <strong>autocoleta</strong> (forte, certeza alta). A autocoleta dispensa espéculo e é descrita como aceitável, indolor e rápida.</li><li><strong>Recomendação 7:</strong> se a citologia reflexa for necessária e a amostra inicial foi autocoletada, uma nova coleta por profissional é preciso.</li><li><strong>Recomendação 8:</strong> o aconselhamento prévio deve esclarecer que um resultado positivo não indica necessariamente lesão nem câncer (condicional, certeza baixa).</li><li><strong>Recomendações 9 a 13:</strong> início aos 25 anos, não rastrear antes disso, encerrar quando o último teste acima dos 60 anos for negativo.</li><li><strong>Recomendação 14:</strong> quem tratou NIC 2, NIC 3 ou AIS mantém rastreamento por até 25 anos após o tratamento.</li><li><strong>Recomendação 15:</strong> prioridade para mulheres de 30 a 49 anos com atraso de mais de 36 meses ou que nunca rastrearam.</li><li><strong>Recomendação 16:</strong> o rastreamento não deve depender do status vacinal.</li><li><strong>Recomendação 18:</strong> repetição a cada 5 anos após resultado negativo (forte, certeza alta).</li><li><strong>Recomendação 19:</strong> HPV 16 e/ou 18 vão direto para colposcopia (forte, certeza alta a moderada).</li><li><strong>Recomendação 20:</strong> para os demais tipos oncogênicos, citologia reflexa, preferencialmente na mesma amostra.</li><li>Persistência de HPV não 16-18 por <strong>24 meses</strong> encaminha para colposcopia independentemente da citologia reflexa.</li><li>O rastreamento com DNA-HPV oferece <strong>proteção 60 a 70% maior contra carcinoma invasor</strong> em comparação com a citologia (certeza alta), com maior sensibilidade e maior valor preditivo negativo.</li><li>O ganho de sensibilidade do coteste vem quase inteiramente do componente molecular, e o aumento de sensibilidade implica menor especificidade, com mais colposcopias, biópsias e tratamentos desnecessários.</li><li>No Brasil se estimam <strong>17.010 casos novos por ano</strong> no triênio 2023-2025, risco de 15,38 por 100 mil mulheres, maior no Norte, Nordeste e Centro-Oeste.</li><li><strong>Regressão de NIC2:</strong> 70% em 36 meses abaixo dos 30 anos, 44% em 24 meses dos 30 em diante (meta-análise, certeza moderada).</li><li>A prevalência do HPV atinge o pico nos primeiros anos após o início da vida sexual, e a maioria das infecções em mulheres jovens é eliminada em um a dois anos.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que não dizer&lt;/h4&gt;</p>
+<ul><li>Não apresentar o Papanicolau como abandonado. Ele mudou de função e continua no fluxo como citologia reflexa.</li><li>Não dizer que a autocoleta serve para todas as situações. Ela impede a citologia reflexa quando esta é necessária.</li><li>Não afirmar que a mudança já chegou a todos os serviços. A implantação é gradual.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Em transição&lt;/h4&gt; A <strong>Parte II</strong> das Diretrizes, que trata da conduta a partir da colposcopia, é citada dentro da Parte I como ainda por vir e estava em consulta pública em junho de 2026. Até a publicação, a referência de conduta pós rastreamento segue sendo o documento do INCA de 2016.</p></div><h3 class="src-h">2. Nomenclatura de laudo e história natural das lesões</h3><div class="src-block"><p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Fonte primária&lt;/h4&gt;</p>
+<ul><li>INCA. <strong>Diretrizes brasileiras para o rastreamento do câncer do colo do útero</strong>, 2ª edição revista, ampliada e atualizada, 2016. <a href="https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf" target="_blank" rel="noopener">https://www.inca.gov.br/sites/ufu.sti.inca.local/files//media/document//diretrizes_para_o_rastreamento_do_cancer_do_colo_do_utero_2016_corrigido.pdf</a></li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que a fonte afirma&lt;/h4&gt;</p>
+<ul><li>O Quadro 3 traz as equivalências: <strong>NIC I, II e III pertencem à classificação histológica de Richart</strong>. A Classificação Citológica Brasileira de 2006, que é a do preventivo, usa <strong>LSIL e HSIL</strong>. NIC I equivale a LSIL, NIC II e NIC III equivalem a HSIL.</li><li><strong>&quot;A NIC I representa a expressão citomorfológica de uma infecção transitória produzida pelo HPV e têm alta probabilidade de regredir, de tal forma que atualmente não é considerada como lesão precursora do câncer do colo do útero.&quot;</strong></li><li>Na persistência de LSIL por <strong>24 meses</strong>, a mulher deve ser reencaminhada para colposcopia.</li><li>Na persistência de NIC I por 24 meses, manter seguimento ou tratar são condutas aceitáveis, com individualização por idade, paridade e preferência.</li><li><strong>Anexo 3, terminologia colposcópica</strong> adaptada da IFCPC 2011: colposcopia adequada ou inadequada · visibilidade da junção escamocolunar, completamente visível, parcialmente visível ou não visível · <strong>zona de transformação tipo 1, 2 ou 3</strong> · achados grau 1 (menor), com epitélio acetobranco tênue, e grau 2 (maior), com acetobranco denso · captação de lugol positiva quando cora e negativa quando não cora, o que corresponde a <strong>teste de Schiller negativo ou positivo</strong>.</li><li>ZT tipo 1 e 2 correspondem a junção escamocolunar visível e até o primeiro centímetro do canal. ZT tipo 3 é quando não há visão da junção.</li><li>O tratamento excisional ambulatorial no Brasil se chama <strong>EZT</strong>, exérese da zona de transformação, equivalente ao LLETZ e ao LEEP.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que não dizer&lt;/h4&gt;</p>
+<ul><li>Não dizer que o preventivo &quot;deu NIC&quot;. A citologia não produz esse laudo.</li><li>Não tratar NIC I como lesão pré cancerosa. A fonte é explícita no contrário.</li><li>Não afirmar aumento do colposcópio em número de vezes. O dado não está neste documento.</li></ul></div><h3 class="src-h">3. Vírus, latência e manejo da parceria</h3><div class="src-block"><p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Fonte primária&lt;/h4&gt;</p>
+<ul><li>Carvalho NS, Silva RJC, Val IC, Bazzo ML, Silveira MF. <strong>Protocolo Brasileiro para Infecções Sexualmente Transmissíveis 2020: infecção pelo papilomavírus humano (HPV)</strong>. Epidemiol Serv Saúde, publicação do Ministério da Saúde. <a href="https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt" target="_blank" rel="noopener">https://www.scielo.br/j/ress/a/xLM3FTG5mnTM8kHT7b8HLpn/?lang=pt</a></li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que a fonte afirma&lt;/h4&gt;</p>
+<ul><li>Mais de <strong>200 tipos</strong> de HPV identificados, dos quais <strong>cerca de 40 acometem o trato anogenital</strong>.</li><li>Alto risco oncogênico: 16, 18, 31, 33, 35, 39, 45, 51, 52, 56, 58, 59, 68, 73 e 82. Baixo risco: 6, 11, 40, 42, 43, 44, 54, 61, 70, 72 e 81.</li><li><strong>&quot;A grande maioria das infecções por HPV em mulheres tem resolução espontânea em um período aproximado de até 24 meses.&quot;</strong></li><li>O período de latência varia de meses a anos. O DNA pode permanecer inativo por períodos prolongados e o primeiro episódio pode acontecer anos depois da infecção inicial.</li><li><strong>&quot;O rastreamento e notificação de parcerias sexuais não é recomendado mas o exame das parcerias sexuais atuais deve ser considerado, sobretudo com o objetivo de rastrear outras IST.&quot;</strong></li><li><strong>&quot;O uso do preservativo abrevia o processo de eliminação viral, promove maior regressão das NIC e diminui a chance de recidiva dos condilomas.&quot;</strong></li><li>Cerca de 1% a 2% da população infectada desenvolve verrugas anogenitais. De 2% a 5% das mulheres cursam com alteração na colpocitologia.</li><li>Estudo em 26 capitais e no Distrito Federal, com 6.387 mulheres de idade média 21,6 anos, encontrou prevalência de HPV de 53,6%.</li><li>A vacina produz anticorpos em quantidade cerca de dez vezes maior que a infecção naturalmente adquirida.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que não dizer&lt;/h4&gt;</p>
+<ul><li>Não indicar peniscopia de rotina para parceiro sem lesão. A fonte não sustenta isso.</li><li>Não citar percentual de redução de transmissão pelo preservativo. A fonte descreve efeito, não percentual.</li><li>Não afirmar imunidade cruzada entre casais de longa data. Não está na fonte.</li></ul></div><h3 class="src-h">4. Vacinação contra HPV, as duas portas</h3><div class="src-block"><p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Fonte primária&lt;/h4&gt;</p>
+<ul><li>Ministério da Saúde. <strong>Nota Técnica nº 16/2025-DPNI/SVSA/MS</strong>. <a href="https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf" target="_blank" rel="noopener">https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf</a></li><li>Ministério da Saúde. Resgate vacinal de 15 a 19 anos ampliado até dezembro. <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos</a></li><li>FEBRASGO. <strong>Recomendações FEBRASGO para a vacina HPV 9</strong>, Comissão Nacional Especializada em Vacinas. <a href="https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/</a></li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que a fonte afirma&lt;/h4&gt;</p>
+<ul><li>No SUS a vacina é a <strong>quadrivalente</strong>, introduzida em 2014. Os esquemas vigentes são: crianças e adolescentes de 9 a 14 anos em <strong>dose única</strong> · pessoas imunodeprimidas, vivendo com HIV/Aids, transplantadas e oncológicas, 3 doses (0, 2 e 6 meses) · vítimas de abuso sexual de 9 a 14 anos, 2 doses · vítimas de abuso sexual de 15 a 45 anos, 3 doses · pessoas com papilomatose respiratória recorrente a partir de 2 anos, 3 doses · usuários de PrEP de 15 a 45 anos, 3 doses.</li><li>A dose única segue recomendação da OMS e já era adotada por 53 países quando o Brasil aderiu.</li><li>O <strong>resgate de 15 a 19 anos</strong> para quem nunca se vacinou está aberto e foi prorrogado até 31 de dezembro de 2026.</li><li>A <strong>nonavalente, HPV9</strong>, cobre os tipos 6, 11, 16, 18, 31, 33, 45, 52 e 58. Licenciada em 2017 e disponibilizada na rede privada em março de 2023.</li><li>Indicação FEBRASGO: meninas e mulheres de 9 a 45 anos, meninos e homens de 9 a 45 anos. Esquema de 2 doses de 9 a 14 anos, 3 doses a partir dos 15, 3 doses para imunodeprimidos de 9 a 45.</li><li><strong>&quot;A partir dos 15 anos a vacinação de recuperação é indicada pois os benefícios ainda são significativos, devendo, portanto, fazer parte da prescrição médica.&quot;</strong></li><li><strong>&quot;Pacientes com lesões prévias desencadeadas por HPV e que já foram tratadas: as evidências mostraram redução do risco de recidivas e/ou reinfecções após a vacinação.&quot;</strong></li><li>Adultos previamente expostos ao vírus podem ser vacinados. A decisão de vacinar deve ser compartilhada com o paciente.</li><li>O ganho de cobertura da HPV9 sobre a quadrivalente, para câncer de colo do útero, é descrito como de 70% para 90%.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Divergência a respeitar&lt;/h4&gt; O SUS trabalha com dose única e quadrivalente. A FEBRASGO recomenda HPV9 com 2 ou 3 doses conforme a idade. <strong>Não são contradição, são políticas diferentes com objetivos diferentes</strong>, uma populacional e outra individual. O episódio 6 explica as duas sem escolher lado, do mesmo jeito que o roteiro de rastreamento mamográfico faz em <code>03_ROTEIROS_MODELO.md</code>.</p>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que não dizer&lt;/h4&gt;</p>
+<ul><li>Não dizer que a nonavalente é a vacina do SUS.</li><li>Não citar preço de dose em Reel de conteúdo clínico.</li><li>Não afirmar duração de proteção em anos. O número de 10 anos usado na versão de Julho não foi localizado em fonte permitida.</li></ul></div><h3 class="src-h">5. História natural e magnitude</h3><div class="src-block"><p class="">&lt;h4 class=&quot;src-sub&quot;&gt;Fonte primária&lt;/h4&gt;</p>
+<ul><li>OMS. <strong>Cervical cancer, fact sheet</strong>. <a href="https://www.who.int/news-room/fact-sheets/detail/cervical-cancer" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/cervical-cancer</a></li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que a fonte afirma&lt;/h4&gt;</p>
+<ul><li>Os tipos de alto risco <strong>16 e 18 causam cerca de 76%</strong> dos cânceres de colo do útero.</li><li>A infecção persistente que leva a lesões precursoras responde por cerca de 95% dos cânceres de colo.</li><li><strong>&quot;It usually takes 15 to 20 years for abnormal cells to become cancer.&quot;</strong></li><li>Na maioria dos casos o sistema imune elimina o vírus naturalmente.</li><li>Metas globais de eliminação 90-70-90: 90% das meninas vacinadas até os 15 anos, 70% das mulheres rastreadas com teste molecular aos 35 e aos 45 anos, 90% das mulheres com lesão precursora ou câncer em tratamento adequado.</li></ul>
+<p class="">&lt;h4 class=&quot;src-sub&quot;&gt;O que não dizer&lt;/h4&gt;</p>
+<ul><li>Não citar o percentual de 70% para 16 e 18. O documento atual traz 76%.</li><li>Não prometer eliminação do câncer de colo em país nenhum com data. As metas são de eliminação como problema de saúde pública, não de erradicação.</li></ul></div><h3 class="src-h">Pendência técnica encontrada durante a conferência</h3><div class="src-block"><p class="">O site da FEBRASGO foi reconstruído em 2026 e <strong>os links do padrão <code>febrasgo.org.br/images/...</code> retornam 404</strong>. O link do relatório preliminar das Diretrizes citado em materiais anteriores está entre eles. Os links do padrão <code>febrasgo.org.br/noticia/...</code> funcionam. Vale uma varredura nos arquivos de Abril a Julho antes da próxima publicação da wiki, porque a Parte 8 do método exige que o link abra.</p></div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>GAIA Medicina Integrada</strong> · Série D: HPV Desmistificado · Método da Conversa v2</p>
+  <p>Documento de revisão · Setembro de 2026 · nenhum episódio gravado até esta data</p>
+</footer>
+
+</body>
+</html>
