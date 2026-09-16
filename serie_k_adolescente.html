@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série K: A Adolescente e a Consulta · Método da Conversa</title>
+<meta name="description" content="Oito roteiros da Série K, Dra. Nathalia, para revisão antes da gravação. Com todas as fontes primárias linkadas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#1e293b;min-height:100vh;}
+.wrap{max-width:920px;margin:0 auto;padding:0 1.25rem;}
+
+nav{background:#0f172a;color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 4px 6px -1px rgba(0,0,0,.3);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.85rem;padding-bottom:.85rem;flex-wrap:wrap;}
+.nav-title{font-weight:800;font-size:.95rem;letter-spacing:-.01em;}
+.nav-sub{font-size:.7rem;color:#5eead4;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.nav-eps{display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;}
+.nav-eps a{display:inline-flex;align-items:center;justify-content:center;width:1.9rem;height:1.9rem;border-radius:.45rem;
+  background:rgba(255,255,255,.08);color:#e2e8f0;text-decoration:none;font-size:.8rem;font-weight:700;transition:.2s;}
+.nav-eps a:hover,.nav-eps a.on{background:#14b8a6;color:#04201c;}
+.nav-eps a.wide{width:auto;padding:0 .7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;}
+
+header{background:linear-gradient(135deg,#042f2e 0%,#115e59 45%,#0d9488 100%);padding:3.5rem 1.5rem 3rem;text-align:center;color:#fff;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(153,246,228,.16),transparent 70%);pointer-events:none;}
+header h1{font-size:2.5rem;font-weight:800;margin-bottom:.9rem;line-height:1.15;}
+header p{font-size:1.05rem;opacity:.95;max-width:720px;margin:0 auto 1.4rem;line-height:1.7;color:#ccfbf1;}
+.badges{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;}
+.header-badge{background:rgba(255,255,255,.12);border:1px solid rgba(153,246,228,.35);padding:.45rem 1rem;border-radius:9999px;font-size:.78rem;font-weight:700;color:#99f6e4;}
+
+main{padding:2.75rem 0 1rem;}
+.glass-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08),0 4px 10px -3px rgba(0,0,0,.04);
+  border:1px solid #e2e8f0;overflow:hidden;margin-bottom:2.25rem;scroll-margin-top:5.5rem;}
+.panel{padding:1.75rem;}
+.panel h2{font-size:1.35rem;font-weight:800;margin-bottom:.9rem;}
+.panel p{color:#475569;font-size:.92rem;line-height:1.75;margin-bottom:.85rem;}
+.panel ul,.panel ol{margin:0 0 .85rem 1.1rem;color:#475569;font-size:.92rem;line-height:1.75;}
+.panel li{margin-bottom:.3rem;}
+.panel strong{color:#1e293b;}
+.panel h3.src-h{font-size:1.02rem;font-weight:800;color:#0f766e;margin:1.3rem 0 .5rem;}
+.panel h4.src-sub{font-size:.78rem;font-weight:800;color:#0f766e;text-transform:uppercase;letter-spacing:.05em;margin:.9rem 0 .4rem;}
+a{color:#0f766e;}
+
+.toc{list-style:none;margin:0;display:grid;gap:.5rem;}
+.toc li{margin:0;}
+.toc a{display:grid;grid-template-columns:2.1rem 1fr;gap:.2rem .75rem;align-items:baseline;text-decoration:none;
+  background:#f8fafc;border:1px solid #e2e8f0;border-left:3px solid #14b8a6;border-radius:.6rem;padding:.75rem .9rem;transition:.18s;}
+.toc a:hover{background:#f0fdfa;border-left-color:#0f766e;transform:translateX(2px);}
+.toc-n{grid-row:1 / span 2;font-size:1.3rem;font-weight:800;color:#99f6e4;}
+.toc-t{font-size:.92rem;font-weight:700;color:#1e293b;line-height:1.35;}
+.toc-m{font-size:.75rem;color:#64748b;}
+
+table{width:100%;border-collapse:collapse;font-size:.83rem;}
+thead th{background:#0f172a;color:#fff;text-align:left;padding:.7rem .8rem;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;}
+tbody td{padding:.75rem .8rem;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.6;color:#475569;}
+tbody tr:nth-child(even){background:#f8fafc;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:.9rem;}
+
+.article-header{background:#f0fdfa;border-bottom:1px solid #99f6e4;padding:1.4rem 1.75rem;}
+.ah-top{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-bottom:.7rem;}
+.ep-badge{background:#ccfbf1;color:#115e59;border:1px solid #5eead4;font-size:.7rem;font-weight:800;padding:.25rem .7rem;border-radius:.375rem;text-transform:uppercase;letter-spacing:.05em;}
+.forma-badge{background:#f1f5f9;color:#475569;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:.375rem;}
+.status-badge{background:#e0f2fe;color:#0369a1;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:.375rem;margin-left:auto;}
+.article-header h3{font-size:1.4rem;font-weight:800;color:#1e293b;line-height:1.25;margin-bottom:.45rem;}
+.ah-meta{font-size:.75rem;color:#57534e;}
+.ah-meta2{color:#94a3b8;margin-top:.15rem;}
+
+.card-body{padding:1.75rem;}
+.sec-label{font-size:.7rem;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.9rem;}
+.script-text{font-family:'Roboto',sans-serif;font-size:1.08rem;line-height:1.95;color:#334155;}
+.script-text p{margin-bottom:1.15rem;}
+.script-text strong{color:#0f172a;font-weight:700;background:linear-gradient(transparent 62%,#99f6e4 62%);}
+
+.travas{background:#f0fdfa;border-top:1px solid #99f6e4;padding:1.25rem 1.75rem;}
+.travas-label{color:#0f766e;}
+.travas ul{margin-left:1.1rem;font-size:.86rem;color:#134e4a;line-height:1.8;}
+.travas li{margin-bottom:.35rem;}
+
+.legenda{background:#f8fafc;border-top:1px solid #e2e8f0;padding:1.4rem 1.75rem;}
+.legenda-label{color:#7c3aed;}
+.legenda p{font-size:.9rem;color:#475569;line-height:1.75;margin-bottom:.7rem;}
+.legenda strong{color:#1e293b;}
+
+.references-footer{background:#0f172a;padding:1.25rem 1.75rem;}
+.refs-label{font-size:.68rem;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.55rem;}
+.refs-list{font-size:.75rem;color:#94a3b8;line-height:1.85;}
+.refs-list ol{margin-left:1.1rem;}
+.refs-list li{margin-bottom:.4rem;}
+.refs-list a{color:#5eead4;word-break:break-word;text-decoration:none;}
+.refs-list a:hover{text-decoration:underline;}
+.refs-note{font-style:italic;color:#64748b;margin-bottom:.4rem;}
+
+.src-block{margin-bottom:.5rem;}
+.src-block h3.src-h{font-size:1.05rem;font-weight:800;color:#1e293b;margin:1.6rem 0 .6rem;padding-top:1.2rem;border-top:1px solid #e2e8f0;}
+.src-block:first-child h3.src-h{border-top:none;padding-top:0;margin-top:0;}
+.src-block p{font-size:.88rem;color:#475569;line-height:1.75;margin-bottom:.6rem;}
+.src-block ul,.src-block ol{margin-left:1.1rem;font-size:.88rem;color:#475569;line-height:1.75;margin-bottom:.6rem;}
+.src-block li{margin-bottom:.3rem;}
+.src-block code,.panel code{background:#f1f5f9;padding:.1rem .35rem;border-radius:.25rem;font-size:.82rem;color:#475569;}
+
+.fontes-list{margin:0 0 0 1.2rem;font-size:.88rem;color:#475569;line-height:1.7;}
+.fontes-list li{margin-bottom:.9rem;}
+.fontes-list a{word-break:break-word;}
+.fonte-eps{display:block;font-size:.72rem;font-weight:700;color:#0f766e;text-transform:uppercase;letter-spacing:.05em;margin-top:.15rem;}
+.totop{position:fixed;right:1rem;bottom:1rem;z-index:120;background:#0f172a;color:#5eead4;border:1px solid #14b8a6;
+  border-radius:9999px;padding:.6rem .95rem;font-size:.75rem;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.25);
+  opacity:0;pointer-events:none;transition:opacity .25s;}
+.totop.show{opacity:1;pointer-events:auto;}
+
+footer{background:#0f172a;color:#94a3b8;text-align:center;padding:2.25rem 1.25rem;font-size:.8rem;margin-top:2rem;line-height:1.8;}
+footer strong{color:#fff;}
+
+@media(max-width:640px){
+  header{padding:2.5rem 1.15rem 2.25rem;}
+  header h1{font-size:1.85rem;}
+  header p{font-size:.95rem;}
+  .panel,.card-body,.article-header,.travas,.legenda,.references-footer{padding-left:1.15rem;padding-right:1.15rem;}
+  .script-text{font-size:1.05rem;line-height:1.9;}
+  .article-header h3{font-size:1.2rem;}
+  .status-badge{margin-left:0;}
+  nav .wrap{gap:.5rem;padding-top:.6rem;padding-bottom:.6rem;}
+  .nav-sub{display:none;}
+  .nav-title{font-size:.85rem;}
+  .nav-eps a{width:1.75rem;height:1.75rem;font-size:.75rem;}
+  .nav-eps a.wide{padding:0 .55rem;font-size:.66rem;}
+  .glass-card{scroll-margin-top:7.5rem;}
+}
+@media print{
+  nav,.totop{display:none;}
+  body{background:#fff;}
+  .glass-card{box-shadow:none;border:1px solid #cbd5e1;page-break-inside:avoid;}
+  header{background:#0f172a;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .refs-list a{color:#0f172a;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div>
+      <div class="nav-title">Série K: A Adolescente e a Consulta</div>
+      <div class="nav-sub">Método da Conversa · v3 · para revisão</div>
+    </div>
+    <div class="nav-eps"><a href="#ep1" title="Episódio 1">1</a><a href="#ep2" title="Episódio 2">2</a><a href="#ep3" title="Episódio 3">3</a><a href="#ep4" title="Episódio 4">4</a><a href="#ep5" title="Episódio 5">5</a><a href="#ep6" title="Episódio 6">6</a><a href="#ep7" title="Episódio 7">7</a><a href="#ep8" title="Episódio 8">8</a><a class="wide" href="#fontes">Fontes</a></div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <h1>Série K: A Adolescente e a Consulta</h1>
+    <p>Oito roteiros escritos pelo Método da Conversa, com as fontes conferidas nos documentos primários em setembro de 2026. Esta página é para a revisão da Dra. Nathalia antes da gravação.</p>
+    <div class="badges">
+      <span class="header-badge">8 episódios</span>
+      <span class="header-badge">Ginecologia / Adolescência</span>
+      <span class="header-badge">Dra. Nathalia</span>
+      <span class="header-badge">Todos a gravar</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="glass-card" id="indice">
+  <div class="panel">
+    <h2>Os oito episódios</h2>
+    <p>Toque em um episódio para ir direto a ele. Cada card traz o roteiro para teleprompter, as travas que se lê exatamente como estão escritas, a legenda do Reels e as referências com link.</p>
+    <ul class="toc"><li><a href="#ep1"><span class="toc-n">1</span><span class="toc-t">A IDADE DA PRIMEIRA CONSULTA NÃO TEM NADA A VER COM SEXO</span><span class="toc-m">B · ~2min</span></a></li><li><a href="#ep2"><span class="toc-n">2</span><span class="toc-t">O QUE FICA NA SALA E O QUE SAI DELA</span><span class="toc-m">A · ~3min40</span></a></li><li><a href="#ep3"><span class="toc-n">3</span><span class="toc-t">A PRIMEIRA CONSULTA COMEÇA PELA CONVERSA</span><span class="toc-m">F · ~2min15</span></a></li><li><a href="#ep4"><span class="toc-n">4</span><span class="toc-t">ADOLESCENTE PODE SER ATENDIDA SOZINHA</span><span class="toc-m">B · ~1min45</span></a></li><li><a href="#ep5"><span class="toc-n">5</span><span class="toc-t">PREVENTIVO NÃO É EXAME DE IDADE</span><span class="toc-m">D · ~2min10</span></a></li><li><a href="#ep6"><span class="toc-n">6</span><span class="toc-t">OVÁRIO CHEIO DE FOLÍCULO, NESSA IDADE, É OVÁRIO DE ADOLESCENTE</span><span class="toc-m">A · ~2min35</span></a></li><li><a href="#ep7"><span class="toc-n">7</span><span class="toc-t">PÍLULA DO DIA SEGUINTE NÃO É ABORTIVA</span><span class="toc-m">B · ~1min15</span></a></li><li><a href="#ep8"><span class="toc-n">8</span><span class="toc-t">A VACINA QUE TEM PRAZO PRA ACABAR</span><span class="toc-m">C · ~2min</span></a></li></ul>
+  </div>
+</section>
+
+
+
+
+<article class="glass-card" id="ep1">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 1</span>
+      <span class="forma-badge">B. A frase que circula por aí</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>A IDADE DA PRIMEIRA CONSULTA NÃO TEM NADA A VER COM SEXO</h3>
+    <div class="ah-meta">~2min &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Primeira consulta</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 2, a negação do óbvio &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>Ginecologista não é médico de quem já começou a vida sexual. Nunca foi. E a idade recomendada para a primeira consulta mostra isso sozinha.</p>
+<p>A Febrasgo recomenda que a primeira consulta aconteça por volta dos dez anos. Dez. É a idade em que o corpo começa a mudar, muito antes de qualquer conversa sobre relação. E a Sociedade Brasileira de Pediatria trabalha com a mesma faixa, dos dez aos dezenove anos, que é como o Ministério da Saúde define a adolescência.</p>
+<p><strong>E aí você me pergunta: ir pra quê, se não tem nada errado?</strong></p>
+<p>Porque a consulta de adolescente nem sempre é sobre doença. O motivo pode ser uma queda no rendimento da escola, pode ser uma timidez que está pesando demais. <strong>Nenhum dos dois é ginecológico.</strong> E o que costuma aparecer é cólica que atrapalha, ciclo que ainda não se organizou, acne, mama mudando, dúvida sobre absorvente. É o corpo mudando, com alguém por perto para conversar sobre isso.</p>
+<p>E existe um motivo muito concreto para essa consulta acontecer tão cedo. A Febrasgo explica que, por volta dos dez anos, a menina chega à consulta com muito menos constrangimento. Ainda não chegou a fase em que o corpo vira um assunto delicado e qualquer pergunta parece exposição. Quando a primeira consulta vem antes disso, o consultório deixa de ser um lugar estranho. <strong>E quando as dúvidas mais íntimas chegarem, ela já sabe para quem perguntar.</strong></p>
+<p>Marcar a primeira consulta pode dar vergonha em qualquer idade. Essa vergonha costuma ir embora ainda na primeira conversa, quando fica claro que ninguém ali está julgando nada.</p>
+<p>Levar a menina ao ginecologista cedo não é antecipar a vida sexual dela. É garantir que, quando essa fase chegar, ela já tenha onde buscar ajuda.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Ginecologista não é médico de quem já começou a vida sexual.</p>
+<p>A Febrasgo recomenda a primeira consulta por volta dos 10 anos, quando o corpo começa a mudar e muito antes de qualquer conversa sobre relação. A SBP trabalha com a mesma faixa da adolescência, dos 10 aos 19 anos, como define o Ministério da Saúde.</p>
+<p>A consulta de adolescente nem sempre é sobre doença. Pode ser cólica que atrapalha, ciclo que ainda não se organizou, acne, mudança nas mamas, dúvida sobre absorvente, e até queda no rendimento escolar ou timidez excessiva.</p>
+<p>E há um motivo concreto para começar cedo: segundo a Febrasgo, por volta dos 10 anos a menina chega à consulta com muito menos constrangimento. Quando a primeira consulta vem antes da fase em que tudo dá vergonha, o consultório vira um lugar conhecido, e as dúvidas mais íntimas já têm para onde ir.</p>
+<p>Levar ao ginecologista cedo não é antecipar a vida sexual de ninguém. É garantir que, quando essa fase chegar, ela já saiba onde buscar ajuda.</p>
+<p>Fontes</p>
+<p>FEBRASGO, primeira consulta ao ginecologista · SBP, Departamento Científico de Adolescência, Manual de Orientação nº 10, 2019</p>
+<p>#adolescencia #ginecologia #primeiraconsulta #saudedamulher #puberdade</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><p class="refs-note">Rodapé do card e legenda. Não são faladas.</p><ol><li>FEBRASGO. Especialista da Febrasgo explica que primeira consulta ao ginecologista deve ser aos dez anos de idade. <a href="https://www.febrasgo.org.br/noticia/especialista-da-febrasgo-explica-que-primeira-consulta-ao-ginecologista-deve-ser-aos-dez-anos-de-idade/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/especialista-da-febrasgo-explica-que-primeira-consulta-ao-ginecologista-deve-ser-aos-dez-anos-de-idade/</a></li><li>SBP, Departamento Científico de Adolescência. Consulta do adolescente: abordagem clínica, orientações éticas e legais como instrumentos ao pediatra. Manual de Orientação nº 10, 2019. <a href="https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep2">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 2</span>
+      <span class="forma-badge">A. A doença explicada</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>O QUE FICA NA SALA E O QUE SAI DELA</h3>
+    <div class="ah-meta">~3min40 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Sigilo médico · Setembro Amarelo</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 3, a distinção &nbsp;|&nbsp; Saída ação clínica &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>Ficar sozinha na sala com a médica e ter sigilo não são a mesma coisa. Uma é o espaço. A outra é um acordo. E confundir as duas faz a adolescente guardar justamente a pergunta que mais precisava fazer.</p>
+<p>Privacidade é o direito de ser atendida sozinha, num espaço reservado. Confidencialidade é o acordo de que o que foi conversado na consulta não é passado aos pais ou responsáveis sem a permissão dela. <strong>Sem a permissão dela.</strong> Uma coisa pode existir sem a outra, por isso vale conhecer as duas.</p>
+<p>E esse acordo não depende da boa vontade de ninguém. O Código de Ética Médica, no artigo cento e três, proíbe o médico de revelar segredo de paciente menor de idade, inclusive aos pais, desde que ela tenha capacidade de entender o próprio problema e de lidar com ele. A exceção é uma só: quando guardar o segredo puder causar dano a ela.</p>
+<p><strong>E aí você me pergunta: o que conta como dano?</strong></p>
+<p>Não é qualquer coisa, e não fica a critério de cada médico. A Sociedade Brasileira de Pediatria separa essas situações com bastante clareza.</p>
+<p>Ficam na sala o ficar, o namoro e o início da vida sexual. Ficam a orientação sexual e os conflitos com a identidade de gênero. Fica a prescrição de anticoncepcional para quem tem maturidade para usar. Fica a experimentação de álcool ou de outra droga, sem sinal de dependência. Fica o diagnóstico de infecção sexualmente transmissível, afastada a violência e desde que ela consiga seguir o tratamento. E fica o diagnóstico de doença grave.</p>
+<p>Saem da sala a violência de qualquer tipo, incluindo bullying e agressão dentro do namoro. Sai o uso de álcool e drogas que só aumenta, com sinal de dependência. Saem a gravidez e o abortamento. Sai o resultado positivo de HIV, que precisa ser comunicado à família e à parceria. E sai o abandono de um tratamento que coloca ela ou outra pessoa em risco.</p>
+<p><strong>Quebra o sigilo o que coloca alguém em risco de vida. Mantém o sigilo o que é vida acontecendo.</strong></p>
+<p>E setembro é o mês de prevenção do suicídio, então vale olhar com cuidado para uma parte dessa divisão. Um quadro de depressão fica na sala. A adolescente pode chegar e dizer que não está bem, que está difícil, e essa conversa é dela. Já a vontade de se machucar, a ideia de fugir de casa ou de morrer fazem o sigilo ser rompido. <strong>Isso não é traição. É proteção.</strong> É o momento em que ela mais precisa de gente por perto, e manter esse segredo seria deixá-la sozinha justamente ali.</p>
+<p>E mesmo nesse caso ninguém é pego de surpresa. A adolescente é avisada antes de qualquer conversa com a família. <strong>Antes. Não depois.</strong></p>
+<p>Saber onde fica essa linha pode assustar no começo. Só que o medo de uma linha imaginária costuma ser bem maior do que a linha real, e é esse medo que faz a adolescente se calar.</p>
+<p>Na primeira consulta, pergunta logo no começo como funciona o sigilo e em que situações a família precisaria ser avisada. Essa resposta muda a consulta inteira.</p>
+<p>E se você está passando por um momento difícil agora, não precisa esperar consulta nenhuma. O CVV atende pelo cento e oitenta e oito, de graça, vinte e quatro horas por dia.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Ficar sozinha na sala e ter sigilo não são a mesma coisa.</p>
+<p>Privacidade é ser atendida sozinha, em espaço reservado. Confidencialidade é o acordo de que o que foi conversado na consulta não é passado aos pais ou responsáveis sem a permissão da adolescente. É o artigo 103 do Código de Ética Médica, que proíbe revelar segredo de paciente menor de idade inclusive aos pais, desde que ela tenha capacidade de entender o próprio problema. A exceção é quando guardar o segredo puder causar dano a ela.</p>
+<p>A SBP separa essas situações com clareza.</p>
+<p>FICA NA SALA: ficar, namoro e início da vida sexual · orientação sexual e conflitos com identidade de gênero · prescrição de anticoncepcional · experimentação de álcool ou droga sem sinal de dependência · IST, afastada violência sexual · diagnóstico de doença grave · quadro depressivo.</p>
+<p>SAI DA SALA: qualquer tipo de violência, inclusive bullying e agressão no namoro · uso crescente com sinal de dependência · autoagressão, ideação suicida ou de fuga de casa · gravidez e abortamento · resultado positivo de HIV · abandono de tratamento que coloque alguém em risco.</p>
+<p>No Setembro Amarelo, vale olhar para essa divisão: a adolescente pode dizer que não está bem e essa conversa é dela. Quando há ideia de se machucar ou de morrer, o sigilo é rompido, porque é quando ela mais precisa de gente por perto. E ela é avisada antes de qualquer conversa com a família.</p>
+<p>Se você está passando por um momento difícil, o CVV atende pelo 188, ligação gratuita, 24 horas por dia, e também por chat em cvv.org.br. Em emergência, procure o SAMU 192, uma UPA 24H ou o pronto-socorro.</p>
+<p>Fontes</p>
+<p>SBP e FEBRASGO, Diretrizes sobre saúde sexual e reprodutiva dos adolescentes · SBP, Manual de Orientação nº 10, Quadro 1, 2019 · Ministério da Saúde, Suicídio (Prevenção)</p>
+<p>#setembroamarelo #adolescencia #sigilomedico #saudemental #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>SBP e FEBRASGO. Diretrizes sobre saúde sexual e reprodutiva dos adolescentes, com o texto do artigo 103 do Código de Ética Médica. <a href="https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf</a></li><li>SBP, Departamento Científico de Adolescência. Consulta do adolescente, Manual de Orientação nº 10, 2019, Quadro 1 e aviso prévio antes da quebra de sigilo, página 2. <a href="https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf</a></li><li>Ministério da Saúde. Suicídio (Prevenção). <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep3">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 3</span>
+      <span class="forma-badge">F. O que acontece antes e depois</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>A PRIMEIRA CONSULTA COMEÇA PELA CONVERSA</h3>
+    <div class="ah-meta">~2min15 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Exame físico · Primeira consulta</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 10, o erro de raciocínio comum &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>Consulta de ginecologista começa com exame ginecológico. Esse é o erro que faz a primeira consulta atrasar anos. Ela começa com conversa, e o exame ginecológico só entra quando existe motivo para ele.</p>
+<p>A conversa vem primeiro e é a parte mais longa. Como está o ciclo, se tem cólica e o quanto ela atrapalha, como estão a pele, o sono, a alimentação, a escola, a casa. É essa conversa que decide se precisa examinar alguma coisa.</p>
+<p>Quando precisa, o exame tem um cuidado que quase ninguém conta antes. Ele é feito de cima para baixo, por partes, e a região que não está sendo examinada fica coberta. <strong>Coberta.</strong> Ninguém fica exposta esperando a sua vez. É recomendado também ter uma terceira pessoa na sala, que pode ser alguém da equipe ou alguém da confiança da adolescente. E cada passo é explicado antes de acontecer.</p>
+<p>A região genital é avaliada por último. E se a adolescente não se sentir pronta naquele dia, esse exame fica para outro momento. <strong>Ela pode dizer não.</strong> Isso não é rebeldia e não é problema.</p>
+<p><strong>E aí você me pergunta: então quando o exame ginecológico acontece?</strong></p>
+<p>Quando existe uma queixa que pede. Corrimento que mudou de cheiro ou de cor, sangramento fora de hora, dor que não passa, uma lesão que apareceu. Quem decide é a queixa, não a idade e não a rotina.</p>
+<p>Começar anticoncepcional também não depende de exame ginecológico. Uma adolescente sem nenhum sintoma pode iniciar a contracepção a partir da consulta, conhecendo a história dela, a saúde dela e o que ela precisa naquele momento. <strong>O método é escolhido na conversa.</strong></p>
+<p>Tem também o outro lado. Muitos profissionais deixam de fazer o exame físico completo por constrangimento ou falta de treino, e com isso perdem diagnósticos importantes. Então o exame não é o problema. <strong>O problema é ele acontecer sem explicação e sem permissão.</strong></p>
+<p>Saber a ordem das coisas antes de entrar na sala já é meio caminho para a primeira consulta ser tranquila.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>A primeira consulta ginecológica começa pela conversa. O exame ginecológico só entra quando existe motivo para ele.</p>
+<p>Primeiro vem a conversa, a parte mais longa: ciclo, cólica, pele, sono, alimentação, escola, casa. É ela que decide se precisa examinar alguma coisa.</p>
+<p>Quando o exame acontece, ele tem cuidados definidos pela SBP. É feito de cima para baixo, por partes, e a região que não está sendo examinada fica coberta. A presença de uma terceira pessoa é recomendada, e pode ser alguém da equipe ou da confiança da adolescente. Cada passo é explicado antes.</p>
+<p>A região genital é avaliada por último. Se a adolescente não se sentir pronta naquele dia, esse exame fica para outro momento.</p>
+<p>O que indica o exame ginecológico é a queixa: corrimento que mudou, sangramento fora de hora, dor que não passa, lesão que apareceu. Não é a idade e não é a rotina.</p>
+<p>E para começar anticoncepcional, adolescente sem sintoma não precisa de exame ginecológico. O método é escolhido na consulta.</p>
+<p>O outro lado também importa: muitos profissionais deixam de fazer o exame físico completo por constrangimento ou falta de treinamento, e perdem diagnósticos importantes. O problema nunca foi o exame. É ele acontecer sem explicação e sem permissão.</p>
+<p>Fontes</p>
+<p>SBP, Manual de Orientação nº 10, Consulta do adolescente, 2019 · SOGESP, ExaMina, Anticoncepção na adolescência</p>
+<p>#adolescencia #primeiraconsulta #ginecologia #exameginecologico #saudedamulher</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>SBP, Departamento Científico de Adolescência. Consulta do adolescente, Manual de Orientação nº 10, 2019, seção Exame físico, página 6. <a href="https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf</a></li><li>SOGESP. ExaMina, Anticoncepção na adolescência. <a href="https://www.sogesp.com.br/saude-mulher/blog-da-mulher/examina-anticoncepcao-na-adolescencia/" target="_blank" rel="noopener">https://www.sogesp.com.br/saude-mulher/blog-da-mulher/examina-anticoncepcao-na-adolescencia/</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep4">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 4</span>
+      <span class="forma-badge">B. A frase que circula por aí</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>ADOLESCENTE PODE SER ATENDIDA SOZINHA</h3>
+    <div class="ah-meta">~1min45 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Direitos · Acolhimento</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 2, a negação do óbvio &nbsp;|&nbsp; Saída ação clínica &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>Adolescente não precisa estar com a mãe para ser atendida. Nem na consulta, nem no posto, nem para colher exame de sangue.</p>
+<p>A mãe pode entrar, e muitas vezes é ótimo que entre. Mas isso é uma escolha da adolescente, e não uma condição para o atendimento. A Sociedade Brasileira de Pediatria é clara: exigir a presença de um responsável fere o direito dela a uma vida saudável. E o contrário também vale. Se ela prefere não entrar sozinha, tem todo o direito de estar acompanhada.</p>
+<p><strong>E aí você me pergunta: e sozinha, o que dá para fazer?</strong></p>
+<p>Bastante coisa. A partir dos doze anos ela pode fazer teste rápido de gravidez, de HIV e de sífilis, com acolhimento e com alguém para conversar sobre o resultado. Pode tirar qualquer dúvida sobre o próprio corpo e sobre sexualidade. E pode escolher, junto com a médica, o método contraceptivo que faz sentido para ela. Camisinha, pílula, injeção e até DIU. <strong>DIU também é para adolescente.</strong></p>
+<p>A partir dos dezesseis anos ela pode ainda escolher ser atendida por um médico que não seja o pediatra. Isso ajuda quem já não se sente à vontade no consultório da infância e não sabia que podia trocar.</p>
+<p>Nem todo serviço respeita isso, e às vezes a resposta vai ser não. Mas saber que esse direito existe deixa o pedido muito mais fácil de fazer.</p>
+<p>Se tem alguma coisa que você não consegue falar na frente de ninguém, pede um tempo a sós com a médica. É um pedido simples, e ele é seu.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Adolescente não precisa estar com a mãe para ser atendida.</p>
+<p>A mãe pode entrar, e muitas vezes é ótimo que entre. Mas é escolha da adolescente, não condição para o atendimento. Para a SBP, exigir a presença de um responsável no serviço de saúde fere o direito da adolescente a uma vida saudável. E se ela prefere não ser atendida sozinha, tem direito a acompanhante.</p>
+<p>Sozinha, a partir dos 12 anos, ela pode fazer teste rápido de gravidez, HIV e sífilis, com acolhimento e aconselhamento. Pode tirar qualquer dúvida sobre o próprio corpo e sexualidade. E pode escolher com a médica o método contraceptivo: camisinha, pílula, injetável, diafragma e até DIU.</p>
+<p>A partir dos 16 anos, pode escolher ser atendida por um médico que não seja pediatra.</p>
+<p>Nem todo serviço respeita isso. Mas saber que o direito existe torna o pedido mais fácil.</p>
+<p>Se tem algo que você não consegue falar na frente de ninguém, pede um tempo a sós com a médica.</p>
+<p>Fontes</p>
+<p>SBP, Manual de Orientação nº 10, Consulta do adolescente, 2019 · SBP e FEBRASGO, Diretrizes sobre saúde sexual e reprodutiva dos adolescentes</p>
+<p>#adolescencia #direitos #ginecologia #acolhimento #saudedoadolescente</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>SBP, Departamento Científico de Adolescência. Consulta do adolescente, Manual de Orientação nº 10, 2019, seção Direito de adolescentes à atenção integral à saúde, páginas 8 a 10. <a href="https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf</a></li><li>SBP e FEBRASGO. Diretrizes sobre saúde sexual e reprodutiva dos adolescentes. <a href="https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep5">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 5</span>
+      <span class="forma-badge">D. As duas opções na mesa</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>PREVENTIVO NÃO É EXAME DE IDADE</h3>
+    <div class="ah-meta">~2min10 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Rastreamento · HPV</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 6, a pergunta binária do tema &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>O primeiro preventivo se faz aos dezoito anos ou quando começa a vida sexual? Nenhuma das duas. <strong>É aos vinte e cinco.</strong></p>
+<p>De um lado está a ideia que parece mais segura, que é começar cedo, logo depois da primeira relação, porque quanto antes melhor. Do outro está o que o rastreamento organizado faz hoje no Brasil: não rastrear ninguém antes dos vinte e cinco anos, tendo começado a vida sexual ou não.</p>
+<p>Parece estranho. O motivo está no comportamento do vírus.</p>
+<p>O HPV atinge o pico nos primeiros anos depois do início da vida sexual. É quando mais gente tem o vírus. E é também quando o corpo mais resolve sozinho, porque a maioria dessas infecções em mulheres jovens é eliminada em um a dois anos, sem tratamento nenhum. Rastrear nessa fase encontra muita coisa que ia embora de qualquer jeito.</p>
+<p>E o que se encontra não fica parado no papel. Vira repetição de exame, vira colposcopia, vira biópsia, e às vezes vira procedimento no colo do útero de uma menina de dezenove anos. <strong>Procedimento que ela não precisava ter feito.</strong></p>
+<p><strong>E aí você me pergunta: e se eu for a exceção?</strong></p>
+<p>Rastreamento é pensado para a população inteira. Ele é desenhado para causar o menor dano possível no maior número de pessoas, e por isso nunca é perfeito para um caso específico. Antes dos vinte e cinco, o que protege é a vacina e é levar a sério qualquer sintoma que aparecer.</p>
+<p>E a vacina não muda essa idade. Quem tomou não começa mais tarde, e quem não tomou não começa mais cedo.</p>
+<p>Quando chegar a hora, o exame também vai ser diferente daquele que a sua mãe fez. O principal agora é o teste que procura o DNA do HPV, e quando ele vem negativo a repetição é a cada cinco anos. O Papanicolau não sumiu. <strong>Ele mudou de lugar na fila</strong>, e entra depois, na mesma amostra, quando o teste pede.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Preventivo não é exame de idade, e também não é exame de quem já teve relação. O rastreamento começa aos 25 anos.</p>
+<p>De um lado, a ideia que parece mais segura: começar cedo. Do outro, o que a diretriz brasileira faz: não rastrear ninguém antes dos 25 anos, tendo iniciado vida sexual ou não.</p>
+<p>O motivo é o comportamento do vírus. O HPV atinge o pico justamente nos primeiros anos depois do início da vida sexual, e é também quando o corpo mais resolve sozinho: a maioria dessas infecções em mulheres jovens é eliminada em um a dois anos.</p>
+<p>Rastrear nessa fase encontra muita coisa que ia embora de qualquer jeito, e o que se encontra vira repetição de exame, colposcopia, biópsia, às vezes procedimento no colo do útero de uma menina de 19 anos que não precisava.</p>
+<p>Antes dos 25, o que protege é a vacina e levar a sério qualquer sintoma. E a vacina não muda a idade de início: o rastreamento não depende do status vacinal.</p>
+<p>Quando chegar a hora, o exame primário é o teste de DNA-HPV, com repetição a cada 5 anos quando negativo. O Papanicolau não sumiu, mudou de lugar na fila.</p>
+<p>Fontes</p>
+<p>Ministério da Saúde, Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero, Parte I, Portaria Conjunta SAES/SECTICS nº 13/2025 · BVS Atenção Primária em Saúde</p>
+<p>#preventivo #papanicolau #hpv #adolescencia #ginecologia #rastreamento</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>Ministério da Saúde. Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a></li><li>BVS Atenção Primária em Saúde. Por que o rastreamento do câncer do colo do útero deve ser evitado antes dos 25 anos. <a href="https://aps-repo.bvs.br/aps/por-que-o-rastreamento-do-cancer-de-colo-do-utero-deve-ser-evitado-antes-dos-25-anos/" target="_blank" rel="noopener">https://aps-repo.bvs.br/aps/por-que-o-rastreamento-do-cancer-de-colo-do-utero-deve-ser-evitado-antes-dos-25-anos/</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep6">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 6</span>
+      <span class="forma-badge">A. A doença explicada</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>OVÁRIO CHEIO DE FOLÍCULO, NESSA IDADE, É OVÁRIO DE ADOLESCENTE</h3>
+    <div class="ah-meta">~2min35 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · SOP · Ultrassom</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 7, o critério clínico &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: um laudo de ultrassom pélvico, mesmo em branco</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>O que decide um diagnóstico de ovário policístico na adolescência não é o ultrassom. Ele é o exame que mais leva a esse diagnóstico e o que menos deveria decidir sozinho. E a explicação é anatômica.</p>
+<p>O ovário da adolescente é diferente do ovário da mulher adulta. Nessa fase o eixo que comanda o ciclo, que vai do cérebro até o ovário, ainda está amadurecendo. Ele ainda não acertou o ritmo. E enquanto não acerta, o ovário recruta vários folículos que não chegam a ovular e vão ficando ali, visíveis no ultrassom. Por isso o ovário de adolescente costuma ser maior que o de uma mulher adulta, e muitas vezes aparece com vários folículos. <strong>Sendo saudável.</strong></p>
+<p>Agora junta isso com o resto do que acontece nessa idade. Ciclo irregular, que é esperado nos primeiros anos. Acne, que é quase regra. Pelo aparecendo onde não aparecia. Cada um desses, sozinho, é puberdade. Juntos, e com um ultrassom cheio de folículos, formam um retrato muito parecido com síndrome dos ovários policísticos.</p>
+<p>A Febrasgo alerta justamente para isso: a imaturidade desse eixo pode levar a um diagnóstico errado de SOP na adolescência.</p>
+<p><strong>E aí você me pergunta: então o ultrassom não serve para nada?</strong></p>
+<p>Serve, mas não sozinho. Existe um achado mais específico da síndrome, que é a hiperecogenicidade central do ovário, uma área mais clara no meio dele que reflete o aumento do seu tecido de sustentação. Esse achado não aparece nas adolescentes que não têm a síndrome.</p>
+<p>Então como se fecha o diagnóstico? Pela combinação, e a combinação pede tempo.</p>
+<p>Um dos conjuntos de critérios propostos para adolescente exige que a falta de ovulação persista por mais de dois anos depois da primeira menstruação, e não um ciclo bagunçado num semestre. Exige sinal de excesso de hormônio masculino, como acne que não cede e pelo em padrão masculino, e não a acne comum dessa idade. Exige a confirmação disso no exame de sangue. E exige sinal de resistência à insulina, como aquele escurecimento aveludado da pele na nuca e nas dobras. O ultrassom é um item dentro desse conjunto. <strong>Um item.</strong></p>
+<p>Nessa idade o diagnóstico é feito com calma. Rotular cedo demais gera tratamento que não precisava existir, e deixar de investigar quem realmente tem também tem um custo. <strong>Com calma não quer dizer parado.</strong></p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Ovário com múltiplos folículos no ultrassom, na adolescência, não fecha diagnóstico de SOP.</p>
+<p>Nessa fase o eixo que comanda o ciclo ainda está amadurecendo. A Febrasgo descreve que os ovários das adolescentes geralmente têm dimensões e volume maiores que os das mulheres adultas, sendo muitas vezes multifoliculares. Sendo saudáveis.</p>
+<p>Junte a isso o ciclo irregular esperado nos primeiros anos, a acne e o pelo que aparece: cada um é puberdade acontecendo, e juntos formam um retrato que parece SOP. Por isso a Febrasgo alerta que a imaturidade do eixo pode induzir diagnóstico errado de SOP na adolescência.</p>
+<p>Existe um achado de imagem mais específico, a hiperecogenicidade central, que reflete hiperplasia do estroma e não aparece nas adolescentes sem a síndrome.</p>
+<p>O diagnóstico se fecha por combinação: falta de ovulação por mais de 2 anos após a primeira menstruação, sinal clínico de excesso de hormônio androgênico, confirmação no exame de sangue e sinal de resistência à insulina. O ultrassom é um item dentro do conjunto.</p>
+<p>Nessa idade, o diagnóstico é feito com calma. Com calma não quer dizer parado.</p>
+<p>Fonte</p>
+<p>FEBRASGO, Síndrome dos Ovários Policísticos na adolescência</p>
+<p>#sop #ovariopolicistico #adolescencia #ginecologia #ultrassom</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>FEBRASGO. Síndrome dos Ovários Policísticos na adolescência. <a href="https://www.febrasgo.org.br/noticia/sindrome-dos-ovarios-policisticos-na-adolescencia/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/sindrome-dos-ovarios-policisticos-na-adolescencia/</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep7">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 7</span>
+      <span class="forma-badge">B. A frase que circula por aí</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>PÍLULA DO DIA SEGUINTE NÃO É ABORTIVA</h3>
+    <div class="ah-meta">~1min15 &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · Contracepção de emergência</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 1, a correção de nome &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: nenhum</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>O nome certo não é pílula do dia seguinte. É anticoncepção de emergência. E o nome certo já desfaz a ideia mais errada que existe sobre ela: <strong>ela não é abortiva.</strong></p>
+<p>A Febrasgo afirma que a anticoncepção de emergência não é um método abortivo, de acordo com as evidências científicas atuais. Ela serve para evitar uma gravidez. Não interrompe uma gravidez que já existe.</p>
+<p>Ela foi pensada para situações bem definidas. Uma relação sem nenhum método, uma falha do método que estava sendo usado, como a camisinha que rompeu, ou uma violência sexual.</p>
+<p>E adolescente também tem direito a ela. A médica pode prescrever para a adolescente exposta ao risco de uma gravidez, e deixar de oferecer quando ela está indicada pode ser considerado uma violação do direito da paciente. <strong>É um direito, não um favor.</strong></p>
+<p>Só que ela é um recurso de exceção. Não substitui um método de uso contínuo, e depois dela vale conversar com calma sobre qual método faz sentido daqui para frente.</p>
+<p>Se aconteceu, buscar ajuda não é motivo de vergonha. É exatamente para isso que ela existe.</p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Pílula do dia seguinte não é abortiva. O nome certo é anticoncepção de emergência.</p>
+<p>A Febrasgo afirma que a anticoncepção de emergência não é um método abortivo, conforme demonstram as evidências científicas atuais. Ela evita uma gravidez. Não interrompe uma gravidez que já existe.</p>
+<p>Ela é indicada em três situações: relação sem nenhum método anticoncepcional, falha do método em uso, e violência sexual.</p>
+<p>Adolescente também tem direito a ela. O médico pode prescrever para a adolescente exposta ao risco iminente de gravidez, e deixar de oferecer quando está indicada pode ser considerado violação do direito da paciente.</p>
+<p>Nos casos de violência sexual, os serviços que atendem adolescentes devem seguir as normas do Ministério da Saúde, que incluem a anticoncepção de emergência.</p>
+<p>Ela é um recurso de exceção e não substitui um método de uso contínuo.</p>
+<p>Fonte</p>
+<p>SBP e FEBRASGO, Diretrizes sobre saúde sexual e reprodutiva dos adolescentes</p>
+<p>#anticoncepcao #adolescencia #ginecologia #saudesexual #direitos</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>SBP e FEBRASGO. Diretrizes sobre saúde sexual e reprodutiva dos adolescentes, página 2. <a href="https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf</a></li></ol></div>
+  </div>
+</article>
+<article class="glass-card" id="ep8">
+  <div class="article-header">
+    <div class="ah-top">
+      <span class="ep-badge">Episódio 8</span>
+      <span class="forma-badge">C. Lendo junto (a caderneta)</span>
+      <span class="status-badge">A gravar</span>
+    </div>
+    <h3>A VACINA QUE TEM PRAZO PRA ACABAR</h3>
+    <div class="ah-meta">~2min &nbsp;|&nbsp; Dra. Nathalia &nbsp;|&nbsp; Ginecologia · Adolescência · HPV · Vacinação</div>
+    <div class="ah-meta ah-meta2">Abertura tipo 8, a regra prática &nbsp;|&nbsp; Saída fala final &nbsp;|&nbsp; Props: uma caderneta de vacinação</div>
+  </div>
+
+  <div class="card-body">
+    <div class="sec-label">Roteiro</div>
+    <div class="script-text"><p>Vacina de HPV no SUS não é mais duas doses. É uma só. E essa mudança confunde quem olha uma caderneta antiga e acha que ficou faltando alguma coisa.</p>
+<p>Pega a sua caderneta de vacinação, porque a resposta está nela.</p>
+<p>Se você tem entre nove e catorze anos, a regra atual é dose única. Uma dose registrada nessa faixa já é o esquema completo. <strong>Não falta nada.</strong> Não tem segunda dose marcada e não tem reforço esquecido.</p>
+<p>Se você tem entre quinze e dezenove anos e nunca tomou, ainda existe uma porta aberta, e ela tem data para fechar. É o resgate vacinal para quem ficou de fora na idade certa, e ele vale até o fim de dezembro deste ano. <strong>Até trinta e um de dezembro.</strong></p>
+<p><strong>E aí você me pergunta: mas já não é tarde para mim?</strong></p>
+<p>Não é. A Febrasgo recomenda a vacinação a partir dos quinze anos porque os benefícios ainda são significativos, a ponto de ela dever fazer parte da prescrição médica. A vacina protege melhor quem ainda não teve contato com o vírus, isso é verdade. Mas ela não perde o sentido no dia em que você faz quinze anos.</p>
+<p>Tem uma segunda vacina que confunde bastante. Na rede privada existe uma versão que cobre nove tipos do vírus em vez de quatro, com duas doses até os catorze anos e três doses a partir dos quinze. <strong>Ela não é a vacina do SUS.</strong> E uma não anula a outra. São duas políticas com objetivos diferentes: uma pensa em proteger um país inteiro com o que alcança mais gente por dose, e a outra pensa na proteção máxima de uma pessoa.</p>
+<p>Se na sua caderneta não tem nenhuma dose de HPV e você tem até dezenove anos, ainda dá tempo. <strong>Só que esse tempo tem data.</strong></p></div>
+  </div>
+
+  <div class="legenda">
+    <div class="sec-label legenda-label">Legenda do Reels</div>
+    <p>Vacina de HPV no SUS não é mais duas doses. É uma só.</p>
+<p>De 9 a 14 anos, a regra atual é dose única. Uma dose registrada nessa faixa é esquema completo: não falta nada, não tem segunda dose marcada.</p>
+<p>De 15 a 19 anos, quem nunca tomou ainda tem o resgate vacinal aberto, e ele vale até 31 de dezembro de 2026.</p>
+<p>Já não é tarde? Não é. A recomendação da Febrasgo é explícita: a partir dos 15 anos a vacinação de recuperação é indicada, porque os benefícios ainda são significativos, devendo fazer parte da prescrição médica. A vacina protege melhor quem ainda não teve contato com o vírus, mas não perde o sentido aos 15 anos.</p>
+<p>Na rede privada existe uma versão que cobre nove tipos do vírus em vez de quatro, com 2 doses até os 14 anos e 3 doses a partir dos 15. Ela não é a vacina do SUS. E uma não anula a outra: são políticas com objetivos diferentes, uma populacional e uma individual.</p>
+<p>Sem dose de HPV na caderneta e com até 19 anos, ainda dá tempo. Só que esse tempo tem data.</p>
+<p>Fontes</p>
+<p>Ministério da Saúde, Nota Técnica nº 16/2025-DPNI/SVSA/MS · Ministério da Saúde, prorrogação do resgate vacinal de 15 a 19 anos · FEBRASGO, Recomendações para a vacina HPV 9</p>
+<p>#hpv #vacina #adolescencia #prevencao #ginecologia</p>
+  </div>
+
+  <div class="references-footer">
+    <div class="refs-label">Referências · rodapé do card e legenda, nunca faladas</div>
+    <div class="refs-list"><ol><li>Ministério da Saúde. Nota Técnica nº 16/2025-DPNI/SVSA/MS. <a href="https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf" target="_blank" rel="noopener">https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf</a></li><li>Ministério da Saúde. Resgate vacinal contra o HPV para jovens de 15 a 19 anos ampliado até dezembro. <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos</a></li><li>FEBRASGO, Comissão Nacional Especializada em Vacinas. Recomendações FEBRASGO para a vacina HPV 9. <a href="https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/</a></li></ol></div>
+  </div>
+</article>
+
+<section class="glass-card" id="fontes">
+  <div class="panel">
+    <h2>Fontes da série</h2>
+    <p>Todos os documentos usados nos oito roteiros, com link para o original.</p>
+    <ol class="fontes-list"><li>FEBRASGO. Especialista da Febrasgo explica que primeira consulta ao ginecologista deve ser aos dez anos de idade. <a href="https://www.febrasgo.org.br/noticia/especialista-da-febrasgo-explica-que-primeira-consulta-ao-ginecologista-deve-ser-aos-dez-anos-de-idade/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/especialista-da-febrasgo-explica-que-primeira-consulta-ao-ginecologista-deve-ser-aos-dez-anos-de-idade/</a><span class="fonte-eps">Episódio 1</span></li><li>SBP, Departamento Científico de Adolescência. Consulta do adolescente: abordagem clínica, orientações éticas e legais como instrumentos ao pediatra. Manual de Orientação nº 10, 2019. <a href="https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/21512c-MO_-_ConsultaAdolescente_-_abordClinica_orientEticas.pdf</a><span class="fonte-eps">Episódios 1, 2, 3, 4</span></li><li>SBP e FEBRASGO. Diretrizes sobre saúde sexual e reprodutiva dos adolescentes, com o texto do artigo 103 do Código de Ética Médica. <a href="https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf" target="_blank" rel="noopener">https://www.sbp.com.br/fileadmin/user_upload/pdfs/adolescencia_contra_etica_diretrizes.pdf</a><span class="fonte-eps">Episódios 2, 4, 7</span></li><li>Ministério da Saúde. Suicídio (Prevenção). <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/suicidio-prevencao</a><span class="fonte-eps">Episódio 2</span></li><li>SOGESP. ExaMina, Anticoncepção na adolescência. <a href="https://www.sogesp.com.br/saude-mulher/blog-da-mulher/examina-anticoncepcao-na-adolescencia/" target="_blank" rel="noopener">https://www.sogesp.com.br/saude-mulher/blog-da-mulher/examina-anticoncepcao-na-adolescencia/</a><span class="fonte-eps">Episódio 3</span></li><li>Ministério da Saúde. Portaria Conjunta SAES/SECTICS nº 13, de 29/07/2025. Diretrizes Brasileiras para o Rastreamento do Câncer de Colo do Útero: Parte I. <a href="https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/pcdt/r/rastreamento-cancer-do-colo-do-utero</a><span class="fonte-eps">Episódio 5</span></li><li>BVS Atenção Primária em Saúde. Por que o rastreamento do câncer do colo do útero deve ser evitado antes dos 25 anos. <a href="https://aps-repo.bvs.br/aps/por-que-o-rastreamento-do-cancer-de-colo-do-utero-deve-ser-evitado-antes-dos-25-anos/" target="_blank" rel="noopener">https://aps-repo.bvs.br/aps/por-que-o-rastreamento-do-cancer-de-colo-do-utero-deve-ser-evitado-antes-dos-25-anos/</a><span class="fonte-eps">Episódio 5</span></li><li>FEBRASGO. Síndrome dos Ovários Policísticos na adolescência. <a href="https://www.febrasgo.org.br/noticia/sindrome-dos-ovarios-policisticos-na-adolescencia/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/sindrome-dos-ovarios-policisticos-na-adolescencia/</a><span class="fonte-eps">Episódio 6</span></li><li>Ministério da Saúde. Nota Técnica nº 16/2025-DPNI/SVSA/MS. <a href="https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf" target="_blank" rel="noopener">https://infoms.saude.gov.br/content/Default/SEI_0045605478_Nota_Tecnica_16.pdf</a><span class="fonte-eps">Episódio 8</span></li><li>Ministério da Saúde. Resgate vacinal contra o HPV para jovens de 15 a 19 anos ampliado até dezembro. <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos" target="_blank" rel="noopener">https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-amplia-ate-dezembro-resgate-vacinal-contra-o-hpv-para-jovens-de-15-a-19-anos</a><span class="fonte-eps">Episódio 8</span></li><li>FEBRASGO, Comissão Nacional Especializada em Vacinas. Recomendações FEBRASGO para a vacina HPV 9. <a href="https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/" target="_blank" rel="noopener">https://www.febrasgo.org.br/noticia/recomendacoes-febrasgo-para-a-vacina-hpv-9-comissao-nacional-especializada-em-vacinas-da-febrasgo/</a><span class="fonte-eps">Episódio 8</span></li></ol>
+  </div>
+</section>
+
+</main>
+
+<a href="#" class="totop" id="totop">Topo</a>
+
+<footer>
+  <p><strong>GAIA Medicina Integrada</strong> · Série K: A Adolescente e a Consulta · Método da Conversa v3</p>
+  <p>Documento de revisão · Setembro de 2026 · nenhum episódio gravado até esta data</p>
+  <p>Gerado a partir de <code>10_SERIE_K_ADOLESCENTE_METODO_CONVERSA.md</code></p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('totop');
+  var links=[].slice.call(document.querySelectorAll('.nav-eps a[href^="#ep"]'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    if(window.scrollY>600){btn.classList.add('show');}else{btn.classList.remove('show');}
+    var idx=-1;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i] && secs[i].getBoundingClientRect().top<140){idx=i;}
+    }
+    links.forEach(function(a,i){a.classList.toggle('on',i===idx);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
