@@ -139,7 +139,7 @@ html_content = """<!DOCTYPE html>
       font-size: clamp(17px, 3.8vw, 21px);
       color: rgba(255, 255, 255, 0.92);
       max-width: 680px;
-      margin: 0 auto 24px;
+      margin: 0 auto;
       line-height: 1.45;
     }
     .hero-badges {
@@ -1206,13 +1206,6 @@ html_content = """<!DOCTYPE html>
       <div class="brand-tag"><span></span> Gaia Medicina Integrada · Outubro 2026</div>
       <h1>Outubro Rosa & Calendário Oficial</h1>
       <p>Portal exclusivo para navegação, revisão clínica e aprovação individual de cada carrossel da programação de Outubro.</p>
-      
-      <div class="hero-badges">
-        <div class="hero-badge">📅 <b>15</b> Carrosséis Prontos</div>
-        <div class="hero-badge">🎨 <b>106</b> Cards Finalizados</div>
-        <div class="hero-badge">🌸 <b>4</b> Datas Fixas</div>
-        <div class="hero-badge">💬 <b>Aprovação 100% via WhatsApp</b></div>
-      </div>
     </div>
   </header>
 
@@ -1801,5 +1794,10 @@ with open(copy_file, 'w', encoding='utf-8') as f:
 local_dest = r'g:\00 - CLIENTES\02_GAIA\CRIACAO - CARROSEL\Outubro Rosa 2026\preview-carrosseis-outubro.html'
 with open(local_dest, 'w', encoding='utf-8') as f:
     f.write(html_content)
+
+# Also update outubro/index.html for the clean URL https://substratodigital.github.io/gaia-proposta/outubro/
+outubro_html_file = os.path.join(os.path.dirname(__file__), 'outubro', 'index.html')
+with open(outubro_html_file, 'w', encoding='utf-8') as f:
+    f.write(html_content.replace('outubro-rosa/', 'assets/'))
 
 print("All files generated and synced successfully!")
