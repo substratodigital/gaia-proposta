@@ -33,7 +33,7 @@ FIXA = {5, 6}  # 15/11 Dia Mundial da Prematuridade · 17/11 Dia de Eliminação
 FECHO = "A frase de fecho foi escrita por nós; o texto da médica prevalece."
 NOTA = {
     1: "Cita o comunicado da Anvisa e a nota da Febrasgo. A RE 4.184/2026 e a bula ainda não foram abertas. " + FECHO,
-    2: "Leitura da Dra. Katia. O carrossel fala só do limite populacional que a SBP descreve, sem prever o futuro de uma criança específica.",
+    2: "Ajustes da Dra. Katia aplicados em 13/11 nos cards 3 a 6 e na legenda. O card 5 cita agora a recomendação do Ministério da Saúde; a fonte listada no carrossel continua sendo a diretriz da SBP.",
     3: "Leitura da Dra. Katia. A regra de 60 segundos citada é a do documento da SBP para bebês com 34 semanas ou mais.",
     4: "\"Proteção que já vem pronta\" é a nossa explicação de anticorpo monoclonal. O card da vacina da gestante usa a Instrução Normativa lida na cópia da Prefeitura de Porto Alegre, ainda não conferida no gov.br. " + FECHO,
     5: "Data fixa: 15/11, Dia Mundial da Prematuridade.",
